@@ -1,0 +1,45 @@
+INSTALLATIE-INSTRUCTIE Biblitoheek-app (Android)
+
+Volg deze stappen om de Biblitoheek-app te installeren op je Android-telefoon:
+
+1. Download het APK-bestand
+- Klik op de link of bijlage om het APK-bestand te downloaden.
+- Wacht tot het bestand is gedownload (meestal in de map 'Downloads').
+
+2. Open het APK-bestand
+- Open de 'Bestanden'- of 'Downloads'-app op je telefoon.
+- Zoek het gedownloade APK-bestand (meestal heet het 'biblitoheek.apk').
+- Tik op het bestand om het te openen.
+
+3. Toestemming geven voor installatie
+- Je krijgt mogelijk een melding: "Installatie van apps uit onbekende bronnen is niet toegestaan."
+- Tik op 'Instellingen' of 'Toestaan'.
+- Zet het schuifje aan bij 'Deze bron toestaan' of 'Onbekende apps toestaan'.
+- Soms moet je teruggaan naar het APK-bestand en opnieuw tikken om te installeren.
+
+4. Google Play Protect-melding
+- Je kunt een waarschuwing krijgen van Google Play Protect over onbekende apps.
+- Tik op 'Toch installeren' of 'Details weergeven' > 'Toch installeren'.
+- De app is veilig en bevat geen reclame.
+
+5. Privacy-instellingen
+- Sommige telefoons vragen extra toestemming vanwege privacy-instellingen.
+- Volg de instructies op het scherm om installatie toe te staan.
+
+6. App installeren
+- Tik op 'Installeren'.
+- Wacht tot de installatie is voltooid.
+
+7. App openen
+- Tik op 'Openen' of zoek de app 'Biblitoheek' tussen je andere apps.
+
+8. Camera-toestemming
+- Bij het eerste gebruik van de barcode-scanner vraagt de app om toestemming voor de camera.
+- Tik op 'Toestaan' zodat je barcodes kunt scannen.
+
+---
+
+LET OP:
+- Je hoeft deze stappen maar één keer te doen.
+- De app is veilig en bevat geen reclame.
+- Heb je vragen of lukt het niet? Neem gerust contact op met de maker. 

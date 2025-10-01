@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Heart shape -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M54,30 C54,30 40,20 30,30 C20,40 30,60 54,80 C78,60 88,40 78,30 C68,20 54,30 54,30 Z" />
+    
+    <!-- Smiley face eyes -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M45,42 A3,3 0 1,1 45,48 A3,3 0 1,1 45,42 Z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M63,42 A3,3 0 1,1 63,48 A3,3 0 1,1 63,42 Z" />
+    
+    <!-- Smiley face mouth -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M45,55 Q54,65 63,55"
+        android:strokeColor="#000000"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    
+    <!-- Text "Biblitoheek" - simplified -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M25,85 L25,95 L30,95 L30,90 L35,90 L35,95 L40,95 L40,85 L35,85 L35,90 L30,90 L30,85 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,85 L50,85 L50,90 L55,90 L55,85 L60,85 L60,95 L55,95 L55,92 L50,92 L50,95 L45,95 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M65,85 L70,85 L70,90 L75,90 L75,85 L80,85 L80,95 L75,95 L75,92 L70,92 L70,95 L65,95 Z" />
+</vector>
