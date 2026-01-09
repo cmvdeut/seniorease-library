@@ -1,3 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Biblitoheek</string>
+    <!-- App Name -->
+    <string name="app_name">SeniorEase Library</string>
+    <string name="app_logo">SeniorEase logo</string>
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Annuleren</string>
+    <string name="close">Sluiten</string>
+    <string name="delete">Verwijderen</string>
+    <string name="add">Toevoegen</string>
+    <string name="search">Zoeken</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="all">Alles</string>
+    
+    <!-- Main Screen -->
+    <string name="library">Bibliotheek</string>
+    <string name="demo_status">Demo - %1$d/%2$d items</string>
+    <string name="demo_limit_warning_title">⚠️ Demo Limiet Bereikt</string>
+    <string name="demo_limit_warning_message">Je hebt de maximale limiet van %1$d items bereikt in de demo versie.</string>
+    <string name="demo_limit_warning_upgrade">Koop de volledige versie voor onbeperkt gebruik!</string>
+    <string name="demo_warning_one_left">⚠️ Waarschuwing: Je hebt nog 1 item over in de demo versie!</string>
+    <string name="demo_unlock_title">🔒 Volledige Versie Ontgrendelen</string>
+    <string name="demo_unlock_message">Je hebt de maximale limiet van %1$d items bereikt in de demo versie.\n\nKoop de volledige versie voor onbeperkt gebruik!</string>
+    <string name="demo_unlock_button">Volledige Versie Kopen</string>
+    <string name="demo_unlock_error">Kon Play Store niet openen. Bezoek de Play Store handmatig.</string>
+    
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="backup_create">Backup maken</string>
+    <string name="backup_restore">Backup terugzetten</string>
+    <string name="export_csv">Exporteren naar CSV</string>
+    <string name="export_pdf">Exporteren naar PDF</string>
+    <string name="share_pdf">PDF delen</string>
+    <string name="statistics">Statistieken</string>
+    <string name="privacy_policy">Privacybeleid</string>
+    <string name="clear_all_data">Wis alle data</string>
+    
+    <!-- Sort & Filter -->
+    <string name="sort">Sorteren:</string>
+    <string name="filter">Filter:</string>
+    <string name="filter_all">Alles</string>
+    <string name="sort_title">Titel</string>
+    <string name="sort_author">Auteur</string>
+    <string name="sort_recent">Laatst gescand</string>
+    <string name="sort_read">Gelezen</string>
+    <string name="sort_possession">In bezit</string>
+    <string name="filter_read">Gelezen</string>
+    <string name="filter_possession">In bezit</string>
+    <string name="filter_tbr">TBR</string>
+    
+    <!-- Item List -->
+    <string name="item_type_label">Type: %1$s</string>
+    <string name="item_code_label">Code: %1$s</string>
+    <string name="item_read">Gelezen</string>
+    <string name="item_listened">Beluisterd</string>
+    <string name="item_in_possession">In bezit</string>
+    <string name="item_owned_book">In bezit</string>
+    <string name="item_owned_music">In bezit</string>
+    <string name="item_owned_game">In bezit</string>
+    <string name="item_owned_dvd">In bezit</string>
+    <string name="item_tbr">TBR</string>
+    <string name="clear_text">Wis tekst</string>
+    <string name="clear_title">Wis titel</string>
+    <string name="clear_author">Wis auteur</string>
+    <string name="clear_code">Wis code</string>
+    
+    <!-- Item Dialog -->
+    <string name="add_item">Nieuw item toevoegen</string>
+    <string name="edit_item">Item bewerken</string>
+    <string name="item_title">Titel</string>
+    <string name="item_author">Auteur</string>
+    <string name="item_code">ISBN/EAN code</string>
+    <string name="item_type">Type:</string>
+    <string name="item_type_book">Boek</string>
+    <string name="item_type_music">Muziek</string>
+    <string name="item_type_dvd">DVD</string>
+    <string name="item_type_game">Game</string>
+    <string name="item_read_listened">Gelezen</string>
+    <string name="item_language">Taal:</string>
+    <string name="item_language_nl">Nederlands</string>
+    <string name="item_language_en">Engels</string>
+    <string name="item_language_other">Anders</string>
+    <string name="item_language_choose">Kies taal</string>
+    <string name="item_language_custom">Voer taal in</string>
+    <string name="item_medium">Medium:</string>
+    <string name="item_medium_cd">cd</string>
+    <string name="item_medium_lp">lp</string>
+    <string name="item_medium_other">anders</string>
+    <string name="item_medium_choose">kies medium</string>
+    <string name="item_cover">Cover:</string>
+    <string name="item_cover_description">Cover van %1$s - klik om te vergroten</string>
+    <string name="scan_barcode">Scan barcode</string>
+    <string name="search_google">Zoek op Google</string>
+    <string name="search_google_images">Zoek op Google Afbeeldingen</string>
+    <string name="google">Google</string>
+    <string name="search_results">Zoekresultaten (%1$d)</string>
+    
+    <!-- Messages -->
+    <string name="demo_limit_reached">Demo versie limiet bereikt! Maximaal %1$d items toegestaan. Koop de volledige versie voor onbeperkt gebruik.</string>
+    <string name="backup_saved">Backup opgeslagen</string>
+    <string name="backup_error">Fout bij opslaan backup</string>
+    <string name="backup_imported">%1$d items toegevoegd uit backup</string>
+    <string name="backup_import_error">Fout bij importeren backup</string>
+    <string name="csv_exported">CSV geëxporteerd</string>
+    <string name="csv_export_error">Fout bij exporteren CSV</string>
+    <string name="pdf_exported">PDF geëxporteerd</string>
+    <string name="pdf_export_error">Fout bij exporteren PDF</string>
+    <string name="duplicate_code">Deze code bestaat al in je collectie!</string>
+    <string name="book_not_found">Geen boek gevonden. Controleer de titel of auteur.</string>
+    <string name="fetching_book_data">Boekgegevens ophalen...</string>
+    <string name="fetching_cover">Bezig met ophalen...</string>
+    <string name="fetch_error">Fout bij ophalen: %1$s</string>
+    
+    <!-- Delete Confirmation -->
+    <string name="delete_confirm_title">Weet je zeker dat je dit item wilt verwijderen?</string>
+    <string name="delete_confirm_yes">Ja, verwijderen</string>
+    
+    <!-- Clear All Data -->
+    <string name="clear_all_title">⚠️ WAARSCHUWING: Wis alle data</string>
+    <string name="clear_all_message">WAARSCHUWING: Deze actie zal ALLE data in je bibliotheek permanent verwijderen!\n\nDit is onomkeerbaar en kan niet ongedaan worden gemaakt.\n\nHeb je eerst een backup gemaakt?</string>
+    <string name="clear_all_confirm">JA, WIS ALLE DATA</string>
+    <string name="all_data_cleared">Alle data is gewist!</string>
+    
+    <!-- Statistics -->
+    <string name="statistics_title">Statistieken</string>
+    <string name="statistics_total">Totaal: %1$d</string>
+    <string name="statistics_books">Boeken: %1$d (NL: %2$d, EN: %3$d, Anders: %4$d)</string>
+    <string name="statistics_read">Gelezen: %1$d</string>
+    <string name="statistics_possession">In bezit: %1$d</string>
+    
+    <!-- PDF Headers -->
+    <string name="pdf_header_title">Titel</string>
+    <string name="pdf_header_author">Auteur/Artiest</string>
+    <string name="pdf_header_type">Type</string>
+    <string name="pdf_header_code">Code</string>
+    <string name="pdf_header_read">Gelezen</string>
+    <string name="pdf_header_possession">In bezit</string>
+    
+    <!-- CSV Headers -->
+    <string name="csv_header_title">Titel</string>
+    <string name="csv_header_author">Auteur/Artiest</string>
+    <string name="csv_header_type">Type</string>
+    <string name="csv_header_code">Code</string>
+    <string name="csv_header_status">Gelezen/In bezit</string>
+    <string name="csv_header_medium">Medium</string>
+    <string name="csv_header_language">Taal</string>
+    
+    <!-- Scanner -->
+    <string name="camera_permission_required">Camera-toestemming is nodig om te scannen.</string>
+    <string name="camera_error">Camera fout: %1$s</string>
+    <string name="error">Fout: %1$s</string>
+    
+    <!-- Cover Fetch Dialog -->
+    <string name="cover_fetch_title">Zoek op Google Afbeeldingen</string>
+    <string name="cover_fetch_type_code">Type: %1$s | Code: %2$s</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_large_text">Grote tekst</string>
+    <string name="settings_large_text_description">Vergroot alle tekst in de app voor betere leesbaarheid</string>
+    <string name="settings_high_contrast">Hoog contrast</string>
+    <string name="settings_high_contrast_description">Verhoogt contrast voor betere leesbaarheid (WCAG AAA)</string>
+    <string name="settings_accessibility">Toegankelijkheid</string>
+    <string name="settings_accessibility_info">• Minimale tekstgrootte: 18sp\n• Respecteert Android lettergrootte instellingen\n• Grote tekst toggle: +25% vergroting\n• Hoog contrast: WCAG AAA compliant (21:1)\n• Geen tekst op foto\'s zonder achtergrond</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_language_description">Kies de taal voor de app</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_english">English</string>
+    <string name="language_system">Systeemtaal</string>
+    
+    <!-- Privacy Policy -->
+    <string name="privacy_policy_title">Privacybeleid</string>
+    <string name="privacy_policy_app_name">SeniorEasy Bieb - Privacybeleid</string>
+    <string name="privacy_policy_last_updated">Laatste update: 1 oktober 2025</string>
+    <string name="privacy_policy_section_1_title">1. Inleiding</string>
+    <string name="privacy_policy_section_1_text">Welkom bij SeniorEasy Bieb, een app voor het beheren van uw persoonlijke collectie boeken, muziek, DVD\'s en games. Dit privacybeleid legt uit hoe wij uw gegevens verzamelen, gebruiken en beschermen.</string>
+    <string name="privacy_policy_section_2_title">2. Gegevens die wij verzamelen</string>
+    <string name="privacy_policy_section_2_text">• Titels van boeken, muziek, DVD\'s en games\n• Auteurs- en artiestennamen\n• Barcodes (ISBN, UPC, etc.)\n• Status van items (gelezen/beluisterd, in bezit)\n• Taal en medium informatie\n• Coverafbeeldingen</string>
+    <string name="privacy_policy_section_3_title">3. Camera-toegang</string>
+    <string name="privacy_policy_section_3_text">De app vraagt toegang tot uw camera om barcodes te scannen. Deze functionaliteit wordt alleen gebruikt voor:\n• Het scannen van barcodes op uw items\n• Het automatisch ophalen van iteminformatie\n\nBelangrijk: Wij slaan geen camerabeelden op. De camera wordt alleen gebruikt voor real-time barcodescanning.</string>
+    <string name="privacy_policy_section_4_title">4. Gegevensopslag</string>
+    <string name="privacy_policy_section_4_text">Alle gegevens worden lokaal opgeslagen op uw apparaat in een beveiligde database. Wij verzenden geen gegevens naar externe servers, behalve voor het ophalen van iteminformatie via openbare API\'s.</string>
+    <string name="privacy_policy_section_5_title">5. Uw rechten</string>
+    <string name="privacy_policy_section_5_text">U heeft het recht om:\n• Uw gegevens te bekijken en te wijzigen\n• Items uit uw collectie te verwijderen\n• De app te verwijderen (dit verwijdert alle lokale gegevens)\n• Camera-toegang te weigeren (barcodescanning werkt dan niet)</string>
+    <string name="privacy_policy_section_6_title">6. Contact</string>
+    <string name="privacy_policy_section_6_text">Als u vragen heeft over dit privacybeleid of de app, kunt u contact opnemen via:\nE-mail: info@senioreasy.nl\nOrganisatie: Senioren\nLocatie: Zuid Holland, Nederland</string>
+    
+    <!-- Share -->
+    <string name="share_pdf_via">Deel PDF via...</string>
 </resources>

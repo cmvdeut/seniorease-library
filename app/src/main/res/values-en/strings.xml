@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">SeniorEase Library</string>
+    <string name="app_logo">SeniorEase logo</string>
+
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
+    <string name="search">Search</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="all">All</string>
+
+    <!-- Main Screen -->
+    <string name="library">Library</string>
+    <string name="demo_status">Demo – %1$d of %2$d items</string>
+    <string name="demo_limit_warning_title">⚠️ Demo limit reached</string>
+    <string name="demo_limit_warning_message">You have reached the maximum of %1$d items in the demo version.</string>
+    <string name="demo_limit_warning_upgrade">Unlock the full version for unlimited use.</string>
+    <string name="demo_warning_one_left">⚠️ Warning: You have 1 item left in the demo version!</string>
+    <string name="demo_unlock_title">🔒 Unlock Full Version</string>
+    <string name="demo_unlock_message">You have reached the maximum limit of %1$d items in the demo version.\n\nBuy the full version for unlimited use!</string>
+    <string name="demo_unlock_button">Buy Full Version</string>
+    <string name="demo_unlock_error">Could not open Play Store. Please visit the Play Store manually.</string>
+
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="backup_create">Create backup</string>
+    <string name="backup_restore">Restore backup</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="export_pdf">Export to PDF</string>
+    <string name="share_pdf">Share PDF</string>
+    <string name="statistics">Statistics</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="clear_all_data">Clear all data</string>
+
+    <!-- Sort & Filter -->
+    <string name="sort">Sort by:</string>
+    <string name="filter">Filter:</string>
+    <string name="filter_all">All</string>
+    <string name="sort_title">Title</string>
+    <string name="sort_author">Author</string>
+    <string name="sort_recent">Recently scanned</string>
+    <string name="sort_read">Read</string>
+    <string name="sort_possession">Owned</string>
+    <string name="filter_read">Read</string>
+    <string name="filter_possession">Owned</string>
+    <string name="filter_tbr">TBR</string>
+
+    <!-- Item List -->
+    <string name="item_type_label">Type: %1$s</string>
+    <string name="item_code_label">Code: %1$s</string>
+    <string name="item_read">Read</string>
+    <string name="item_listened">Listened</string>
+    <string name="item_in_possession">Owned</string>
+    <string name="item_owned_book">Owned</string>
+    <string name="item_owned_music">Owned</string>
+    <string name="item_owned_game">Owned</string>
+    <string name="item_owned_dvd">Owned</string>
+    <string name="item_tbr">TBR</string>
+    <string name="clear_text">Clear text</string>
+    <string name="clear_title">Clear title</string>
+    <string name="clear_author">Clear author</string>
+    <string name="clear_code">Clear code</string>
+
+    <!-- Item Dialog -->
+    <string name="add_item">Add new item</string>
+    <string name="edit_item">Edit item</string>
+    <string name="item_title">Title</string>
+    <string name="item_author">Author</string>
+    <string name="item_code">ISBN / barcode</string>
+    <string name="item_type">Type:</string>
+    <string name="item_type_book">Book</string>
+    <string name="item_type_music">Music</string>
+    <string name="item_type_dvd">DVD</string>
+    <string name="item_type_game">Game</string>
+    <string name="item_read_listened">Read</string>
+
+    <string name="item_language">Language:</string>
+    <string name="item_language_nl">Dutch</string>
+    <string name="item_language_en">English</string>
+    <string name="item_language_other">Other</string>
+    <string name="item_language_choose">Choose a language</string>
+    <string name="item_language_custom">Enter language</string>
+
+    <string name="item_medium">Medium:</string>
+    <string name="item_medium_cd">CD</string>
+    <string name="item_medium_lp">LP</string>
+    <string name="item_medium_other">Other</string>
+    <string name="item_medium_choose">Choose medium</string>
+
+    <string name="item_cover">Cover:</string>
+    <string name="item_cover_description">Cover of %1$s – tap to enlarge</string>
+
+    <string name="scan_barcode">Scan barcode</string>
+    <string name="search_google">Search on Google</string>
+    <string name="search_google_images">Search Google Images</string>
+    <string name="google">Google</string>
+    <string name="search_results">Search results (%1$d)</string>
+
+    <!-- Messages -->
+    <string name="demo_limit_reached">Demo limit reached. You can add up to %1$d items. Unlock the full version for unlimited use.</string>
+    <string name="backup_saved">Backup saved</string>
+    <string name="backup_error">Error saving backup</string>
+    <string name="backup_imported">%1$d items added from backup</string>
+    <string name="backup_import_error">Error restoring backup</string>
+    <string name="csv_exported">CSV exported</string>
+    <string name="csv_export_error">Error exporting CSV</string>
+    <string name="pdf_exported">PDF exported</string>
+    <string name="pdf_export_error">Error exporting PDF</string>
+    <string name="duplicate_code">This code already exists in your library.</string>
+    <string name="book_not_found">No book found. Please check the title or author.</string>
+    <string name="fetching_book_data">Fetching book information…</string>
+    <string name="fetching_cover">Loading…</string>
+    <string name="fetch_error">Error loading: %1$s</string>
+
+    <!-- Delete Confirmation -->
+    <string name="delete_confirm_title">Are you sure you want to delete this item?</string>
+    <string name="delete_confirm_yes">Yes, delete</string>
+
+    <!-- Clear All Data -->
+    <string name="clear_all_title">⚠️ Warning: clear all data</string>
+    <string name="clear_all_message">This will permanently delete ALL items in your library.\n\nThis cannot be undone.\n\nHave you created a backup?</string>
+    <string name="clear_all_confirm">YES, DELETE EVERYTHING</string>
+    <string name="all_data_cleared">All data has been deleted.</string>
+
+    <!-- Statistics -->
+    <string name="statistics_title">Statistics</string>
+    <string name="statistics_total">Total: %1$d</string>
+    <string name="statistics_books">Books: %1$d (EN: %3$d, Other: %4$d)</string>
+    <string name="statistics_read">Read: %1$d</string>
+    <string name="statistics_possession">Owned: %1$d</string>
+
+    <!-- Scanner -->
+    <string name="camera_permission_required">Camera permission is required to scan barcodes.</string>
+    <string name="camera_error">Camera error: %1$s</string>
+    <string name="error">Error: %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_large_text">Large text</string>
+    <string name="settings_large_text_description">Increase text size for easier reading</string>
+    <string name="settings_high_contrast">High contrast</string>
+    <string name="settings_high_contrast_description">Improves readability with extra contrast</string>
+    <string name="settings_accessibility">Accessibility</string>
+
+    <string name="settings_language">Language</string>
+    <string name="settings_language_description">Choose the app language</string>
+    <string name="language_dutch">Dutch</string>
+    <string name="language_english">English</string>
+    <string name="language_system">System language</string>
+
+    <!-- Share -->
+    <string name="share_pdf_via">Share PDF via…</string>
+
+</resources>

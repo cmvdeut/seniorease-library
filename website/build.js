@@ -33,7 +33,8 @@ const filesToCopy = [
   'privacy-policy.html',
   'contact.html',
   'downloads',
-  'qr-code-apk-download.png'
+  'qr-code-apk-download.png',
+  'seniorease-icon.png'
 ];
 
 filesToCopy.forEach(file => {

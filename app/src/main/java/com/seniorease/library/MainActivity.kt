@@ -516,13 +516,8 @@ class MainActivity : ComponentActivity() {
                                 val booksNL = items.count { it.type == "boek" && (it.language == "NL") }
                                 val booksEN = items.count { it.type == "boek" && (it.language == "EN") }
                                 val booksOther = items.count { it.type == "boek" && (it.language != null && it.language != "NL" && it.language != "EN") }
-                                val music = items.count { it.type == "muziek" }
-                                val games = items.count { it.type == "game" }
-                                val dvds = items.count { it.type == "dvd" }
-                                val readOrListened = items.count { it.isReadOrListened }
+                                val read = items.count { it.isReadOrListened }
                                 val inPossession = items.count { it.inPossession }
-                                val cds = items.count { it.type == "muziek" && (it.medium?.lowercase() == "cd") }
-                                val lps = items.count { it.type == "muziek" && (it.medium?.lowercase() == "lp") }
                                 AlertDialog(
                                     onDismissRequest = { showStatsDialog = false },
                                     title = { Text(stringResource(R.string.statistics_title)) },
@@ -530,10 +525,7 @@ class MainActivity : ComponentActivity() {
                                         Column {
                                             Text(stringResource(R.string.statistics_total, total))
                                             Text(stringResource(R.string.statistics_books, books, booksNL, booksEN, booksOther))
-                                            Text(stringResource(R.string.statistics_music, music, cds, lps))
-                                            Text(stringResource(R.string.statistics_games, games))
-                                            Text(stringResource(R.string.statistics_dvds, dvds))
-                                            Text(stringResource(R.string.statistics_read, readOrListened))
+                                            Text(stringResource(R.string.statistics_read, read))
                                             Text(stringResource(R.string.statistics_possession, inPossession))
                                         }
                                     },
