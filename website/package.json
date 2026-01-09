@@ -4,8 +4,8 @@
   "description": "Download pagina voor SeniorEase Library app",
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo 'Static site - no build needed'",
-    "deploy": "vercel --prod"
+    "build": "node build.js",
+    "vercel-build": "node build.js"
   },
   "keywords": [
     "seniorease",
