@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download SeniorEase Library - A simple app to manage your personal collection of books, music, DVDs and games.">
+    <meta name="description" content="Download SeniorEase Library - A simple app to manage your personal book collection.">
     <title>SeniorEase Library - Download</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
@@ -26,10 +26,21 @@
             background: white;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-width: 650px;
+            max-width: 750px;
             width: 100%;
-            padding: 50px 40px;
+            padding: 0;
             text-align: center;
+        }
+        .section {
+            padding: 40px;
+        }
+        .section:not(:last-child) {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .hero-section {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            border-radius: 20px 20px 0 0;
         }
         .logo {
             width: 100px;
@@ -105,7 +116,7 @@
             background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
             border-left: 5px solid #8B4513;
             padding: 25px;
-            margin: 30px 0;
+            margin: 20px 0;
             text-align: left;
             border-radius: 8px;
         }
@@ -130,6 +141,45 @@
         }
         .info-box ul li {
             margin-bottom: 8px;
+        }
+        .feature-box {
+            background: #f9f9f9;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: left;
+        }
+        .feature-box h3 {
+            color: #8B4513;
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .feature-box p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .trust-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
+            border-left: 5px solid #4caf50;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .trust-box h3 {
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .trust-box p {
+            color: #2e7d32;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 8px 0;
         }
         .details {
             margin-top: 35px;
@@ -184,13 +234,22 @@
         }
         @media (max-width: 600px) {
             .container {
+                max-width: 100%;
+            }
+            .section {
                 padding: 30px 20px;
+            }
+            .hero-section {
+                padding: 40px 20px;
             }
             h1 {
                 font-size: 28px;
             }
             h2 {
                 font-size: 18px;
+            }
+            h3 {
+                font-size: 20px !important;
             }
             .download-button {
                 padding: 18px 35px;
@@ -199,78 +258,102 @@
             .qr-code img {
                 max-width: 220px;
             }
+            .feature-box, .trust-box {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">📚</div>
-        <h1>SeniorEase Library</h1>
-        <h2>Manage Your Personal Collection</h2>
-        <div class="version-badge">Version 1.0.4 - Demo</div>
-        
-        <div class="info-box" style="text-align: center; margin-bottom: 30px;">
-            <h3 style="text-align: center; margin-bottom: 15px;">Welcome to SeniorEase Library</h3>
-            <p style="font-size: 18px; line-height: 1.6; color: #555; margin-bottom: 15px;">
-                A simple and easy-to-use app to keep track of your books, music, DVDs, and games. 
-                Scan barcodes with your phone camera to add items to your collection instantly.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: #666; background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
-                <strong>Demo Version:</strong> This free demo version lets you scan and save up to 10 items. 
-                Perfect for trying out the app before upgrading to the full version with unlimited items.
-            </p>
-        </div>
-        
-        <a href="/downloads/app-demo-release.apk" 
-           class="download-button" 
-           download="SeniorEase-Library-Demo.apk">
-            📥 Download App (30 MB)
-        </a>
-        
-        <div class="qr-section">
-            <h3>📱 Or Scan This QR Code:</h3>
-            <div class="qr-code">
-                <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
+        <!-- Hero Section -->
+        <div class="section hero-section">
+            <div class="logo">📚</div>
+            <h1>SeniorEase Library</h1>
+            <h2>Manage Your Book Collection</h2>
+            <a href="/downloads/app-demo-release.apk" 
+               class="download-button" 
+               download="SeniorEase-Library-Demo.apk">
+                📥 Download Free Demo
+            </a>
+            <div class="qr-section" style="margin-top: 30px;">
+                <p style="color: #666; margin-bottom: 15px; font-size: 15px;">
+                    Or scan this QR code with your phone:
+                </p>
+                <div class="qr-code">
+                    <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
+                </div>
             </div>
-            <p style="color: #666; margin-top: 15px; font-size: 15px;">
-                Point your phone camera at this code to download directly
-            </p>
         </div>
-        
-        <div class="info-box" style="margin-top: 30px;">
-            <h3>📥 How to Install:</h3>
-            <ol style="font-size: 16px; line-height: 1.8;">
+
+        <!-- Who It's For -->
+        <div class="section">
+            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Perfect for Book Lovers</h3>
+            <div class="feature-box">
+                <p style="font-size: 18px; line-height: 1.7; color: #555;">
+                    Designed with simplicity in mind for book lovers. 
+                    No complicated menus or confusing features—just point your phone at a barcode and it's added to your collection. 
+                    Keep track of what you've read, what you own, and what you want to read next.
+                </p>
+            </div>
+        </div>
+
+        <!-- Demo Version -->
+        <div class="section">
+            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Try It Free</h3>
+            <div class="feature-box" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                <p style="font-size: 18px; line-height: 1.7; color: #856404;">
+                    <strong>Demo Version:</strong> Scan and save up to 10 books completely free. 
+                    Perfect for trying out the app and seeing how easy it is to use. 
+                    Upgrade to the full version anytime for unlimited books.
+                </p>
+            </div>
+        </div>
+
+        <!-- How to Install -->
+        <div class="section">
+            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">How to Install</h3>
+            <ol style="font-size: 17px; line-height: 2; text-align: left; max-width: 600px; margin: 0 auto; color: #555;">
                 <li>Click the download button above or scan the QR code</li>
-                <li>Open the downloaded file on your Android phone or tablet</li>
-                <li>If you see a message about "Unknown sources":
-                    <ul style="margin-top: 8px;">
-                        <li>Go to: <strong>Settings → Security → Allow unknown sources</strong></li>
-                        <li>Or: <strong>Settings → Apps → Special app access → Install unknown apps</strong></li>
-                    </ul>
-                </li>
-                <li>Tap "Install" and wait for the installation to complete</li>
-                <li>Open the app and start scanning your collection!</li>
+                <li>When asked to "Install unknown apps", tap <strong>"Allow from this source"</strong></li>
+                <li>If you see a "Google Play Protect" warning, tap <strong>"Scan app"</strong> or <strong>"Install anyway"</strong> - this is normal for apps not from the Play Store</li>
+                <li>Tap <strong>"Install"</strong> and wait for it to complete</li>
+                <li>Open the app and start scanning your books!</li>
             </ol>
         </div>
-        
-        <div class="warning">
-            <strong>ℹ️ Note:</strong>
-            This app is not available in the Play Store. You'll need to allow "Unknown sources" to install it. 
-            This is safe because you're downloading directly from this website.
-        </div>
-        
-        <details class="details" style="margin-top: 30px; text-align: left; cursor: pointer;">
-            <summary style="font-size: 16px; font-weight: 600; color: #8B4513; margin-bottom: 15px; cursor: pointer;">
-                Technical Details
-            </summary>
-            <div style="padding-top: 15px; font-size: 14px; color: #666;">
-                <p><strong>Version:</strong> 1.0.4 (Demo)</p>
-                <p><strong>Size:</strong> ~30 MB</p>
-                <p><strong>Android Required:</strong> 7.0 (API 24) or higher</p>
-                <p><strong>Package:</strong> com.seniorease.library.demo</p>
-                <p><strong>Features:</strong> Barcode scanning, collection management, export to CSV/PDF</p>
+
+        <!-- Privacy & Trust -->
+        <div class="section">
+            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Your Privacy Matters</h3>
+            <div class="trust-box">
+                <h3>✓ No Tracking, No Account Required</h3>
+                <p>
+                    <strong>Completely private:</strong> This app works entirely on your device. 
+                    We don't track you, we don't collect your data, and you don't need to create an account. 
+                    Everything stays on your phone—your collection, your privacy, your control.
+                </p>
+                <p style="margin-top: 12px;">
+                    <strong>Safe to install:</strong> Downloaded directly from our secure website. 
+                    No personal information required, ever.
+                </p>
             </div>
-        </details>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="section" style="background: #f9f9f9; border-radius: 0 0 20px 20px;">
+            <details class="details" style="text-align: left; cursor: pointer;">
+                <summary style="font-size: 18px; font-weight: 600; color: #8B4513; margin-bottom: 15px; cursor: pointer;">
+                    Technical Details
+                </summary>
+                <div style="padding-top: 15px; font-size: 15px; color: #666;">
+                    <p><strong>Version:</strong> 1.0.4 (Demo)</p>
+                    <p><strong>Size:</strong> ~30 MB</p>
+                    <p><strong>Android Required:</strong> 7.0 (API 24) or higher</p>
+                    <p><strong>Package:</strong> com.seniorease.library.demo</p>
+                    <p><strong>Features:</strong> Barcode scanning, collection management, export to CSV/PDF</p>
+                </div>
+            </details>
+        </div>
     </div>
 </body>
 </html>
