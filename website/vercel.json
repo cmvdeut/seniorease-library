@@ -1,4 +1,6 @@
 {
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/downloads/(.*)",
@@ -12,12 +14,6 @@
           "value": "attachment"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
     }
   ]
 }
