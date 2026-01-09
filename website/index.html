@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download SeniorEase Library - Een app voor het beheren van je persoonlijke collectie boeken, muziek, DVD's en games.">
+    <title>SeniorEase Library - Download</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 650px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+        h1 {
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        h2 {
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 35px;
+            font-size: 20px;
+        }
+        .download-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+            color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
+        }
+        .download-button:active {
+            transform: translateY(-1px);
+        }
+        .qr-section {
+            margin: 40px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+            border-radius: 15px;
+        }
+        .qr-section h3 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .qr-code {
+            margin: 20px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .qr-code img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+            border-left: 5px solid #8B4513;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #8B4513;
+            margin-bottom: 18px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .info-box ol {
+            margin-left: 25px;
+            line-height: 2;
+        }
+        .info-box li {
+            margin-bottom: 12px;
+            color: #555;
+        }
+        .info-box ul {
+            margin-top: 10px;
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+        .info-box ul li {
+            margin-bottom: 8px;
+        }
+        .details {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+        }
+        .details p {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        .details strong {
+            color: #8B4513;
+        }
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #856404;
+        }
+        .warning strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .version-badge {
+            display: inline-block;
+            background: #8B4513;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            .download-button {
+                padding: 18px 35px;
+                font-size: 20px;
+            }
+            .qr-code img {
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📚</div>
+        <h1>SeniorEase Library</h1>
+        <h2>Beheer je persoonlijke collectie</h2>
+        <div class="version-badge">Versie 1.0.4 - Demo</div>
+        
+        <div class="info-box">
+            <h3>📥 Installatie Instructies:</h3>
+            <ol>
+                <li>Download de APK door op de knop hieronder te klikken</li>
+                <li>Open de gedownloade APK op je Android apparaat</li>
+                <li>Als je een melding krijgt over "Onbekende bronnen":
+                    <ul>
+                        <li>Ga naar: <strong>Instellingen → Beveiliging → Onbekende bronnen toestaan</strong></li>
+                        <li>Of: <strong>Instellingen → Apps → Speciale app toegang → Onbekende apps installeren</strong></li>
+                    </ul>
+                </li>
+                <li>Klik op "Installeren" en wacht tot de installatie klaar is</li>
+                <li>Open de app en begin met scannen van je boeken!</li>
+            </ol>
+        </div>
+        
+        <a href="/downloads/app-demo-release.apk" 
+           class="download-button" 
+           download="SeniorEase-Library-Demo.apk">
+            📥 Download APK (30 MB)
+        </a>
+        
+        <div class="qr-section">
+            <h3>📱 Of scan de QR code:</h3>
+            <div class="qr-code">
+                <img src="/qr-code-apk-download.png" alt="QR Code voor download" id="qrImage">
+            </div>
+            <p style="color: #666; margin-top: 15px; font-size: 15px;">
+                Scan deze code met je telefoon camera om direct te downloaden
+            </p>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Let op:</strong>
+            Deze app is niet beschikbaar in de Play Store. Je moet "Onbekende bronnen" toestaan om te installeren. Dit is veilig omdat je de app direct van deze website downloadt.
+        </div>
+        
+        <div class="details">
+            <p><strong>Versie:</strong> 1.0.4 (Demo)</p>
+            <p><strong>Grootte:</strong> ~30 MB</p>
+            <p><strong>Android vereist:</strong> 7.0 (API 24) of hoger</p>
+            <p><strong>Package:</strong> com.seniorease.library.demo</p>
+            <p><strong>Functies:</strong> Barcode scannen, collectie beheren, export naar CSV/PDF</p>
+        </div>
+    </div>
+</body>
+</html>

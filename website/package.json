@@ -1,0 +1,18 @@
+{
+  "name": "seniorease-library-website",
+  "version": "1.0.0",
+  "description": "Download pagina voor SeniorEase Library app",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "seniorease",
+    "library",
+    "app",
+    "download"
+  ],
+  "author": "SeniorEase",
+  "license": "MIT"
+}
