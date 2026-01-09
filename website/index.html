@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download SeniorEase Library - Een app voor het beheren van je persoonlijke collectie boeken, muziek, DVD's en games.">
+    <meta name="description" content="Download SeniorEase Library - A simple app to manage your personal collection of books, music, DVDs and games.">
     <title>SeniorEase Library - Download</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
@@ -137,6 +137,21 @@
             border-top: 2px solid #e0e0e0;
             color: #666;
         }
+        .details summary {
+            list-style: none;
+            outline: none;
+        }
+        .details summary::-webkit-details-marker {
+            display: none;
+        }
+        .details summary::before {
+            content: "▶ ";
+            margin-right: 8px;
+            color: #8B4513;
+        }
+        .details[open] summary::before {
+            content: "▼ ";
+        }
         .details p {
             margin: 10px 0;
             font-size: 15px;
@@ -191,53 +206,71 @@
     <div class="container">
         <div class="logo">📚</div>
         <h1>SeniorEase Library</h1>
-        <h2>Beheer je persoonlijke collectie</h2>
-        <div class="version-badge">Versie 1.0.4 - Demo</div>
+        <h2>Manage Your Personal Collection</h2>
+        <div class="version-badge">Version 1.0.4 - Demo</div>
         
-        <div class="info-box">
-            <h3>📥 Installatie Instructies:</h3>
-            <ol>
-                <li>Download de APK door op de knop hieronder te klikken</li>
-                <li>Open de gedownloade APK op je Android apparaat</li>
-                <li>Als je een melding krijgt over "Onbekende bronnen":
-                    <ul>
-                        <li>Ga naar: <strong>Instellingen → Beveiliging → Onbekende bronnen toestaan</strong></li>
-                        <li>Of: <strong>Instellingen → Apps → Speciale app toegang → Onbekende apps installeren</strong></li>
-                    </ul>
-                </li>
-                <li>Klik op "Installeren" en wacht tot de installatie klaar is</li>
-                <li>Open de app en begin met scannen van je boeken!</li>
-            </ol>
+        <div class="info-box" style="text-align: center; margin-bottom: 30px;">
+            <h3 style="text-align: center; margin-bottom: 15px;">Welcome to SeniorEase Library</h3>
+            <p style="font-size: 18px; line-height: 1.6; color: #555; margin-bottom: 15px;">
+                A simple and easy-to-use app to keep track of your books, music, DVDs, and games. 
+                Scan barcodes with your phone camera to add items to your collection instantly.
+            </p>
+            <p style="font-size: 16px; line-height: 1.6; color: #666; background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <strong>Demo Version:</strong> This free demo version lets you scan and save up to 10 items. 
+                Perfect for trying out the app before upgrading to the full version with unlimited items.
+            </p>
         </div>
         
         <a href="/downloads/app-demo-release.apk" 
            class="download-button" 
            download="SeniorEase-Library-Demo.apk">
-            📥 Download APK (30 MB)
+            📥 Download App (30 MB)
         </a>
         
         <div class="qr-section">
-            <h3>📱 Of scan de QR code:</h3>
+            <h3>📱 Or Scan This QR Code:</h3>
             <div class="qr-code">
-                <img src="/qr-code-apk-download.png" alt="QR Code voor download" id="qrImage">
+                <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
             </div>
             <p style="color: #666; margin-top: 15px; font-size: 15px;">
-                Scan deze code met je telefoon camera om direct te downloaden
+                Point your phone camera at this code to download directly
             </p>
         </div>
         
-        <div class="warning">
-            <strong>⚠️ Let op:</strong>
-            Deze app is niet beschikbaar in de Play Store. Je moet "Onbekende bronnen" toestaan om te installeren. Dit is veilig omdat je de app direct van deze website downloadt.
+        <div class="info-box" style="margin-top: 30px;">
+            <h3>📥 How to Install:</h3>
+            <ol style="font-size: 16px; line-height: 1.8;">
+                <li>Click the download button above or scan the QR code</li>
+                <li>Open the downloaded file on your Android phone or tablet</li>
+                <li>If you see a message about "Unknown sources":
+                    <ul style="margin-top: 8px;">
+                        <li>Go to: <strong>Settings → Security → Allow unknown sources</strong></li>
+                        <li>Or: <strong>Settings → Apps → Special app access → Install unknown apps</strong></li>
+                    </ul>
+                </li>
+                <li>Tap "Install" and wait for the installation to complete</li>
+                <li>Open the app and start scanning your collection!</li>
+            </ol>
         </div>
         
-        <div class="details">
-            <p><strong>Versie:</strong> 1.0.4 (Demo)</p>
-            <p><strong>Grootte:</strong> ~30 MB</p>
-            <p><strong>Android vereist:</strong> 7.0 (API 24) of hoger</p>
-            <p><strong>Package:</strong> com.seniorease.library.demo</p>
-            <p><strong>Functies:</strong> Barcode scannen, collectie beheren, export naar CSV/PDF</p>
+        <div class="warning">
+            <strong>ℹ️ Note:</strong>
+            This app is not available in the Play Store. You'll need to allow "Unknown sources" to install it. 
+            This is safe because you're downloading directly from this website.
         </div>
+        
+        <details class="details" style="margin-top: 30px; text-align: left; cursor: pointer;">
+            <summary style="font-size: 16px; font-weight: 600; color: #8B4513; margin-bottom: 15px; cursor: pointer;">
+                Technical Details
+            </summary>
+            <div style="padding-top: 15px; font-size: 14px; color: #666;">
+                <p><strong>Version:</strong> 1.0.4 (Demo)</p>
+                <p><strong>Size:</strong> ~30 MB</p>
+                <p><strong>Android Required:</strong> 7.0 (API 24) or higher</p>
+                <p><strong>Package:</strong> com.seniorease.library.demo</p>
+                <p><strong>Features:</strong> Barcode scanning, collection management, export to CSV/PDF</p>
+            </div>
+        </details>
     </div>
 </body>
 </html>
