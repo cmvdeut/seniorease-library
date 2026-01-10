@@ -60,13 +60,22 @@ module.exports = async (req, res) => {
     }
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Strategy 1: Use Stripe Checkout Session search to find paid sessions for this email
+    // Debug: Log PRICE_ID being used
+    console.log(`[DEBUG] PRICE_ID: ${PRICE_ID}`);
+
+    // Debug: Log normalized email received
+    console.log(`[DEBUG] Normalized email: ${normalizedEmail}`);
+
+    // Use Stripe Checkout Session search to find paid sessions for this email
     const searchQuery = `payment_status:'paid' AND customer_details.email:'${normalizedEmail}'`;
     
     const sessions = await stripe.checkout.sessions.search({
       query: searchQuery,
       limit: 100, // Max results per search
     });
+
+    // Debug: Log how many paid sessions were checked
+    console.log(`[DEBUG] Found ${sessions.data.length} paid session(s) for email: ${normalizedEmail}`);
 
     // For each matching session, check line items for the specific Price ID
     for (const session of sessions.data) {
@@ -75,30 +84,32 @@ module.exports = async (req, res) => {
           limit: 100,
         });
 
+        // Debug: Log session ID and line item price IDs if email matches
+        const priceIds = lineItems.data
+          .map((item) => item.price && item.price.id)
+          .filter((id) => id !== null && id !== undefined);
+        console.log(`[DEBUG] Session ${session.id} - Line item price IDs: ${JSON.stringify(priceIds)}`);
+
         const hasPrice = lineItems.data.some(
           (item) => item.price && item.price.id === PRICE_ID
         );
 
         if (hasPrice) {
+          console.log(`[DEBUG] Match found! Session ${session.id} has Price ID ${PRICE_ID}`);
           return res.status(200).json({ paid: true });
         }
       } catch (lineItemError) {
         // Skip this session if we can't fetch line items
+        console.log(`[DEBUG] Error fetching line items for session ${session.id}:`, lineItemError.message);
         continue;
       }
     }
 
-    // Strategy 2: Also check via Checkout Sessions linked to Payment Intents
-    // Payment Links create Checkout Sessions, which have Payment Intents
-    // We already checked Checkout Sessions above, but this is a fallback
-    // to catch any edge cases where the session search might miss something
-    
-    // Note: The main search above should catch most cases.
-    // This fallback is here for completeness.
-
+    console.log(`[DEBUG] No matching session found with Price ID ${PRICE_ID} for email: ${normalizedEmail}`);
     return res.status(200).json({ paid: false });
   } catch (err) {
     // Don't leak Stripe errors or details
+    console.log(`[DEBUG] Error in verify-purchase:`, err.message);
     return res.status(200).json({ paid: false });
   }
 };
