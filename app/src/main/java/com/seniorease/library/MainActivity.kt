@@ -65,6 +65,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -83,15 +84,29 @@ import android.content.Context
 import androidx.compose.ui.platform.LocalConfiguration
 import com.seniorease.library.utils.LanguageHelper
 import com.seniorease.library.utils.SettingsHelper
+import com.seniorease.library.utils.UnlockHelper
 import java.util.Locale
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 
-class MainViewModel(private val db: AppDatabase) : ViewModel() {
+class MainViewModel(private val db: AppDatabase, private val context: Context) : ViewModel() {
     private val _items = MutableStateFlow<List<Item>>(emptyList())
     val items: StateFlow<List<Item>> = _items.asStateFlow()
     
     // Demo limiet check
     private val isDemo: Boolean = BuildConfig.IS_DEMO
     private val maxItems: Int = BuildConfig.MAX_ITEMS
+    
+    // Check of app is unlocked (override demo mode)
+    private fun isUnlocked(): Boolean {
+        return UnlockHelper.isUnlocked(context)
+    }
 
     init {
         loadItems()
@@ -100,8 +115,8 @@ class MainViewModel(private val db: AppDatabase) : ViewModel() {
     fun loadItems() {
         viewModelScope.launch {
             val allItems = db.itemDao().getAllSortedByNewest()
-            // In demo mode: beperk tot maxItems
-            _items.value = if (isDemo && maxItems > 0 && allItems.size > maxItems) {
+            // In demo mode: beperk tot maxItems (tenzij unlocked)
+            _items.value = if (isDemo && !isUnlocked() && maxItems > 0 && allItems.size > maxItems) {
                 allItems.take(maxItems)
             } else {
                 allItems
@@ -111,8 +126,8 @@ class MainViewModel(private val db: AppDatabase) : ViewModel() {
 
     fun addItem(item: Item, onResult: (Boolean, String?) -> Unit = { _, _ -> }) {
         viewModelScope.launch {
-            // Check demo limiet
-            if (isDemo && maxItems > 0) {
+            // Check demo limiet (tenzij unlocked)
+            if (isDemo && !isUnlocked() && maxItems > 0) {
                 val currentCount = db.itemDao().getAllSortedByNewest().size
                 // Bij 10 items: blokkeer toevoegen
                 if (currentCount >= maxItems) {
@@ -124,11 +139,11 @@ class MainViewModel(private val db: AppDatabase) : ViewModel() {
             
             db.itemDao().insert(item)
             loadItems()
-            // Return special marker voor waarschuwing bij 9 items
+            // Return special marker voor waarschuwing bij 9 items (tenzij unlocked)
             val newCount = db.itemDao().getAllSortedByNewest().size
-            if (isDemo && maxItems > 0 && newCount == maxItems - 1) {
+            if (isDemo && !isUnlocked() && maxItems > 0 && newCount == maxItems - 1) {
                 onResult(true, "WARNING_ONE_LEFT")
-            } else if (isDemo && maxItems > 0 && newCount >= maxItems) {
+            } else if (isDemo && !isUnlocked() && maxItems > 0 && newCount >= maxItems) {
                 onResult(true, "UNLOCK_DIALOG")
             } else {
                 onResult(true, null)
@@ -136,9 +151,10 @@ class MainViewModel(private val db: AppDatabase) : ViewModel() {
         }
     }
     
-    fun isDemoVersion(): Boolean = isDemo
+    fun isDemoVersion(): Boolean = isDemo && !isUnlocked()
     fun getMaxItems(): Int = maxItems
     fun getCurrentItemCount(): Int = _items.value.size
+    // unlockWithCode removed - using email-based unlock via API only
 
     fun deleteItem(item: Item, onResult: () -> Unit = {}) {
         viewModelScope.launch {
@@ -165,11 +181,11 @@ class MainViewModel(private val db: AppDatabase) : ViewModel() {
     }
 }
 
-class MainViewModelFactory(private val db: AppDatabase) : ViewModelProvider.Factory {
+class MainViewModelFactory(private val db: AppDatabase, private val context: android.content.Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MainViewModel(db) as T
+            return MainViewModel(db, context) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
@@ -213,13 +229,14 @@ class MainActivity : ComponentActivity() {
                 var showStatsDialog by remember { mutableStateOf(false) } // Nieuw
                 var showPrivacyDialog by remember { mutableStateOf(false) } // Privacy beleid
                 var showClearDataDialog by remember { mutableStateOf(false) } // Wis alle data dialoog
-                var showSettingsDialog by remember { mutableStateOf(false) } // Instellingen
-                var showWarningOneLeft by remember { mutableStateOf(false) } // Waarschuwing: 1 item over
+                var showSettingsDialog by remember { mutableStateOf(false) } // Settings
+                var showWarningOneLeft by remember { mutableStateOf(false) } // Warning: 1 item left
                 var showUnlockDialog by remember { mutableStateOf(false) } // Unlock full version popup
-                var showPaymentThankYouDialog by remember { mutableStateOf(false) } // Bedankt dialog na payment
+                // showPaymentThankYouDialog removed - using email-based unlock flow only
+                var showUnlockVerifyDialog by remember { mutableStateOf(false) } // Email-based unlock verification dialog
                 var selectedItem by remember { mutableStateOf<Item?>(null) }
                 var lastType by remember { mutableStateOf("boek") }
-                val viewModel: MainViewModel = viewModel(factory = MainViewModelFactory(db))
+                val viewModel: MainViewModel = viewModel(factory = MainViewModelFactory(db, context))
                 val items by viewModel.items.collectAsState()
                 val allAuthors = items.map { it.authorOrArtist }.distinct()
 
@@ -680,11 +697,211 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                     dismissButton = {
-                                        OutlinedButton(
-                                            onClick = { showUnlockDialog = false },
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            OutlinedButton(
+                                                onClick = { showUnlockVerifyDialog = true },
+                                                modifier = Modifier.weight(1f),
+                                                colors = ButtonDefaults.buttonColors(
+                                                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                                                )
+                                            ) {
+                                                Text(stringResource(R.string.unlock_ive_paid_button))
+                                            }
+                                            OutlinedButton(
+                                                onClick = { showUnlockDialog = false },
+                                                modifier = Modifier.weight(1f),
+                                                colors = ButtonDefaults.buttonColors(
+                                                    containerColor = MaterialTheme.colorScheme.surface,
+                                                    contentColor = MaterialTheme.colorScheme.onSurface
+                                                )
+                                            ) {
+                                                Text(
+                                                    stringResource(R.string.close),
+                                                    color = MaterialTheme.colorScheme.onSurface
+                                                )
+                                            }
+                                        }
+                                    }
+                                )
+                            }
+                            
+                            // Email-based unlock verification dialog (I've paid — unlock)
+                            if (showUnlockVerifyDialog) {
+                                var email by remember { mutableStateOf("") }
+                                var isLoading by remember { mutableStateOf(false) }
+                                var errorMessage by remember { mutableStateOf<String?>(null) }
+                                
+                                AlertDialog(
+                                    onDismissRequest = { 
+                                        if (!isLoading) {
+                                            showUnlockVerifyDialog = false
+                                            email = ""
+                                            errorMessage = null
+                                        }
+                                    },
+                                    title = { 
+                                        Text(
+                                            text = stringResource(R.string.unlock_verify_title),
+                                            style = MaterialTheme.typography.headlineMedium
+                                        ) 
+                                    },
+                                    text = {
+                                        Column(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalAlignment = Alignment.CenterHorizontally
+                                        ) {
+                                            if (isLoading) {
+                                                CircularProgressIndicator(
+                                                    modifier = Modifier.padding(16.dp)
+                                                )
+                                                Text(
+                                                    text = stringResource(R.string.unlock_verify_checking),
+                                                    style = MaterialTheme.typography.bodySmall,
+                                                    modifier = Modifier.padding(top = 8.dp)
+                                                )
+                                            } else {
+                                                Text(
+                                                    text = stringResource(R.string.unlock_verify_message),
+                                                    style = MaterialTheme.typography.bodyMedium,
+                                                    modifier = Modifier.padding(bottom = 16.dp)
+                                                )
+                                                OutlinedTextField(
+                                                    value = email,
+                                                    onValueChange = { 
+                                                        email = it
+                                                        errorMessage = null
+                                                    },
+                                                    label = { Text(stringResource(R.string.unlock_verify_email_hint)) },
+                                                    placeholder = { Text("example@email.com") },
+                                                    singleLine = true,
+                                                    enabled = !isLoading,
+                                                    modifier = Modifier.fillMaxWidth(),
+                                                    keyboardOptions = KeyboardOptions(
+                                                        keyboardType = KeyboardType.Email
+                                                    )
+                                                )
+                                                if (errorMessage != null) {
+                                                    Text(
+                                                        text = errorMessage!!,
+                                                        color = MaterialTheme.colorScheme.error,
+                                                        style = MaterialTheme.typography.bodySmall,
+                                                        modifier = Modifier.padding(top = 8.dp)
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    },
+                                    confirmButton = {
+                                        Button(
+                                            onClick = {
+                                                if (email.isBlank()) {
+                                                    errorMessage = context.getString(R.string.unlock_verify_email_required)
+                                                    return@Button
+                                                }
+                                                
+                                                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                                                    errorMessage = context.getString(R.string.unlock_verify_email_invalid)
+                                                    return@Button
+                                                }
+                                                
+                                                isLoading = true
+                                                errorMessage = null
+                                                
+                                                scope.launch {
+                                                    try {
+                                                        val client = OkHttpClient()
+                                                        val json = org.json.JSONObject().apply {
+                                                            put("email", email.trim())
+                                                        }
+                                                        val mediaType = "application/json; charset=utf-8".toMediaType()
+                                                        val requestBody = json.toString().toRequestBody(mediaType)
+                                                        
+                                                        // API URL
+                                                        val apiUrl = "https://www.seniorease.eu/api/verify-purchase"
+                                                        val request = Request.Builder()
+                                                            .url(apiUrl)
+                                                            .post(requestBody)
+                                                            .addHeader("Content-Type", "application/json")
+                                                            .build()
+                                                        
+                                                        val response = client.newCall(request).execute()
+                                                        val responseBody = response.body?.string()
+                                                        
+                                                        android.util.Log.d("UnlockVerify", "Response code: ${response.code}")
+                                                        android.util.Log.d("UnlockVerify", "Response body: $responseBody")
+                                                        
+                                                        if (response.isSuccessful && responseBody != null) {
+                                                            try {
+                                                                val jsonResponse = org.json.JSONObject(responseBody)
+                                                                val paid = jsonResponse.optBoolean("paid", false)
+                                                                
+                                                                if (paid) {
+                                                                    // Unlock de app
+                                                                    UnlockHelper.unlockDirectly(context)
+                                                                    viewModel.loadItems() // Herlaad items om unlock te reflecteren
+                                                                    showUnlockVerifyDialog = false
+                                                                    showUnlockDialog = false
+                                                                    android.widget.Toast.makeText(
+                                                                        context,
+                                                                        context.getString(R.string.unlock_verify_success),
+                                                                        android.widget.Toast.LENGTH_LONG
+                                                                    ).show()
+                                                                } else {
+                                                                    // Betaling niet gevonden
+                                                                    isLoading = false
+                                                                    errorMessage = context.getString(R.string.unlock_verify_not_found)
+                                                                }
+                                                            } catch (e: org.json.JSONException) {
+                                                                android.util.Log.e("UnlockVerify", "JSON parsing error", e)
+                                                                isLoading = false
+                                                                errorMessage = context.getString(R.string.unlock_verify_error)
+                                                            }
+                                                        } else {
+                                                            // API error
+                                                            android.util.Log.e("UnlockVerify", "API error: ${response.code}, body: $responseBody")
+                                                            isLoading = false
+                                                            errorMessage = context.getString(R.string.unlock_verify_error)
+                                                        }
+                                                    } catch (e: java.net.UnknownHostException) {
+                                                        android.util.Log.e("UnlockVerify", "Network error: No internet", e)
+                                                        isLoading = false
+                                                        errorMessage = context.getString(R.string.unlock_verify_error)
+                                                    } catch (e: java.net.SocketTimeoutException) {
+                                                        android.util.Log.e("UnlockVerify", "Network error: Timeout", e)
+                                                        isLoading = false
+                                                        errorMessage = context.getString(R.string.unlock_verify_error)
+                                                    } catch (e: Exception) {
+                                                        android.util.Log.e("UnlockVerify", "Error verifying purchase", e)
+                                                        android.util.Log.e("UnlockVerify", "Exception type: ${e.javaClass.simpleName}, message: ${e.message}")
+                                                        isLoading = false
+                                                        errorMessage = context.getString(R.string.unlock_verify_error)
+                                                    }
+                                                }
+                                            },
+                                            enabled = !isLoading && email.isNotBlank(),
                                             colors = ButtonDefaults.buttonColors(
-                                                containerColor = MaterialTheme.colorScheme.surface,
-                                                contentColor = MaterialTheme.colorScheme.onSurface
+                                                containerColor = MaterialTheme.colorScheme.primary
+                                            )
+                                        ) {
+                                            Text(stringResource(R.string.unlock_verify_button))
+                                        }
+                                    },
+                                    dismissButton = {
+                                        OutlinedButton(
+                                            onClick = { 
+                                                if (!isLoading) {
+                                                    showUnlockVerifyDialog = false
+                                                    email = ""
+                                                    errorMessage = null
+                                                }
+                                            },
+                                            enabled = !isLoading,
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = MaterialTheme.colorScheme.surface
                                             )
                                         ) {
                                             Text(
@@ -696,42 +913,14 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                             
-                            // Detecteer terugkeer van browser na payment
+                            // Detect return from browser after payment
                             LaunchedEffect(paymentOpened) {
                                 if (paymentOpened) {
-                                    kotlinx.coroutines.delay(500) // Wacht even voor app weer actief is
-                                    showPaymentThankYouDialog = true
+                                    kotlinx.coroutines.delay(500) // Wait a moment for app to become active
+                                    // Direct to email-based unlock flow
+                                    showUnlockVerifyDialog = true
                                     paymentOpened = false
                                 }
-                            }
-                            
-                            // Payment thank you dialog (na terugkeer van browser)
-                            if (showPaymentThankYouDialog) {
-                                AlertDialog(
-                                    onDismissRequest = { showPaymentThankYouDialog = false },
-                                    title = { 
-                                        Text(
-                                            text = stringResource(R.string.payment_thank_you_title),
-                                            style = MaterialTheme.typography.headlineMedium
-                                        ) 
-                                    },
-                                    text = {
-                                        Text(
-                                            text = stringResource(R.string.payment_thank_you_message),
-                                            style = MaterialTheme.typography.bodyMedium
-                                        )
-                                    },
-                                    confirmButton = {
-                                        Button(
-                                            onClick = { showPaymentThankYouDialog = false },
-                                            colors = ButtonDefaults.buttonColors(
-                                                containerColor = MaterialTheme.colorScheme.primary
-                                            )
-                                        ) {
-                                            Text(stringResource(R.string.ok))
-                                        }
-                                    }
-                                )
                             }
                         }
                     }
