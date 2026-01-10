@@ -662,7 +662,7 @@ class MainActivity : ComponentActivity() {
                                         Button(
                                             onClick = { 
                                                 // Open payment link in browser
-                                                val paymentUrl = "https://buy.stripe.com/9B6fZa8SW31K0BNcge6c002"
+                                                val paymentUrl = "https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002"
                                                 val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(paymentUrl))
                                                 try {
                                                     context.startActivity(intent)
