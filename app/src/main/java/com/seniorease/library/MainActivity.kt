@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -68,6 +69,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.Alignment
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import java.io.InputStream
@@ -214,11 +216,15 @@ class MainActivity : ComponentActivity() {
                 var showSettingsDialog by remember { mutableStateOf(false) } // Instellingen
                 var showWarningOneLeft by remember { mutableStateOf(false) } // Waarschuwing: 1 item over
                 var showUnlockDialog by remember { mutableStateOf(false) } // Unlock full version popup
+                var showPaymentThankYouDialog by remember { mutableStateOf(false) } // Bedankt dialog na payment
                 var selectedItem by remember { mutableStateOf<Item?>(null) }
                 var lastType by remember { mutableStateOf("boek") }
                 val viewModel: MainViewModel = viewModel(factory = MainViewModelFactory(db))
                 val items by viewModel.items.collectAsState()
                 val allAuthors = items.map { it.authorOrArtist }.distinct()
+
+                // Payment browser launcher - gebruik onResume callback om terugkeer te detecteren
+                var paymentOpened by remember { mutableStateOf(false) }
 
                 // File picker launcher voor export
                 val exportLauncher = rememberLauncherForActivityResult(CreateDocument("application/json")) { uri ->
@@ -635,16 +641,36 @@ class MainActivity : ComponentActivity() {
                                         ) 
                                     },
                                     text = {
-                                        Text(
-                                            text = stringResource(R.string.demo_unlock_message, viewModel.getMaxItems()),
-                                            style = MaterialTheme.typography.bodyMedium
-                                        )
+                                        Column(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalAlignment = Alignment.CenterHorizontally
+                                        ) {
+                                            Text(
+                                                text = stringResource(R.string.demo_unlock_message, viewModel.getMaxItems()),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                modifier = Modifier.padding(bottom = 16.dp)
+                                            )
+                                            Text(
+                                                text = stringResource(R.string.demo_unlock_payment_note),
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                modifier = Modifier.padding(bottom = 8.dp)
+                                            )
+                                        }
                                     },
                                     confirmButton = {
                                         Button(
                                             onClick = { 
-                                                showUnlockDialog = false
-                                                // Play Store link uitgeschakeld - app wordt alleen via website gedownload
+                                                // Open payment link in browser
+                                                val paymentUrl = "https://buy.stripe.com/9B6fZa8SW31K0BNcge6c002"
+                                                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(paymentUrl))
+                                                try {
+                                                    context.startActivity(intent)
+                                                    paymentOpened = true
+                                                    showUnlockDialog = false
+                                                } catch (e: Exception) {
+                                                    android.widget.Toast.makeText(context, context.getString(R.string.demo_unlock_error), android.widget.Toast.LENGTH_SHORT).show()
+                                                }
                                             },
                                             colors = ButtonDefaults.buttonColors(
                                                 containerColor = MaterialTheme.colorScheme.primary
@@ -665,6 +691,44 @@ class MainActivity : ComponentActivity() {
                                                 stringResource(R.string.close),
                                                 color = MaterialTheme.colorScheme.onSurface
                                             )
+                                        }
+                                    }
+                                )
+                            }
+                            
+                            // Detecteer terugkeer van browser na payment
+                            LaunchedEffect(paymentOpened) {
+                                if (paymentOpened) {
+                                    kotlinx.coroutines.delay(500) // Wacht even voor app weer actief is
+                                    showPaymentThankYouDialog = true
+                                    paymentOpened = false
+                                }
+                            }
+                            
+                            // Payment thank you dialog (na terugkeer van browser)
+                            if (showPaymentThankYouDialog) {
+                                AlertDialog(
+                                    onDismissRequest = { showPaymentThankYouDialog = false },
+                                    title = { 
+                                        Text(
+                                            text = stringResource(R.string.payment_thank_you_title),
+                                            style = MaterialTheme.typography.headlineMedium
+                                        ) 
+                                    },
+                                    text = {
+                                        Text(
+                                            text = stringResource(R.string.payment_thank_you_message),
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
+                                    },
+                                    confirmButton = {
+                                        Button(
+                                            onClick = { showPaymentThankYouDialog = false },
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = MaterialTheme.colorScheme.primary
+                                            )
+                                        ) {
+                                            Text(stringResource(R.string.ok))
                                         }
                                     }
                                 )

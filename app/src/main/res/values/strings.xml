@@ -24,8 +24,11 @@
     <string name="demo_warning_one_left">⚠️ Waarschuwing: Je hebt nog 1 item over in de demo versie!</string>
     <string name="demo_unlock_title">🔒 Volledige Versie Ontgrendelen</string>
     <string name="demo_unlock_message">Je hebt de maximale limiet van %1$d items bereikt in de demo versie.\n\nKoop de volledige versie voor onbeperkt gebruik!</string>
-    <string name="demo_unlock_button">Volledige Versie Kopen</string>
-    <string name="demo_unlock_error">Kon Play Store niet openen. Bezoek de Play Store handmatig.</string>
+    <string name="demo_unlock_button">Open Betaallink in browser</string>
+    <string name="demo_unlock_payment_note">Je wordt doorgestuurd naar een beveiligde betaalpagina.</string>
+    <string name="demo_unlock_error">Kon browser niet openen. Probeer het opnieuw.</string>
+    <string name="payment_thank_you_title">Bedankt.</string>
+    <string name="payment_thank_you_message">Als je de betaling hebt voltooid, kun je nu de volledige versie ontgrendelen.\n\nAls er iets niet werkte, kun je veilig opnieuw proberen of contact met ons opnemen.</string>
     
     <!-- Menu -->
     <string name="menu">Menu</string>

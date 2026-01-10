@@ -25,8 +25,11 @@
     <string name="demo_warning_one_left">⚠️ Warning: You have 1 item left in the demo version!</string>
     <string name="demo_unlock_title">🔒 Unlock Full Version</string>
     <string name="demo_unlock_message">You have reached the maximum limit of %1$d items in the demo version.\n\nBuy the full version for unlimited use!</string>
-    <string name="demo_unlock_button">Buy Full Version</string>
-    <string name="demo_unlock_error">Could not open Play Store. Please visit the Play Store manually.</string>
+    <string name="demo_unlock_button">Open Payment Link in browser</string>
+    <string name="demo_unlock_payment_note">You will be redirected to a secure payment page.</string>
+    <string name="demo_unlock_error">Could not open browser. Please try again.</string>
+    <string name="payment_thank_you_title">Thank you.</string>
+    <string name="payment_thank_you_message">If you have completed the payment, you can now unlock the full version.\n\nIf something didn\'t work, you can safely try again or contact us.</string>
 
     <!-- Menu -->
     <string name="menu">Menu</string>
