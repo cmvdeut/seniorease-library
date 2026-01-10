@@ -60,7 +60,7 @@ module.exports = async (req, res) => {
     }
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Use Stripe Checkout Session search to find paid sessions for this email
+    // Strategy 1: Use Stripe Checkout Session search to find paid sessions for this email
     const searchQuery = `payment_status:'paid' AND customer_details.email:'${normalizedEmail}'`;
     
     const sessions = await stripe.checkout.sessions.search({
@@ -86,6 +86,46 @@ module.exports = async (req, res) => {
         // Skip this session if we can't fetch line items
         continue;
       }
+    }
+
+    // Strategy 2: Also check Payment Intents for this email (fallback)
+    // Some payment flows create Payment Intents directly
+    try {
+      const paymentIntents = await stripe.paymentIntents.search({
+        query: `status:'succeeded' AND metadata['email']:'${normalizedEmail}'`,
+        limit: 100,
+      });
+
+      for (const pi of paymentIntents.data) {
+        // Check if this Payment Intent has the correct Price ID in metadata or charges
+        if (pi.metadata && pi.metadata.price_id === PRICE_ID) {
+          return res.status(200).json({ paid: true });
+        }
+
+        // Check charges for line items with the Price ID
+        if (pi.charges && pi.charges.data && pi.charges.data.length > 0) {
+          for (const charge of pi.charges.data) {
+            // If charge has invoice, check invoice line items
+            if (charge.invoice) {
+              try {
+                const invoice = await stripe.invoices.retrieve(charge.invoice);
+                if (invoice.lines && invoice.lines.data) {
+                  const hasPrice = invoice.lines.data.some(
+                    (line) => line.price && line.price.id === PRICE_ID
+                  );
+                  if (hasPrice) {
+                    return res.status(200).json({ paid: true });
+                  }
+                }
+              } catch (invoiceError) {
+                continue;
+              }
+            }
+          }
+        }
+      }
+    } catch (paymentIntentError) {
+      // Payment Intent search failed, continue with false
     }
 
     return res.status(200).json({ paid: false });
