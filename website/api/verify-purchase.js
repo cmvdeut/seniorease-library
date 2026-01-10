@@ -6,12 +6,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
 });
 
-// Very small in-memory rate limit (per serverless instance)
+// Minimal in-memory rate limit (per serverless instance)
 const rateMap = new Map();
 function rateLimit(ip) {
   const now = Date.now();
   const windowMs = 60 * 1000; // 1 minute
-  const limit = 20; // 20 requests/min per IP (more than enough)
+  const limit = 20; // 20 requests/min per IP
   const key = ip || "unknown";
 
   const entry = rateMap.get(key) || { count: 0, resetAt: now + windowMs };
@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
     return res.status(405).json({ paid: false });
   }
 
-  // Basic CORS (only your website + app calls)
+  // Basic CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -60,43 +60,37 @@ module.exports = async (req, res) => {
     }
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Strategy:
-    // - Payment Links create Checkout Sessions.
-    // - We list recent Checkout Sessions with payment_status=paid,
-    //   then check customer email + line items price id.
-    //
-    // Note: We only need to look back a limited amount (e.g., last 100 sessions).
-    const sessions = await stripe.checkout.sessions.list({
-      limit: 100,
+    // Use Stripe Checkout Session search to find paid sessions for this email
+    const searchQuery = `payment_status:'paid' AND customer_details.email:'${normalizedEmail}'`;
+    
+    const sessions = await stripe.checkout.sessions.search({
+      query: searchQuery,
+      limit: 100, // Max results per search
     });
 
-    for (const s of sessions.data) {
-      if (s.payment_status !== "paid") continue;
+    // For each matching session, check line items for the specific Price ID
+    for (const session of sessions.data) {
+      try {
+        const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+          limit: 100,
+        });
 
-      const sessionEmail =
-        (s.customer_details && s.customer_details.email
-          ? s.customer_details.email
-          : "")
-          .toString()
-          .trim()
-          .toLowerCase();
+        const hasPrice = lineItems.data.some(
+          (item) => item.price && item.price.id === PRICE_ID
+        );
 
-      if (!sessionEmail || sessionEmail !== normalizedEmail) continue;
-
-      // Fetch line items to confirm the exact Price ID
-      const items = await stripe.checkout.sessions.listLineItems(s.id, {
-        limit: 100,
-      });
-
-      const hasPrice = items.data.some((li) => li.price && li.price.id === PRICE_ID);
-      if (hasPrice) {
-        return res.status(200).json({ paid: true });
+        if (hasPrice) {
+          return res.status(200).json({ paid: true });
+        }
+      } catch (lineItemError) {
+        // Skip this session if we can't fetch line items
+        continue;
       }
     }
 
     return res.status(200).json({ paid: false });
   } catch (err) {
-    // Don't leak details
+    // Don't leak Stripe errors or details
     return res.status(200).json({ paid: false });
   }
 };
