@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Download pagina voor SeniorEase Library app",
   "scripts": {
-    "dev": "vercel dev",
     "build": "node build.js",
     "vercel-build": "node build.js"
+  },
+  "dependencies": {
+    "stripe": "^14.21.0"
   },
   "keywords": [
     "seniorease",
