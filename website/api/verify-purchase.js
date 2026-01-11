@@ -80,63 +80,54 @@ module.exports = async (req, res) => {
     // Debug: Log the normalized email received
     console.log(`[DEBUG] Normalized email: ${normalizedEmail}`);
 
-    // List checkout sessions and filter by email
-    // Note: We list sessions and filter client-side since search API may not be available
-    let startingAfter = null;
-    let totalSessionsChecked = 0;
-    let matchingSessions = [];
+    // List checkout sessions - same approach as seniorease-project
+    // Payment Links create Checkout Sessions with status 'complete' and payment_status 'paid'
+    const checkoutSessions = await stripe.checkout.sessions.list({
+      limit: 100, // Adjust based on expected volume
+      status: 'complete',
+    });
 
-    // List up to 100 sessions (Stripe default limit)
-    for (let page = 0; page < 10; page++) {
-      const result = await stripe.checkout.sessions.list({
-        limit: 100,
-        ...(startingAfter ? { starting_after: startingAfter } : {}),
-      });
+    let totalSessionsChecked = checkoutSessions.data.length;
+    console.log(`[DEBUG] Found ${totalSessionsChecked} checkout session(s) with status 'complete'`);
 
-      // Filter by payment status and email
-      const filtered = result.data.filter(
-        (s) =>
-          s.payment_status === "paid" &&
-          s.customer_details?.email?.toLowerCase() === normalizedEmail
-      );
-
-      matchingSessions = matchingSessions.concat(filtered);
-      totalSessionsChecked += result.data.length;
-
-      // Debug: Log all matching sessions
-      for (const s of filtered) {
-        console.log(`[DEBUG] Session from list: id=${s.id}, payment_status=${s.payment_status}, customer_email=${s.customer_details?.email || 'N/A'}`);
+    for (const session of checkoutSessions.data) {
+      // Check payment status
+      if (session.payment_status !== 'paid') {
+        continue;
       }
 
-      if (!result.has_more || result.data.length === 0) break;
-      startingAfter = result.data[result.data.length - 1].id;
-    }
+      // Check if email matches (case-insensitive)
+      if (
+        session.customer_details?.email &&
+        session.customer_details.email.toLowerCase() === normalizedEmail
+      ) {
+        // Debug: Log matching session
+        console.log(`[DEBUG] Session from list: id=${session.id}, payment_status=${session.payment_status}, customer_email=${session.customer_details.email}`);
 
-    // Debug: Log how many sessions were checked and matched
-    console.log(`[DEBUG] Checked ${totalSessionsChecked} total session(s), found ${matchingSessions.length} matching paid session(s) for email: ${normalizedEmail}`);
+        // Get line items to check price ID
+        try {
+          const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+            limit: 100,
+          });
 
-    // Check line items for matching sessions
-    for (const s of matchingSessions) {
-      try {
-        // Confirm line items contain the exact price id
-        const items = await stripe.checkout.sessions.listLineItems(s.id, {
-          limit: 100,
-        });
+          // Debug: Log line item price IDs
+          const priceIds = lineItems.data
+            .map((li) => li.price?.id)
+            .filter((id) => id !== null && id !== undefined);
+          console.log(`[DEBUG] Session ${session.id} - Line item price IDs: ${JSON.stringify(priceIds)}`);
 
-        // Debug: Log session ID and line item price IDs if email matches
-        const priceIds = items.data
-          .map((li) => li.price?.id)
-          .filter((id) => id !== null && id !== undefined);
-        console.log(`[DEBUG] Session ${s.id} - Line item price IDs: ${JSON.stringify(priceIds)}`);
-
-        const hasPrice = items.data.some((li) => li.price?.id === PRICE_ID);
-        if (hasPrice) {
-          console.log(`[DEBUG] Match found! Session ${s.id} has Price ID ${PRICE_ID}`);
-          return res.status(200).json({ paid: true });
+          // Check if any line item has the matching price ID
+          for (const item of lineItems.data) {
+            if (item.price?.id === PRICE_ID) {
+              console.log(`[DEBUG] Match found! Session ${session.id} has Price ID ${PRICE_ID}`);
+              return res.status(200).json({ paid: true });
+            }
+          }
+        } catch (lineItemsError) {
+          // Continue searching if line items retrieval fails
+          console.log(`[DEBUG] Error retrieving line items for session ${session.id}:`, lineItemsError.message);
+          continue;
         }
-      } catch (lineItemError) {
-        console.log(`[DEBUG] Error fetching line items for session ${s.id}:`, lineItemError.message);
-        continue;
       }
     }
 
