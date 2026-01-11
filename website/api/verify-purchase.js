@@ -80,26 +80,43 @@ module.exports = async (req, res) => {
     // Debug: Log the normalized email received
     console.log(`[DEBUG] Normalized email: ${normalizedEmail}`);
 
-    // Search paid checkout sessions by customer email
-    // Note: search supports many results; we page a bit, but usually the first page is enough.
+    // List checkout sessions and filter by email
+    // Note: We list sessions and filter client-side since search API may not be available
     let startingAfter = null;
     let totalSessionsChecked = 0;
+    let matchingSessions = [];
 
-    for (let page = 0; page < 5; page++) {
-      const result = await stripe.checkout.sessions.search({
-        query: `payment_status:'paid' AND customer_details.email:'${normalizedEmail}'`,
-        limit: 25,
-        ...(startingAfter ? { page: { starting_after: startingAfter } } : {}),
+    // List up to 100 sessions (Stripe default limit)
+    for (let page = 0; page < 10; page++) {
+      const result = await stripe.checkout.sessions.list({
+        limit: 100,
+        ...(startingAfter ? { starting_after: startingAfter } : {}),
       });
 
+      // Filter by payment status and email
+      const filtered = result.data.filter(
+        (s) =>
+          s.payment_status === "paid" &&
+          s.customer_details?.email?.toLowerCase() === normalizedEmail
+      );
+
+      matchingSessions = matchingSessions.concat(filtered);
       totalSessionsChecked += result.data.length;
 
-      // Debug: Log all sessions returned by search
-      for (const s of result.data) {
-        console.log(`[DEBUG] Session from search: id=${s.id}, payment_status=${s.payment_status}, customer_email=${s.customer_details?.email || 'N/A'}`);
+      // Debug: Log all matching sessions
+      for (const s of filtered) {
+        console.log(`[DEBUG] Session from list: id=${s.id}, payment_status=${s.payment_status}, customer_email=${s.customer_details?.email || 'N/A'}`);
       }
 
-      for (const s of result.data) {
+      if (!result.has_more || result.data.length === 0) break;
+      startingAfter = result.data[result.data.length - 1].id;
+    }
+
+    // Debug: Log how many sessions were checked and matched
+    console.log(`[DEBUG] Checked ${totalSessionsChecked} total session(s), found ${matchingSessions.length} matching paid session(s) for email: ${normalizedEmail}`);
+
+    // Check line items for matching sessions
+    for (const s of matchingSessions) {
         // Confirm line items contain the exact price id
         const items = await stripe.checkout.sessions.listLineItems(s.id, {
           limit: 100,
