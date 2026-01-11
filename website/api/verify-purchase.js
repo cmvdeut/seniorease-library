@@ -117,6 +117,7 @@ module.exports = async (req, res) => {
 
     // Check line items for matching sessions
     for (const s of matchingSessions) {
+      try {
         // Confirm line items contain the exact price id
         const items = await stripe.checkout.sessions.listLineItems(s.id, {
           limit: 100,
@@ -133,20 +134,20 @@ module.exports = async (req, res) => {
           console.log(`[DEBUG] Match found! Session ${s.id} has Price ID ${PRICE_ID}`);
           return res.status(200).json({ paid: true });
         }
+      } catch (lineItemError) {
+        console.log(`[DEBUG] Error fetching line items for session ${s.id}:`, lineItemError.message);
+        continue;
       }
-
-      if (!result.has_more || result.data.length === 0) break;
-      startingAfter = result.data[result.data.length - 1].id;
     }
 
-    // Debug: Log how many paid sessions were checked
-    console.log(`[DEBUG] Checked ${totalSessionsChecked} paid session(s) for email: ${normalizedEmail}`);
+    // Debug: Log final result
     console.log(`[DEBUG] No matching session found with Price ID ${PRICE_ID} for email: ${normalizedEmail}`);
 
     return res.status(200).json({ paid: false });
   } catch (err) {
     // Don't leak details
     console.log(`[DEBUG] Error in verify-purchase:`, err.message);
+    console.log(`[DEBUG] Error stack:`, err.stack);
     return res.status(200).json({ paid: false });
   }
 };
