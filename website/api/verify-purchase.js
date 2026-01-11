@@ -94,6 +94,11 @@ module.exports = async (req, res) => {
 
       totalSessionsChecked += result.data.length;
 
+      // Debug: Log all sessions returned by search
+      for (const s of result.data) {
+        console.log(`[DEBUG] Session from search: id=${s.id}, payment_status=${s.payment_status}, customer_email=${s.customer_details?.email || 'N/A'}`);
+      }
+
       for (const s of result.data) {
         // Confirm line items contain the exact price id
         const items = await stripe.checkout.sessions.listLineItems(s.id, {
