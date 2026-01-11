@@ -88,6 +88,9 @@ module.exports = async (req, res) => {
     });
 
     let totalSessionsChecked = checkoutSessions.data.length;
+    let paidSessionsCount = 0;
+    let emailMatchCount = 0;
+    
     console.log(`[DEBUG] Found ${totalSessionsChecked} checkout session(s) with status 'complete'`);
 
     for (const session of checkoutSessions.data) {
@@ -95,14 +98,21 @@ module.exports = async (req, res) => {
       if (session.payment_status !== 'paid') {
         continue;
       }
+      
+      paidSessionsCount++;
+      
+      // Debug: Log all paid sessions with email
+      const sessionEmail = session.customer_details?.email?.toLowerCase() || 'N/A';
+      console.log(`[DEBUG] Paid session: id=${session.id}, email=${sessionEmail}, payment_status=${session.payment_status}`);
 
       // Check if email matches (case-insensitive)
       if (
         session.customer_details?.email &&
         session.customer_details.email.toLowerCase() === normalizedEmail
       ) {
+        emailMatchCount++;
         // Debug: Log matching session
-        console.log(`[DEBUG] Session from list: id=${session.id}, payment_status=${session.payment_status}, customer_email=${session.customer_details.email}`);
+        console.log(`[DEBUG] ✅ Email match! Session: id=${session.id}, email=${session.customer_details.email}`);
 
         // Get line items to check price ID
         try {
@@ -119,10 +129,12 @@ module.exports = async (req, res) => {
           // Check if any line item has the matching price ID
           for (const item of lineItems.data) {
             if (item.price?.id === PRICE_ID) {
-              console.log(`[DEBUG] Match found! Session ${session.id} has Price ID ${PRICE_ID}`);
+              console.log(`[DEBUG] ✅✅✅ MATCH FOUND! Session ${session.id} has Price ID ${PRICE_ID}`);
               return res.status(200).json({ paid: true });
             }
           }
+          
+          console.log(`[DEBUG] ❌ Session ${session.id} email matches but Price ID ${PRICE_ID} not found in line items`);
         } catch (lineItemsError) {
           // Continue searching if line items retrieval fails
           console.log(`[DEBUG] Error retrieving line items for session ${session.id}:`, lineItemsError.message);
@@ -130,6 +142,8 @@ module.exports = async (req, res) => {
         }
       }
     }
+    
+    console.log(`[DEBUG] Summary: ${totalSessionsChecked} total sessions, ${paidSessionsCount} paid sessions, ${emailMatchCount} email matches`);
 
     // Debug: Log final result
     console.log(`[DEBUG] No matching session found with Price ID ${PRICE_ID} for email: ${normalizedEmail}`);
