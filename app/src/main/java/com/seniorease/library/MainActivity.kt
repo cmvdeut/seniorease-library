@@ -828,8 +828,13 @@ class MainActivity : ComponentActivity() {
                                                             .addHeader("Content-Type", "application/json")
                                                             .build()
                                                         
-                                                        val response = client.newCall(request).execute()
-                                                        val responseBody = response.body?.string()
+                                                        // Execute network call on IO dispatcher to avoid NetworkOnMainThreadException
+                                                        val response = withContext(Dispatchers.IO) {
+                                                            client.newCall(request).execute()
+                                                        }
+                                                        val responseBody = withContext(Dispatchers.IO) {
+                                                            response.body?.string()
+                                                        }
                                                         
                                                         android.util.Log.d("UnlockVerify", "Response code: ${response.code}")
                                                         android.util.Log.d("UnlockVerify", "Response body: $responseBody")
