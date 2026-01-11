@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
 });
 
-const PRICE_ID = process.env.STRIPE_PRICE_ID || "price_1So2hP3GmccxYlyt6rNoyUxz";
+const PRICE_ID = process.env.STRIPE_PRICE_ID || "price_1So2gr3GmccxYlytQwl5mitp";
 
 // Simple in-memory rate limit (per instance)
 const rateMap = new Map();
