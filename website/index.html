@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Download SeniorEase Library - A simple app to manage your personal book collection.">
     <title>SeniorEase Library - Download</title>
+    <!-- Updated: Responsive mobile design with language support -->
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
         * {
@@ -84,6 +85,7 @@
             margin: 30px 0;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            -webkit-tap-highlight-color: transparent;
         }
         .download-button:hover {
             transform: translateY(-3px);
@@ -91,6 +93,41 @@
         }
         .download-button:active {
             transform: translateY(-1px);
+        }
+        @media (hover: none) {
+            .download-button:hover {
+                transform: none;
+            }
+        }
+        .mobile-short {
+            display: none;
+        }
+        .desktop-full {
+            display: block;
+        }
+        .install-note {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #856404;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .install-note strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .price-line {
+            font-size: 18px;
+            color: #8B4513;
+            font-weight: 600;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
         }
         .qr-section {
             margin: 40px 0;
@@ -238,7 +275,14 @@
             font-weight: 600;
             margin-top: 10px;
         }
-        @media (max-width: 600px) {
+        /* Mobile: Show short version, hide desktop */
+        @media (max-width: 640px) {
+            .mobile-short {
+                display: block;
+            }
+            .desktop-full {
+                display: none;
+            }
             .container {
                 max-width: 100%;
             }
@@ -268,6 +312,15 @@
                 padding: 20px;
             }
         }
+        /* Desktop: Show full version, hide mobile */
+        @media (min-width: 641px) {
+            .mobile-short {
+                display: none;
+            }
+            .desktop-full {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -277,105 +330,163 @@
             <div class="logo">
                 <img src="/seniorease-icon.png" alt="SeniorEase Library">
             </div>
-            <h1>A simple library app for older book lovers</h1>
-            <h2>Keep track of your books without accounts, ads, or confusion.</h2>
-            <a href="/downloads/app-demo-release.apk" 
-               class="download-button" 
-               download="SeniorEase-Library-Demo.apk">
-                📥 Download Free Demo
-            </a>
-            <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
-                Safe download • No account • One-time purchase later
-            </p>
-        </div>
-
-        <!-- Who It's For -->
-        <div class="section">
-            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Who this app is for</h3>
-            <div class="feature-box">
-                <p style="font-size: 18px; line-height: 1.7; color: #555;">
-                    Do you love books but find most apps too busy or confusing?<br><br>
-                    SeniorEase Library is made for people who want simplicity and peace of mind.
+            
+            <!-- MOBILE SHORT VERSION (NL) -->
+            <div class="mobile-short" data-lang="nl">
+                <h1>Een rustige manier om je boeken bij te houden</h1>
+                <h2>Geen account • Geen advertenties • Geen abonnement</h2>
+                <a href="/downloads/app-demo-release.apk" 
+                   class="download-button" 
+                   download="SeniorEase-Library-Demo.apk">
+                    ⬇️ Gratis demo downloaden (Android)
+                </a>
+                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
+                    Gratis demo (10 boeken) • Veilig downloaden
+                </p>
+                <div class="install-note">
+                    <strong>Let op:</strong> Android kan een beveiligingsmelding tonen omdat de app buiten de Play Store staat. Dit is normaal.
+                    <br><br>
+                    <strong>Bij melding:</strong> Instellingen → Toestaan voor deze bron → installeren. (Later weer uit te zetten.)
+                </div>
+                <div class="price-line">
+                    Volledige versie: eenmalig €2,99 (geen abonnement)
+                </div>
+            </div>
+            
+            <!-- MOBILE SHORT VERSION (EN) -->
+            <div class="mobile-short" data-lang="en">
+                <h1>A calm way to keep track of your books</h1>
+                <h2>No account • No ads • No subscriptions</h2>
+                <a href="/downloads/app-demo-release.apk" 
+                   class="download-button" 
+                   download="SeniorEase-Library-Demo.apk">
+                    ⬇️ Download Free Demo (Android)
+                </a>
+                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
+                    Free demo (10 books) • Safe download
+                </p>
+                <div class="install-note">
+                    <strong>Note:</strong> Android may show a security message because this app is outside the Play Store. That's normal.
+                    <br><br>
+                    <strong>If prompted:</strong> Settings → Allow from this source → install. (You can turn it off later.)
+                </div>
+                <div class="price-line">
+                    Full version: one-time €2.99 (no subscription)
+                </div>
+            </div>
+            
+            <!-- DESKTOP FULL VERSION -->
+            <div class="desktop-full">
+                <h1>A simple library app for older book lovers</h1>
+                <h2>Keep track of your books without accounts, ads, or confusion.</h2>
+                <a href="/downloads/app-demo-release.apk" 
+                   class="download-button" 
+                   download="SeniorEase-Library-Demo.apk">
+                    📥 Download Free Demo
+                </a>
+                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
+                    Safe download • No account • One-time purchase later
+                </p>
+                <p style="font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 0; font-weight: 400; line-height: 1.5; font-style: italic;">
+                    (Currently available for Android only)
                 </p>
             </div>
         </div>
 
-        <!-- What You Can Do -->
-        <div class="section">
-            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">What you can do</h3>
-            <div class="feature-box">
-                <ul style="font-size: 17px; line-height: 1.8; color: #555; margin: 0; padding-left: 25px; list-style-type: disc;">
-                    <li style="margin-bottom: 10px;">Add your books easily</li>
-                    <li style="margin-bottom: 10px;">See what you have read or still want to read</li>
-                    <li style="margin-bottom: 10px;">Scan barcodes instead of typing - you can always type if you prefer</li>
-                    <li style="margin-bottom: 10px;">Export your list to PDF or CSV (optional)</li>
-                </ul>
-                <p style="font-size: 17px; line-height: 1.7; color: #555; margin-top: 20px; font-style: italic;">
-                    Your library stays on your own device.
-                </p>
-            </div>
-        </div>
-
-        <!-- Download & Install -->
-        <div class="section" style="background: #f9f9f9; border-left: 4px solid #8B4513; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 25px;">Download & install</h3>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
-                    <p style="font-size: 17px; line-height: 1.7; color: #856404; margin: 0;">
-                        <strong>Free to try:</strong> You can add up to 10 books completely free. 
-                        This lets you see how easy the app is to use. 
-                        If you like it, you can add unlimited books later.
+        <!-- Desktop Full Content -->
+        <div class="desktop-full">
+            <!-- Who It's For -->
+            <div class="section">
+                <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Who this app is for</h3>
+                <div class="feature-box">
+                    <p style="font-size: 18px; line-height: 1.7; color: #555;">
+                        Do you love books but find most apps too busy or confusing?<br><br>
+                        SeniorEase Library is made for people who want simplicity and peace of mind.
                     </p>
                 </div>
-                <div class="qr-section" style="margin: 25px 0; text-align: center;">
-                    <p style="color: #666; margin-bottom: 15px; font-size: 15px;">
-                        You can also scan this QR code with your phone:
+            </div>
+
+            <!-- What You Can Do -->
+            <div class="section">
+                <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">What you can do</h3>
+                <div class="feature-box">
+                    <ul style="font-size: 17px; line-height: 1.8; color: #555; margin: 0; padding-left: 25px; list-style-type: disc;">
+                        <li style="margin-bottom: 10px;">Add your books easily</li>
+                        <li style="margin-bottom: 10px;">See what you have read or still want to read</li>
+                        <li style="margin-bottom: 10px;">Scan barcodes instead of typing - you can always type if you prefer</li>
+                        <li style="margin-bottom: 10px;">Export your list to PDF or CSV (optional)</li>
+                    </ul>
+                    <p style="font-size: 17px; line-height: 1.7; color: #555; margin-top: 20px; font-style: italic;">
+                        Your library stays on your own device.
                     </p>
-                    <div class="qr-code">
-                        <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
+                </div>
+            </div>
+
+            <!-- Download & Install -->
+            <div class="section" style="background: #f9f9f9; border-left: 4px solid #8B4513; border-radius: 8px; margin: 20px 0;">
+                <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 25px;">Download & install</h3>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
+                        <p style="font-size: 17px; line-height: 1.7; color: #856404; margin: 0;">
+                            <strong>Free to try:</strong> You can add up to 10 books completely free. 
+                            This lets you see how easy the app is to use. 
+                            If you like it, you can add unlimited books later.
+                        </p>
                     </div>
+                    <div class="qr-section" style="margin: 25px 0; text-align: center;">
+                        <p style="color: #666; margin-bottom: 15px; font-size: 15px;">
+                            Scan this QR code with your Android phone to download:
+                        </p>
+                        <div class="qr-code">
+                            <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
+                        </div>
+                        <p style="font-size: 13px; color: #888; margin-top: 15px; font-style: italic;">
+                            (Android phones only)
+                        </p>
+                    </div>
+                    <ol style="font-size: 18px; line-height: 2.2; text-align: left; color: #555; padding-left: 30px;">
+                        <li style="margin-bottom: 12px;">Tap <strong>Download free demo</strong>.</li>
+                        <li style="margin-bottom: 12px;">Open the downloaded file.</li>
+                        <li style="margin-bottom: 12px;">If Android asks for permission, choose <strong>Allow from this source</strong>.</li>
+                        <li style="margin-bottom: 12px;">If Android shows a security message, choose <strong>Install</strong> or <strong>Allow</strong> to continue.</li>
+                        <li style="margin-bottom: 12px;">Tap <strong>Install</strong>.</li>
+                        <li style="margin-bottom: 12px;">Open the app.</li>
+                    </ol>
+                    <p style="font-size: 16px; line-height: 1.6; color: #666; margin-top: 20px; font-style: italic; text-align: center;">
+                        You are downloading directly from Seniorease.eu.<br>
+                        <strong style="color: #8B4513;">Note:</strong> This app is currently available for Android phones only.
+                    </p>
                 </div>
-                <ol style="font-size: 18px; line-height: 2.2; text-align: left; color: #555; padding-left: 30px;">
-                    <li style="margin-bottom: 12px;">Tap <strong>Download free demo</strong>.</li>
-                    <li style="margin-bottom: 12px;">Open the downloaded file.</li>
-                    <li style="margin-bottom: 12px;">If Android asks for permission, choose <strong>Allow from this source</strong>.</li>
-                    <li style="margin-bottom: 12px;">If Android shows a security message, choose <strong>Install</strong> or <strong>Allow</strong> to continue.</li>
-                    <li style="margin-bottom: 12px;">Tap <strong>Install</strong>.</li>
-                    <li style="margin-bottom: 12px;">Open the app.</li>
-                </ol>
-                <p style="font-size: 16px; line-height: 1.6; color: #666; margin-top: 20px; font-style: italic; text-align: center;">
-                    You are downloading directly from Seniorease.eu.
-                </p>
             </div>
-        </div>
 
-        <!-- Privacy & Trust -->
-        <div class="section">
-            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Privacy & safety</h3>
-            <div class="trust-box">
-                <ul style="font-size: 17px; line-height: 1.9; color: #2e7d32; margin: 0; padding-left: 25px; list-style-type: none;">
-                    <li style="margin-bottom: 12px;">✓ We do not collect personal information</li>
-                    <li style="margin-bottom: 12px;">✓ No account required</li>
-                    <li style="margin-bottom: 12px;">✓ No ads</li>
-                    <li style="margin-bottom: 12px;">✓ Your data stays on your device</li>
-                </ul>
-                <p style="font-size: 17px; line-height: 1.7; color: #2e7d32; margin-top: 20px;">
-                    You can use this app with complete peace of mind. Everything you add stays on your phone, and we never see or access your information.
-                </p>
-            </div>
-        </div>
-
-        <!-- FAQ -->
-        <div class="section" style="background: #f9f9f9;">
-            <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Questions?</h3>
-            <div style="max-width: 600px; margin: 0 auto; text-align: left;">
-                <div style="margin-bottom: 20px;">
-                    <p style="font-size: 18px; font-weight: 600; color: #8B4513; margin-bottom: 8px;">Is this safe?</p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">Yes. The app works entirely on your phone. We don't collect your information, and you download directly from our website.</p>
+            <!-- Privacy & Trust -->
+            <div class="section">
+                <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Privacy & safety</h3>
+                <div class="trust-box">
+                    <ul style="font-size: 17px; line-height: 1.9; color: #2e7d32; margin: 0; padding-left: 25px; list-style-type: none;">
+                        <li style="margin-bottom: 12px;">✓ We do not collect personal information</li>
+                        <li style="margin-bottom: 12px;">✓ No account required</li>
+                        <li style="margin-bottom: 12px;">✓ No ads</li>
+                        <li style="margin-bottom: 12px;">✓ Your data stays on your device</li>
+                    </ul>
+                    <p style="font-size: 17px; line-height: 1.7; color: #2e7d32; margin-top: 20px;">
+                        You can use this app with complete peace of mind. Everything you add stays on your phone, and we never see or access your information.
+                    </p>
                 </div>
-                <div>
-                    <p style="font-size: 18px; font-weight: 600; color: #8B4513; margin-bottom: 8px;">Do I need an account?</p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">No. The app works without any account or login. Just download and start using it.</p>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section" style="background: #f9f9f9;">
+                <h3 style="color: #8B4513; font-size: 24px; margin-bottom: 20px;">Questions?</h3>
+                <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+                    <div style="margin-bottom: 20px;">
+                        <p style="font-size: 18px; font-weight: 600; color: #8B4513; margin-bottom: 8px;">Is this safe?</p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">Yes. The app works entirely on your phone. We don't collect your information, and you download directly from our website.</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 18px; font-weight: 600; color: #8B4513; margin-bottom: 8px;">Do I need an account?</p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">No. The app works without any account or login. Just download and start using it.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -384,6 +495,7 @@
         <div class="section" style="background: #f9f9f9; border-radius: 0 0 20px 20px; padding: 20px;">
             <div style="text-align: center; font-size: 14px; color: #666; line-height: 1.8;">
                 <p style="margin: 5px 0;">Works on Android phones from 2016 or newer • About 30 MB to download</p>
+                <p style="margin: 10px 0; font-weight: 500; color: #8B4513;">Currently available for Android only</p>
                 <p style="margin: 15px 0 5px 0; font-size: 13px;">
                     <a href="/privacy-policy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy policy</a>
                     <span style="color: #ccc;">•</span>
@@ -392,5 +504,36 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Language detection and switching
+        (function() {
+            // Get language from URL parameter or browser language
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            const browserLang = navigator.language || navigator.userLanguage;
+            const lang = urlLang || (browserLang.startsWith('nl') ? 'nl' : 'en');
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Show/hide language-specific content
+            const mobileShortElements = document.querySelectorAll('.mobile-short');
+            mobileShortElements.forEach(function(el) {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Update page title based on language
+            if (lang === 'nl') {
+                document.title = 'SeniorEase Library - Download';
+            } else {
+                document.title = 'SeniorEase Library - Download';
+            }
+        })();
+    </script>
 </body>
 </html>
