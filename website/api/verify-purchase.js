@@ -84,6 +84,25 @@ module.exports = async (req, res) => {
       return sessionEmail.trim().toLowerCase() === normalizedEmail;
     };
 
+    const markPaymentIntentUsed = async (paymentIntentId) => {
+      try {
+        const intent = await stripe.paymentIntents.retrieve(paymentIntentId);
+        const used = intent?.metadata?.download_used === "true";
+        if (used) return false;
+        const nextMetadata = {
+          ...intent.metadata,
+          download_used: "true",
+          download_used_at: new Date().toISOString(),
+        };
+        await stripe.paymentIntents.update(paymentIntentId, {
+          metadata: nextMetadata,
+        });
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
     const checkSessionsForProduct = async (sessions) => {
       for (const session of sessions) {
         if (!matchesEmail(session)) continue;
@@ -95,7 +114,15 @@ module.exports = async (req, res) => {
           });
           for (const item of lineItems.data) {
             if (item.price?.product === PRODUCT_ID) {
-              return true;
+              const paymentIntentId =
+                typeof session.payment_intent === "string"
+                  ? session.payment_intent
+                  : session.payment_intent?.id;
+              if (!paymentIntentId) {
+                return true;
+              }
+              const allowed = await markPaymentIntentUsed(paymentIntentId);
+              if (allowed) return true;
             }
           }
         } catch (lineItemsError) {

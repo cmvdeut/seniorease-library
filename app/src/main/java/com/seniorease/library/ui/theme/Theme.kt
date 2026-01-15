@@ -15,15 +15,33 @@ import com.seniorease.library.utils.SettingsHelper
 import com.seniorease.library.ui.theme.rememberAccessibleTypography
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = SeniorEasePrimaryLight,
+    onPrimary = Color(0xFF000000),
+    secondary = SeniorEasePrimary,
+    onSecondary = Color(0xFF000000),
+    tertiary = SeniorEasePrimaryDark,
+    onTertiary = Color(0xFFFFFFFF),
+    background = SeniorEaseDarkBackground,
+    onBackground = SeniorEaseForegroundDark,
+    surface = Color(0xFF333333),
+    onSurface = SeniorEaseForegroundDark,
+    surfaceVariant = Color(0xFF3A3A3A),
+    onSurfaceVariant = SeniorEaseForegroundDark
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = SeniorEasePrimary,
+    onPrimary = Color(0xFFFFFFFF),
+    secondary = SeniorEasePrimaryLight,
+    onSecondary = Color(0xFFFFFFFF),
+    tertiary = SeniorEasePrimaryDark,
+    onTertiary = Color(0xFFFFFFFF),
+    background = SeniorEaseCream,
+    onBackground = SeniorEaseForeground,
+    surface = Color(0xFFFFFFFF),
+    onSurface = SeniorEaseForeground,
+    surfaceVariant = SeniorEaseStone,
+    onSurfaceVariant = SeniorEaseForeground
 )
 
 // Hoog contrast color scheme (WCAG AAA compliant - 21:1 contrast ratio)
