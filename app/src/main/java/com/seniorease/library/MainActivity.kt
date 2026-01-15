@@ -718,7 +718,7 @@ class MainActivity : ComponentActivity() {
                                         Button(
                                             onClick = { 
                                                 // Open payment link in browser - use UriHandler for better compatibility
-                                                val paymentUrl = "https://buy.stripe.com/test_aFaaEQ9X0dGogALgwu6c003"
+                                                val paymentUrl = "https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003"
                                                 
                                                 try {
                                                     // Use UriHandler (same as other parts of the app) - more reliable
