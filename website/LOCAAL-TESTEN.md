@@ -2,8 +2,8 @@
 
 ## ✅ Status
 
-De Stripe test link staat al correct in de app:
-- Link: `https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002`
+De Stripe live link staat al correct in de app:
+- Link: `https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003`
 
 ## 🚀 Lokaal Testen
 
@@ -41,24 +41,20 @@ https://random-words-1234.trycloudflare.com
 
 1. **Klik op "Open Payment Link in browser"** in de app
 2. **Stripe payment pagina opent**
-3. **Gebruik testkaart:**
-   - Kaartnummer: `4242 4242 4242 4242`
-   - Expiry: `12/25` (of elke toekomstige datum)
-   - CVC: `123` (of elke 3 cijfers)
+3. **Doe een echte betaling (live mode)**
 4. **Test de betaling**
 
 ## ⚠️ Belangrijk
 
-- **Zorg dat Stripe Dashboard in Test mode staat** (niet Live mode)
-- **Gebruik alleen testkaarten** (niet echte kaarten)
+- **Stripe Dashboard staat in Live mode**
+- **Gebruik echte betaalgegevens**
 - **Cloudflare URL is tijdelijk** - alleen zolang cloudflared draait
 
 ## 🔍 Troubleshooting
 
 **Als payment link niet werkt:**
-1. Check Stripe Dashboard → Test mode toggle
-2. Check of payment link in Test mode is gemaakt
-3. Gebruik testkaart: `4242 4242 4242 4242`
+1. Check Stripe Dashboard → Live mode
+2. Check of payment link live is gemaakt
 
 **Als Cloudflare niet werkt:**
 - Check of cloudflared geïnstalleerd is: `cloudflared --version`
@@ -67,3 +63,4 @@ https://random-words-1234.trycloudflare.com
 ---
 
 **Start cloudflared en test de payment link op je telefoon!**
+

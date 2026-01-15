@@ -18,23 +18,23 @@
 
 ### Link in App
 ```
-https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002
+https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003
 ```
 ✅ **Status:** Correct - deze staat in `MainActivity.kt` regel 682
 
-## 💰 Price ID
+## 💰 Product ID
 
-### Price ID in API
+### Product ID in Vercel
 ```
-price_1So2hP3GmccxYlyt6rNoyUxz
+prod_YOUR_PRODUCT_ID
 ```
-✅ **Status:** Correct - deze staat in `website/api/verify-purchase.js` regel 4
+✅ **Status:** Correct - deze staat in Vercel als `STRIPE_PRODUCT_ID`
 
 ## ✅ Checklist
 
 - [x] Secret Key: Correct
 - [x] Payment Link: Correct in app
-- [x] Price ID: Correct in API
+- [x] Product ID: Correct in Vercel
 - [ ] **Secret Key toegevoegd aan Vercel?** (moet je zelf checken)
 - [ ] **Payment Link actief in Stripe Dashboard?** (moet je zelf checken)
 
@@ -47,17 +47,15 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 4. Check of alle 3 environments zijn aangevinkt (Production, Preview, Development)
 
 ### 2. Stripe Payment Link Status
-1. Ga naar: https://dashboard.stripe.com/test/payment-links
-2. Zoek link: `9B6fZa8SW31K0BNcge6c002`
+1. Ga naar: https://dashboard.stripe.com/payment-links
+2. Zoek de live payment link
 3. Check status: Moet **Active** zijn
-4. Check Price ID: Moet `price_1So2hP3GmccxYlyt6rNoyUxz` zijn
 
 ### 3. Test de Payment Link
-1. Open in browser: https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002
+1. Open in browser: https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003
 2. Moet naar Stripe checkout pagina gaan
-3. Test met test card: `4242 4242 4242 4242`
-4. Gebruik test email (bijv. `test@example.com`)
-5. Check of betaling succesvol is
+3. Doe een echte betaling (live mode)
+4. Check of betaling succesvol is
 
 ### 4. Test de API
 ```powershell
@@ -70,7 +68,7 @@ cd D:\MAUREEN\DEV\SeniorEase-Library\website
 Als de link niet werkt:
 1. Check Stripe Dashboard → Payment Links
 2. Als link **Inactive** is: klik **Reactivate**
-3. Als link niet bestaat: maak nieuwe link met Price ID `price_1So2hP3GmccxYlyt6rNoyUxz`
+3. Als link niet bestaat: maak nieuwe link met het juiste product
 4. Update de nieuwe link in `MainActivity.kt` regel 682
 
 ## ✅ Conclusie
@@ -83,3 +81,4 @@ De configuratie is correct:
 - ✅ Price ID: Correct in API
 
 **Volgende stap:** Check of de Secret Key in Vercel staat en of de Payment Link actief is in Stripe Dashboard.
+

@@ -16,7 +16,7 @@ De API route `/api/verify-purchase` is toegevoegd als Vercel serverless function
 
 3. **Voeg toe:**
    - **Name:** `STRIPE_SECRET_KEY`
-   - **Value:** `sk_test_jouw_stripe_key_hier` (of live key voor productie)
+   - **Value:** `sk_live_...`
    - **Environment:** Production, Preview, Development (alle drie aanvinken)
 
 4. **Klik "Save"**
@@ -50,7 +50,7 @@ curl -X POST https://www.seniorease.eu/api/verify-purchase \
 
 ## 📝 Notities
 
-- **Price ID:** `price_1So2hP3GmccxYlyt6rNoyUxz` (hardcoded, test mode)
+- **Product ID:** via `STRIPE_PRODUCT_ID` in Vercel
 - **Rate limiting:** 20 requests per minuut per IP
 - **CORS:** Enabled voor alle origins (website + app)
 - **Error handling:** Geen details gelekt, altijd `{ paid: false }` bij errors
@@ -58,7 +58,6 @@ curl -X POST https://www.seniorease.eu/api/verify-purchase \
 ## ⚠️ Belangrijk
 
 - **Zorg dat `STRIPE_SECRET_KEY` is toegevoegd** aan Vercel Environment Variables
-- **Test mode key** voor testen: `sk_test_...`
 - **Live mode key** voor productie: `sk_live_...`
 
 ---

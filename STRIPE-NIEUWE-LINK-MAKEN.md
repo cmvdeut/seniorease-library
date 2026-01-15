@@ -2,7 +2,7 @@
 
 ## ⚠️ Huidige Link Werkt Niet
 
-De link `https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002` werkt niet meer.
+De link `https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003` werkt niet meer.
 
 ## ✅ Stap-voor-Stap: Nieuwe Link Maken
 
@@ -10,7 +10,7 @@ De link `https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002` werkt niet meer.
 
 1. **Open:** https://dashboard.stripe.com/
 2. **Log in** met je Stripe account
-3. **Zorg dat je in Test mode bent** (toggle rechtsboven moet "Test mode" zeggen)
+3. **Zorg dat je in Live mode bent** (toggle rechtsboven moet "Live mode" zeggen)
 
 ### Stap 2: Maak Nieuwe Payment Link
 
@@ -37,14 +37,14 @@ De link `https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002` werkt niet meer.
 ### Stap 4: Maak de Payment Link
 
 1. **Selecteer het product** dat je net hebt gemaakt
-2. **Zorg dat je in Test mode bent!** (check rechtsboven)
+2. **Zorg dat je in Live mode bent!** (check rechtsboven)
 3. Klik **Create link** (of "Continue")
 
 ### Stap 5: Kopieer de Link
 
 Je krijgt nu een link zoals:
 ```
-https://buy.stripe.com/test_XXXXXXXXXXXXX
+https://buy.stripe.com/XXXXXXXXXXXXX
 ```
 
 **Kopieer deze volledige URL!**
@@ -54,12 +54,12 @@ https://buy.stripe.com/test_XXXXXXXXXXXXX
 1. **Open:** `app/src/main/java/com/seniorease/library/MainActivity.kt`
 2. **Zoek regel ~682:**
 ```kotlin
-val paymentUrl = "https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002"
+val paymentUrl = "https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003"
 ```
 
 3. **Vervang met jouw nieuwe link:**
 ```kotlin
-val paymentUrl = "https://buy.stripe.com/test_JOUW_NIEUWE_CODE_HIER"
+val paymentUrl = "https://buy.stripe.com/JOUW_NIEUWE_CODE_HIER"
 ```
 
 ### Stap 7: Rebuild App
@@ -73,14 +73,14 @@ cd D:\MAUREEN\DEV\SeniorEase-Library
 
 1. Installeer nieuwe APK op telefoon
 2. Test de payment link in de app
-3. Gebruik testkaart: `4242 4242 4242 4242`
+3. Doe een echte betaling (live mode)
 
 ---
 
 ## 🔍 Belangrijke Checks
 
-- ✅ **Test mode** moet AAN staan in Stripe Dashboard
-- ✅ Link moet beginnen met `https://buy.stripe.com/test_`
+- ✅ **Live mode** moet AAN staan in Stripe Dashboard
+- ✅ Link moet beginnen met `https://buy.stripe.com/`
 - ✅ Product en prijs moeten zijn ingesteld
 - ✅ Link moet worden geüpdatet in `MainActivity.kt`
 - ✅ App moet opnieuw worden gebuild
@@ -90,9 +90,9 @@ cd D:\MAUREEN\DEV\SeniorEase-Library
 ## 💡 Tips
 
 - **Bewaar de link** ergens veilig (bijv. in een notitie)
-- **Test altijd eerst** met testkaart voordat je live gaat
-- **Voor productie:** Maak ook een Live mode link (zonder "test_")
+- **Gebruik echte betaling** om te testen in live mode
 
 ---
 
 **Heb je de nieuwe link? Stuur hem door en ik update de app voor je!**
+

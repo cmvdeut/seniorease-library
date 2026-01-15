@@ -9,7 +9,7 @@ De Stripe payment link werkt niet meer ("link is no longer available").
 
 1. **Log in op Stripe Dashboard:**
    - Ga naar: https://dashboard.stripe.com/
-   - **Zorg dat je in Test mode bent** (toggle rechtsboven)
+  - **Zorg dat je in Live mode bent** (toggle rechtsboven)
 
 2. **Maak nieuwe Payment Link:**
    - Ga naar: **Products** → **Payment Links**
@@ -18,11 +18,11 @@ De Stripe payment link werkt niet meer ("link is no longer available").
 3. **Configureer de link:**
    - **Product:** Kies of maak een product aan (bijv. "SeniorEase Library Full Version")
    - **Price:** Maak een prijs aan (bijv. €9.99 of jouw prijs)
-   - **Zorg dat je in Test mode bent!**
+  - **Zorg dat je in Live mode bent!**
    - Klik **Create link**
 
 4. **Kopieer de link:**
-   - Je krijgt een link zoals: `https://buy.stripe.com/test_XXXXXXXXXXXXX`
+   - Je krijgt een link zoals: `https://buy.stripe.com/XXXXXXXXXXXXX`
    - **Kopieer de volledige URL**
 
 ### Stap 2: Update Link in App
@@ -34,10 +34,10 @@ De Stripe payment link werkt niet meer ("link is no longer available").
 2. **Vervang de oude link:**
 ```kotlin
 // OUDE LINK (vervang deze):
-val paymentUrl = "https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002"
+val paymentUrl = "https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003"
 
 // NIEUWE LINK (plak jouw nieuwe link hier):
-val paymentUrl = "https://buy.stripe.com/test_JOUW_NIEUWE_LINK_HIER"
+val paymentUrl = "https://buy.stripe.com/JOUW_NIEUWE_LINK_HIER"
 ```
 
 ### Stap 3: Rebuild App
@@ -56,8 +56,8 @@ cd D:\MAUREEN\DEV\SeniorEase-Library
 
 ## 🔍 Check Dit
 
-- [ ] Stripe Dashboard staat in **Test mode** (niet Live mode)
-- [ ] Nieuwe payment link is gemaakt in **Test mode**
+- [ ] Stripe Dashboard staat in **Live mode**
+- [ ] Nieuwe payment link is gemaakt in **Live mode**
 - [ ] Link is geüpdatet in `MainActivity.kt`
 - [ ] App is opnieuw gebuild
 - [ ] Nieuwe APK is geïnstalleerd
@@ -66,10 +66,10 @@ cd D:\MAUREEN\DEV\SeniorEase-Library
 
 ## 💡 Tips
 
-- **Voor productie:** Maak ook een Live mode payment link en update de app
-- **Test altijd eerst** met testkaart: `4242 4242 4242 4242`
+- **Doe een echte betaling** om de link te testen
 - **Bewaar de link** ergens veilig voor later gebruik
 
 ---
 
 **Na het updaten: Test de payment link in de app!**
+

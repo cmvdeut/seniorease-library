@@ -1,30 +1,30 @@
 # 🔑 Stripe Keys voor Vercel
 
-## ✅ De 3 Keys die je Nodig Hebt
+## ✅ De 2 Keys die je Nodig Hebt
 
-### 1. Publishable Key (Test)
+### 1. Publishable Key (Live)
 ```
-pk_test_51SJDlo3GmccxYlyt69mwIhw81gVTjuYVgTAetvrtUGp9Hlww9lLoOBFjRAJVbe8X8q1rskVMUhHVdNcgJSXUUJEg00t1LEHkRO
+pk_live_...
 ```
 **Gebruik:** Niet nodig voor backend API (alleen voor frontend Stripe.js)
 **Status:** ℹ️ Niet nodig voor deze integratie
 
-### 2. Secret Key (Test) - VOOR VERCEL
+### 2. Secret Key (Live) - VOOR VERCEL
 ```
-sk_test_YOUR_KEY_HERE
+sk_live_...
 ```
 **Gebruik:** ✅ **BELANGRIJK** - Voeg toe aan Vercel Environment Variables
 **Waar:** Vercel Dashboard → Settings → Environment Variables
 **Key naam:** `STRIPE_SECRET_KEY`
 **Value:** De secret key hierboven
 
-### 3. Price ID (Test)
+### 3. Product ID (Live)
 ```
-price_1So2hP3GmccxYlyt6rNoyUxz
+prod_YOUR_PRODUCT_ID
 ```
-**Gebruik:** ✅ Gebruikt in API code (staat al in `verify-purchase.js`)
-**Waar:** `website/api/verify-purchase.js` regel 4
-**Status:** ✅ Al geconfigureerd in code
+**Gebruik:** ✅ Gebruikt in API code (via environment variable)
+**Waar:** Vercel Environment Variables
+**Key naam:** `STRIPE_PRODUCT_ID`
 
 ---
 
@@ -42,11 +42,19 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 1. Klik: **Add New**
 2. Vul in:
    - **Key:** `STRIPE_SECRET_KEY`
-   - **Value:** `sk_test_YOUR_KEY_HERE`
+   - **Value:** `sk_live_...`
    - **Environment:** ✅ Production, ✅ Preview, ✅ Development (alle 3!)
 3. Klik: **Save**
 
-### Stap 4: Redeploy
+### Stap 4: Voeg Product ID Toe
+1. Klik: **Add New**
+2. Vul in:
+   - **Key:** `STRIPE_PRODUCT_ID`
+   - **Value:** `prod_...`
+   - **Environment:** ✅ Production, ✅ Preview, ✅ Development (alle 3!)
+3. Klik: **Save**
+
+### Stap 5: Redeploy
 1. Ga naar: **Deployments**
 2. Klik: **Redeploy** (of 3 puntjes → Redeploy)
 3. Wacht 2-3 minuten
@@ -56,6 +64,7 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 ## ✅ Checklist
 
 - [ ] Secret Key toegevoegd aan Vercel
+- [ ] Product ID toegevoegd aan Vercel
 - [ ] Alle 3 environments aangevinkt (Production, Preview, Development)
 - [ ] Redeploy gedaan
 - [ ] API getest

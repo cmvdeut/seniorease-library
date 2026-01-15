@@ -12,25 +12,25 @@ STRIPE_SECRET_KEY = [Je Stripe Secret Key - haal op uit Stripe Dashboard]
 
 ### 2. Payment Link (voor Android App) ✅
 ```
-https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002
+https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003
 ```
 **Waar:** `MainActivity.kt` regel 682  
 **Status:** ✅ **AL IN CODE**  
 **Gebruikt voor:** App opent deze link in browser voor betaling
 
-### 3. Price ID (voor API verificatie) ✅
+### 3. Product ID (voor API verificatie) ✅
 ```
-price_1So2hP3GmccxYlyt6rNoyUxz
+prod_YOUR_PRODUCT_ID
 ```
-**Waar:** `website/api/verify-purchase.js` regel 4  
-**Status:** ✅ **AL IN CODE**  
-**Gebruikt voor:** API controleert of betaling voor deze Price ID is gedaan
+**Waar:** Vercel Environment Variables (`STRIPE_PRODUCT_ID`)  
+**Status:** ✅ **IN VERCEL NODIG**  
+**Gebruikt voor:** API controleert of betaling voor dit Product ID is gedaan
 
 ## ✅ Checklist
 
 - [x] **Secret Key** - Code klaar, moet toegevoegd worden aan Vercel
 - [x] **Payment Link** - Al in app code
-- [x] **Price ID** - Al in API code
+- [x] **Product ID** - In Vercel zetten
 - [ ] **Secret Key in Vercel** - ⚠️ **NOG NIET TOEGEVOEGD**
 
 ## 🎯 Antwoord op je Vraag
@@ -41,7 +41,7 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 
 1. ✅ **Secret Key in Vercel** (moet je nog toevoegen)
 2. ✅ **Payment Link actief in Stripe** (moet je checken in Stripe Dashboard)
-3. ✅ **Price ID moet kloppen** (staat al in code)
+3. ✅ **Product ID moet kloppen** (staat in Vercel)
 
 ## 📋 Wat je Moet Doen
 
@@ -52,10 +52,10 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 - Redeploy
 
 ### Stap 2: Check Payment Link in Stripe
-- Ga naar: https://dashboard.stripe.com/test/payment-links
-- Zoek link: `9B6fZa8SW31K0BNcge6c002`
+- Ga naar: https://dashboard.stripe.com/payment-links
+- Zoek de live payment link
 - Check of status **Active** is
-- Check of Price ID klopt: `price_1So2hP3GmccxYlyt6rNoyUxz`
+- Check of het juiste product gekoppeld is
 
 ### Stap 3: Test
 - Test de payment link in browser
@@ -67,3 +67,4 @@ price_1So2hP3GmccxYlyt6rNoyUxz
 **De secret key is het belangrijkste wat nog ontbreekt!**
 
 Als je de secret key toevoegt aan Vercel en redeployt, zou alles moeten werken (mits de payment link actief is in Stripe).
+

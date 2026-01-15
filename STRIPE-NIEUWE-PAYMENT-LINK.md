@@ -3,14 +3,14 @@
 ## ⚠️ Probleem
 De huidige Payment Link is niet meer actief:
 ```
-https://buy.stripe.com/test_aFaaEQ9X0dGogALgwu6c003
+https://buy.stripe.com/aFaaEQ9X0dGogALgwu6c003
 ```
 
 ## ✅ Oplossing: Maak Nieuwe Payment Link
 
 ### Stap 1: Ga naar Stripe Dashboard
 
-1. **Open:** https://dashboard.stripe.com/test/payment-links
+1. **Open:** https://dashboard.stripe.com/payment-links
 2. **Log in** met je Stripe account
 
 ### Stap 2: Maak Nieuwe Payment Link
@@ -28,22 +28,21 @@ https://buy.stripe.com/test_aFaaEQ9X0dGogALgwu6c003
 
 1. **Klik:** **"Create payment link"** (of **"New"**)
 2. **Selecteer Product:**
-   - Zoek product met ID: `prod_TlZqTwEVuXnHg0`
-   - Of selecteer het product dat je wilt gebruiken
+   - Selecteer het juiste product
 3. **Configureer:**
    - **Price:** Selecteer de juiste prijs
    - **Currency:** Kies de valuta (EUR, USD, etc.)
    - **Name:** Bijv. "SeniorEase Library - Full Version"
 4. **Klik:** **"Create payment link"**
 5. **Kopieer de link:**
-   - Je krijgt een link zoals: `https://buy.stripe.com/test_XXXXXXXXXXXXX`
+   - Je krijgt een link zoals: `https://buy.stripe.com/XXXXXXXXXXXXX`
    - **Kopieer deze link volledig**
 
 ### Stap 3: Geef de Nieuwe Link Door
 
 **Stuur me de nieuwe link, bijvoorbeeld:**
 ```
-https://buy.stripe.com/test_XXXXXXXXXXXXX
+https://buy.stripe.com/XXXXXXXXXXXXX
 ```
 
 ### Stap 4: Code Update
@@ -60,18 +59,17 @@ Zodra ik de nieuwe link heb, update ik:
 **Check of de link werkt:**
 1. **Open de link** in je browser
 2. **Moet naar Stripe checkout pagina gaan**
-3. **Test met test card:** `4242 4242 4242 4242`
-4. **Check of betaling succesvol is**
+3. **Check of betaling succesvol is**
 
 ---
 
 ## ⚠️ Belangrijk
 
-- **Gebruik TEST mode link** voor testen (`test_` in de URL)
-- **Voor productie:** Maak een **LIVE mode** link later
-- **Zorg dat Product ID klopt:** `prod_TlZqTwEVuXnHg0`
+- **Gebruik LIVE mode link** voor productie
+- **Zorg dat het juiste product is gekoppeld**
 - **Check dat de link ACTIVE is** voordat je hem gebruikt
 
 ---
 
 **Maak een nieuwe Payment Link en geef me de URL!**
+
