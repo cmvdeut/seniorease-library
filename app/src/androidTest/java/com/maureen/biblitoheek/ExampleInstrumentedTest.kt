@@ -1,4 +1,4 @@
-package com.maureen.biblitoheek
+package com.seniorease.library
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

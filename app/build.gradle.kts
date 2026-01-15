@@ -6,22 +6,51 @@ plugins {
 }
 
 android {
-    namespace = "com.maureen.biblitoheek"
+    namespace = "com.seniorease.library"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.maureen.biblitoheek"
+        applicationId = "com.seniorease.library"
         minSdk = 35
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 10
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions += "version"
+    productFlavors {
+        create("full") {
+            dimension = "version"
+            applicationIdSuffix = ""
+            versionNameSuffix = ""
+            buildConfigField("boolean", "IS_DEMO", "false")
+            buildConfigField("int", "MAX_ITEMS", "-1") // -1 = onbeperkt
+        }
+        create("demo") {
+            dimension = "version"
+            applicationIdSuffix = ".demo"
+            versionNameSuffix = "-demo"
+            buildConfigField("boolean", "IS_DEMO", "true")
+            buildConfigField("int", "MAX_ITEMS", "10") // Demo limiet: 10 items
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("../upload-keystore.jks")
+            storePassword = "Can69893!"
+            keyAlias = "upload"
+            keyPassword = "Can69893!"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -37,6 +66,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.10"

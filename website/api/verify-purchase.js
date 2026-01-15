@@ -5,7 +5,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-06-20",
 });
 
-const PRICE_ID = process.env.STRIPE_PRICE_ID || "price_1So2gr3GmccxYlytQwl5mitp";
+// Require STRIPE_PRODUCT_ID - no fallback
+const PRODUCT_ID = process.env.STRIPE_PRODUCT_ID;
+if (!PRODUCT_ID) {
+  throw new Error("Missing STRIPE_PRODUCT_ID environment variable");
+}
 
 // Simple in-memory rate limit (per instance)
 const rateMap = new Map();
@@ -74,85 +78,65 @@ module.exports = async (req, res) => {
 
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Debug: Log PRICE_ID being used (from env or hardcoded)
-    console.log(`[DEBUG] PRICE_ID: ${PRICE_ID} (from env: ${process.env.STRIPE_PRICE_ID ? 'yes' : 'no'})`);
+    const matchesEmail = (session) => {
+      const sessionEmail =
+        session?.customer_details?.email || session?.customer_email || "";
+      return sessionEmail.trim().toLowerCase() === normalizedEmail;
+    };
 
-    // Debug: Log the normalized email received
-    console.log(`[DEBUG] Normalized email: ${normalizedEmail}`);
-
-    // List checkout sessions - same approach as seniorease-project
-    // Payment Links create Checkout Sessions with status 'complete' and payment_status 'paid'
-    const checkoutSessions = await stripe.checkout.sessions.list({
-      limit: 100, // Adjust based on expected volume
-      status: 'complete',
-    });
-
-    let totalSessionsChecked = checkoutSessions.data.length;
-    let paidSessionsCount = 0;
-    let emailMatchCount = 0;
-    
-    console.log(`[DEBUG] Found ${totalSessionsChecked} checkout session(s) with status 'complete'`);
-
-    for (const session of checkoutSessions.data) {
-      // Check payment status
-      if (session.payment_status !== 'paid') {
-        continue;
-      }
-      
-      paidSessionsCount++;
-      
-      // Debug: Log all paid sessions with email
-      const sessionEmail = session.customer_details?.email?.toLowerCase() || 'N/A';
-      console.log(`[DEBUG] Paid session: id=${session.id}, email=${sessionEmail}, payment_status=${session.payment_status}`);
-
-      // Check if email matches (case-insensitive)
-      if (
-        session.customer_details?.email &&
-        session.customer_details.email.toLowerCase() === normalizedEmail
-      ) {
-        emailMatchCount++;
-        // Debug: Log matching session
-        console.log(`[DEBUG] ✅ Email match! Session: id=${session.id}, email=${session.customer_details.email}`);
-
-        // Get line items to check price ID
+    const checkSessionsForProduct = async (sessions) => {
+      for (const session of sessions) {
+        if (!matchesEmail(session)) continue;
         try {
           const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
             limit: 100,
+            expand: ["data.price"],
           });
-
-          // Debug: Log line item price IDs
-          const priceIds = lineItems.data
-            .map((li) => li.price?.id)
-            .filter((id) => id !== null && id !== undefined);
-          console.log(`[DEBUG] Session ${session.id} - Line item price IDs: ${JSON.stringify(priceIds)}`);
-
-          // Check if any line item has the matching price ID
           for (const item of lineItems.data) {
-            if (item.price?.id === PRICE_ID) {
-              console.log(`[DEBUG] ✅✅✅ MATCH FOUND! Session ${session.id} has Price ID ${PRICE_ID}`);
-              return res.status(200).json({ paid: true });
+            if (item.price?.product === PRODUCT_ID) {
+              return true;
             }
           }
-          
-          console.log(`[DEBUG] ❌ Session ${session.id} email matches but Price ID ${PRICE_ID} not found in line items`);
         } catch (lineItemsError) {
-          // Continue searching if line items retrieval fails
-          console.log(`[DEBUG] Error retrieving line items for session ${session.id}:`, lineItemsError.message);
           continue;
         }
       }
-    }
-    
-    console.log(`[DEBUG] Summary: ${totalSessionsChecked} total sessions, ${paidSessionsCount} paid sessions, ${emailMatchCount} email matches`);
+      return false;
+    };
 
-    // Debug: Log final result
-    console.log(`[DEBUG] No matching session found with Price ID ${PRICE_ID} for email: ${normalizedEmail}`);
+    try {
+      // 1) Primary search: paid + exact email in Stripe search
+      const emailQuery = `payment_status:'paid' AND customer_details.email:'${normalizedEmail}'`;
+      const searchResult = await stripe.checkout.sessions.search({
+        query: emailQuery,
+        limit: 100,
+      });
+
+      if (await checkSessionsForProduct(searchResult.data || [])) {
+        return res.status(200).json({ paid: true });
+      }
+    } catch (searchError) {
+      // Continue to fallback search
+    }
+
+    try {
+      // 2) Fallback: paid only, then match email locally (case-insensitive)
+      const paidOnlyResult = await stripe.checkout.sessions.search({
+        query: "payment_status:'paid'",
+        limit: 100,
+      });
+
+      if (await checkSessionsForProduct(paidOnlyResult.data || [])) {
+        return res.status(200).json({ paid: true });
+      }
+    } catch (fallbackError) {
+      // Handle search API errors silently
+    }
 
     return res.status(200).json({ paid: false });
   } catch (err) {
-    // Don't leak details
-    console.log(`[DEBUG] Error in verify-purchase:`, err.message);
-    console.log(`[DEBUG] Error stack:`, err.stack);
+    // Minimal error logging for production
+    console.error("verify-purchase error:", err.message);
     return res.status(200).json({ paid: false });
   }
 };

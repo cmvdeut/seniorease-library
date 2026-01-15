@@ -1,0 +1,18 @@
+{
+  "name": "seniorease-nextjs-api",
+  "version": "1.0.0",
+  "description": "Next.js API route for SeniorEase purchase verification",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "stripe": "^14.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

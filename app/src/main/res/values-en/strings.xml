@@ -18,18 +18,29 @@
 
     <!-- Main Screen -->
     <string name="library">Library</string>
+    <string name="app_version">Version %1$s</string>
     <string name="demo_status">Demo – %1$d of %2$d items</string>
     <string name="demo_limit_warning_title">⚠️ Demo limit reached</string>
     <string name="demo_limit_warning_message">You have reached the maximum of %1$d items in the demo version.</string>
     <string name="demo_limit_warning_upgrade">Unlock the full version for unlimited use.</string>
-    <string name="demo_warning_one_left">⚠️ Warning: You have 1 item left in the demo version!</string>
-    <string name="demo_unlock_title">🔒 Unlock Full Version</string>
-    <string name="demo_unlock_message">You have reached the maximum limit of %1$d items in the demo version.\n\nBuy the full version for unlimited use!</string>
-    <string name="demo_unlock_button">Open Payment Link in browser</string>
-    <string name="demo_unlock_payment_note">You will be redirected to a secure payment page.</string>
-    <string name="demo_unlock_error">Could not open browser. Please try again.</string>
-    <string name="payment_thank_you_title">Thank you.</string>
-    <string name="payment_thank_you_message">If you have completed the payment, you can now unlock the full version.\n\nIf something didn\'t work, you can safely try again or contact us.</string>
+    <string name="demo_warning_one_left">Just a friendly reminder: You can add one more book in the free version.</string>
+    <string name="demo_unlock_title">Unlock Full Version</string>
+    <string name="demo_unlock_message">You have added %1$d books in the free version.\n\nIf you would like to add more books, you can unlock the full version. This is completely optional.</string>
+    <string name="demo_unlock_button">Continue to payment</string>
+    <string name="demo_unlock_payment_note">You will be taken to a safe and secure payment page.</string>
+    <string name="demo_unlock_error">Could not open the payment page. Please try again.</string>
+    <!-- Unlock code strings removed - using email-based unlock flow only -->
+    <string name="unlock_ive_paid_button">I\'ve paid — unlock</string>
+    <string name="unlock_verify_title">Unlock full version</string>
+    <string name="unlock_verify_message">Enter the email you used for payment.</string>
+    <string name="unlock_verify_email_hint">Email address</string>
+    <string name="unlock_verify_email_required">Please enter your email address.</string>
+    <string name="unlock_verify_email_invalid">Please check your email address and try again.</string>
+    <string name="unlock_verify_button">Check purchase</string>
+    <string name="unlock_verify_checking">Checking…</string>
+    <string name="unlock_verify_success">Thank you. The full version is now unlocked.</string>
+    <string name="unlock_verify_not_found">No purchase found for this email yet. It can take a minute — you can safely try again.</string>
+    <string name="unlock_verify_error">We couldn\'t check your purchase right now. Please try again in a moment.</string>
 
     <!-- Menu -->
     <string name="menu">Menu</string>

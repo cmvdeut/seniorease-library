@@ -1,38 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
     
-    <!-- Heart shape -->
+    <!-- SeniorEase Hart Logo -->
+    <!-- Omgekeerd hart vorm (inverted heart) -->
     <path
-        android:fillColor="#FFD700"
-        android:pathData="M54,30 C54,30 40,20 30,30 C20,40 30,60 54,80 C78,60 88,40 78,30 C68,20 54,30 54,30 Z" />
+        android:fillColor="@color/seniorease_primary"
+        android:pathData="M54,20 
+            C54,20 20,35 20,55 
+            C20,70 35,85 54,95 
+            C73,85 88,70 88,55 
+            C88,35 54,20 54,20 Z" />
     
-    <!-- Smiley face eyes -->
+    <!-- Linker oog -->
     <path
-        android:fillColor="#000000"
-        android:pathData="M45,42 A3,3 0 1,1 45,48 A3,3 0 1,1 45,42 Z" />
-    <path
-        android:fillColor="#000000"
-        android:pathData="M63,42 A3,3 0 1,1 63,48 A3,3 0 1,1 63,42 Z" />
+        android:fillColor="#FF6D4A30"
+        android:pathData="M42,50 A3,3 0 1,1 42,56 A3,3 0 1,1 42,50 Z" />
     
-    <!-- Smiley face mouth -->
+    <!-- Rechter oog -->
     <path
-        android:fillColor="#000000"
-        android:pathData="M45,55 Q54,65 63,55"
-        android:strokeColor="#000000"
-        android:strokeWidth="2"
-        android:strokeLineCap="round" />
+        android:fillColor="#FF6D4A30"
+        android:pathData="M66,50 A3,3 0 1,1 66,56 A3,3 0 1,1 66,50 Z" />
     
-    <!-- Text "Biblitoheek" - simplified -->
+    <!-- Mond (frown - boog naar beneden) -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M25,85 L25,95 L30,95 L30,90 L35,90 L35,95 L40,95 L40,85 L35,85 L35,90 L30,90 L30,85 Z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M45,85 L50,85 L50,90 L55,90 L55,85 L60,85 L60,95 L55,95 L55,92 L50,92 L50,95 L45,95 Z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M65,85 L70,85 L70,90 L75,90 L75,85 L80,85 L80,95 L75,95 L75,92 L70,92 L70,95 L65,95 Z" />
+        android:strokeColor="#FF6D4A30"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M42,65 Q54,70 66,65" />
 </vector>

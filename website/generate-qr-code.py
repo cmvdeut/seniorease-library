@@ -1,12 +1,33 @@
 #!/usr/bin/env python3
 """
 QR Code Generator voor SeniorEase Library APK Download
+Genereert een QR code PNG bestand met de download URL
 """
-import qrcode
-from qrcode.image.pil import PilImage
+import sys
+import os
+
+# Check if qrcode library is available
+try:
+    import qrcode
+    from PIL import Image
+except ImportError:
+    print("❌ QR code library niet gevonden!")
+    print("")
+    print("Installeer met:")
+    print("  pip install qrcode[pil]")
+    print("")
+    sys.exit(1)
 
 # Download URL
-url = "https://seniorease.eu/downloads/app-demo-release.apk"
+url = "https://www.seniorease.eu/downloads/app-demo-release.apk"
+
+# Output file
+output_file = os.path.join(os.path.dirname(__file__), "qr-code-apk-download.png")
+
+print("🔲 QR Code Generator")
+print("")
+print(f"URL: {url}")
+print("")
 
 # Maak QR code
 qr = qrcode.QRCode(
@@ -22,7 +43,8 @@ qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
 
 # Sla op
-output_file = "qr-code-apk-download.png"
 img.save(output_file)
-print("QR code gegenereerd: " + output_file)
-print("URL: " + url)
+print(f"✅ QR code gegenereerd: {output_file}")
+print("")
+print("📱 QR code bevat URL:")
+print(f"   {url}")

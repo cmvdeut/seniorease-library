@@ -16,19 +16,37 @@
     <string name="all">Alles</string>
     
     <!-- Main Screen -->
-    <string name="library">Bibliotheek</string>
-    <string name="demo_status">Demo - %1$d/%2$d items</string>
-    <string name="demo_limit_warning_title">⚠️ Demo Limiet Bereikt</string>
-    <string name="demo_limit_warning_message">Je hebt de maximale limiet van %1$d items bereikt in de demo versie.</string>
-    <string name="demo_limit_warning_upgrade">Koop de volledige versie voor onbeperkt gebruik!</string>
-    <string name="demo_warning_one_left">⚠️ Waarschuwing: Je hebt nog 1 item over in de demo versie!</string>
-    <string name="demo_unlock_title">🔒 Volledige Versie Ontgrendelen</string>
-    <string name="demo_unlock_message">Je hebt de maximale limiet van %1$d items bereikt in de demo versie.\n\nKoop de volledige versie voor onbeperkt gebruik!</string>
-    <string name="demo_unlock_button">Open Betaallink in browser</string>
-    <string name="demo_unlock_payment_note">Je wordt doorgestuurd naar een beveiligde betaalpagina.</string>
-    <string name="demo_unlock_error">Kon browser niet openen. Probeer het opnieuw.</string>
-    <string name="payment_thank_you_title">Bedankt.</string>
-    <string name="payment_thank_you_message">Als je de betaling hebt voltooid, kun je nu de volledige versie ontgrendelen.\n\nAls er iets niet werkte, kun je veilig opnieuw proberen of contact met ons opnemen.</string>
+    <string name="library">Library</string>
+    <string name="app_version">Version %1$s</string>
+    <string name="demo_status">Demo – %1$d of %2$d items</string>
+    <string name="demo_limit_warning_title">Demo limit reached</string>
+    <string name="demo_limit_warning_message">You have reached the maximum of %1$d items in the demo version.</string>
+    <string name="demo_limit_warning_upgrade">Unlock the full version for unlimited use.</string>
+    <string name="demo_warning_one_left">Just a friendly reminder: You can add one more book in the free version.</string>
+    <string name="demo_unlock_title">Unlock Full Version</string>
+    <string name="demo_unlock_message">You have added %1$d books in the free version.\n\nIf you would like to add more books, you can unlock the full version. This is completely optional.</string>
+    <string name="demo_unlock_button">Continue to payment</string>
+    <string name="demo_unlock_payment_note">You will be taken to a safe and secure payment page.</string>
+    <string name="demo_unlock_error">Could not open the payment page. Please try again.</string>
+    <string name="payment_thank_you_title">Thank you.</string>
+    <string name="payment_thank_you_message">If you have completed the payment, enter your unlock code below to unlock the full version.\n\nIf something didn\'t work, you can safely try again or contact us.</string>
+    <string name="unlock_code_info">Your unlock code: %1$s</string>
+    <string name="unlock_code_label">Enter your unlock code:</string>
+    <string name="unlock_code_hint">Unlock code</string>
+    <string name="unlock_code_error">Invalid unlock code. Please try again.</string>
+    <string name="unlock_button">Unlock</string>
+    <string name="unlock_success">Full version unlocked! You can now add unlimited books.</string>
+    <string name="unlock_ive_paid_button">I\'ve paid — unlock</string>
+    <string name="unlock_verify_title">Unlock full version</string>
+    <string name="unlock_verify_message">Enter the email you used for payment.</string>
+    <string name="unlock_verify_email_hint">Email address</string>
+    <string name="unlock_verify_email_required">Please enter your email address.</string>
+    <string name="unlock_verify_email_invalid">Please check your email address and try again.</string>
+    <string name="unlock_verify_button">Check purchase</string>
+    <string name="unlock_verify_checking">Checking…</string>
+    <string name="unlock_verify_success">Thank you. The full version is now unlocked.</string>
+    <string name="unlock_verify_not_found">No purchase found for this email yet. It can take a minute — you can safely try again.</string>
+    <string name="unlock_verify_error">We couldn\'t check your purchase right now. Please try again in a moment.</string>
     
     <!-- Menu -->
     <string name="menu">Menu</string>
@@ -102,7 +120,7 @@
     <string name="search_results">Zoekresultaten (%1$d)</string>
     
     <!-- Messages -->
-    <string name="demo_limit_reached">Demo versie limiet bereikt! Maximaal %1$d items toegestaan. Koop de volledige versie voor onbeperkt gebruik.</string>
+    <string name="demo_limit_reached">Demo limit reached. You can add up to %1$d items. Unlock the full version for unlimited use.</string>
     <string name="backup_saved">Backup opgeslagen</string>
     <string name="backup_error">Fout bij opslaan backup</string>
     <string name="backup_imported">%1$d items toegevoegd uit backup</string>

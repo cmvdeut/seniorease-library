@@ -1,4 +1,4 @@
-package com.maureen.biblitoheek
+package com.seniorease.library
 
 import org.junit.Test
 

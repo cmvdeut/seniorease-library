@@ -42,6 +42,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import com.seniorease.library.BuildConfig
 import java.io.File
 import java.io.FileOutputStream
@@ -90,6 +91,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.util.concurrent.TimeUnit
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.KeyboardOptions
@@ -103,20 +105,39 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
     private val isDemo: Boolean = BuildConfig.IS_DEMO
     private val maxItems: Int = BuildConfig.MAX_ITEMS
     
+    // Cache unlock status - read synchronously at startup before UI renders
+    // This ensures the demo limit never returns after reopening the app
+    private val _isUnlocked: Boolean = UnlockHelper.isUnlocked(context)
+    
     // Check of app is unlocked (override demo mode)
+    // Use cached value for consistency during app session
     private fun isUnlocked(): Boolean {
-        return UnlockHelper.isUnlocked(context)
+        return _isUnlocked
+    }
+    
+    // Public method to refresh unlock status (call after successful unlock)
+    fun refreshUnlockStatus() {
+        // Note: This doesn't update _isUnlocked, but loadItems() will be called
+        // which will re-read from SharedPreferences via UnlockHelper
+        // For immediate effect, we'll reload items which checks the current status
     }
 
     init {
+        // Read unlock status from SharedPreferences BEFORE loading items
+        // This ensures the demo limit is never applied if the app is unlocked
         loadItems()
     }
 
     fun loadItems() {
         viewModelScope.launch {
+            // Re-check unlock status from SharedPreferences on each load
+            // This ensures we pick up changes (e.g., after unlock via API)
+            val currentlyUnlocked = UnlockHelper.isUnlocked(context)
+            
             val allItems = db.itemDao().getAllSortedByNewest()
             // In demo mode: beperk tot maxItems (tenzij unlocked)
-            _items.value = if (isDemo && !isUnlocked() && maxItems > 0 && allItems.size > maxItems) {
+            // Apply unlock status BEFORE rendering UI to prevent demo limit from showing
+            _items.value = if (isDemo && !currentlyUnlocked && maxItems > 0 && allItems.size > maxItems) {
                 allItems.take(maxItems)
             } else {
                 allItems
@@ -126,8 +147,11 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
 
     fun addItem(item: Item, onResult: (Boolean, String?) -> Unit = { _, _ -> }) {
         viewModelScope.launch {
+            // Re-check unlock status from SharedPreferences (may have changed via API)
+            val currentlyUnlocked = UnlockHelper.isUnlocked(context)
+            
             // Check demo limiet (tenzij unlocked)
-            if (isDemo && !isUnlocked() && maxItems > 0) {
+            if (isDemo && !currentlyUnlocked && maxItems > 0) {
                 val currentCount = db.itemDao().getAllSortedByNewest().size
                 // Bij 10 items: blokkeer toevoegen
                 if (currentCount >= maxItems) {
@@ -141,9 +165,9 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
             loadItems()
             // Return special marker voor waarschuwing bij 9 items (tenzij unlocked)
             val newCount = db.itemDao().getAllSortedByNewest().size
-            if (isDemo && !isUnlocked() && maxItems > 0 && newCount == maxItems - 1) {
+            if (isDemo && !currentlyUnlocked && maxItems > 0 && newCount == maxItems - 1) {
                 onResult(true, "WARNING_ONE_LEFT")
-            } else if (isDemo && !isUnlocked() && maxItems > 0 && newCount >= maxItems) {
+            } else if (isDemo && !currentlyUnlocked && maxItems > 0 && newCount >= maxItems) {
                 onResult(true, "UNLOCK_DIALOG")
             } else {
                 onResult(true, null)
@@ -151,7 +175,11 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
         }
     }
     
-    fun isDemoVersion(): Boolean = isDemo && !isUnlocked()
+    fun isDemoVersion(): Boolean {
+        // Always check current unlock status from SharedPreferences
+        // This ensures UI reflects unlock status even after app restart
+        return isDemo && !UnlockHelper.isUnlocked(context)
+    }
     fun getMaxItems(): Int = maxItems
     fun getCurrentItemCount(): Int = _items.value.size
     // unlockWithCode removed - using email-based unlock via API only
@@ -212,9 +240,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         
+        // Read unlock status from SharedPreferences BEFORE rendering UI
+        // This ensures the demo limit never returns after reopening the app
+        val isUnlocked = UnlockHelper.isUnlocked(applicationContext)
+        android.util.Log.d("MainActivity", "App startup - isUnlocked: $isUnlocked")
+        
         val db = AppDatabase.getDatabase(applicationContext)
         setContent {
             val context = LocalContext.current
+            val uriHandler = LocalUriHandler.current
             // Haal instellingen op uit SharedPreferences
             var isLargeTextEnabled by remember { mutableStateOf(SettingsHelper.isLargeTextEnabled(context)) }
             var isHighContrastEnabled by remember { mutableStateOf(SettingsHelper.isHighContrastEnabled(context)) }
@@ -414,6 +448,11 @@ class MainActivity : ComponentActivity() {
                                             color = MaterialTheme.colorScheme.primary
                                         )
                                     }
+                                    Text(
+                                        text = stringResource(R.string.app_version, BuildConfig.VERSION_NAME),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
                                 }
                             },
                             actions = {
@@ -678,15 +717,31 @@ class MainActivity : ComponentActivity() {
                                     confirmButton = {
                                         Button(
                                             onClick = { 
-                                                // Open payment link in browser
-                                                val paymentUrl = "https://buy.stripe.com/test_9B6fZa8SW31K0BNcge6c002"
-                                                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(paymentUrl))
+                                                // Open payment link in browser - use UriHandler for better compatibility
+                                                val paymentUrl = "https://buy.stripe.com/test_aFaaEQ9X0dGogALgwu6c003"
+                                                
                                                 try {
-                                                    context.startActivity(intent)
+                                                    // Use UriHandler (same as other parts of the app) - more reliable
+                                                    uriHandler.openUri(paymentUrl)
                                                     paymentOpened = true
                                                     showUnlockDialog = false
                                                 } catch (e: Exception) {
-                                                    android.widget.Toast.makeText(context, context.getString(R.string.demo_unlock_error), android.widget.Toast.LENGTH_SHORT).show()
+                                                    // Fallback: try Intent approach
+                                                    try {
+                                                        val uri = android.net.Uri.parse(paymentUrl)
+                                                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, uri)
+                                                        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                        context.startActivity(intent)
+                                                        paymentOpened = true
+                                                        showUnlockDialog = false
+                                                    } catch (e2: Exception) {
+                                                        // Show error with URL so user can copy it
+                                                        android.widget.Toast.makeText(
+                                                            context,
+                                                            "Could not open browser. Please copy and open: $paymentUrl",
+                                                            android.widget.Toast.LENGTH_LONG
+                                                        ).show()
+                                                    }
                                                 }
                                             },
                                             colors = ButtonDefaults.buttonColors(
@@ -813,27 +868,43 @@ class MainActivity : ComponentActivity() {
                                                 
                                                 scope.launch {
                                                     try {
-                                                        val client = OkHttpClient()
-                                                        val json = org.json.JSONObject().apply {
-                                                            put("email", email.trim())
-                                                        }
-                                                        val mediaType = "application/json; charset=utf-8".toMediaType()
-                                                        val requestBody = json.toString().toRequestBody(mediaType)
-                                                        
                                                         // API URL
                                                         val apiUrl = "https://www.seniorease.eu/api/verify-purchase"
-                                                        val request = Request.Builder()
-                                                            .url(apiUrl)
-                                                            .post(requestBody)
-                                                            .addHeader("Content-Type", "application/json")
-                                                            .build()
+                                                        android.util.Log.d("UnlockVerify", "Sending request to: $apiUrl")
+                                                        android.util.Log.d("UnlockVerify", "Email: ${email.trim()}")
                                                         
-                                                        // Execute network call on IO dispatcher to avoid NetworkOnMainThreadException
+                                                        // Execute ALL network operations on IO dispatcher to avoid NetworkOnMainThreadException
                                                         val response = withContext(Dispatchers.IO) {
+                                                            // Create OkHttpClient with timeout
+                                                            val client = OkHttpClient.Builder()
+                                                                .connectTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                                                                .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                                                                .writeTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                                                                .build()
+                                                            
+                                                            val json = org.json.JSONObject().apply {
+                                                                put("email", email.trim())
+                                                            }
+                                                            val mediaType = "application/json; charset=utf-8".toMediaType()
+                                                            val requestBody = json.toString().toRequestBody(mediaType)
+                                                            
+                                                            val request = Request.Builder()
+                                                                .url(apiUrl)
+                                                                .post(requestBody)
+                                                                .addHeader("Content-Type", "application/json")
+                                                                .build()
+                                                            
                                                             client.newCall(request).execute()
                                                         }
+                                                        
                                                         val responseBody = withContext(Dispatchers.IO) {
                                                             response.body?.string()
+                                                        }
+                                                        
+                                                        // Debug log: raw HTTP status + response body (debug builds only)
+                                                        if (BuildConfig.DEBUG) {
+                                                            android.util.Log.d("UnlockVerify", "HTTP Status: ${response.code}")
+                                                            android.util.Log.d("UnlockVerify", "Response Body (raw): $responseBody")
                                                         }
                                                         
                                                         android.util.Log.d("UnlockVerify", "Response code: ${response.code}")
@@ -841,15 +912,21 @@ class MainActivity : ComponentActivity() {
                                                         
                                                         if (response.isSuccessful && responseBody != null) {
                                                             try {
+                                                                // Parse JSON response: { "paid": true } or { "paid": false }
                                                                 val jsonResponse = org.json.JSONObject(responseBody)
                                                                 val paid = jsonResponse.optBoolean("paid", false)
                                                                 
                                                                 if (paid) {
-                                                                    // Unlock de app
+                                                                    // Set isUnlocked=true in SharedPreferences
                                                                     UnlockHelper.unlockDirectly(context)
-                                                                    viewModel.loadItems() // Herlaad items om unlock te reflecteren
+                                                                    
+                                                                    // Update UI immediately (hide demo limit)
+                                                                    viewModel.loadItems() // Reload items to reflect unlock
+                                                                    isLoading = false
                                                                     showUnlockVerifyDialog = false
                                                                     showUnlockDialog = false
+                                                                    
+                                                                    // Show success message
                                                                     android.widget.Toast.makeText(
                                                                         context,
                                                                         context.getString(R.string.unlock_verify_success),
@@ -862,6 +939,9 @@ class MainActivity : ComponentActivity() {
                                                                 }
                                                             } catch (e: org.json.JSONException) {
                                                                 android.util.Log.e("UnlockVerify", "JSON parsing error", e)
+                                                                if (BuildConfig.DEBUG) {
+                                                                    android.util.Log.e("UnlockVerify", "Failed to parse response: $responseBody", e)
+                                                                }
                                                                 isLoading = false
                                                                 errorMessage = context.getString(R.string.unlock_verify_error)
                                                             }
