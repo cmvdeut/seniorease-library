@@ -87,6 +87,7 @@ module.exports = async (req, res) => {
     const checkSessionsForProduct = async (sessions) => {
       for (const session of sessions) {
         if (!matchesEmail(session)) continue;
+        if (session?.payment_status !== "paid") continue;
         try {
           const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
             limit: 100,
@@ -131,6 +132,19 @@ module.exports = async (req, res) => {
       }
     } catch (fallbackError) {
       // Handle search API errors silently
+    }
+
+    try {
+      // 3) Fallback: list recent sessions (search may not index immediately)
+      const listResult = await stripe.checkout.sessions.list({
+        limit: 100,
+      });
+
+      if (await checkSessionsForProduct(listResult.data || [])) {
+        return res.status(200).json({ paid: true });
+      }
+    } catch (listError) {
+      // Handle list API errors silently
     }
 
     return res.status(200).json({ paid: false });
