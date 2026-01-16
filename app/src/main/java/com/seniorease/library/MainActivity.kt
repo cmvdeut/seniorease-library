@@ -423,6 +423,14 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     topBar = {
                         val isDemo = viewModel.isDemoVersion()
+                        val versionName = run {
+                            val raw = BuildConfig.VERSION_NAME
+                            if (isDemo) raw else if (raw.endsWith("-demo", ignoreCase = true)) {
+                                raw.dropLast(5)
+                            } else {
+                                raw
+                            }
+                        }
                         val currentCount = if (isDemo) viewModel.getCurrentItemCount() else 0
                         val maxItems = if (isDemo) viewModel.getMaxItems() else 0
                         
@@ -449,7 +457,7 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                     Text(
-                                        text = stringResource(R.string.app_version, BuildConfig.VERSION_NAME),
+                                        text = stringResource(R.string.app_version, versionName),
                                         style = MaterialTheme.typography.bodySmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
@@ -608,6 +616,7 @@ class MainActivity : ComponentActivity() {
                                         isHighContrastEnabled = enabled
                                         SettingsHelper.setHighContrastEnabled(context, enabled)
                                     },
+                                    isDemo = viewModel.isDemoVersion(),
                                     onLanguageChange = { language ->
                                         // Taal is al opgeslagen in LanguageHelper.saveLanguage
                                         // Sluit eerst het settings dialoog

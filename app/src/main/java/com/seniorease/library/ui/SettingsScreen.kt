@@ -19,6 +19,7 @@ fun SettingsScreen(
     onLargeTextToggle: (Boolean) -> Unit,
     isHighContrastEnabled: Boolean,
     onHighContrastToggle: (Boolean) -> Unit,
+    isDemo: Boolean,
     onLanguageChange: (String) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -153,8 +154,16 @@ fun SettingsScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 Divider()
                 Spacer(modifier = Modifier.height(8.dp))
+                val versionName = run {
+                    val raw = BuildConfig.VERSION_NAME
+                    if (isDemo) raw else if (raw.endsWith("-demo", ignoreCase = true)) {
+                        raw.dropLast(5)
+                    } else {
+                        raw
+                    }
+                }
                 Text(
-                    text = stringResource(R.string.app_version, BuildConfig.VERSION_NAME),
+                    text = stringResource(R.string.app_version, versionName),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
