@@ -31,6 +31,8 @@ function copyRecursiveSync(src, dest) {
 const filesToCopy = [
   'index.html',
   'privacy-policy.html',
+  'terms.html',
+  'terms',
   'contact.html',
   'downloads',
   'qr-code-apk-download.png',
