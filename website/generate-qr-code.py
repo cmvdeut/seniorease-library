@@ -19,7 +19,7 @@ except ImportError:
     sys.exit(1)
 
 # Download URL
-url = "https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.5.apk"
+url = "https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.6.apk"
 
 # Output file
 output_file = os.path.join(os.path.dirname(__file__), "qr-code-apk-download.png")

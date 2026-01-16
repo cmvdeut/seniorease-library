@@ -4,7 +4,7 @@
 Write-Host "QR Code Generator" -ForegroundColor Cyan
 Write-Host ""
 
-$url = "https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.5.apk"
+$url = "https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.6.apk"
 $outputFile = "qr-code-apk-download.png"
 
 Write-Host "URL: $url" -ForegroundColor Yellow
