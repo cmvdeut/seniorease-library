@@ -83,7 +83,7 @@ private val HighContrastDarkColorScheme = darkColorScheme(
 fun BiblitoheekTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     isLargeTextEnabled: Boolean = false,
     isHighContrastEnabled: Boolean = false,
     content: @Composable () -> Unit

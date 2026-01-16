@@ -255,7 +255,8 @@ class MainActivity : ComponentActivity() {
             
             BiblitoheekTheme(
                 isLargeTextEnabled = isLargeTextEnabled,
-                isHighContrastEnabled = isHighContrastEnabled
+                isHighContrastEnabled = isHighContrastEnabled,
+                dynamicColor = false
             ) {
                 val scope = rememberCoroutineScope()
                 var menuExpanded by remember { mutableStateOf(false) }
