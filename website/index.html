@@ -120,10 +120,10 @@
             }
         }
         .mobile-short {
-            display: none !important; /* Hidden by default, JavaScript will show the correct one */
+            display: none; /* Hidden by default, shown on mobile via media query */
         }
         .desktop-full {
-            display: block;
+            display: none; /* Hidden by default */
         }
         .install-note {
             background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
@@ -295,12 +295,14 @@
             font-weight: 600;
             margin-top: 10px;
         }
-        /* Mobile: Hide desktop, JavaScript will show correct mobile-short */
+        /* Mobile: Hide desktop, show mobile-short (JavaScript will show correct language) */
         @media (max-width: 640px) {
             .desktop-full {
                 display: none !important;
             }
-            /* JavaScript will set display: block on the correct .mobile-short */
+            .mobile-short {
+                display: block; /* Show by default on mobile, JavaScript will hide wrong language */
+            }
             .container {
                 max-width: 100%;
             }
@@ -333,10 +335,10 @@
         /* Desktop: Show full version, hide mobile */
         @media (min-width: 641px) {
             .mobile-short {
-                display: none;
+                display: none !important;
             }
             .desktop-full {
-                display: block;
+                display: block !important;
             }
         }
     </style>
@@ -530,22 +532,23 @@
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
             const lang = (urlLang || 'en').toLowerCase() === 'nl' ? 'nl' : 'en';
-            
+
             // Update HTML lang attribute
             document.documentElement.lang = lang;
-            
-            // Show/hide language-specific content
+
+            // Hide wrong language on mobile (CSS shows both by default on mobile)
             const mobileShortElements = document.querySelectorAll('.mobile-short');
             const isMobile = window.innerWidth <= 640;
-            
-            mobileShortElements.forEach(function(el) {
-                if (isMobile && el.getAttribute('data-lang') === lang) {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
-                }
-            });
-            
+
+            if (isMobile) {
+                mobileShortElements.forEach(function(el) {
+                    // Hide the wrong language, keep the correct one visible
+                    if (el.getAttribute('data-lang') !== lang) {
+                        el.style.display = 'none';
+                    }
+                });
+            }
+
             // Handle window resize
             let resizeTimer;
             window.addEventListener('resize', function() {
@@ -553,32 +556,38 @@
                 resizeTimer = setTimeout(function() {
                     const isMobileNow = window.innerWidth <= 640;
                     mobileShortElements.forEach(function(el) {
-                        if (isMobileNow && el.getAttribute('data-lang') === lang) {
-                            el.style.display = 'block';
+                        if (isMobileNow) {
+                            // On mobile: hide wrong language
+                            if (el.getAttribute('data-lang') !== lang) {
+                                el.style.display = 'none';
+                            } else {
+                                el.style.display = ''; // Reset to CSS default
+                            }
                         } else {
-                            el.style.display = 'none';
+                            el.style.display = ''; // Reset to CSS default (hidden on desktop)
                         }
                     });
                 }, 100);
             });
         })();
-        
+
         // Also run on DOMContentLoaded as fallback
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
             const lang = (urlLang || 'en').toLowerCase() === 'nl' ? 'nl' : 'en';
-            
+
             const mobileShortElements = document.querySelectorAll('.mobile-short');
             const isMobile = window.innerWidth <= 640;
-            
-            mobileShortElements.forEach(function(el) {
-                if (isMobile && el.getAttribute('data-lang') === lang) {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
-                }
-            });
+
+            if (isMobile) {
+                mobileShortElements.forEach(function(el) {
+                    // Hide the wrong language
+                    if (el.getAttribute('data-lang') !== lang) {
+                        el.style.display = 'none';
+                    }
+                });
+            }
         });
     </script>
 </body>
