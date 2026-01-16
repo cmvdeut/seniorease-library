@@ -13,6 +13,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
@@ -20,7 +24,8 @@
             display: block;
             padding: 20px;
             color: #1F1F1F;
-            overflow-y: auto;
+            overflow: visible;
+            touch-action: pan-y;
         }
         .container {
             background: white;
