@@ -18,7 +18,7 @@ try {
 }
 
 // Download URL
-const url = 'https://www.seniorease.eu/downloads/app-demo-release.apk';
+const url = 'https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.5.apk';
 
 // Output file
 const outputFile = path.join(__dirname, 'qr-code-apk-download.png');
