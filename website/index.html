@@ -13,6 +13,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html, body {
+            height: 100%;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
@@ -22,6 +25,7 @@
             align-items: center;
             padding: 20px;
             color: #1F1F1F;
+            overflow-y: auto;
         }
         .container {
             background: white;
@@ -97,6 +101,15 @@
         @media (hover: none) {
             .download-button:hover {
                 transform: none;
+            }
+        }
+        @media (max-width: 640px) {
+            body {
+                align-items: flex-start;
+                padding: 16px 12px 24px;
+            }
+            .container {
+                margin: 16px 0;
             }
         }
         .mobile-short {
