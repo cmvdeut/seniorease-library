@@ -5,6 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.text.input.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.seniorease.library.data.Item
@@ -933,6 +935,7 @@ fun AddItemDialog(
                         onValueChange = { code = it },
                             label = { Text(stringResource(R.string.item_code)) },
                         modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         trailingIcon = {
                             if (code.isNotBlank()) {
                                 IconButton(onClick = { code = "" }) {
