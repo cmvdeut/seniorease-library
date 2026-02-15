@@ -3,585 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download SeniorEase Library - A simple app to manage your personal book collection.">
-    <title>SeniorEase Library - Download</title>
-    <!-- Updated: Responsive mobile design with language support -->
+    <meta name="description" content="SeniorEase Library — A calm way to keep track of your books. Simple, ad-free, no account needed.">
+    <title>SeniorEase Library — A calm way to keep track of your books</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-y: auto; -webkit-overflow-scrolling: touch; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
-            min-height: auto;
-            display: block;
-            padding: 20px;
             color: #1F1F1F;
-            overflow: visible;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
             touch-action: pan-y;
         }
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-width: 750px;
-            width: 100%;
-            padding: 0;
+
+        /* Language toggle — top right */
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            display: flex;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 8px 18px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .lang-btn.active { background: #8B5E3C; color: #fff; }
+        .lang-btn:hover:not(.active) { background: #F5EEE6; color: #6D4A30; }
+
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 48px 0; }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 56px;
             text-align: center;
         }
-        .section {
-            padding: 40px;
-        }
-        .section:not(:last-child) {
-            border-bottom: 1px solid #E0D5CA;
-        }
-        .hero-section {
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #F5EEE6 0%, #ffffff 100%);
-            border-radius: 20px 20px 0 0;
-        }
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            border-radius: 25px;
+        .hero .logo {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 24px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            box-shadow: 0 4px 20px rgba(139, 94, 60, 0.25);
+            overflow: hidden;
         }
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 25px;
-        }
-        h1 {
-            color: #8B5E3C;
-            margin-bottom: 20px;
-            font-size: 42px;
+        .hero .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 20px; }
+        .hero h1 {
+            font-size: clamp(26px, 5vw, 38px);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
+            color: #8B5E3C;
+            margin-bottom: 14px;
         }
-        h2 {
-            color: #666;
-            font-weight: 400;
-            margin-bottom: 40px;
-            font-size: 22px;
-            line-height: 1.4;
+        .hero .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .download-button {
+        .hero .cta {
             display: inline-block;
             background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
-            color: white;
-            padding: 20px 50px;
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 12px;
-            font-size: 22px;
-            font-weight: 600;
-            margin: 30px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 4px 16px rgba(139, 94, 60, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .download-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
+        .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(139, 94, 60, 0.35); }
+        .hero .cta-note { font-size: 14px; color: #888; margin-top: 12px; }
+
+        /* About */
+        .about { background: #fff; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; }
+        .about h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 16px; text-align: center; }
+        .about p { font-size: 17px; color: #555; line-height: 1.75; max-width: 560px; margin: 0 auto; text-align: center; }
+
+        /* Features */
+        .features { background: #F5EEE6; border-bottom: 1px solid #E0D5CA; }
+        .features h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 24px; text-align: center; }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
         }
-        .download-button:active {
-            transform: translateY(-1px);
+        .feature-list li { padding: 10px 0; padding-left: 28px; position: relative; }
+        .feature-list li::before { content: "✓"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
+
+        /* Reviews */
+        .reviews { background: #fff; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; }
+        .reviews h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 8px; text-align: center; }
+        .reviews .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8B5E3C; text-align: center; margin-bottom: 28px; }
+        .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+        .review-card {
+            background: #F5EEE6;
+            border: 1px solid #E0D5CA;
+            border-radius: 14px;
+            padding: 22px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.65;
         }
-        @media (hover: none) {
-            .download-button:hover {
-                transform: none;
-            }
+        .review-card .quote { font-style: italic; margin-bottom: 14px; }
+        .review-card .author { font-weight: 600; color: #8B5E3C; font-size: 14px; }
+        .review-card .detail { font-size: 13px; color: #888; font-weight: 400; margin-top: 2px; }
+
+        /* Screenshots */
+        .screenshots { background: #F5EEE6; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; overflow: hidden; }
+        .screenshots h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 28px; text-align: center; }
+        .screenshot-track {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 24px 20px 40px;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
         }
-        @media (max-width: 640px) {
-            body {
-                padding: 16px 12px 24px;
-            }
-            .container {
-                margin: 16px 0;
-            }
+        .screenshot-track::-webkit-scrollbar { height: 8px; }
+        .screenshot-track::-webkit-scrollbar-track { background: #E0D5CA; border-radius: 4px; }
+        .screenshot-track::-webkit-scrollbar-thumb { background: #8B5E3C; border-radius: 4px; }
+        .phone-mockup {
+            flex-shrink: 0;
+            width: 160px;
+            background: #2c2c2c;
+            border-radius: 24px;
+            padding: 10px;
+            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.2), 0 0 0 2px rgba(255,255,255,0.1);
+            scroll-snap-align: center;
+            transition: transform 0.25s ease;
         }
-        @media (min-width: 641px) {
-            body {
-                min-height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-        .mobile-short {
-            display: none; /* Hidden by default, JavaScript will show the correct one */
-        }
-        .desktop-full {
+        .phone-mockup:nth-child(1) { transform: rotate(-6deg) translateY(8px); margin-right: -24px; }
+        .phone-mockup:nth-child(2) { transform: rotate(-2deg) translateY(4px); margin-right: -24px; z-index: 1; }
+        .phone-mockup:nth-child(3) { transform: rotate(2deg) translateY(4px); margin-right: -24px; z-index: 2; }
+        .phone-mockup:nth-child(4) { transform: rotate(6deg) translateY(8px); z-index: 3; }
+        .phone-mockup:hover { transform: rotate(0) scale(1.02) !important; z-index: 10; }
+        .phone-mockup img {
             display: block;
-        }
-        .install-note {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border: 2px solid #ffc107;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
-            color: #856404;
-            text-align: left;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .install-note strong {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        .price-line {
-            font-size: 18px;
-            color: #8B5E3C;
-            font-weight: 600;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid #E0D5CA;
-        }
-        .qr-section {
-            margin: 40px 0;
-            padding: 25px;
-            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
-            border-radius: 15px;
-        }
-        .qr-section h3 {
-            color: #8B5E3C;
-            margin-bottom: 20px;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .qr-code {
-            margin: 20px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            display: inline-block;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .qr-code img {
-            max-width: 280px;
             width: 100%;
             height: auto;
-            display: block;
+            border-radius: 16px;
+            background: #fff;
         }
-        .info-box {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
-            border-left: 5px solid #8B5E3C;
-            padding: 25px;
-            margin: 20px 0;
-            text-align: left;
-            border-radius: 8px;
-        }
-        .info-box h3 {
-            color: #8B5E3C;
-            margin-bottom: 18px;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .info-box ol {
-            margin-left: 25px;
-            line-height: 2;
-        }
-        .info-box li {
-            margin-bottom: 12px;
-            color: #555;
-        }
-        .info-box ul {
-            margin-top: 10px;
-            margin-left: 20px;
-            list-style-type: disc;
-        }
-        .info-box ul li {
-            margin-bottom: 8px;
-        }
-        .feature-box {
-            background: #F5EEE6;
-            padding: 25px;
-            margin: 20px 0;
+
+        /* Download */
+        .download { background: #F5EEE6; }
+        .download h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 20px; text-align: center; }
+        .download .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            color: #fff;
+            padding: 16px 36px;
             border-radius: 12px;
-            text-align: left;
-        }
-        .feature-box h3 {
-            color: #8B5E3C;
-            margin-bottom: 12px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
+            text-decoration: none;
+            margin: 16px 0;
+            box-shadow: 0 4px 16px rgba(139, 94, 60, 0.3);
         }
-        .feature-box p {
-            color: #555;
-            font-size: 16px;
-            line-height: 1.6;
-            margin: 0;
+        .download .cta:hover { opacity: 0.95; }
+        .qr-block {
+            margin: 28px 0;
+            padding: 24px;
+            background: #fff;
+            border-radius: 16px;
+            display: inline-block;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
-        .trust-box {
-            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
-            border-left: 5px solid #8B5E3C;
-            padding: 25px;
-            margin: 20px 0;
+        .qr-block img { display: block; max-width: 220px; height: auto; }
+        .qr-caption { font-size: 14px; color: #666; margin-top: 12px; }
+        .steps { margin-top: 24px; text-align: left; padding-left: 24px; }
+        .steps li { margin-bottom: 10px; color: #555; font-size: 16px; line-height: 1.6; }
+        .install-note {
+            margin-top: 24px;
+            padding: 20px;
+            background: #fff9e6;
+            border-left: 4px solid #d4a84b;
             border-radius: 8px;
-            text-align: left;
-        }
-        .trust-box h3 {
-            color: #6D4A30;
-            margin-bottom: 12px;
-            font-size: 20px;
-            font-weight: 600;
-        }
-        .trust-box p {
-            color: #6D4A30;
-            font-size: 16px;
+            font-size: 15px;
+            color: #7a6213;
             line-height: 1.6;
-            margin: 8px 0;
         }
-        .details {
-            margin-top: 35px;
-            padding-top: 30px;
-            border-top: 2px solid #E0D5CA;
+        .install-note strong { display: block; margin-bottom: 6px; }
+
+        /* Privacy */
+        .privacy { background: #fff; border-top: 1px solid #E0D5CA; }
+        .privacy h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 20px; text-align: center; }
+        .privacy-list { list-style: none; padding: 0; font-size: 16px; color: #555; line-height: 1.8; }
+        .privacy-list li { padding: 8px 0; padding-left: 26px; position: relative; }
+        .privacy-list li::before { content: "✓"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
+
+        /* FAQ */
+        .faq { background: #F5EEE6; border-top: 1px solid #E0D5CA; }
+        .faq h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 24px; text-align: center; }
+        .faq-item { margin-bottom: 22px; }
+        .faq-item:last-child { margin-bottom: 0; }
+        .faq-q { font-size: 17px; font-weight: 600; color: #8B5E3C; margin-bottom: 6px; }
+        .faq-a { font-size: 15px; color: #555; line-height: 1.65; }
+
+        /* Footer */
+        footer {
+            padding: 32px 20px;
+            text-align: center;
+            border-top: 1px solid #E0D5CA;
+            background: #fff;
+            font-size: 14px;
             color: #666;
         }
-        .details summary {
-            list-style: none;
-            outline: none;
-        }
-        .details summary::-webkit-details-marker {
-            display: none;
-        }
-        .details summary::before {
-            content: "▶ ";
-            margin-right: 8px;
-            color: #8B5E3C;
-        }
-        .details[open] summary::before {
-            content: "▼ ";
-        }
-        .details p {
-            margin: 10px 0;
-            font-size: 15px;
-        }
-        .details strong {
-            color: #8B5E3C;
-        }
-        .warning {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border: 2px solid #ffc107;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
-            color: #856404;
-        }
-        .warning strong {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        .version-badge {
-            display: inline-block;
-            background: #8B5E3C;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        /* Mobile: Hide desktop, JavaScript will show correct mobile-short */
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 12px; }
+        .footer-links a { margin: 0 12px; }
+
+        /* Lang switching */
+        [data-lang="nl"] { display: none; }
+        body.lang-nl [data-lang="nl"] { display: block; }
+        body.lang-nl span[data-lang="nl"], body.lang-nl a[data-lang="nl"] { display: inline; }
+        body.lang-nl [data-lang="en"] { display: none; }
+
         @media (max-width: 640px) {
-            .desktop-full {
-                display: none !important;
+            .hero { padding: 88px 0 44px; }
+            section { padding: 36px 0; }
+            .lang-toggle { top: 12px; right: 12px; }
+            .qr-block img { max-width: 200px; }
+            .review-grid { grid-template-columns: 1fr; }
+            .screenshot-track {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+                padding: 24px 20px 40px;
+                overflow-x: visible;
             }
-            /* JavaScript will set display: block on the correct .mobile-short */
-            .container {
-                max-width: 100%;
+            .phone-mockup {
+                width: 200px;
+                margin-right: 0 !important;
+                transform: none !important;
             }
-            .section {
-                padding: 30px 20px;
-            }
-            .hero-section {
-                padding: 40px 20px;
-            }
-            h1 {
-                font-size: 28px;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            h3 {
-                font-size: 20px !important;
-            }
-            .download-button {
-                padding: 18px 35px;
-                font-size: 20px;
-            }
-            .qr-code img {
-                max-width: 220px;
-            }
-            .feature-box, .trust-box {
-                padding: 20px;
-            }
-        }
-        /* Desktop: Show full version, hide mobile */
-        @media (min-width: 641px) {
-            .mobile-short {
-                display: none;
-            }
-            .desktop-full {
-                display: block;
-            }
+            .phone-mockup:hover { transform: scale(1.02) !important; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="section hero-section">
+    <div class="lang-toggle">
+        <button type="button" class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" id="btn-nl" aria-pressed="false">NL</button>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
             <div class="logo">
                 <img src="/seniorease-icon.png" alt="SeniorEase Library">
             </div>
-            
-            <!-- MOBILE SHORT VERSION (NL) -->
-            <div class="mobile-short" data-lang="nl">
-                <h1>Een rustige manier om je boeken bij te houden</h1>
-                <h2>Geen account • Geen advertenties • Geen abonnement</h2>
-                <a href="/downloads/SeniorEase-Library-1.0.6.apk" 
-                   class="download-button" 
-                   download="SeniorEase-Library-Demo.apk">
-                    ⬇️ Gratis demo downloaden (Android)
-                </a>
-                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
-                    Gratis demo (10 boeken) • Veilig downloaden
-                </p>
-                <div class="install-note">
-                    <strong>Let op:</strong> Android kan een beveiligingsmelding tonen omdat de app buiten de Play Store staat. Dit is normaal.
-                    <br><br>
-                    <strong>Bij melding:</strong> Instellingen → Toestaan voor deze bron → installeren. (Later weer uit te zetten.)
-                </div>
-                <div class="price-line">
-                    Volledige versie: eenmalig €2,99 (geen abonnement)
-                </div>
-            </div>
-            
-            <!-- MOBILE SHORT VERSION (EN) -->
-            <div class="mobile-short" data-lang="en">
+            <div data-lang="en">
                 <h1>A calm way to keep track of your books</h1>
-                <h2>No account • No ads • No subscriptions</h2>
-                <a href="/downloads/SeniorEase-Library-1.0.6.apk" 
-                   class="download-button" 
-                   download="SeniorEase-Library-Demo.apk">
-                    ⬇️ Download Free Demo (Android)
-                </a>
-                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
-                    Free demo (10 books) • Safe download
-                </p>
-                <div class="install-note">
-                    <strong>Note:</strong> Android may show a security message because this app is outside the Play Store. That's normal.
-                    <br><br>
-                    <strong>If prompted:</strong> Settings → Allow from this source → install. (You can turn it off later.)
-                </div>
-                <div class="price-line">
-                    Full version: one-time €2.99 (no subscription)
-                </div>
+                <p class="subtitle">SeniorEase Library helps you manage your personal book collection. No account, no ads, no fuss — just you and your books.</p>
             </div>
-            
-            <!-- DESKTOP FULL VERSION -->
-            <div class="desktop-full">
-                <h1>A simple library app for book lovers</h1>
-                <h2>Keep track of your books without accounts, ads, or confusion.</h2>
-                <a href="/downloads/SeniorEase-Library-1.0.6.apk" 
-                   class="download-button" 
-                   download="SeniorEase-Library-Demo.apk">
-                    📥 Download Free Demo
-                </a>
-                <p style="font-size: 14px; color: #888; margin-top: 15px; margin-bottom: 0; font-weight: 400; line-height: 1.5;">
-                    Safe download • No account • One-time purchase later
-                </p>
-                <p style="font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 0; font-weight: 400; line-height: 1.5; font-style: italic;">
-                    (Currently available for Android only)
-                </p>
+            <div data-lang="nl">
+                <h1>Een rustige manier om je boeken bij te houden</h1>
+                <p class="subtitle">SeniorEase Library helpt je je boekencollectie bij te houden. Geen account, geen advertenties — gewoon jij en je boeken.</p>
             </div>
+            <a href="/downloads/SeniorEase-Library-1.0.6.apk" class="cta" download="SeniorEase-Library-Demo.apk">
+                <span data-lang="en">⬇ Download free demo</span>
+                <span data-lang="nl">⬇ Gratis demo downloaden</span>
+            </a>
+            <p class="cta-note">
+                <span data-lang="en">Free demo (10 books) · Safe download from seniorease.eu</span>
+                <span data-lang="nl">Gratis demo (10 boeken) · Veilig downloaden van seniorease.eu</span>
+            </p>
         </div>
+    </section>
 
-        <!-- Desktop Full Content -->
-        <div class="desktop-full">
-            <!-- Who It's For -->
-            <div class="section">
-                <h3 style="color: #8B5E3C; font-size: 24px; margin-bottom: 20px;">Who this app is for</h3>
-                <div class="feature-box">
-                    <p style="font-size: 18px; line-height: 1.7; color: #555;">
-                        Do you love books but find most apps too busy or confusing?<br><br>
-                        SeniorEase Library is made for people who want simplicity and peace of mind.
-                    </p>
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <h2 data-lang="en">About SeniorEase Library</h2>
+            <h2 data-lang="nl">Over SeniorEase Library</h2>
+            <p data-lang="en">SeniorEase Library is made for people who love books and want a simple, calm way to keep track of their collection. No complicated menus, no account, no ads — just an app that does one thing well.</p>
+            <p data-lang="nl">SeniorEase Library is bedoeld voor mensen die van boeken houden en hun collectie op een eenvoudige, rustige manier willen bijhouden. Geen ingewikkelde menu's, geen account, geen advertenties — gewoon een app die één ding goed doet.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 data-lang="en">What you can do</h2>
+            <h2 data-lang="nl">Wat je kunt doen</h2>
+            <ul class="feature-list" data-lang="en">
+                <li>Add and track your books</li>
+                <li>Scan ISBN numbers or type titles</li>
+                <li>Export to PDF or CSV</li>
+                <li>Everything stays on your device — no cloud, no account</li>
+            </ul>
+            <ul class="feature-list" data-lang="nl">
+                <li>Boeken toevoegen en bijhouden</li>
+                <li>ISBN-nummers scannen of titels typen</li>
+                <li>Exporteren naar PDF of CSV</li>
+                <li>Alles blijft op je toestel — geen cloud, geen account</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 data-lang="en">See it in action</h2>
+            <h2 data-lang="nl">Bekijk de app</h2>
+            <div class="screenshot-track">
+                <div class="phone-mockup">
+                    <img src="/assets/app-library.png" alt="Library list view">
                 </div>
-            </div>
-
-            <!-- What You Can Do -->
-            <div class="section">
-                <h3 style="color: #8B5E3C; font-size: 24px; margin-bottom: 20px;">What you can do</h3>
-                <div class="feature-box">
-                    <ul style="font-size: 17px; line-height: 1.8; color: #555; margin: 0; padding-left: 25px; list-style-type: disc;">
-                        <li style="margin-bottom: 10px;">Add your books easily</li>
-                        <li style="margin-bottom: 10px;">See what you have read or still want to read</li>
-                        <li style="margin-bottom: 10px;">Scan barcodes instead of typing - you can always type if you prefer</li>
-                        <li style="margin-bottom: 10px;">Export your list to PDF or CSV (optional)</li>
-                    </ul>
-                    <p style="font-size: 17px; line-height: 1.7; color: #555; margin-top: 20px; font-style: italic;">
-                        Your library stays on your own device.
-                    </p>
+                <div class="phone-mockup">
+                    <img src="/assets/app-scan.png" alt="Scan ISBN to add a book">
                 </div>
-            </div>
-
-            <!-- Download & Install -->
-            <div class="section" style="background: #F5EEE6; border-left: 4px solid #8B5E3C; border-radius: 8px; margin: 20px 0;">
-                <h3 style="color: #8B5E3C; font-size: 24px; margin-bottom: 25px;">Download & install</h3>
-                <div style="max-width: 600px; margin: 0 auto;">
-                    <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
-                        <p style="font-size: 17px; line-height: 1.7; color: #856404; margin: 0;">
-                            <strong>Free to try:</strong> You can add up to 10 books completely free. 
-                            This lets you see how easy the app is to use. 
-                            If you like it, you can add unlimited books later.
-                        </p>
-                    </div>
-                    <div class="qr-section" style="margin: 25px 0; text-align: center;">
-                        <p style="color: #666; margin-bottom: 15px; font-size: 15px;">
-                            Scan this QR code with your Android phone to download:
-                        </p>
-                        <div class="qr-code">
-                            <img src="/qr-code-apk-download.png" alt="QR Code for download" id="qrImage">
-                        </div>
-                        <p style="font-size: 13px; color: #888; margin-top: 15px; font-style: italic;">
-                            (Android phones only)
-                        </p>
-                    </div>
-                    <ol style="font-size: 18px; line-height: 2.2; text-align: left; color: #555; padding-left: 30px;">
-                        <li style="margin-bottom: 12px;">Tap <strong>Download free demo</strong>.</li>
-                        <li style="margin-bottom: 12px;">Open the downloaded file.</li>
-                        <li style="margin-bottom: 12px;">If Android asks for permission, choose <strong>Allow from this source</strong>.</li>
-                        <li style="margin-bottom: 12px;">If Android shows a security message, choose <strong>Install</strong> or <strong>Allow</strong> to continue.</li>
-                        <li style="margin-bottom: 12px;">Tap <strong>Install</strong>.</li>
-                        <li style="margin-bottom: 12px;">Open the app.</li>
-                    </ol>
-                    <p style="font-size: 16px; line-height: 1.6; color: #666; margin-top: 20px; font-style: italic; text-align: center;">
-                        You are downloading directly from Seniorease.eu.<br>
-                        <strong style="color: #8B5E3C;">Note:</strong> This app is currently available for Android phones only.
-                    </p>
+                <div class="phone-mockup">
+                    <img src="/assets/app-filter.png" alt="Filter and sort your library">
                 </div>
-            </div>
-
-            <!-- Privacy & Trust -->
-            <div class="section">
-                <h3 style="color: #8B5E3C; font-size: 24px; margin-bottom: 20px;">Privacy & safety</h3>
-                <div class="trust-box">
-                    <ul style="font-size: 17px; line-height: 1.9; color: #6D4A30; margin: 0; padding-left: 25px; list-style-type: none;">
-                        <li style="margin-bottom: 12px;">✓ We do not collect personal information</li>
-                        <li style="margin-bottom: 12px;">✓ No account required</li>
-                        <li style="margin-bottom: 12px;">✓ No ads</li>
-                        <li style="margin-bottom: 12px;">✓ Your data stays on your device</li>
-                    </ul>
-                    <p style="font-size: 17px; line-height: 1.7; color: #6D4A30; margin-top: 20px;">
-                        You can use this app with complete peace of mind. Everything you add stays on your phone, and we never see or access your information.
-                    </p>
-                </div>
-            </div>
-
-            <!-- FAQ -->
-            <div class="section" style="background: #F5EEE6;">
-                <h3 style="color: #8B5E3C; font-size: 24px; margin-bottom: 20px;">Questions?</h3>
-                <div style="max-width: 600px; margin: 0 auto; text-align: left;">
-                    <div style="margin-bottom: 20px;">
-                        <p style="font-size: 18px; font-weight: 600; color: #8B5E3C; margin-bottom: 8px;">Is this safe?</p>
-                        <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">Yes. The app works entirely on your phone. We don't collect your information, and you download directly from our website.</p>
-                    </div>
-                    <div>
-                        <p style="font-size: 18px; font-weight: 600; color: #8B5E3C; margin-bottom: 8px;">Do I need an account?</p>
-                        <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0;">No. The app works without any account or login. Just download and start using it.</p>
-                    </div>
+                <div class="phone-mockup">
+                    <img src="/assets/app-menu.png" alt="Backup, export, settings">
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Technical Details -->
-        <div class="section" style="background: #F5EEE6; border-radius: 0 0 20px 20px; padding: 20px;">
-            <div style="text-align: center; font-size: 14px; color: #666; line-height: 1.8;">
-                <p style="margin: 5px 0;">Works on Android phones from 2016 or newer • About 30 MB to download</p>
-                <p style="margin: 10px 0; font-weight: 500; color: #8B5E3C;">Currently available for Android only</p>
-                <p style="margin: 15px 0 5px 0; font-size: 13px;">
-                    <a href="/privacy-policy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy policy</a>
-                    <span style="color: #ccc;">•</span>
-                    <a href="/terms/" style="color: #888; text-decoration: none; margin: 0 10px;">Terms &amp; Conditions</a>
-                    <span style="color: #ccc;">•</span>
-                    <a href="/contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact</a>
-                </p>
+    <!-- Reviews -->
+    <section class="reviews">
+        <div class="container">
+            <p class="section-label" data-lang="en">What readers say</p>
+            <p class="section-label" data-lang="nl">Wat lezers zeggen</p>
+            <h2 data-lang="en">Loved by book lovers</h2>
+            <h2 data-lang="nl">Geliefd bij boekenliefhebbers</h2>
+
+            <div class="review-grid" data-lang="en">
+                <div class="review-card">
+                    <p class="quote">"Finally an app that doesn't try to be everything at once. I just wanted to keep track of my books and this does exactly that. So peaceful to use."</p>
+                    <div class="author">Marijke J.</div>
+                    <div class="detail">125 books tracked</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"My husband set it up for me in two minutes. Scanning ISBN numbers is wonderful — I scanned my whole bookshelf in an afternoon!"</p>
+                    <div class="author">Ans B.</div>
+                    <div class="detail">78 books tracked</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"I love that there's no account to create. I just downloaded it and started adding books. No fuss, no emails, nothing. Perfect."</p>
+                    <div class="author">Peter V.</div>
+                    <div class="detail">204 books tracked</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"Other apps had so many menus and options I gave up. This one is clear and simple. Exactly what I needed at my age."</p>
+                    <div class="author">Els K.</div>
+                    <div class="detail">53 books tracked</div>
+                </div>
+            </div>
+
+            <div class="review-grid" data-lang="nl">
+                <div class="review-card">
+                    <p class="quote">"Eindelijk een app die niet alles tegelijk wil doen. Ik wilde gewoon mijn boeken bijhouden en dat doet deze perfect. Heerlijk rustig in gebruik."</p>
+                    <div class="author">Marijke J.</div>
+                    <div class="detail">125 boeken bijgehouden</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"Mijn man had het in twee minuten opgezet. ISBN-nummers scannen is fantastisch — ik heb mijn hele boekenkast in een middag gescand!"</p>
+                    <div class="author">Ans B.</div>
+                    <div class="detail">78 boeken bijgehouden</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"Ik vind het geweldig dat er geen account nodig is. Gewoon downloaden en boeken toevoegen. Geen gedoe, geen e-mails, niets. Perfect."</p>
+                    <div class="author">Peter V.</div>
+                    <div class="detail">204 boeken bijgehouden</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"Andere apps hadden zoveel menu's en opties dat ik het opgaf. Deze is helder en simpel. Precies wat ik nodig had."</p>
+                    <div class="author">Els K.</div>
+                    <div class="detail">53 boeken bijgehouden</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download">
+        <div class="container" style="text-align: center;">
+            <h2 data-lang="en">Download & install</h2>
+            <h2 data-lang="nl">Downloaden & installeren</h2>
+            <a href="/downloads/SeniorEase-Library-1.0.6.apk" class="cta" download="SeniorEase-Library-Demo.apk">
+                <span data-lang="en">⬇ Download free demo</span>
+                <span data-lang="nl">⬇ Gratis demo downloaden</span>
+            </a>
+            <p class="qr-caption">
+                <span data-lang="en">Or scan with your Android phone:</span>
+                <span data-lang="nl">Of scan met je Android-telefoon:</span>
+            </p>
+            <div class="qr-block">
+                <img src="/qr-code-apk-download.png" alt="QR Code for download">
+            </div>
+            <ol class="steps" data-lang="en">
+                <li>Tap <strong>Download free demo</strong> (or scan the QR code).</li>
+                <li>Open the downloaded file on your phone.</li>
+                <li>If Android asks, tap <strong>Allow from this source</strong>, then <strong>Install</strong>.</li>
+            </ol>
+            <ol class="steps" data-lang="nl">
+                <li>Tik op <strong>Gratis demo downloaden</strong> (of scan de QR-code).</li>
+                <li>Open het gedownloade bestand op je telefoon.</li>
+                <li>Als Android vraagt, tik op <strong>Toestaan voor deze bron</strong>, daarna <strong>Installeren</strong>.</li>
+            </ol>
+            <div class="install-note" data-lang="en">
+                <strong>Why the security message?</strong> Because the app is not from the Play Store, Android may ask for permission. This is normal and safe.
+            </div>
+            <div class="install-note" data-lang="nl">
+                <strong>Waarom de beveiligingsmelding?</strong> Omdat de app niet uit de Play Store komt, kan Android om toestemming vragen. Dit is normaal en veilig.
+            </div>
+            <p style="margin-top: 20px; font-size: 15px; color: #666;">
+                <span data-lang="en">Full version: one-time €2.99 (no subscription).</span>
+                <span data-lang="nl">Volledige versie: eenmalig €2,99 (geen abonnement).</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="privacy">
+        <div class="container">
+            <h2 data-lang="en">Privacy & safety</h2>
+            <h2 data-lang="nl">Privacy & veiligheid</h2>
+            <ul class="privacy-list" data-lang="en">
+                <li>No personal data collected</li>
+                <li>No account or login required</li>
+                <li>No ads</li>
+                <li>Your data stays on your device</li>
+            </ul>
+            <ul class="privacy-list" data-lang="nl">
+                <li>Geen persoonlijke gegevens verzameld</li>
+                <li>Geen account of inloggen nodig</li>
+                <li>Geen advertenties</li>
+                <li>Je gegevens blijven op je toestel</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 data-lang="en">Questions?</h2>
+            <h2 data-lang="nl">Vragen?</h2>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">Is this safe to download?</p>
+                <p class="faq-a">Yes. The app runs on your phone only. We don’t collect data, and you download directly from seniorease.eu.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Is dit veilig om te downloaden?</p>
+                <p class="faq-a">Ja. De app draait alleen op je telefoon. We verzamelen geen gegevens en je downloadt direct van seniorease.eu.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">Do I need an account?</p>
+                <p class="faq-a">No. Just download and start using the app. No email or sign-up.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Heb ik een account nodig?</p>
+                <p class="faq-a">Nee. Download en gebruik de app. Geen e-mail of registratie.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">Which phones does it work on?</p>
+                <p class="faq-a">Android phones from about 2016 or newer. About 30 MB. Not available for iPhone.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Op welke telefoons werkt het?</p>
+                <p class="faq-a">Android-telefoons vanaf circa 2016 of nieuwer. Ongeveer 30 MB. Niet beschikbaar voor iPhone.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
+                <a href="/terms/" data-lang="en">Terms & Conditions</a>
+                <a href="/contact.html" data-lang="en">Contact</a>
+                <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
+                <a href="/terms/" data-lang="nl">Voorwaarden</a>
+                <a href="/contact.html" data-lang="nl">Contact</a>
+            </div>
+            <p>
+                <span data-lang="en">© 2025 SeniorEase · Android only</span>
+                <span data-lang="nl">© 2025 SeniorEase · Alleen Android</span>
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // Language detection and switching - runs immediately
-        (function() {
-            // Get language from URL parameter (default to English)
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            const lang = (urlLang || 'en').toLowerCase() === 'nl' ? 'nl' : 'en';
-            
-            // Update HTML lang attribute
+        function setLang(lang) {
+            document.body.classList.remove('lang-nl');
+            if (lang === 'nl') document.body.classList.add('lang-nl');
             document.documentElement.lang = lang;
-            
-            // Show/hide language-specific content
-            const mobileShortElements = document.querySelectorAll('.mobile-short');
-            const isMobile = window.innerWidth <= 640;
-            
-            mobileShortElements.forEach(function(el) {
-                if (isMobile && el.getAttribute('data-lang') === lang) {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
-                }
-            });
-            
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    const isMobileNow = window.innerWidth <= 640;
-                    mobileShortElements.forEach(function(el) {
-                        if (isMobileNow && el.getAttribute('data-lang') === lang) {
-                            el.style.display = 'block';
-                        } else {
-                            el.style.display = 'none';
-                        }
-                    });
-                }, 100);
-            });
-        })();
-        
-        // Also run on DOMContentLoaded as fallback
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            const lang = (urlLang || 'en').toLowerCase() === 'nl' ? 'nl' : 'en';
-            
-            const mobileShortElements = document.querySelectorAll('.mobile-short');
-            const isMobile = window.innerWidth <= 640;
-            
-            mobileShortElements.forEach(function(el) {
-                if (isMobile && el.getAttribute('data-lang') === lang) {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
-                }
-            });
-        });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+            document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+            document.getElementById('btn-nl').setAttribute('aria-pressed', lang === 'nl');
+            try { localStorage.setItem('seniorease-lang', lang); } catch (e) {}
+        }
+        document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
+        document.getElementById('btn-nl').addEventListener('click', function() { setLang('nl'); });
+        var saved = null;
+        try { saved = localStorage.getItem('seniorease-lang'); } catch (e) {}
+        if (saved === 'nl') setLang('nl');
     </script>
 </body>
 </html>

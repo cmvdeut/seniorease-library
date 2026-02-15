@@ -19,49 +19,42 @@ if ($portInUse) {
 if (Get-Command python -ErrorAction SilentlyContinue) {
     Write-Host "✅ Using Python HTTP server" -ForegroundColor Green
     Write-Host ""
-    Write-Host "Server starting on: http://localhost:$port" -ForegroundColor Cyan
+    Write-Host "  Open in browser: http://localhost:$port" -ForegroundColor Cyan
+    Write-Host "  Or:              http://127.0.0.1:$port" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
     Write-Host ""
-    
-    Set-Location $websitePath
-    python -m http.server $port
+    python -m http.server $port -d $websitePath
 }
 # Try Python3
 elseif (Get-Command python3 -ErrorAction SilentlyContinue) {
     Write-Host "✅ Using Python3 HTTP server" -ForegroundColor Green
     Write-Host ""
-    Write-Host "Server starting on: http://localhost:$port" -ForegroundColor Cyan
+    Write-Host "  Open in browser: http://localhost:$port" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
     Write-Host ""
-    
-    Set-Location $websitePath
-    python3 -m http.server $port
+    python3 -m http.server $port -d $websitePath
 }
 # Try Node.js http-server
 elseif (Get-Command npx -ErrorAction SilentlyContinue) {
     Write-Host "✅ Using Node.js http-server" -ForegroundColor Green
     Write-Host ""
-    Write-Host "Server starting on: http://localhost:$port" -ForegroundColor Cyan
+    Write-Host "  Open in browser: http://localhost:$port" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
     Write-Host ""
-    
-    Set-Location $websitePath
-    npx -y http-server -p $port
+    Push-Location $websitePath; npx -y http-server -p $port; Pop-Location
 }
 # Try Vercel Dev
 elseif (Get-Command vercel -ErrorAction SilentlyContinue) {
     Write-Host "✅ Using Vercel Dev" -ForegroundColor Green
     Write-Host ""
-    Write-Host "Server starting on: http://localhost:3000" -ForegroundColor Cyan
+    Write-Host "  Open in browser: http://localhost:3000" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
     Write-Host ""
-    
-    Set-Location $websitePath
-    vercel dev
+    Push-Location $websitePath; vercel dev; Pop-Location
 }
 else {
     Write-Host "❌ No server found!" -ForegroundColor Red

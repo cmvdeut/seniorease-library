@@ -36,7 +36,9 @@ const filesToCopy = [
   'contact.html',
   'downloads',
   'qr-code-apk-download.png',
-  'seniorease-icon.png'
+  'seniorease-icon.png',
+  'favicon.png',
+  'assets'
 ];
 
 filesToCopy.forEach(file => {
