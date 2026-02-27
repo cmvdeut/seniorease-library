@@ -3,102 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - SeniorEase Library</title>
+    <meta name="description" content="SeniorEase Library — Privacy Policy">
+    <title>Privacy Policy — SeniorEase Library</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="tiktok-developers-site-verification" content="4CZzEmBwuWUjix0KfC3iQ7xNuGkCyWyv">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            padding: 30px 16px 60px;
             min-height: 100vh;
-            padding: 20px;
-            color: #333;
         }
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            display: flex;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 8px 18px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .lang-btn.active { background: #8B5E3C; color: #fff; }
+        .lang-btn:hover:not(.active) { background: #F5EEE6; color: #6D4A30; }
         .container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-width: 800px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            max-width: 820px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 48px 40px;
         }
-        h1 {
-            color: #8B4513;
-            margin-bottom: 30px;
-            font-size: 32px;
-            text-align: center;
+        @media (max-width: 600px) { .container { padding: 32px 20px; } }
+        .page-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #8B5E3C;
+            margin-bottom: 6px;
+        }
+        .updated {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 24px;
+        }
+        .intro {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E0D5CA;
         }
         h2 {
-            color: #8B4513;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 22px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #8B5E3C;
+            margin: 32px 0 10px;
         }
         p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.75;
+            color: #444;
+            margin-bottom: 12px;
         }
         ul {
-            margin-left: 25px;
-            margin-bottom: 15px;
+            margin: 8px 0 12px 20px;
+            color: #444;
         }
-        li {
-            font-size: 16px;
-            line-height: 1.7;
+        ul li {
+            font-size: 15px;
+            line-height: 1.75;
+            margin-bottom: 4px;
+        }
+        .highlight {
+            background: #F5EEE6;
+            border-left: 4px solid #8B5E3C;
+            padding: 16px 18px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 15px;
             color: #555;
-            margin-bottom: 8px;
+            line-height: 1.7;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: #8B4513;
+        .highlight strong { color: #8B5E3C; display: block; margin-bottom: 4px; }
+        .no-collect {
+            background: #F0F8EE;
+            border-left: 4px solid #6aab4f;
+            padding: 16px 18px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 15px;
+            color: #3a5a2e;
+            line-height: 1.7;
+        }
+        .no-collect strong { display: block; margin-bottom: 6px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 20px;
+            font-size: 14px;
+        }
+        th {
+            background: #F5EEE6;
+            color: #8B5E3C;
+            font-weight: 700;
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #E0D5CA;
+        }
+        td {
+            padding: 10px 12px;
+            border: 1px solid #E0D5CA;
+            vertical-align: top;
+            color: #444;
+            line-height: 1.6;
+        }
+        tr:nth-child(even) td { background: #FDFAF7; }
+        .footer-links {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #E0D5CA;
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+        .footer-links a {
+            color: #8B5E3C;
             text-decoration: none;
-            font-size: 16px;
+            margin: 0 10px;
         }
-        .back-link:hover {
-            text-decoration: underline;
-        }
+        .footer-links a:hover { text-decoration: underline; }
+
+        [data-lang="nl"] { display: none; }
+        body.lang-nl [data-lang="nl"] { display: block; }
+        body.lang-nl span[data-lang="nl"] { display: inline; }
+        body.lang-nl [data-lang="en"] { display: none; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        
-        <h2>Your Privacy Matters</h2>
-        <p>SeniorEase Library is designed with your privacy in mind. This policy explains how we handle your information.</p>
-        
-        <h2>What We Don't Collect</h2>
-        <ul>
-            <li>We do not collect personal information</li>
-            <li>We do not require an account</li>
-            <li>We do not show ads</li>
-            <li>We do not track your usage</li>
-        </ul>
-        
-        <h2>How the App Works</h2>
-        <p>All your book information is stored only on your device. The app works entirely offline after you download it.</p>
-        
-        <p>When you scan an ISBN number, the app may connect to public databases (like Google Books) to find book information. This information is only used to fill in details about your books.</p>
-        
-        <h2>Your Data</h2>
-        <p>Everything you add to the app stays on your phone. We never see or access your information. If you delete the app, all your data is removed from your device.</p>
-        
-        <h2>Camera Access</h2>
-        <p>If you choose to scan ISBN numbers, the app will ask for camera permission. The camera is only used for scanning ISBN numbers. We do not store or share any camera images.</p>
-        
-        <h2>Contact</h2>
-        <p>If you have questions about privacy, please <a href="/contact.html" style="color: #8B4513;">contact us</a>.</p>
-        
-        <p style="margin-top: 30px; font-size: 14px; color: #888; text-align: center;">
-            Last updated: January 2025
-        </p>
-        
-        <a href="/" class="back-link">← Back to homepage</a>
+    <div class="lang-toggle">
+        <button type="button" class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" id="btn-nl" aria-pressed="false">NL</button>
     </div>
+
+    <div class="container">
+
+        <!-- ═══════════════════ ENGLISH ═══════════════════ -->
+        <div data-lang="en">
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="updated">Last updated: February 27, 2026</p>
+            <p class="intro">
+                Your privacy matters to us. SeniorEase Library is designed to collect as little data as possible. This policy explains clearly what data is and is not collected, and why.
+            </p>
+
+            <div class="no-collect">
+                <strong>The short version</strong>
+                The app stores your books on your device only — we never see them. The only personal data we ever handle is your email address when you make a purchase, processed securely through Stripe.
+            </div>
+
+            <h2>1. Who We Are</h2>
+            <p>SeniorEase Library is provided by SeniorEase. You can reach us at <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a>. We are the data controller for any personal data described in this policy.</p>
+
+            <h2>2. Data the App Stores on Your Device</h2>
+            <p>All book data you enter (titles, authors, ISBN numbers, notes, read/owned status) is stored <strong>only on your device</strong>. This data never leaves your phone unless you choose to export it yourself using the built-in PDF or CSV export function.</p>
+            <p>We have no access to your book list. We cannot see, read, or retrieve it.</p>
+
+            <h2>3. Data We Collect</h2>
+            <p>We collect very little. Here is a complete overview:</p>
+            <table>
+                <tr>
+                    <th>What</th>
+                    <th>Why</th>
+                    <th>How long</th>
+                </tr>
+                <tr>
+                    <td><strong>Email address</strong> (purchase only)</td>
+                    <td>To verify your purchase and allow you to unlock the full version. If you reinstall, we use this to reset your unlock.</td>
+                    <td>As long as your purchase is active. You can request deletion at any time.</td>
+                </tr>
+            </table>
+            <p>That is all. No names, no phone numbers, no location, no usage statistics, no advertising identifiers.</p>
+
+            <h2>4. Camera Permission</h2>
+            <p>The app asks for camera permission when you use the ISBN scanning feature. The camera is used <em>only</em> to read barcodes. No images are stored, sent, or processed by us. Camera access is entirely optional — you can also add books by typing the title or ISBN manually.</p>
+
+            <h2>5. ISBN Lookup — Google Books API</h2>
+            <p>When you scan or enter an ISBN number, the app may send that ISBN to the Google Books API to retrieve book details (title, author, cover image). Only the ISBN number is sent — no personal data. Google's own privacy policy applies to this request: <a href="https://policies.google.com/privacy" style="color:#8B5E3C;" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+            <h2>6. Payments — Stripe</h2>
+            <p>Payments for the full version are processed by <strong>Stripe, Inc.</strong>, a trusted third-party payment provider. When you make a purchase:</p>
+            <ul>
+                <li>Stripe collects your payment card details and billing information directly. We never see your card number.</li>
+                <li>We receive only a confirmation of payment and your email address.</li>
+                <li>Stripe's privacy policy: <a href="https://stripe.com/privacy" style="color:#8B5E3C;" target="_blank" rel="noopener">stripe.com/privacy</a></li>
+            </ul>
+
+            <h2>7. Website — Cookies &amp; Analytics</h2>
+            <p>The website seniorease.eu does not use tracking cookies or analytics tools. No advertising cookies are placed. The website may store a single technical preference (your chosen language) in your browser's local storage — this contains no personal data and is not shared with anyone.</p>
+
+            <h2>8. Children's Privacy</h2>
+            <p>SeniorEase Library is not directed at children under 16. We do not knowingly collect data from children. If you believe a child has provided personal data to us, please contact us and we will delete it.</p>
+
+            <h2>9. Your Rights (GDPR)</h2>
+            <p>If you are located in the European Economic Area, you have the following rights regarding your personal data:</p>
+            <ul>
+                <li><strong>Access</strong> — request a copy of the data we hold about you</li>
+                <li><strong>Rectification</strong> — ask us to correct inaccurate data</li>
+                <li><strong>Erasure</strong> — ask us to delete your data ("right to be forgotten")</li>
+                <li><strong>Portability</strong> — receive your data in a portable format</li>
+                <li><strong>Objection</strong> — object to certain uses of your data</li>
+                <li><strong>Lodge a complaint</strong> — with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens, <a href="https://autoriteitpersoonsgegevens.nl" style="color:#8B5E3C;" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>) or the data protection authority in your country of residence</li>
+            </ul>
+            <p>To exercise any of these rights, email us at <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a>. We will respond within 30 days.</p>
+
+            <h2>10. Data Security</h2>
+            <p>We take reasonable measures to protect the data we hold. Payment data is handled entirely by Stripe, which is PCI-DSS certified. Purchase confirmation emails are stored securely and not shared with third parties.</p>
+
+            <h2>11. Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. The current version is always available at seniorease.eu/privacy-policy.html. Significant changes will be announced on the website.</p>
+
+            <h2>12. Contact</h2>
+            <p>Questions or requests about your privacy? Contact us at <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a>. We aim to respond within 2–3 business days.</p>
+        </div>
+
+        <!-- ═══════════════════ NEDERLANDS ═══════════════════ -->
+        <div data-lang="nl">
+            <h1 class="page-title">Privacybeleid</h1>
+            <p class="updated">Laatst bijgewerkt: 27 februari 2026</p>
+            <p class="intro">
+                Jouw privacy is belangrijk voor ons. SeniorEase Library is ontworpen om zo weinig mogelijk gegevens te verzamelen. Dit beleid legt duidelijk uit welke gegevens wel en niet worden verzameld, en waarom.
+            </p>
+
+            <div class="no-collect">
+                <strong>De korte versie</strong>
+                De app bewaart je boeken alleen op jouw apparaat — wij zien ze nooit. De enige persoonlijke gegevens die we ooit verwerken, zijn je e-mailadres bij een aankoop, veilig verwerkt via Stripe.
+            </div>
+
+            <h2>1. Wie wij zijn</h2>
+            <p>SeniorEase Library wordt aangeboden door SeniorEase. Je kunt ons bereiken via <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a>. Wij zijn de verwerkingsverantwoordelijke voor de persoonsgegevens die in dit beleid worden beschreven.</p>
+
+            <h2>2. Gegevens die de app op jouw apparaat opslaat</h2>
+            <p>Alle boekinformatie die je invoert (titels, auteurs, ISBN-nummers, notities, gelezen/bezit-status) wordt <strong>uitsluitend op jouw apparaat</strong> opgeslagen. Deze gegevens verlaten je telefoon nooit, tenzij je ze zelf exporteert via de ingebouwde PDF- of CSV-exportfunctie.</p>
+            <p>Wij hebben geen toegang tot jouw boekenlijst. We kunnen deze niet inzien, lezen of opvragen.</p>
+
+            <h2>3. Gegevens die wij verzamelen</h2>
+            <p>Wij verzamelen zeer weinig. Hier is een volledig overzicht:</p>
+            <table>
+                <tr>
+                    <th>Wat</th>
+                    <th>Waarom</th>
+                    <th>Hoe lang</th>
+                </tr>
+                <tr>
+                    <td><strong>E-mailadres</strong> (alleen bij aankoop)</td>
+                    <td>Om je aankoop te bevestigen en de volledige versie te ontgrendelen. Bij herinstallatie gebruiken we dit om je ontgrendeling te resetten.</td>
+                    <td>Zolang je aankoop actief is. Je kunt op elk moment verwijdering aanvragen.</td>
+                </tr>
+            </table>
+            <p>Dat is alles. Geen namen, geen telefoonnummers, geen locatie, geen gebruiksstatistieken, geen reclame-ID's.</p>
+
+            <h2>4. Cameratoegang</h2>
+            <p>De app vraagt cameratoegang wanneer je de ISBN-scanfunctie gebruikt. De camera wordt <em>alleen</em> gebruikt om barcodes te lezen. Er worden geen afbeeldingen opgeslagen, verstuurd of door ons verwerkt. Cameratoegang is volledig optioneel — je kunt boeken ook handmatig toevoegen door de titel of het ISBN-nummer in te typen.</p>
+
+            <h2>5. ISBN-opzoeken — Google Books API</h2>
+            <p>Wanneer je een ISBN-nummer scant of invoert, kan de app dat ISBN naar de Google Books API sturen om boekinformatie op te halen (titel, auteur, omslagafbeelding). Alleen het ISBN-nummer wordt verstuurd — geen persoonlijke gegevens. Het privacybeleid van Google is van toepassing: <a href="https://policies.google.com/privacy" style="color:#8B5E3C;" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+            <h2>6. Betalingen — Stripe</h2>
+            <p>Betalingen voor de volledige versie worden verwerkt door <strong>Stripe, Inc.</strong>, een betrouwbare externe betalingsdienstverlener. Bij een aankoop:</p>
+            <ul>
+                <li>Verzamelt Stripe je betaalgegevens en factuurinformatie rechtstreeks. Wij zien je kaartnummer nooit.</li>
+                <li>Ontvangen wij alleen een betalingsbevestiging en je e-mailadres.</li>
+                <li>Privacybeleid van Stripe: <a href="https://stripe.com/privacy" style="color:#8B5E3C;" target="_blank" rel="noopener">stripe.com/privacy</a></li>
+            </ul>
+
+            <h2>7. Website — Cookies &amp; Analytics</h2>
+            <p>De website seniorease.eu gebruikt geen trackcookies of analysetools. Er worden geen advertentiecookies geplaatst. De website slaat mogelijk één technische voorkeur op in je browser (de gekozen taal) — dit bevat geen persoonsgegevens en wordt niet gedeeld.</p>
+
+            <h2>8. Privacy van kinderen</h2>
+            <p>SeniorEase Library is niet gericht op kinderen jonger dan 16 jaar. We verzamelen niet bewust gegevens van kinderen. Denk je dat een kind persoonsgegevens heeft verstrekt? Neem contact met ons op en we verwijderen deze.</p>
+
+            <h2>9. Jouw rechten (AVG/GDPR)</h2>
+            <p>Als je je in de Europese Economische Ruimte bevindt, heb je de volgende rechten met betrekking tot je persoonsgegevens:</p>
+            <ul>
+                <li><strong>Inzage</strong> — een kopie opvragen van de gegevens die we van je bewaren</li>
+                <li><strong>Rectificatie</strong> — onjuiste gegevens laten corrigeren</li>
+                <li><strong>Verwijdering</strong> — je gegevens laten verwijderen ("recht om vergeten te worden")</li>
+                <li><strong>Overdraagbaarheid</strong> — je gegevens in een overdraagbaar formaat ontvangen</li>
+                <li><strong>Bezwaar</strong> — bezwaar maken tegen bepaalde verwerkingen</li>
+                <li><strong>Klacht indienen</strong> — bij de Autoriteit Persoonsgegevens (<a href="https://autoriteitpersoonsgegevens.nl" style="color:#8B5E3C;" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>) of de toezichthoudende autoriteit in jouw land</li>
+            </ul>
+            <p>Stuur een e-mail naar <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a> om een recht uit te oefenen. We reageren binnen 30 dagen.</p>
+
+            <h2>10. Gegevensbeveiliging</h2>
+            <p>We nemen redelijke maatregelen om de gegevens die we bewaren te beschermen. Betaalgegevens worden volledig door Stripe verwerkt, dat PCI-DSS gecertificeerd is. Aankoopbevestigingen worden veilig opgeslagen en niet gedeeld met derden.</p>
+
+            <h2>11. Wijzigingen in dit beleid</h2>
+            <p>We kunnen dit privacybeleid van tijd tot tijd aanpassen. De actuele versie staat altijd op seniorease.eu/privacy-policy.html. Belangrijke wijzigingen worden op de website bekendgemaakt.</p>
+
+            <h2>12. Contact</h2>
+            <p>Vragen of verzoeken over je privacy? Stuur een e-mail naar <a href="mailto:info@seniorease.eu" style="color:#8B5E3C;">info@seniorease.eu</a>. We streven ernaar binnen 2–3 werkdagen te reageren.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="/">
+                <span data-lang="en">← Home</span>
+                <span data-lang="nl">← Home</span>
+            </a>
+            <a href="/terms/">
+                <span data-lang="en">Terms &amp; Conditions</span>
+                <span data-lang="nl">Algemene Voorwaarden</span>
+            </a>
+            <a href="/contact.html">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.body.classList.remove('lang-nl');
+            if (lang === 'nl') document.body.classList.add('lang-nl');
+            document.documentElement.lang = lang;
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+            document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+            document.getElementById('btn-nl').setAttribute('aria-pressed', lang === 'nl');
+            try { localStorage.setItem('seniorease-lang', lang); } catch(e) {}
+        }
+        document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
+        document.getElementById('btn-nl').addEventListener('click', function() { setLang('nl'); });
+        var saved = null;
+        try { saved = localStorage.getItem('seniorease-lang'); } catch(e) {}
+        if (saved === 'nl') setLang('nl');
+    </script>
 </body>
 </html>
