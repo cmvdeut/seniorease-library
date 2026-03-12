@@ -1,0 +1,33 @@
+{
+  "name": "seniorease-tiktok-remotion",
+  "version": "1.0.0",
+  "description": "Remotion video templates voor SeniorEase TikTok",
+  "scripts": {
+    "dev": "remotion studio",
+    "render:slideshow": "ts-node scripts/render.ts slideshow",
+    "render:feature": "ts-node scripts/render.ts feature",
+    "render:all": "ts-node scripts/render.ts all",
+    "post:tiktok": "ts-node scripts/post-tiktok.ts",
+    "post:instagram": "ts-node scripts/post-instagram.ts",
+    "post:scheduled": "ts-node scripts/publish-scheduled.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.244",
+    "@remotion/renderer": "4.0.244",
+    "dotenv": "^16.4.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.244",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  },
+  "remotion": {
+    "entryPoint": "src/index.ts"
+  }
+}

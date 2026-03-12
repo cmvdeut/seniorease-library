@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeniorEase — Caption Helper</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+      color: #1F1F1F;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    h1 { font-size: 24px; font-weight: 700; color: #6D4A30; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: #999; margin-bottom: 28px; }
+
+    .pending-banner {
+      background: #fff8e6;
+      border: 1px solid #f0c060;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .pending-banner h2 { font-size: 15px; color: #7a5000; margin-bottom: 8px; }
+    .pending-banner .caption-box { background: #fff; }
+
+    .section-title { font-size: 13px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid #C9A07A;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .date { font-size: 12px; font-weight: 700; color: #6D4A30; background: #F5EEE6; padding: 2px 10px; border-radius: 999px; }
+    .platform-tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+    .platform-tag.tiktok { background: #000; color: #fff; }
+    .platform-tag.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+
+    .video-name { font-size: 12px; color: #aaa; font-family: monospace; margin-bottom: 10px; }
+
+    .caption-box {
+      background: #F9F5F1;
+      border-radius: 10px;
+      padding: 12px 14px;
+      padding-right: 80px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #333;
+      white-space: pre-wrap;
+      word-break: break-word;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: #8B5E3C; color: #fff;
+      border: none; padding: 4px 12px;
+      border-radius: 8px; font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .copy-btn:hover { background: #6D4A30; }
+    .copy-btn.copied { background: #4CAF50; }
+
+    .updated { font-size: 12px; color: #bbb; text-align: right; margin-top: 24px; }
+    .empty { color: #aaa; font-style: italic; font-size: 14px; padding: 16px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📅 SeniorEase — Caption Helper</h1>
+    <p class="subtitle">Geplande TikTok &amp; Instagram posts. Klik "Copy" om de caption te kopiëren.</p>
+
+    <div class="pending-banner" id="pending-section">
+      <h2>⏳ Wacht in TikTok inbox — voeg caption toe:</h2>
+      <div class="caption-box" id="pending-caption">
+        <button class="copy-btn" onclick="copyEl('pending-caption')">Copy</button>
+      </div>
+    </div>
+
+    <div class="section-title">Aankomend</div>
+    <div id="upcoming-container"><p class="empty">Laden...</p></div>
+
+    <div class="section-title" style="margin-top:28px;">Volledige queue</div>
+    <div id="queue-container"><p class="empty">Laden...</p></div>
+
+    <p class="updated" id="updated-label"></p>
+  </div>
+
+  <script>
+    let cardIdx = 0;
+
+    async function loadData() {
+      let pending = null, upcoming = [], updatedAt = 0;
+      try {
+        const res = await fetch('tiktok-data.json?t=' + Date.now());
+        const data = await res.json();
+        pending = data.pending;
+        upcoming = data.upcoming || [];
+        updatedAt = data.updated_at;
+      } catch (e) {}
+
+      let queue = [];
+      try {
+        const res2 = await fetch('/scheduled-posts.json?t=' + Date.now());
+        queue = await res2.json();
+      } catch (e) {
+        try {
+          const res2 = await fetch('../scheduled-posts.json?t=' + Date.now());
+          queue = await res2.json();
+        } catch (e2) {}
+      }
+
+      renderPending(pending);
+      renderUpcoming(upcoming);
+      renderQueue(queue);
+
+      if (updatedAt) {
+        document.getElementById('updated-label').textContent =
+          'Workflow laatste run: ' + new Date(updatedAt * 1000).toLocaleString('nl-NL');
+      }
+    }
+
+    function renderPending(post) {
+      if (!post) return;
+      const section = document.getElementById('pending-section');
+      const captionEl = document.getElementById('pending-caption');
+      section.style.display = 'block';
+      captionEl.innerHTML = '<button class="copy-btn" onclick="copyEl(\'pending-caption\')">Copy</button>' + escHtml(post.caption || post.caption_preview);
+    }
+
+    function renderUpcoming(posts) {
+      const el = document.getElementById('upcoming-container');
+      if (!posts.length) { el.innerHTML = '<p class="empty">Geen aankomende posts.</p>'; return; }
+      el.innerHTML = posts.map(p => cardHtml(p)).join('');
+    }
+
+    function renderQueue(posts) {
+      const el = document.getElementById('queue-container');
+      if (!posts.length) { el.innerHTML = '<p class="empty">Queue is leeg.</p>'; return; }
+      el.innerHTML = posts.map(p => cardHtml(p)).join('');
+    }
+
+    function cardHtml(post) {
+      const id = 'cap-' + (cardIdx++);
+      const date = post.scheduled_label || new Date(post.scheduled_time_unix * 1000).toLocaleString('nl-NL');
+      const platform = post.platform || '';
+      const platformLabel = platform === 'tiktok' ? '🎵 TikTok' : '📸 Instagram';
+      const caption = post.caption || post.caption_preview || '';
+      const file = post.video_file || '';
+      return '<div class="card">' +
+        '<div class="card-header"><div class="meta">' +
+        '<span class="date">📅 ' + escHtml(date) + '</span>' +
+        '<span class="platform-tag ' + platform + '">' + platformLabel + '</span>' +
+        '</div></div>' +
+        '<div class="video-name">📁 ' + escHtml(file) + '</div>' +
+        '<div class="caption-box" id="' + id + '">' +
+        '<button class="copy-btn" onclick="copyEl(\'' + id + '\')">Copy</button>' +
+        escHtml(caption) + '</div></div>';
+    }
+
+    function copyEl(id) {
+      const el = document.getElementById(id);
+      const btn = el.querySelector('.copy-btn');
+      const text = Array.from(el.childNodes)
+        .filter(n => n.nodeType === Node.TEXT_NODE)
+        .map(n => n.textContent)
+        .join('').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Gekopieerd!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
