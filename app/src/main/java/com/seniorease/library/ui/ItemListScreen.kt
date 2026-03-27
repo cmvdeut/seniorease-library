@@ -270,6 +270,32 @@ fun ItemListScreen(
                     }
                 }
             }
+            // Item teller
+            Text(
+                text = stringResource(R.string.items_count, sortedFilteredItems.size),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            )
+
+            // Lege staat
+            if (sortedFilteredItems.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = if (searchQuery.isBlank() && filterRead == null && filterPossession == null && filterTbr == null)
+                            stringResource(R.string.empty_collection)
+                        else
+                            stringResource(R.string.empty_search),
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                    )
+                }
+            }
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()

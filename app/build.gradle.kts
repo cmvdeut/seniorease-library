@@ -10,39 +10,26 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.seniorease.library"
-        minSdk = 35
+        applicationId = "com.maureen.biblitoheek"
+        minSdk = 26
         targetSdk = 36
-        versionCode = 11
-        versionName = "1.0.6"
+        versionCode = 15
+        versionName = "1.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    flavorDimensions += "version"
-    productFlavors {
-        create("full") {
-            dimension = "version"
-            applicationIdSuffix = ""
-            versionNameSuffix = ""
-            buildConfigField("boolean", "IS_DEMO", "false")
-            buildConfigField("int", "MAX_ITEMS", "-1") // -1 = onbeperkt
-        }
-        create("demo") {
-            dimension = "version"
-            applicationIdSuffix = ".demo"
-            versionNameSuffix = "-demo"
-            buildConfigField("boolean", "IS_DEMO", "true")
-            buildConfigField("int", "MAX_ITEMS", "10") // Demo limiet: 10 items
-        }
+        buildConfigField("String", "DISCOGS_TOKEN", "\"${project.findProperty("discogs.token") ?: ""}\"")
+        buildConfigField("String", "OMDB_API_KEY", "\"${project.findProperty("omdb.apiKey") ?: ""}\"")
+        buildConfigField("boolean", "IS_DEMO", "false")
+        buildConfigField("int", "MAX_ITEMS", "-1") // -1 = onbeperkt
     }
 
     signingConfigs {
         create("release") {
             storeFile = file("../upload-keystore.jks")
-            storePassword = "Can69893!"
+            storePassword = project.findProperty("keystore.storePassword") as String? ?: ""
             keyAlias = "upload"
-            keyPassword = "Can69893!"
+            keyPassword = project.findProperty("keystore.keyPassword") as String? ?: ""
         }
     }
 

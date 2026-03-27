@@ -67,6 +67,9 @@
     <string name="filter_tbr">TBR</string>
 
     <!-- Item List -->
+    <string name="items_count">%1$d items</string>
+    <string name="empty_collection">Your collection is empty. Tap + to add your first item.</string>
+    <string name="empty_search">No items found for your search.</string>
     <string name="item_type_label">Type: %1$s</string>
     <string name="item_code_label">Code: %1$s</string>
     <string name="item_read">Read</string>
@@ -154,6 +157,59 @@
     <string name="camera_permission_required">Camera permission is required to scan barcodes.</string>
     <string name="camera_error">Camera error: %1$s</string>
     <string name="error">Error: %1$s</string>
+
+    <!-- Cover Fetch Dialog -->
+    <string name="cover_fetch_title">Search Google Images</string>
+    <string name="cover_fetch_type_code">Type: %1$s | Code: %2$s</string>
+
+    <!-- PDF Headers -->
+    <string name="pdf_header_title">Title</string>
+    <string name="pdf_header_author">Author / Artist</string>
+    <string name="pdf_header_type">Type</string>
+    <string name="pdf_header_code">Code</string>
+    <string name="pdf_header_read">Read</string>
+    <string name="pdf_header_possession">Owned</string>
+
+    <!-- CSV Headers -->
+    <string name="csv_header_title">Title</string>
+    <string name="csv_header_author">Author / Artist</string>
+    <string name="csv_header_type">Type</string>
+    <string name="csv_header_code">Code</string>
+    <string name="csv_header_status">Read / Owned</string>
+    <string name="csv_header_medium">Medium</string>
+    <string name="csv_header_language">Language</string>
+
+    <!-- Payment -->
+    <string name="payment_thank_you_title">Thank you.</string>
+    <string name="payment_thank_you_message">If you have completed the payment, enter your unlock code below to unlock the full version.\n\nIf something didn\'t work, you can safely try again or contact us.</string>
+
+    <!-- Unlock -->
+    <string name="unlock_code_info">Your unlock code: %1$s</string>
+    <string name="unlock_code_label">Enter your unlock code:</string>
+    <string name="unlock_code_hint">Unlock code</string>
+    <string name="unlock_code_error">Invalid unlock code. Please try again.</string>
+    <string name="unlock_button">Unlock</string>
+    <string name="unlock_success">Full version unlocked! You can now add unlimited items.</string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_app_name">SeniorEase Library – Privacy Policy</string>
+    <string name="privacy_policy_last_updated">Last updated: 1 October 2025</string>
+    <string name="privacy_policy_section_1_title">1. Introduction</string>
+    <string name="privacy_policy_section_1_text">Welcome to SeniorEase Library, an app for managing your personal collection of books, music, DVDs and games. This privacy policy explains how we collect, use and protect your data.</string>
+    <string name="privacy_policy_section_2_title">2. Data we collect</string>
+    <string name="privacy_policy_section_2_text">• Titles of books, music, DVDs and games\n• Author and artist names\n• Barcodes (ISBN, UPC, etc.)\n• Item status (read/listened, owned)\n• Language and medium information\n• Cover images</string>
+    <string name="privacy_policy_section_3_title">3. Camera access</string>
+    <string name="privacy_policy_section_3_text">The app requests camera access to scan barcodes. This is only used for:\n• Scanning barcodes on your items\n• Automatically retrieving item information\n\nImportant: We do not store camera images. The camera is only used for real-time barcode scanning.</string>
+    <string name="privacy_policy_section_4_title">4. Data storage</string>
+    <string name="privacy_policy_section_4_text">All data is stored locally on your device in a secure database. We do not send data to external servers, except to retrieve item information via public APIs.</string>
+    <string name="privacy_policy_section_5_title">5. Your rights</string>
+    <string name="privacy_policy_section_5_text">You have the right to:\n• View and edit your data\n• Delete items from your collection\n• Uninstall the app (this deletes all local data)\n• Deny camera access (barcode scanning will not work)</string>
+    <string name="privacy_policy_section_6_title">6. Contact</string>
+    <string name="privacy_policy_section_6_text">If you have questions about this privacy policy or the app, please contact us at:\nEmail: info@seniorease.eu\nOrganisation: SeniorEase\nLocation: The Netherlands</string>
+
+    <!-- Accessibility info -->
+    <string name="settings_accessibility_info">• Minimum text size: 18sp\n• Respects Android font size settings\n• Large text toggle: +25% increase\n• High contrast: WCAG AAA compliant (21:1)\n• No text on images without background</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>

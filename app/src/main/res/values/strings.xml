@@ -73,6 +73,9 @@
     <string name="filter_tbr">TBR</string>
     
     <!-- Item List -->
+    <string name="items_count">%1$d items</string>
+    <string name="empty_collection">Uw collectie is nog leeg. Tik op + om uw eerste item toe te voegen.</string>
+    <string name="empty_search">Geen items gevonden voor uw zoekopdracht.</string>
     <string name="item_type_label">Type: %1$s</string>
     <string name="item_code_label">Code: %1$s</string>
     <string name="item_read">Gelezen</string>
