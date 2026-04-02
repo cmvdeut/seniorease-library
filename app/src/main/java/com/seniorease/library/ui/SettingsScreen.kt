@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.seniorease.library.BuildConfig
 import com.seniorease.library.R
 import com.seniorease.library.utils.LanguageHelper
+import com.seniorease.library.utils.SettingsHelper
 
 @Composable
 fun SettingsScreen(
@@ -21,16 +22,25 @@ fun SettingsScreen(
     onHighContrastToggle: (Boolean) -> Unit,
     isDemo: Boolean,
     onLanguageChange: (String) -> Unit,
+    onThemeChange: (String) -> Unit,
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
     var selectedLanguage by remember { mutableStateOf(LanguageHelper.getSavedLanguage(context)) }
     var languageMenuExpanded by remember { mutableStateOf(false) }
+    var selectedTheme by remember { mutableStateOf(SettingsHelper.getThemeMode(context)) }
+    var themeMenuExpanded by remember { mutableStateOf(false) }
     
     val languageDisplayText = when (selectedLanguage) {
         LanguageHelper.LANGUAGE_DUTCH -> stringResource(R.string.language_dutch)
         LanguageHelper.LANGUAGE_ENGLISH -> stringResource(R.string.language_english)
         else -> stringResource(R.string.language_system)
+    }
+
+    val themeDisplayText = when (selectedTheme) {
+        SettingsHelper.THEME_LIGHT -> stringResource(R.string.theme_light)
+        SettingsHelper.THEME_DARK -> stringResource(R.string.theme_dark)
+        else -> stringResource(R.string.theme_system)
     }
     
     AlertDialog(
@@ -151,6 +161,68 @@ fun SettingsScreen(
                     }
                 }
                 
+                // Thema selector
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.settings_theme),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Text(
+                            text = stringResource(R.string.settings_theme_description),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    Box {
+                        OutlinedButton(
+                            onClick = { themeMenuExpanded = true },
+                            modifier = Modifier.height(48.dp)
+                        ) {
+                            Text(
+                                text = themeDisplayText,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = themeMenuExpanded,
+                            onDismissRequest = { themeMenuExpanded = false }
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.theme_system), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = {
+                                    selectedTheme = SettingsHelper.THEME_SYSTEM
+                                    SettingsHelper.setThemeMode(context, SettingsHelper.THEME_SYSTEM)
+                                    onThemeChange(SettingsHelper.THEME_SYSTEM)
+                                    themeMenuExpanded = false
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.theme_light), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = {
+                                    selectedTheme = SettingsHelper.THEME_LIGHT
+                                    SettingsHelper.setThemeMode(context, SettingsHelper.THEME_LIGHT)
+                                    onThemeChange(SettingsHelper.THEME_LIGHT)
+                                    themeMenuExpanded = false
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.theme_dark), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = {
+                                    selectedTheme = SettingsHelper.THEME_DARK
+                                    SettingsHelper.setThemeMode(context, SettingsHelper.THEME_DARK)
+                                    onThemeChange(SettingsHelper.THEME_DARK)
+                                    themeMenuExpanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+
                 Spacer(modifier = Modifier.height(12.dp))
                 Divider()
                 Spacer(modifier = Modifier.height(8.dp))

@@ -97,6 +97,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
 import com.google.android.play.core.review.ReviewManagerFactory
+import androidx.compose.foundation.isSystemInDarkTheme
 
 class MainViewModel(private val db: AppDatabase, private val context: Context) : ViewModel() {
     private val _items = MutableStateFlow<List<Item>>(emptyList())
@@ -253,8 +254,15 @@ class MainActivity : ComponentActivity() {
             // Haal instellingen op uit SharedPreferences
             var isLargeTextEnabled by remember { mutableStateOf(SettingsHelper.isLargeTextEnabled(context)) }
             var isHighContrastEnabled by remember { mutableStateOf(SettingsHelper.isHighContrastEnabled(context)) }
-            
+            var themeMode by remember { mutableStateOf(SettingsHelper.getThemeMode(context)) }
+            val isDarkTheme = when (themeMode) {
+                SettingsHelper.THEME_LIGHT -> false
+                SettingsHelper.THEME_DARK -> true
+                else -> isSystemInDarkTheme()
+            }
+
             BiblitoheekTheme(
+                darkTheme = isDarkTheme,
                 isLargeTextEnabled = isLargeTextEnabled,
                 isHighContrastEnabled = isHighContrastEnabled,
                 dynamicColor = false
@@ -644,6 +652,9 @@ class MainActivity : ComponentActivity() {
                                             kotlinx.coroutines.delay(100)
                                             recreate()
                                         }
+                                    },
+                                    onThemeChange = { mode ->
+                                        themeMode = mode
                                     },
                                     onDismiss = { showSettingsDialog = false }
                                 )

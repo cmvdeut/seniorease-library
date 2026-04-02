@@ -214,4 +214,11 @@
     
     <!-- Share -->
     <string name="share_pdf_via">Deel PDF via...</string>
+
+    <!-- Theme -->
+    <string name="settings_theme">Thema</string>
+    <string name="settings_theme_description">Kies licht, donker of systeeminstelling</string>
+    <string name="theme_system">Systeem</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_dark">Donker</string>
 </resources>

@@ -9,6 +9,11 @@ object SettingsHelper {
     private const val KEY_HIGH_CONTRAST = "high_contrast_enabled"
     private const val KEY_ITEMS_ADDED_TOTAL = "items_added_total"
     private const val KEY_REVIEW_REQUESTED = "review_requested"
+    private const val KEY_THEME_MODE = "theme_mode"
+
+    const val THEME_SYSTEM = "system"
+    const val THEME_LIGHT = "light"
+    const val THEME_DARK = "dark"
     
     /**
      * Haal de grote tekst instelling op
@@ -57,5 +62,15 @@ object SettingsHelper {
     fun markReviewRequested(context: Context) {
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit().putBoolean(KEY_REVIEW_REQUESTED, true).apply()
+    }
+
+    fun getThemeMode(context: Context): String {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_THEME_MODE, THEME_SYSTEM) ?: THEME_SYSTEM
+    }
+
+    fun setThemeMode(context: Context, mode: String) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putString(KEY_THEME_MODE, mode).apply()
     }
 }
