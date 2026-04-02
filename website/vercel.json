@@ -9,6 +9,7 @@
     }
   ],
   "redirects": [
-    {"source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true}
+    {"source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true},
+    {"source": "/tiktok-callback", "destination": "/tiktok-callback.html", "permanent": true}
   ]
 }

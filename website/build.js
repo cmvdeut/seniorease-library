@@ -34,6 +34,7 @@ const filesToCopy = [
   'terms.html',
   'terms',
   'contact.html',
+  'tiktok-callback.html',
   'downloads',
   'qr-code-apk-download.png',
   'seniorease-icon.png',
