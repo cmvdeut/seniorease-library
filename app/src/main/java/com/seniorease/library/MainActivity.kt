@@ -96,6 +96,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
+import com.google.android.play.core.review.ReviewManagerFactory
 
 class MainViewModel(private val db: AppDatabase, private val context: Context) : ViewModel() {
     private val _items = MutableStateFlow<List<Item>>(emptyList())
@@ -540,7 +541,22 @@ class MainActivity : ComponentActivity() {
                                                 if (success) {
                                                     showDialog = false
                                                     lastType = item.type
-                                                    
+
+                                                    // In-app review: trigger na 3e item, maximaal 1 keer
+                                                    val addedCount = SettingsHelper.incrementItemsAdded(context)
+                                                    if (addedCount >= 3 && !SettingsHelper.hasReviewBeenRequested(context)) {
+                                                        val reviewManager = ReviewManagerFactory.create(context)
+                                                        reviewManager.requestReviewFlow().addOnCompleteListener { task ->
+                                                            if (task.isSuccessful) {
+                                                                SettingsHelper.markReviewRequested(context)
+                                                                val activity = context as? android.app.Activity
+                                                                if (activity != null) {
+                                                                    reviewManager.launchReviewFlow(activity, task.result)
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
                                                     // Check voor waarschuwingen na succesvol toevoegen
                                                     if (errorMessage == "WARNING_ONE_LEFT") {
                                                         // Na 9e item: waarschuwing dat er nog 1 over is
