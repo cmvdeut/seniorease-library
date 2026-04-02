@@ -2,7 +2,7 @@ name: Publish Scheduled Social Media Posts
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Dagelijks om 09:00 UTC (11:00 Nederlandse tijd)
+    - cron: '0 18 * * *'  # Dagelijks om 18:00 UTC (19:00-20:00 Nederlandse tijd)
   workflow_dispatch:         # Handmatig starten via GitHub UI
 
 concurrency:
