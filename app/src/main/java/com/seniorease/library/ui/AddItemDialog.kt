@@ -117,7 +117,7 @@ fun AddItemDialog(
         return withContext(Dispatchers.IO) {
             try {
                 val client = OkHttpClient()
-                val url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn"
+                val url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn&key=${com.seniorease.library.BuildConfig.BOOKS_API_KEY}"
                 val request = Request.Builder().url(url).build()
                 val response = client.newCall(request).execute()
                 val body = response.body?.string() ?: return@withContext null
@@ -218,7 +218,7 @@ fun AddItemDialog(
         return withContext(Dispatchers.IO) {
             try {
                 val client = OkHttpClient()
-                val url = "https://api.discogs.com/database/search?barcode=$barcode&type=release&token=ohIRvHHOdaUMTJIImBDJRXPhMjOZowRZZrDvAzVh"
+                val url = "https://api.discogs.com/database/search?barcode=$barcode&type=release&token=${com.seniorease.library.BuildConfig.DISCOGS_TOKEN}"
                 val request = Request.Builder()
                     .url(url)
                     .header("User-Agent", "BiblitoheekApp/1.0")
@@ -291,7 +291,7 @@ fun AddItemDialog(
             try {
                 val client = OkHttpClient()
                 // Probeer eerst met EAN
-                var url = "https://api.discogs.com/database/search?barcode=$ean&type=release&token=ohIRvHHOdaUMTJIImBDJRXPhMjOZowRZZrDvAzVh"
+                var url = "https://api.discogs.com/database/search?barcode=$ean&type=release&token=${com.seniorease.library.BuildConfig.DISCOGS_TOKEN}"
                 var request = Request.Builder()
                     .url(url)
                     .header("User-Agent", "BiblitoheekApp/1.0 (maureen@email.com)")
@@ -304,7 +304,7 @@ fun AddItemDialog(
                 // Als EAN niet werkt, probeer met titel en artiest
                 if (results == null || results.length() == 0) {
                     val searchQuery = "$title $artist".replace(" ", "+")
-                    url = "https://api.discogs.com/database/search?q=$searchQuery&type=release&token=ohIRvHHOdaUMTJIImBDJRXPhMjOZowRZZrDvAzVh"
+                    url = "https://api.discogs.com/database/search?q=$searchQuery&type=release&token=${com.seniorease.library.BuildConfig.DISCOGS_TOKEN}"
                     request = Request.Builder()
                         .url(url)
                         .header("User-Agent", "BiblitoheekApp/1.0 (maureen@email.com)")
@@ -451,7 +451,7 @@ fun AddItemDialog(
         return withContext(Dispatchers.IO) {
             try {
                 val client = OkHttpClient()
-                val url = "https://www.omdbapi.com/?apikey=47b06298&i=tt$barcode"
+                val url = "https://www.omdbapi.com/?apikey=${com.seniorease.library.BuildConfig.OMDB_API_KEY}&i=tt$barcode"
                 val request = Request.Builder().url(url).build()
                 val response = client.newCall(request).execute()
                 val body = response.body?.string() ?: return@withContext null

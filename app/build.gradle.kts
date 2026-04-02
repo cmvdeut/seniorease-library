@@ -20,6 +20,7 @@ android {
 
         buildConfigField("String", "DISCOGS_TOKEN", "\"${project.findProperty("discogs.token") ?: ""}\"")
         buildConfigField("String", "OMDB_API_KEY", "\"${project.findProperty("omdb.apiKey") ?: ""}\"")
+        buildConfigField("String", "BOOKS_API_KEY", "\"${project.findProperty("books.apiKey") ?: ""}\"")
         buildConfigField("boolean", "IS_DEMO", "false")
         buildConfigField("int", "MAX_ITEMS", "-1") // -1 = onbeperkt
     }
