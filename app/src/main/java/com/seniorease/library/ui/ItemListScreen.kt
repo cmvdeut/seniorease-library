@@ -70,8 +70,10 @@ fun ItemListScreen(
     var filterRead by remember { mutableStateOf<Boolean?>(null) }
     var filterPossession by remember { mutableStateOf<Boolean?>(null) }
     var filterTbr by remember { mutableStateOf<Boolean?>(null) }
+    var filterType by remember { mutableStateOf<String?>(null) }
     var sortMenuExpanded by remember { mutableStateOf(false) }
     var filterMenuExpanded by remember { mutableStateOf(false) }
+    var typeMenuExpanded by remember { mutableStateOf(false) }
     
     // Bepaal welke filter actief is voor display
     val activeFilterText = when {
@@ -85,6 +87,7 @@ fun ItemListScreen(
     var selectedCoverItem by remember { mutableStateOf<Item?>(null) }
 
     val sortedFilteredItems = items
+        .filter { filterType == null || it.type == filterType }
         .filter { filterRead == null || it.isReadOrListened == filterRead }
         .filter { filterPossession == null || it.inPossession == filterPossession }
         .filter { filterTbr == null || it.tbr == filterTbr }
@@ -202,6 +205,62 @@ fun ItemListScreen(
                     }
                 }
                 
+                // Type filter sectie
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.filter_type),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(end = 8.dp)
+                    )
+                    Box {
+                        OutlinedButton(
+                            onClick = { typeMenuExpanded = true },
+                            modifier = Modifier.height(48.dp)
+                        ) {
+                            Text(
+                                text = when (filterType) {
+                                    "boek" -> stringResource(R.string.item_type_book)
+                                    "muziek" -> stringResource(R.string.item_type_music)
+                                    "dvd" -> stringResource(R.string.item_type_dvd)
+                                    "game" -> stringResource(R.string.item_type_game)
+                                    else -> stringResource(R.string.filter_all)
+                                },
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = typeMenuExpanded,
+                            onDismissRequest = { typeMenuExpanded = false }
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.filter_all), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = { filterType = null; typeMenuExpanded = false }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.item_type_book), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = { filterType = "boek"; typeMenuExpanded = false }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.item_type_music), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = { filterType = "muziek"; typeMenuExpanded = false }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.item_type_dvd), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = { filterType = "dvd"; typeMenuExpanded = false }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.item_type_game), style = MaterialTheme.typography.bodyLarge) },
+                                onClick = { filterType = "game"; typeMenuExpanded = false }
+                            )
+                        }
+                    }
+                }
+
                 // Filter sectie - dropdown menu
                 Row(
                     modifier = Modifier
@@ -286,7 +345,7 @@ fun ItemListScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = if (searchQuery.isBlank() && filterRead == null && filterPossession == null && filterTbr == null)
+                        text = if (searchQuery.isBlank() && filterType == null && filterRead == null && filterPossession == null && filterTbr == null)
                             stringResource(R.string.empty_collection)
                         else
                             stringResource(R.string.empty_search),

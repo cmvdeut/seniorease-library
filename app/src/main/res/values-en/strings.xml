@@ -56,6 +56,7 @@
     <!-- Sort & Filter -->
     <string name="sort">Sort by:</string>
     <string name="filter">Filter:</string>
+    <string name="filter_type">Type:</string>
     <string name="filter_all">All</string>
     <string name="sort_title">Title</string>
     <string name="sort_author">Author</string>
@@ -227,6 +228,19 @@
 
     <!-- Share -->
     <string name="share_pdf_via">Share PDF via…</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get started</string>
+    <string name="onboarding_1_title">Welcome to\nSeniorEase Library</string>
+    <string name="onboarding_1_desc">Your personal collection of books, music, DVDs and games — all in one place.</string>
+    <string name="onboarding_2_title">Scan any barcode</string>
+    <string name="onboarding_2_desc">Hold your camera over a barcode. Title and author are filled in automatically.</string>
+    <string name="onboarding_3_title">Always organised</string>
+    <string name="onboarding_3_desc">Everything in one place. Filter by read, to-read or owned.</string>
+    <string name="onboarding_4_title">You\'re ready!</string>
+    <string name="onboarding_4_desc">No account needed. Works offline. Tap + to add your first item.</string>
 
     <!-- Theme -->
     <string name="settings_theme">Theme</string>

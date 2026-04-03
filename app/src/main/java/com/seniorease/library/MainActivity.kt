@@ -24,6 +24,7 @@ import com.seniorease.library.data.Item
 import com.seniorease.library.ui.ItemListScreen
 import com.seniorease.library.ui.AddItemDialog
 import com.seniorease.library.ui.SettingsScreen
+import com.seniorease.library.ui.OnboardingScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -255,6 +256,7 @@ class MainActivity : ComponentActivity() {
             var isLargeTextEnabled by remember { mutableStateOf(SettingsHelper.isLargeTextEnabled(context)) }
             var isHighContrastEnabled by remember { mutableStateOf(SettingsHelper.isHighContrastEnabled(context)) }
             var themeMode by remember { mutableStateOf(SettingsHelper.getThemeMode(context)) }
+            var showOnboarding by remember { mutableStateOf(!SettingsHelper.isOnboardingDone(context)) }
             val isDarkTheme = when (themeMode) {
                 SettingsHelper.THEME_LIGHT -> false
                 SettingsHelper.THEME_DARK -> true
@@ -428,6 +430,14 @@ class MainActivity : ComponentActivity() {
                     } catch (e: Exception) {
                         Toast.makeText(context, context.getString(R.string.pdf_export_error), Toast.LENGTH_LONG).show()
                     }
+                }
+
+                if (showOnboarding) {
+                    OnboardingScreen(onDone = {
+                        SettingsHelper.markOnboardingDone(context)
+                        showOnboarding = false
+                    })
+                    return@BiblitoheekTheme
                 }
 
                 Scaffold(

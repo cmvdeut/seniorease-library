@@ -10,6 +10,7 @@ object SettingsHelper {
     private const val KEY_ITEMS_ADDED_TOTAL = "items_added_total"
     private const val KEY_REVIEW_REQUESTED = "review_requested"
     private const val KEY_THEME_MODE = "theme_mode"
+    private const val KEY_ONBOARDING_DONE = "onboarding_done"
 
     const val THEME_SYSTEM = "system"
     const val THEME_LIGHT = "light"
@@ -72,5 +73,15 @@ object SettingsHelper {
     fun setThemeMode(context: Context, mode: String) {
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit().putString(KEY_THEME_MODE, mode).apply()
+    }
+
+    fun isOnboardingDone(context: Context): Boolean {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getBoolean(KEY_ONBOARDING_DONE, false)
+    }
+
+    fun markOnboardingDone(context: Context) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putBoolean(KEY_ONBOARDING_DONE, true).apply()
     }
 }

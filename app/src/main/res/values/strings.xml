@@ -62,6 +62,7 @@
     <!-- Sort & Filter -->
     <string name="sort">Sorteren:</string>
     <string name="filter">Filter:</string>
+    <string name="filter_type">Type:</string>
     <string name="filter_all">Alles</string>
     <string name="sort_title">Titel</string>
     <string name="sort_author">Auteur</string>
@@ -214,6 +215,19 @@
     
     <!-- Share -->
     <string name="share_pdf_via">Deel PDF via...</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Overslaan</string>
+    <string name="onboarding_next">Volgende</string>
+    <string name="onboarding_get_started">Aan de slag</string>
+    <string name="onboarding_1_title">Welkom bij\nSeniorEase Library</string>
+    <string name="onboarding_1_desc">Uw persoonlijke collectie van boeken, muziek, dvd\'s en games — alles op één plek.</string>
+    <string name="onboarding_2_title">Scan elke barcode</string>
+    <string name="onboarding_2_desc">Houd uw camera boven een barcode. Titel en auteur worden automatisch ingevuld.</string>
+    <string name="onboarding_3_title">Altijd overzicht</string>
+    <string name="onboarding_3_desc">Alles op één plek. Filter op gelezen, te lezen of in bezit.</string>
+    <string name="onboarding_4_title">U bent klaar!</string>
+    <string name="onboarding_4_desc">Geen account nodig. Werkt offline. Tik op + om uw eerste item toe te voegen.</string>
 
     <!-- Theme -->
     <string name="settings_theme">Thema</string>

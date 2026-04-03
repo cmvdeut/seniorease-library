@@ -247,7 +247,7 @@ suspend fun fetchMusicCover(ean: String, title: String, artist: String): String?
         try {
             val client = OkHttpClient()
             // Probeer eerst met EAN
-            var url = "https://api.discogs.com/database/search?barcode=$ean&type=release&token=ohIRvHHOdaUMTJIImBDJRXPhMjOZowRZZrDvAzVh"
+            var url = "https://api.discogs.com/database/search?barcode=$ean&type=release&token=${com.seniorease.library.BuildConfig.DISCOGS_TOKEN}"
             var request = Request.Builder()
                 .url(url)
                 .addHeader("User-Agent", "BiblitoheekApp/1.0 (maureen@email.com)")
@@ -260,7 +260,7 @@ suspend fun fetchMusicCover(ean: String, title: String, artist: String): String?
             // Als EAN niet werkt, probeer met titel en artiest
             if (results == null || results.length() == 0) {
                 val searchQuery = "$title $artist".replace(" ", "+")
-                url = "https://api.discogs.com/database/search?q=$searchQuery&type=release&token=ohIRvHHOdaUMTJIImBDJRXPhMjOZowRZZrDvAzVh"
+                url = "https://api.discogs.com/database/search?q=$searchQuery&type=release&token=${com.seniorease.library.BuildConfig.DISCOGS_TOKEN}"
                 request = Request.Builder()
                     .url(url)
                     .addHeader("User-Agent", "BiblitoheekApp/1.0 (maureen@email.com)")
