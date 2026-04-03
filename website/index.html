@@ -295,6 +295,25 @@
         .footer-links { margin-bottom: 12px; }
         .footer-links a { margin: 0 12px; }
 
+        /* Hero met telefoon */
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        .hero-text { flex: 1; max-width: 480px; }
+        .hero-phone {
+            flex-shrink: 0;
+            width: 180px;
+            filter: drop-shadow(0 20px 40px rgba(139,94,60,0.25));
+        }
+        .hero-phone img { width: 100%; height: auto; display: block; }
+        @media (max-width: 640px) {
+            .hero-inner { flex-direction: column; }
+            .hero-phone { width: 140px; }
+        }
+
         /* Lang switching */
         [data-lang="nl"] { display: none; }
         body.lang-nl [data-lang="nl"] { display: block; }
@@ -335,22 +354,29 @@
             <div class="logo">
                 <img src="/seniorease-icon.png" alt="SeniorEase Library">
             </div>
-            <div data-lang="en">
-                <h1>Track your books, music, DVDs & games</h1>
-                <p class="subtitle">SeniorEase Library helps you manage your entire personal collection. No account, no ads, no fuss — just you and your collection.</p>
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <div data-lang="en">
+                        <h1>Track your books, music, DVDs & games</h1>
+                        <p class="subtitle">SeniorEase Library helps you manage your entire personal collection. No account, no ads, no fuss — just you and your collection.</p>
+                    </div>
+                    <div data-lang="nl">
+                        <h1>Houd je boeken, muziek, dvd's en games bij</h1>
+                        <p class="subtitle">SeniorEase Library helpt je je volledige persoonlijke collectie bij te houden. Geen account, geen advertenties — gewoon jij en je collectie.</p>
+                    </div>
+                    <a href="/downloads/SeniorEase-Library-1.0.6.apk" class="cta" download="SeniorEase-Library-Demo.apk">
+                        <span data-lang="en">⬇ Download free demo</span>
+                        <span data-lang="nl">⬇ Gratis demo downloaden</span>
+                    </a>
+                    <p class="cta-note">
+                        <span data-lang="en">Free demo (10 items) · Safe download from seniorease.eu</span>
+                        <span data-lang="nl">Gratis demo (10 items) · Veilig downloaden van seniorease.eu</span>
+                    </p>
+                </div>
+                <div class="hero-phone">
+                    <img src="/assets/app-preview.png" alt="SeniorEase Library app preview">
+                </div>
             </div>
-            <div data-lang="nl">
-                <h1>Houd je boeken, muziek, dvd's en games bij</h1>
-                <p class="subtitle">SeniorEase Library helpt je je volledige persoonlijke collectie bij te houden. Geen account, geen advertenties — gewoon jij en je collectie.</p>
-            </div>
-            <a href="/downloads/SeniorEase-Library-1.0.6.apk" class="cta" download="SeniorEase-Library-Demo.apk">
-                <span data-lang="en">⬇ Download free demo</span>
-                <span data-lang="nl">⬇ Gratis demo downloaden</span>
-            </a>
-            <p class="cta-note">
-                <span data-lang="en">Free demo (10 items) · Safe download from seniorease.eu</span>
-                <span data-lang="nl">Gratis demo (10 items) · Veilig downloaden van seniorease.eu</span>
-            </p>
         </div>
     </section>
 
