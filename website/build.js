@@ -37,6 +37,9 @@ const filesToCopy = [
   'tiktok-callback.html',
   'downloads',
   'qr-code-apk-download.png',
+  'qr-code-playstore.png',
+  'google-play-badge-en.png',
+  'google-play-badge-nl.png',
   'seniorease-icon.png',
   'favicon.png',
   'assets'
