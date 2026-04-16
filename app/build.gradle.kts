@@ -1,9 +1,20 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
 }
+
+// Laad local.properties expliciet
+val localProps = Properties()
+val localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localPropsFile.inputStream().use { localProps.load(it) }
+}
+
+fun localProp(key: String): String = localProps.getProperty(key) ?: (project.findProperty(key) as String? ?: "")
 
 android {
     namespace = "com.seniorease.library"
@@ -13,16 +24,14 @@ android {
         applicationId = "com.maureen.biblitoheek"
         minSdk = 26
         targetSdk = 36
-        versionCode = 17
-        versionName = "1.1.5"
+        versionCode = 22
+        versionName = "1.2.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "DISCOGS_TOKEN", "\"${project.findProperty("discogs.token") ?: ""}\"")
-        buildConfigField("String", "OMDB_API_KEY", "\"${project.findProperty("omdb.apiKey") ?: ""}\"")
-        buildConfigField("String", "BOOKS_API_KEY", "\"${project.findProperty("books.apiKey") ?: ""}\"")
-        buildConfigField("boolean", "IS_DEMO", "false")
-        buildConfigField("int", "MAX_ITEMS", "-1") // -1 = onbeperkt
+        buildConfigField("String", "DISCOGS_TOKEN", "\"${localProp("discogs.token")}\"")
+        buildConfigField("String", "OMDB_API_KEY", "\"${localProp("omdb.apiKey")}\"")
+        buildConfigField("String", "BOOKS_API_KEY", "\"${localProp("books.apiKey")}\"")
     }
 
     signingConfigs {
@@ -90,14 +99,15 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
-    implementation("com.google.mlkit:barcode-scanning:17.2.0")
-    implementation("androidx.camera:camera-core:1.3.3")
-    implementation("androidx.camera:camera-camera2:1.3.3")
-    implementation("androidx.camera:camera-lifecycle:1.3.3")
-    implementation("androidx.camera:camera-view:1.3.0")
-    implementation("androidx.camera:camera-extensions:1.3.0")
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
+    implementation("androidx.camera:camera-core:1.4.2")
+    implementation("androidx.camera:camera-camera2:1.4.2")
+    implementation("androidx.camera:camera-lifecycle:1.4.2")
+    implementation("androidx.camera:camera-view:1.4.2")
+    implementation("androidx.camera:camera-extensions:1.4.2")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("com.google.android.play:review-ktx:2.0.2")
+    implementation("com.android.billingclient:billing-ktx:7.1.1")
 }

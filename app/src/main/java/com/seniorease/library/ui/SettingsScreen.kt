@@ -20,10 +20,12 @@ fun SettingsScreen(
     onLargeTextToggle: (Boolean) -> Unit,
     isHighContrastEnabled: Boolean,
     onHighContrastToggle: (Boolean) -> Unit,
-    isDemo: Boolean,
     onLanguageChange: (String) -> Unit,
     onThemeChange: (String) -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    isPremium: Boolean = false,
+    itemCount: Int = 0,
+    onRestorePurchase: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var selectedLanguage by remember { mutableStateOf(LanguageHelper.getSavedLanguage(context)) }
@@ -226,14 +228,42 @@ fun SettingsScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 Divider()
                 Spacer(modifier = Modifier.height(8.dp))
-                val versionName = run {
-                    val raw = BuildConfig.VERSION_NAME
-                    if (isDemo) raw else if (raw.endsWith("-demo", ignoreCase = true)) {
-                        raw.dropLast(5)
-                    } else {
-                        raw
+
+                // Premium status
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        if (isPremium) {
+                            Text(
+                                text = stringResource(R.string.premium_status_active),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        } else {
+                            Text(
+                                text = stringResource(R.string.premium_status_free, itemCount),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            OutlinedButton(
+                                onClick = onRestorePurchase,
+                                modifier = Modifier.padding(top = 4.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.premium_restore_button),
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+                        }
                     }
                 }
+
+                Divider()
+                Spacer(modifier = Modifier.height(8.dp))
+                val versionName = BuildConfig.VERSION_NAME.removeSuffix("-demo")
                 Text(
                     text = stringResource(R.string.app_version, versionName),
                     style = MaterialTheme.typography.bodySmall,

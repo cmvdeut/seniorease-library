@@ -77,10 +77,7 @@ fun AddItemDialog(
     onDelete: ((Item) -> Unit)? = null,
     initialType: String = "boek",
     onTypeChange: ((String) -> Unit)? = null,
-    allAuthors: List<String> = emptyList(),
-    isDemo: Boolean = false,
-    maxItems: Int = -1,
-    currentItemCount: Int = 0
+    allAuthors: List<String> = emptyList()
 ) {
     val context = LocalContext.current
     val db = remember { AppDatabase.getDatabase(context) }
@@ -118,9 +115,12 @@ fun AddItemDialog(
             try {
                 val client = OkHttpClient()
                 val url = "https://www.googleapis.com/books/v1/volumes?q=isbn:$isbn&key=${com.seniorease.library.BuildConfig.BOOKS_API_KEY}"
+                android.util.Log.d("BooksAPI", "Fetching: $url")
                 val request = Request.Builder().url(url).build()
                 val response = client.newCall(request).execute()
+                android.util.Log.d("BooksAPI", "HTTP ${response.code}")
                 val body = response.body?.string() ?: return@withContext null
+                android.util.Log.d("BooksAPI", "Response: $body")
                 val json = JSONObject(body)
                 val items = json.optJSONArray("items") ?: return@withContext null
                 if (items.length() == 0) return@withContext null
@@ -128,13 +128,14 @@ fun AddItemDialog(
                 val title = volumeInfo.optString("title", "")
                 val authors = volumeInfo.optJSONArray("authors")
                 val author = if (authors != null && authors.length() > 0) authors.getString(0) else ""
-                
+
                 // Haal cover URL op
                 val imageLinks = volumeInfo.optJSONObject("imageLinks")
                 val coverUrl = imageLinks?.optString("thumbnail")?.replace("http://", "https://")
-                
+
                 Triple(title, author, coverUrl)
             } catch (e: Exception) {
+                android.util.Log.e("BooksAPI", "Exception: ${e.message}", e)
                 null
             }
         }
@@ -194,9 +195,37 @@ fun AddItemDialog(
         }
     }
 
+    suspend fun fetchBookInfoOpenLibrary(isbn: String): Triple<String, String, String?>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val client = OkHttpClient()
+                val url = "https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&format=json&jscmd=data"
+                val request = Request.Builder().url(url).build()
+                val response = client.newCall(request).execute()
+                val body = response.body?.string() ?: return@withContext null
+                android.util.Log.d("BooksAPI", "OpenLibrary response: $body")
+                val json = JSONObject(body)
+                val key = "ISBN:$isbn"
+                val bookObj = json.optJSONObject(key) ?: return@withContext null
+                val title = bookObj.optString("title", "")
+                val authorsArr = bookObj.optJSONArray("authors")
+                val author = if (authorsArr != null && authorsArr.length() > 0)
+                    authorsArr.getJSONObject(0).optString("name", "") else ""
+                val coverObj = bookObj.optJSONObject("cover")
+                val coverUrl = coverObj?.optString("medium")?.ifBlank { null }
+                    ?: coverObj?.optString("large")?.ifBlank { null }
+                if (title.isBlank()) return@withContext null
+                Triple(title, author, coverUrl)
+            } catch (e: Exception) {
+                android.util.Log.e("BooksAPI", "OpenLibrary exception: ${e.message}", e)
+                null
+            }
+        }
+    }
+
     suspend fun tryFetchAndFill(isbn: String, forceUpdate: Boolean = false) {
         isLoading = true
-        val result = fetchBookInfo(isbn)
+        val result = fetchBookInfo(isbn) ?: fetchBookInfoOpenLibrary(isbn)
         if (result != null) {
             if (forceUpdate || title.isBlank()) {
                 title = result.first
@@ -599,9 +628,7 @@ fun AddItemDialog(
         }
     }
 
-    // Check demo limiet (alleen bij nieuw item, niet bij bewerken)
-    val isLimitReached = item == null && isDemo && maxItems > 0 && currentItemCount >= maxItems
-    val isOkEnabled = ((title.isNotBlank() && authorOrArtist.isNotBlank()) || code.isNotBlank()) && !isLimitReached
+    val isOkEnabled = (title.isNotBlank() && authorOrArtist.isNotBlank()) || code.isNotBlank()
 
     var authorSuggestions by remember { mutableStateOf(listOf<String>()) }
     LaunchedEffect(authorOrArtist, allAuthors) {
@@ -614,46 +641,14 @@ fun AddItemDialog(
         text = {
             Box {
                 Column {
-                    // Demo limiet waarschuwing
-                    if (isLimitReached) {
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = 8.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.errorContainer
-                            )
-                        ) {
-                            Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    text = stringResource(R.string.demo_limit_warning_title),
-                                    style = MaterialTheme.typography.titleMedium,
-                                    color = MaterialTheme.colorScheme.onErrorContainer
-                                )
-                                Text(
-                                    text = stringResource(R.string.demo_limit_warning_message, maxItems),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onErrorContainer,
-                                    modifier = Modifier.padding(top = 4.dp)
-                                )
-                                Text(
-                                    text = stringResource(R.string.demo_limit_warning_upgrade),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onErrorContainer,
-                                    modifier = Modifier.padding(top = 8.dp)
-                                )
-                            }
-                        }
-                    }
                     if (isLoading) {
                         Text(stringResource(R.string.fetching_book_data))
                     }
                     if (duplicateError) {
                         Text(stringResource(R.string.duplicate_code), color = MaterialTheme.colorScheme.error)
                     }
-                    // Type dropdown menu - alleen tonen als niet demo, anders altijd "boek"
-                    if (!isDemo) {
-                        Row(
+                    // Type dropdown menu
+                    Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
                         ) {
@@ -729,10 +724,6 @@ fun AddItemDialog(
                                 }
                             }
                         }
-                    } else {
-                        // In demo mode: type is altijd "boek", verberg dropdown
-                        type = "boek"
-                    }
                     // Titel veld met zoek knop
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
@@ -949,8 +940,8 @@ fun AddItemDialog(
                     )
                     
                         // Cover afbeelding niet weergeven
-                    // Medium dropdown in plaats van OutlinedTextField - alleen als niet demo
-                    if (type == "muziek" && !isDemo) {
+                    // Medium dropdown
+                    if (type == "muziek") {
                         Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
                             Text(stringResource(R.string.item_medium))
                             Spacer(Modifier.width(8.dp))
@@ -983,7 +974,7 @@ fun AddItemDialog(
                             }
                         }
                     }
-                    if (type == "dvd" && !isDemo && dvdNotFound && code.isNotBlank()) {
+                    if (type == "dvd" && dvdNotFound && code.isNotBlank()) {
                         Button(
                             onClick = {
                                 val query = code.trim().replace(" ", "")
@@ -994,7 +985,7 @@ fun AddItemDialog(
                             Text(stringResource(R.string.search_google))
                         }
                     }
-                    if (type == "game" && !isDemo && gameNotFound && code.isNotBlank()) {
+                    if (type == "game" && gameNotFound && code.isNotBlank()) {
                         Button(
                             onClick = {
                                 val query = code.trim().replace(" ", "")

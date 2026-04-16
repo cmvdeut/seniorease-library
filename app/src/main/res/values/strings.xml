@@ -16,7 +16,13 @@
     <string name="all">Alles</string>
     
     <!-- Main Screen -->
-    <string name="library">Library</string>
+    <string name="library">SeniorEase Library</string>
+    <string name="about_title">Over de app</string>
+    <string name="about_description">SeniorEase Library — uw persoonlijke collectie van boeken, muziek, dvd\'s en games.</string>
+    <string name="about_version">Versie: %1$s</string>
+    <string name="about_website">Website: seniorease.eu</string>
+    <string name="about_contact">Contact: info@seniorease.eu</string>
+    <string name="scan_type_label">Scan als:</string>
     <string name="app_version">Version %1$s</string>
     <string name="demo_status">Demo – %1$d of %2$d items</string>
     <string name="demo_limit_warning_title">Demo limit reached</string>
@@ -235,4 +241,12 @@
     <string name="theme_system">Systeem</string>
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
+
+    <!-- Premium / IAP -->
+    <string name="premium_unlock_title">Volledige versie ontgrendelen</string>
+    <string name="premium_unlock_message">U heeft de limiet van 10 items bereikt in de gratis versie.\n\nOntgrendel onbeperkte toegang met een eenmalige aankoop van €4,99.</string>
+    <string name="premium_buy_button">Kopen (€4,99)</string>
+    <string name="premium_restore_button">Aankoop herstellen</string>
+    <string name="premium_status_active">Premium: Actief ✓</string>
+    <string name="premium_status_free">Gratis versie (%1$d/10 items)</string>
 </resources>
