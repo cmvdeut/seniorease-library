@@ -30,6 +30,7 @@ function copyRecursiveSync(src, dest) {
 // Copy all necessary files
 const filesToCopy = [
   'index.html',
+  'nl',
   'privacy-policy.html',
   'terms.html',
   'terms',
