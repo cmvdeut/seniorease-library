@@ -9,6 +9,8 @@
     }
   ],
   "redirects": [
+    {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "NL"}], "destination": "/nl/", "permanent": false},
+    {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "BE"}], "destination": "/nl/", "permanent": false},
     {"source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true},
     {"source": "/tiktok-callback", "destination": "/tiktok-callback.html", "permanent": true}
   ]
