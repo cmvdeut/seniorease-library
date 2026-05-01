@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tiktok.html
+Disallow: /generate-qr.html
 
 Sitemap: https://seniorease.eu/sitemap.xml

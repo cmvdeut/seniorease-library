@@ -9,6 +9,7 @@
     }
   ],
   "redirects": [
+    {"source": "/(.*)", "has": [{"type": "host", "value": "www.seniorease.eu"}], "destination": "https://seniorease.eu/$1", "permanent": true},
     {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "NL"}], "destination": "/nl/", "permanent": false},
     {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "BE"}], "destination": "/nl/", "permanent": false},
     {"source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true},

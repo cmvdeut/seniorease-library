@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SeniorEase Library — Houd je boeken, muziek, dvd's en games bij op één plek. Barcode scannen, geen account nodig, werkt offline.">
+    <meta name="description" content="SeniorEase Library: scan barcodes om boeken, muziek, dvd's en games bij te houden. Geen account, werkt offline. Probeer 10 items gratis. Download in de Play Store.">
     <title>SeniorEase Library — Boeken, muziek, dvd's en games bijhouden</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -23,7 +23,7 @@
     <meta property="og:locale:alternate" content="en_US">
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SeniorEase Library — Boeken, muziek, dvd's en games bijhouden">
     <meta name="twitter:description" content="Scan barcodes om je persoonlijke collectie bij te houden. Geen account nodig, werkt offline.">
     <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
@@ -33,7 +33,7 @@
     <meta name="author" content="Maureen, SeniorEase">
     <meta name="robots" content="index, follow">
 
-    <!-- FAQPage Structured Data -->
+    <!-- FAQPage Structured Data (matches visible FAQ below) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -41,7 +41,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is SeniorEase Library veilig om te downloaden?",
+          "name": "Is dit veilig om te downloaden?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Ja. De app staat in de officiële Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens."
@@ -49,15 +49,15 @@
         },
         {
           "@type": "Question",
-          "name": "Heb ik een account nodig voor SeniorEase Library?",
+          "name": "Heb ik een account nodig?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nee. Download de app en begin direct met gebruiken. Geen e-mail of registratie nodig."
+            "text": "Nee. Download en gebruik de app. Geen e-mail of registratie."
           }
         },
         {
           "@type": "Question",
-          "name": "Op welke telefoons werkt SeniorEase Library?",
+          "name": "Op welke telefoons en tablets werkt het?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Android-telefoons en -tablets vanaf circa 2016 of nieuwer. Ongeveer 30 MB. Niet beschikbaar voor iPhone of iPad."
@@ -65,10 +65,18 @@
         },
         {
           "@type": "Question",
-          "name": "Kan ik SeniorEase Library gratis uitproberen?",
+          "name": "Kan ik het eerst gratis uitproberen?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van €4,99."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat als ik niet tevreden ben?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geen probleem. Stuur een e-mail naar support@seniorease.eu binnen 14 dagen en je krijgt je geld terug — geen reden nodig. Feedback wordt wél gewaardeerd, maar is nooit verplicht."
           }
         }
       ]
@@ -86,10 +94,19 @@
       "offers": {
         "@type": "Offer",
         "price": "4.99",
-        "priceCurrency": "EUR"
+        "priceCurrency": "EUR",
+        "description": "Eenmalige ontgrendeling voor onbeperkt aantal items. Gratis versie: tot 10 items, geen tijdslimiet."
       },
       "description": "Scan barcodes om je persoonlijke collectie van boeken, muziek, dvd's en games bij te houden. Geen account nodig, werkt offline.",
       "url": "https://seniorease.eu/nl/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.maureen.biblitoheek",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.maureen.biblitoheek",
+      "screenshot": [
+        "https://seniorease.eu/assets/app-library.png",
+        "https://seniorease.eu/assets/app-scan.png",
+        "https://seniorease.eu/assets/app-filter.png",
+        "https://seniorease.eu/assets/app-menu.png"
+      ],
       "author": {
         "@type": "Person",
         "name": "Maureen"
@@ -101,6 +118,33 @@
       }
     }
     </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SeniorEase",
+      "url": "https://seniorease.eu",
+      "logo": "https://seniorease.eu/seniorease-icon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@seniorease.eu",
+        "contactType": "customer support"
+      }
+    }
+    </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://seniorease.eu/",
+      "name": "SeniorEase Library"
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -154,6 +198,55 @@
         .play-badge { height: 60px; width: auto; display: block; transition: transform 0.2s; }
         .play-badge-link:hover .play-badge { transform: translateY(-2px); }
         .hero .cta-note { font-size: 14px; color: #888; margin-top: 12px; }
+
+        /* Definition & fit (AI-extractable, visible) */
+        .definition-block {
+            background: #fff;
+            border-top: 1px solid #E0D5CA;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 40px 0;
+        }
+        .definition-block .definition-lead {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.7;
+            max-width: 640px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+        .good-fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .good-fit-col h3 {
+            font-size: 16px;
+            color: #8B5E3C;
+            margin-bottom: 12px;
+        }
+        .good-fit-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.65;
+        }
+        .good-fit-col li { padding: 6px 0 6px 22px; position: relative; }
+        .good-fit-col li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #8B5E3C;
+        }
+        @media (max-width: 640px) {
+            .good-fit-grid { grid-template-columns: 1fr; }
+        }
+        body:not(.lang-nl) .good-fit-grid[data-lang="en"] { display: grid; }
+        body.lang-nl .good-fit-grid[data-lang="nl"] { display: grid; }
 
         /* About */
         .about { background: #fff; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; }
@@ -299,6 +392,49 @@
         </div>
     </section>
 
+    <section class="definition-block" aria-label="Wat is SeniorEase Library">
+        <div class="container">
+            <p class="definition-lead" data-lang="en">SeniorEase Library is an Android app that tracks books, music, DVDs, and games in one private catalog. Scan barcodes to add items; no account or ads; data stays on your device and works offline. The free tier includes up to ten items. Unlock unlimited items for a one-time €4.99. Not for iPhone or iPad.</p>
+            <p class="definition-lead" data-lang="nl">SeniorEase Library is een Android-app om boeken, muziek, dvd's en games in één privécatalogus bij te houden. Scan barcodes om items toe te voegen; geen account of advertenties; gegevens blijven op je toestel en werken offline. De gratis versie telt tot tien items. Onbeperkt voor een eenmalige €4,99. Niet voor iPhone of iPad.</p>
+            <div class="good-fit-grid" data-lang="en">
+                <div class="good-fit-col">
+                    <h3>Good fit if you…</h3>
+                    <ul>
+                        <li>Want one simple app for books, music, DVDs, and games</li>
+                        <li>Prefer no account, no ads, and data that stays on your phone</li>
+                        <li>Use Android and like calm, large-type friendly design</li>
+                    </ul>
+                </div>
+                <div class="good-fit-col">
+                    <h3>Not the best fit if you…</h3>
+                    <ul>
+                        <li>Need iPhone or iPad (Android only)</li>
+                        <li>Want mandatory cloud sync or a social feed</li>
+                        <li>Expect a subscription with server-hosted library backup</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="good-fit-grid" data-lang="nl">
+                <div class="good-fit-col">
+                    <h3>Past goed als je…</h3>
+                    <ul>
+                        <li>Eén rustige app wilt voor boeken, muziek, dvd's en games</li>
+                        <li>Geen account, geen ads en gegevens op je telefoon wilt</li>
+                        <li>Android gebruikt en een duidelijke, seniorvriendelijke app zoekt</li>
+                    </ul>
+                </div>
+                <div class="good-fit-col">
+                    <h3>Minder geschikt als je…</h3>
+                    <ul>
+                        <li>iPhone of iPad nodig hebt (alleen Android)</li>
+                        <li>Verplichte cloud-sync of een sociale feed wilt</li>
+                        <li>Een abonnement met centrale online back-up verwacht</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About -->
     <section class="about">
         <div class="container">
@@ -338,16 +474,16 @@
             <h2 data-lang="nl">Bekijk de app</h2>
             <div class="screenshot-track">
                 <div class="phone-mockup">
-                    <img src="/assets/app-library.png" alt="Bibliotheek overzicht">
+                    <img src="/assets/app-library.png" alt="SeniorEase Library — overzicht van je boeken- en muziekcollectie" loading="lazy" width="140" height="303">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-scan.png" alt="Barcode scannen">
+                    <img src="/assets/app-scan.png" alt="Barcode scannen om een boek toe te voegen aan je collectie" loading="lazy" width="140" height="303">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-filter.png" alt="Filteren en sorteren">
+                    <img src="/assets/app-filter.png" alt="Collectie filteren en sorteren op genre of status" loading="lazy" width="140" height="303">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-menu.png" alt="Back-up, export, instellingen">
+                    <img src="/assets/app-menu.png" alt="Back-up, exporteer naar PDF of CSV, app-instellingen" loading="lazy" width="140" height="303">
                 </div>
             </div>
         </div>
@@ -495,20 +631,28 @@
                 <p class="faq-a">Nee. Download en gebruik de app. Geen e-mail of registratie.</p>
             </div>
             <div class="faq-item" data-lang="en">
-                <p class="faq-q">Which phones does it work on?</p>
-                <p class="faq-a">Android phones and tablets from 2016 or newer. About 30 MB. Not available for iPhone or iPad.</p>
+                <p class="faq-q">Which phones and tablets does it work on?</p>
+                <p class="faq-a">Android phones and tablets from about 2016 or newer. About 30 MB. Not available for iPhone or iPad.</p>
             </div>
             <div class="faq-item" data-lang="nl">
-                <p class="faq-q">Op welke telefoons werkt het?</p>
+                <p class="faq-q">Op welke telefoons en tablets werkt het?</p>
                 <p class="faq-a">Android-telefoons en -tablets vanaf circa 2016 of nieuwer. Ongeveer 30 MB. Niet beschikbaar voor iPhone of iPad.</p>
             </div>
             <div class="faq-item" data-lang="en">
+                <p class="faq-q">Can I try it before paying?</p>
+                <p class="faq-a">Yes. The free version lets you store up to 10 items with no time limit. Unlock full access for a one-time payment of €4.99.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Kan ik het eerst gratis uitproberen?</p>
+                <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van €4,99.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
                 <p class="faq-q">What if I'm not satisfied?</p>
-                <p class="faq-a">Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days for a full refund — no reason needed.</p>
+                <p class="faq-a">No problem. Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days and you'll get a full refund — no reason needed. Feedback is always welcome, but never required.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Wat als ik niet tevreden ben?</p>
-                <p class="faq-a">Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug — geen reden nodig.</p>
+                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug — geen reden nodig. Feedback wordt wél gewaardeerd, maar is nooit verplicht.</p>
             </div>
         </div>
     </section>
@@ -519,9 +663,11 @@
                 <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
                 <a href="/terms/" data-lang="en">Terms & Conditions</a>
                 <a href="/contact.html" data-lang="en">Contact</a>
+                <a href="/pricing.md" data-lang="en">Pricing</a>
                 <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
                 <a href="/terms/" data-lang="nl">Voorwaarden</a>
                 <a href="/contact.html" data-lang="nl">Contact</a>
+                <a href="/pricing.md" data-lang="nl">Prijzen</a>
             </div>
             <p>
                 <span data-lang="en">© 2026 SeniorEase · Android only</span>
