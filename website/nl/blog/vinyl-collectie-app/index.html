@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ik kocht hetzelfde Miles Davis-plaat twee keer op de platenbeurs. Een app voor je vinyl collectie veranderde alles. Geen account, werkt offline, gratis proberen.">
+    <title>Stop met dubbel kopen op de platenbeurs — SeniorEase</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/nl/blog/vinyl-collectie-app/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-app/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-record-collection-app/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/vinyl-record-collection-app/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seniorease.eu/nl/blog/vinyl-collectie-app/">
+    <meta property="og:title" content="Stop met dubbel kopen op de platenbeurs — SeniorEase">
+    <meta property="og:description" content="Ik kocht hetzelfde Miles Davis-plaat twee keer op de platenbeurs. Zo voorkom je dat met een barcode-scanner app.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="nl_NL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stop met dubbel kopen op de platenbeurs — SeniorEase">
+    <meta name="twitter:description" content="Ik kocht hetzelfde Miles Davis-plaat twee keer op de platenbeurs. Zo voorkom je dat met een barcode-scanner app.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Stop met dubbel kopen op de platenbeurs",
+      "description": "Ik kocht hetzelfde Miles Davis-plaat twee keer op de platenbeurs. Een app voor je vinyl collectie veranderde alles.",
+      "author": {"@type": "Person", "name": "Maureen"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "logo": {"@type": "ImageObject", "url": "https://seniorease.eu/seniorease-icon.png"}
+      },
+      "datePublished": "2026-05-01",
+      "dateModified": "2026-05-01",
+      "url": "https://seniorease.eu/nl/blog/vinyl-collectie-app/",
+      "image": "https://seniorease.eu/seniorease-icon.png",
+      "inLanguage": "nl"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kan ik SeniorEase Library gebruiken om vinyl platen bij te houden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Met SeniorEase Library scan je de barcode van een plaat en de app slaat de titel, artiest en hoes automatisch op. Je kunt platen, boeken, dvd's en games allemaal in dezelfde app bijhouden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Werkt de app offline op de platenbeurs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Je opgeslagen collectie is altijd offline beschikbaar. Om een nieuw artikel op te zoeken via barcode heb je internet nodig, maar je bestaande collectie werkt altijd — ook zonder wifi of mobiele data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is er een gratis versie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang unlock je eenmalig voor €4,99 — geen abonnement."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .site-header .logo-link img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .site-header .lang-link {
+            font-size: 14px;
+            color: #8B5E3C;
+            text-decoration: none;
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 6px 16px;
+            background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+
+        .breadcrumb {
+            padding: 16px 0 0;
+            font-size: 13px;
+            color: #888;
+        }
+        .breadcrumb a { color: #8B5E3C; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+
+        article {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 20px 0 40px;
+            border: 1px solid #E0D5CA;
+        }
+        @media (max-width: 640px) {
+            article { padding: 24px 20px; }
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 28px;
+        }
+        h1 {
+            font-size: clamp(24px, 4.5vw, 34px);
+            font-weight: 700;
+            color: #8B5E3C;
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #6D4A30;
+            margin: 36px 0 14px;
+        }
+        p { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; }
+        ul, ol {
+            font-size: 17px;
+            color: #333;
+            line-height: 1.75;
+            margin-bottom: 18px;
+            padding-left: 24px;
+        }
+        li { margin-bottom: 8px; }
+        strong { color: #1F1F1F; }
+
+        .steps { list-style: none; padding: 0; margin: 0 0 18px; }
+        .steps li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #8B5E3C;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            border-radius: 14px;
+            padding: 32px;
+            text-align: center;
+            margin: 36px 0;
+        }
+        .cta-box h2 { color: #fff; margin: 0 0 10px; }
+        .cta-box p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block;
+            background: #fff;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 14px 32px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+
+        .faq-list { list-style: none; padding: 0; }
+        .faq-list li { border-top: 1px solid #E0D5CA; padding: 18px 0; }
+        .faq-list li:last-child { border-bottom: 1px solid #E0D5CA; }
+        .faq-q { font-weight: 700; color: #1F1F1F; font-size: 17px; margin-bottom: 8px; }
+        .faq-a { font-size: 16px; color: #555; line-height: 1.65; }
+
+        footer {
+            padding: 32px 20px;
+            text-align: center;
+            border-top: 1px solid #E0D5CA;
+            background: #fff;
+            font-size: 14px;
+            color: #666;
+        }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/nl/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/blog/vinyl-record-collection-app/">🇬🇧 English</a>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumbs">
+            <a href="/nl/">Home</a><span>›</span>
+            <a href="/nl/blog/">Blog</a><span>›</span>
+            Stop met dubbel kopen op de platenbeurs
+        </nav>
+
+        <article>
+            <h1>Stop met dubbel kopen op de platenbeurs</h1>
+            <p class="article-meta">Door Maureen · mei 2026 · 4 min lezen</p>
+
+            <p>Het overkwam me op de platenbeurs. Ik pakte een Miles Davis-plaat op, dacht dat die me bekend voorkwam, maar wist het niet zeker — en kocht hem toch. Thuis stond hij al in de kast. Dezelfde plaat. Twee exemplaren nu.</p>
+
+            <p>Als je vinyl verzamelt, ken je dit gevoel. Een grote collectie is een schat. Maar op het moment dat je bij een bak platen staat, laat je geheugen je in de steek. Heb ik deze al? Is dit een andere persing? Ik zou het moeten weten — maar ik weet het niet.</p>
+
+            <h2>Het probleem met een grote vinylcollectie</h2>
+
+            <p>Hoe groter je collectie, hoe moeilijker het wordt om bij te houden wat je al hebt. De meeste verzamelaars vertrouwen op hun geheugen. Een enkeling houdt een notitieboekje bij. Anderen maken foto's. Geen van deze methodes werkt goed als je op een platenbeurs staat met een stapel interessante platen in je hand en een budget dat niet onbeperkt is.</p>
+
+            <p>Wat je nodig hebt is een manier om direct te controleren of een plaat al in je collectie zit — via je telefoon, zonder wifi, in tien seconden.</p>
+
+            <h2>Hoe SeniorEase Library het oploste</h2>
+
+            <p><strong>SeniorEase Library</strong> is een Android-app waarmee je de barcode van een plaat, boek, dvd of game scant. De app zoekt de titel, artiest en hoes automatisch op. Alles wordt lokaal op je telefoon opgeslagen.</p>
+
+            <p>Geen account nodig. Geen cloud. Geen maandelijkse kosten. Gewoon jouw collectie, op jouw toestel.</p>
+
+            <p>De eerste keer dat ik de app gebruikte op de platenbeurs, scande ik elke plaat waar ik ook maar een beetje twijfel over had. Binnen enkele seconden zag ik of ik hem al had. Geen dubbele aankopen meer. Wel eindelijk die platen die ik al lang zocht.</p>
+
+            <h2>Zo gebruik je de app op de platenbeurs: 3 stappen</h2>
+
+            <ol class="steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <div><strong>Scan je collectie thuis in.</strong> Open de app, tik op de scanknop en houd je telefoon boven de barcode van elke plaat. De app vult de titel en artiest automatisch in. Een middag scannen — het gaat sneller dan je denkt.</div>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <div><strong>Neem je telefoon mee naar de platenbeurs.</strong> Je opgeslagen collectie is altijd offline beschikbaar. Open de app en zoek op artiest of titel om te controleren of iets al in je lijst staat.</div>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <div><strong>Scan voordat je koopt.</strong> Als een plaat je aanspreekt, scan de barcode. Staat hij nog niet in je collectie? Dan zie je "niet gevonden" en kun je hem toevoegen. Staat hij er <em>al</em> in? Dat zie je meteen — en bespaar je jezelf €15.</div>
+                </li>
+            </ol>
+
+            <h2>Werkt ook voor meer dan alleen vinyl</h2>
+
+            <p>De meeste verzamelaars stoppen niet bij platen. SeniorEase Library werkt voor je hele collectie in één app:</p>
+
+            <ul>
+                <li><strong>Boeken</strong> — scan de ISBN-barcode op de achterflap</li>
+                <li><strong>Cd's en muziek</strong> — zelfde als vinyl, barcode op het doosje</li>
+                <li><strong>Dvd's en Blu-rays</strong> — werkt op alle standaard schijfhoesjes</li>
+                <li><strong>Videogames</strong> — scan de barcode op de gameverpakking</li>
+            </ul>
+
+            <p>Alles op één plek. Één zoekopdracht om te checken of je iets al hebt, wat het ook is.</p>
+
+            <div class="cta-box">
+                <h2>Gratis proberen — geen account nodig</h2>
+                <p>Begin met maximaal 10 items gratis. Eenmalig upgraden voor je volledige collectie.</p>
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="plausible && plausible('Download')">
+                    Downloaden via Google Play
+                </a>
+                <p class="cta-note">Alleen Android · Eenmalig €4,99 voor volledige toegang · Geen abonnement</p>
+            </div>
+
+            <h2>Veelgestelde vragen</h2>
+
+            <ul class="faq-list">
+                <li>
+                    <p class="faq-q">Kan ik SeniorEase Library gebruiken om vinyl platen bij te houden?</p>
+                    <p class="faq-a">Ja. Met SeniorEase Library scan je de barcode van een plaat en de app slaat de titel, artiest en hoes automatisch op. Je kunt platen, boeken, dvd's en games allemaal in dezelfde app bijhouden.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Werkt de app offline op de platenbeurs?</p>
+                    <p class="faq-a">Je opgeslagen collectie is altijd offline beschikbaar. Om een nieuw artikel op te zoeken via barcode heb je internet nodig, maar je bestaande collectie werkt altijd — ook zonder wifi of mobiele data.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Is er een gratis versie?</p>
+                    <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang unlock je eenmalig voor €4,99 — geen abonnement.</p>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/nl/blog/">← Alle artikelen</a>
+            <a href="/nl/">Home</a>
+            <a href="/privacy-policy.html">Privacybeleid</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Alleen Android</p>
+    </footer>
+
+</body>
+</html>
