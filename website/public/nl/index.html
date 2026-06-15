@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SeniorEase Library: scan barcodes om boeken, muziek, dvd's en games bij te houden. Geen account, werkt offline. Probeer 10 items gratis. Download in de Play Store.">
+    <meta name="description" content="SeniorEase Library — Houd je boeken, muziek, dvd's en games bij op één plek. Barcode scannen, geen account nodig, werkt offline.">
     <title>SeniorEase Library — Boeken, muziek, dvd's en games bijhouden</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -23,7 +23,7 @@
     <meta property="og:locale:alternate" content="en_US">
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="SeniorEase Library — Boeken, muziek, dvd's en games bijhouden">
     <meta name="twitter:description" content="Scan barcodes om je persoonlijke collectie bij te houden. Geen account nodig, werkt offline.">
     <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
@@ -118,33 +118,6 @@
       }
     }
     </script>
-
-    <!-- Organization Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "SeniorEase",
-      "url": "https://seniorease.eu",
-      "logo": "https://seniorease.eu/seniorease-icon.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "support@seniorease.eu",
-        "contactType": "customer support"
-      }
-    }
-    </script>
-
-    <!-- WebSite Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://seniorease.eu/",
-      "name": "SeniorEase Library"
-    }
-    </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -349,6 +322,7 @@
             .phone-mockup:hover { transform: scale(1.02) !important; }
         }
 
+        /* Sticky CTA — mobiel only */
         /* Newsletter / email capture */
         .newsletter { background: #8B5E3C; color: #fff; text-align: center; padding: 56px 0; }
         .newsletter h2 { font-size: 22px; color: #fff; margin-bottom: 12px; }
@@ -358,13 +332,9 @@
         .newsletter-form button { background: #fff; color: #8B5E3C; border: none; border-radius: 10px; padding: 14px 24px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
         .newsletter-form button:hover { background: #F5EEE6; }
         .newsletter-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 14px; }
-
-        /* Social links in footer */
         .footer-social { margin-bottom: 14px; }
         .footer-social a { display: inline-flex; align-items: center; gap: 5px; margin: 0 10px; color: #8B5E3C; text-decoration: none; font-weight: 600; font-size: 14px; }
         .footer-social a:hover { text-decoration: underline; }
-
-        /* Sticky CTA — mobiel only */
         .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%); color: #fff; text-align: center; padding: 16px 20px; font-size: 17px; font-weight: 600; text-decoration: none; z-index: 200; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
         @media (max-width: 640px) { .sticky-cta { display: block; } }
     </style>
@@ -489,16 +459,16 @@
             <h2 data-lang="nl">Bekijk de app</h2>
             <div class="screenshot-track">
                 <div class="phone-mockup">
-                    <img src="/assets/app-library.png" alt="SeniorEase Library — overzicht van je boeken- en muziekcollectie" loading="lazy" width="140" height="303">
+                    <img src="/assets/app-library.png" alt="Bibliotheek overzicht">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-scan.png" alt="Barcode scannen om een boek toe te voegen aan je collectie" loading="lazy" width="140" height="303">
+                    <img src="/assets/app-scan.png" alt="Barcode scannen">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-filter.png" alt="Collectie filteren en sorteren op genre of status" loading="lazy" width="140" height="303">
+                    <img src="/assets/app-filter.png" alt="Filteren en sorteren">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-menu.png" alt="Back-up, exporteer naar PDF of CSV, app-instellingen" loading="lazy" width="140" height="303">
+                    <img src="/assets/app-menu.png" alt="Back-up, export, instellingen">
                 </div>
             </div>
         </div>
@@ -673,7 +643,6 @@
     </section>
 
     <!-- Newsletter / Email Capture -->
-    <!-- Stap: log in op mailchimp.com → Audience → Signup forms → Embedded forms → kopieer de action-URL en plak hieronder -->
     <section class="newsletter">
         <div class="container">
             <h2 data-lang="en">Tips for collectors, in your inbox</h2>
@@ -712,12 +681,10 @@
                 <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
             </div>
             <div class="footer-links">
-                <a href="/blog/" data-lang="en">Blog</a>
                 <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
                 <a href="/terms/" data-lang="en">Terms & Conditions</a>
                 <a href="/contact.html" data-lang="en">Contact</a>
                 <a href="/pricing.md" data-lang="en">Pricing</a>
-                <a href="/nl/blog/" data-lang="nl">Blog</a>
                 <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
                 <a href="/terms/" data-lang="nl">Voorwaarden</a>
                 <a href="/contact.html" data-lang="nl">Contact</a>

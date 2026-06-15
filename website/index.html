@@ -454,6 +454,75 @@
             .phone-mockup:hover { transform: scale(1.02) !important; }
         }
 
+        /* Newsletter / email capture */
+        .newsletter {
+            background: #8B5E3C;
+            color: #fff;
+            text-align: center;
+            padding: 56px 0;
+        }
+        .newsletter h2 { font-size: 22px; color: #fff; margin-bottom: 12px; }
+        .newsletter .newsletter-sub {
+            font-size: 16px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 210px;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #1F1F1F;
+            outline: none;
+            font-family: inherit;
+        }
+        .newsletter-form button {
+            background: #fff;
+            color: #8B5E3C;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        .newsletter-form button:hover { background: #F5EEE6; }
+        .newsletter-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 14px;
+        }
+
+        /* Social links in footer */
+        .footer-social { margin-bottom: 14px; }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 10px;
+            color: #8B5E3C;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .footer-social a:hover { text-decoration: underline; }
+
         /* Sticky CTA — mobiel only */
         .sticky-cta {
             display: none;
@@ -889,8 +958,45 @@
         </div>
     </section>
 
+    <!-- Newsletter / Email Capture -->
+    <!-- Stap: log in op mailchimp.com → Audience → Signup forms → Embedded forms → kopieer de action-URL en plak hieronder -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 data-lang="en">Tips for collectors, in your inbox</h2>
+            <h2 data-lang="nl">Tips voor verzamelaars, in je inbox</h2>
+            <p class="newsletter-sub" data-lang="en">New articles, app updates — practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
+            <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates — praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
+            <div id="error-message" style="display:none; background:#ffeded; border:1px solid #ff4949; border-radius:8px; padding:12px 16px; max-width:460px; margin:0 auto 12px; color:#661d1d; font-size:15px;">
+                <span data-lang="en">Your subscription could not be saved. Please try again.</span>
+                <span data-lang="nl">Aanmelding mislukt. Probeer het opnieuw.</span>
+            </div>
+            <div id="success-message" style="display:none; background:#e7faf0; border:1px solid #13ce66; border-radius:8px; padding:12px 16px; max-width:460px; margin:0 auto 12px; color:#085229; font-size:15px;">
+                <span data-lang="en">You're subscribed!</span>
+                <span data-lang="nl">Je bent aangemeld!</span>
+            </div>
+            <form id="sib-form" class="newsletter-form" method="POST" data-type="subscription"
+                  action="https://dcaf15e0.sibforms.com/serve/MUIFAGNZbOdxCVaYIDVD8OkwpT2r9Q7tVHbd61auA9zT5huYXZRrrJJUYo8idSklwjepcM6w5DlZz-ycuF8OTwXvLYNsP4lgO-SVoE9nBMZH2X-Tp-HJ5TzQC034ruRlur_MQFZwsw4r5yb63e1Jdb-VJXrYB96vM7MQwr55_HJ7yBUmVT58-SmkIvzDr8zammIEQRtmbtxkr2geUQ==">
+                <input type="email" name="EMAIL" placeholder="jouw@email.nl" required autocomplete="off">
+                <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1">
+                <input type="hidden" name="locale" value="en">
+                <button type="submit">
+                    <span data-lang="en">Subscribe</span>
+                    <span data-lang="nl">Aanmelden</span>
+                </button>
+            </form>
+            <p class="newsletter-note">
+                <span data-lang="en">No spam · Unsubscribe anytime</span>
+                <span data-lang="nl">Geen spam · Altijd uitschrijven</span>
+            </p>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
+            <div class="footer-social">
+                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="plausible('Social-TikTok')">TikTok @seniorease</a>
+                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
+            </div>
             <div class="footer-links">
                 <a href="/blog/" data-lang="en">Blog</a>
                 <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
@@ -951,6 +1057,20 @@
             document.body.appendChild(banner);
         }
     </script>
+
+    <script>
+      window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+      window.LOCALE = 'en';
+      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Vul een geldig e-mailadres in.";
+      window.REQUIRED_ERROR_MESSAGE = "Dit veld is verplicht.";
+      window.GENERIC_INVALID_MESSAGE = "Vul een geldig e-mailadres in.";
+      window.INVALID_NUMBER = "Vul een geldig nummer in.";
+      window.INVALID_DATE = "Vul een geldige datum in.";
+      window.REQUIRED_MULTISELECT_MESSAGE = 'Selecteer minimaal 1 optie';
+      window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+      var AUTOHIDE = Boolean(0);
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
     <a id="sticky-cta" class="sticky-cta"
        href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek"
