@@ -966,18 +966,9 @@
             <h2 data-lang="nl">Tips voor verzamelaars, in je inbox</h2>
             <p class="newsletter-sub" data-lang="en">New articles, app updates — practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
             <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates — praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
-            <div id="error-message" style="display:none; background:#ffeded; border:1px solid #ff4949; border-radius:8px; padding:12px 16px; max-width:460px; margin:0 auto 12px; color:#661d1d; font-size:15px;">
-                <span data-lang="en">Your subscription could not be saved. Please try again.</span>
-                <span data-lang="nl">Aanmelding mislukt. Probeer het opnieuw.</span>
-            </div>
-            <div id="success-message" style="display:none; background:#e7faf0; border:1px solid #13ce66; border-radius:8px; padding:12px 16px; max-width:460px; margin:0 auto 12px; color:#085229; font-size:15px;">
-                <span data-lang="en">You're subscribed!</span>
-                <span data-lang="nl">Je bent aangemeld!</span>
-            </div>
-            <form id="sib-form" class="newsletter-form" method="POST" data-type="subscription"
+            <form class="newsletter-form" method="POST"
                   action="https://dcaf15e0.sibforms.com/serve/MUIFAGNZbOdxCVaYIDVD8OkwpT2r9Q7tVHbd61auA9zT5huYXZRrrJJUYo8idSklwjepcM6w5DlZz-ycuF8OTwXvLYNsP4lgO-SVoE9nBMZH2X-Tp-HJ5TzQC034ruRlur_MQFZwsw4r5yb63e1Jdb-VJXrYB96vM7MQwr55_HJ7yBUmVT58-SmkIvzDr8zammIEQRtmbtxkr2geUQ==">
-                <input type="email" name="EMAIL" placeholder="jouw@email.nl" required autocomplete="off">
-                <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1">
+                <input type="email" id="EMAIL" name="EMAIL" placeholder="jouw@email.nl" required>
                 <input type="hidden" name="locale" value="en">
                 <button type="submit">
                     <span data-lang="en">Subscribe</span>
@@ -1057,20 +1048,6 @@
             document.body.appendChild(banner);
         }
     </script>
-
-    <script>
-      window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-      window.LOCALE = 'en';
-      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Vul een geldig e-mailadres in.";
-      window.REQUIRED_ERROR_MESSAGE = "Dit veld is verplicht.";
-      window.GENERIC_INVALID_MESSAGE = "Vul een geldig e-mailadres in.";
-      window.INVALID_NUMBER = "Vul een geldig nummer in.";
-      window.INVALID_DATE = "Vul een geldige datum in.";
-      window.REQUIRED_MULTISELECT_MESSAGE = 'Selecteer minimaal 1 optie';
-      window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
-      var AUTOHIDE = Boolean(0);
-    </script>
-    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
     <a id="sticky-cta" class="sticky-cta"
        href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek"
