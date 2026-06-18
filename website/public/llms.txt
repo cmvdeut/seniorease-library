@@ -1,0 +1,35 @@
+# SeniorEase Library
+
+> Machine-readable overview for AI systems and agents. Human-readable site: https://seniorease.eu/
+
+## What it is
+
+SeniorEase Library is a calm, Android-only app to track personal collections of books, music (vinyl/CD), DVDs, and video games. Users scan product barcodes (ISBN/EAN); metadata can be filled in automatically. No user account is required, there are no in-app ads, and collection data stays on the device (offline-first). A free tier allows up to 10 items with no time limit; unlimited access is unlocked with a one-time payment (EUR 4.99). Not available for iPhone or iPad.
+
+## Who it is for
+
+- Collectors who want a simple, private catalog without subscriptions or cloud lock-in.
+- People who want one app for books, music, DVDs, and games instead of separate tools.
+
+## Pricing (summary)
+
+See https://seniorease.eu/pricing.html for structured pricing tiers.
+
+## Official links
+
+- English landing page: https://seniorease.eu/
+- Dutch landing page: https://seniorease.eu/nl/
+- Google Play (install): https://play.google.com/store/apps/details?id=com.maureen.biblitoheek
+- Privacy policy: https://seniorease.eu/privacy-policy.html
+- Terms & conditions: https://seniorease.eu/terms/
+- Contact: https://seniorease.eu/contact.html
+
+## Scope and limitations
+
+- Platform: Android only (approximately Android 8+ / API 26+; typical install ~30 MB).
+- No iOS version.
+- Refund policy: contact support@seniorease.eu within 14 days of purchase for a full refund (see site FAQ).
+
+## Last updated
+
+2026-05-01
