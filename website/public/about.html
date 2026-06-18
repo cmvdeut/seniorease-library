@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Maureen — the senior who built SeniorEase Library to stop buying the same book or record twice. The story behind the app.">
+    <title>About Maureen — SeniorEase Library</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/about.html">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/about.html">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/about.html">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seniorease.eu/about.html">
+    <meta property="og:title" content="About Maureen — SeniorEase Library">
+    <meta property="og:description" content="The story behind SeniorEase Library — built by a senior, for collectors.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            display: flex;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 8px 18px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .lang-btn.active { background: #8B5E3C; color: #fff; }
+        .lang-btn:hover:not(.active) { background: #F5EEE6; color: #6D4A30; }
+
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 48px 0; }
+
+        .about-page {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 100px 0 56px;
+            text-align: center;
+        }
+        .about-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 28px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(139, 94, 60, 0.2);
+            border: 4px solid #fff;
+        }
+        .about-page h1 {
+            font-size: clamp(24px, 5vw, 34px);
+            font-weight: 700;
+            color: #8B5E3C;
+            margin-bottom: 8px;
+        }
+        .about-page .about-tagline {
+            font-size: 17px;
+            color: #888;
+            margin-bottom: 36px;
+        }
+        .about-page p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.75;
+            max-width: 560px;
+            margin: 0 auto 20px;
+            text-align: left;
+        }
+        .about-cta {
+            margin-top: 40px;
+            display: inline-block;
+            background: #8B5E3C;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .about-cta:hover { background: #6D4A30; transform: translateY(-2px); }
+        .about-cta-note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 12px;
+        }
+
+        footer {
+            padding: 32px 20px;
+            text-align: center;
+            border-top: 1px solid #E0D5CA;
+            background: #fff;
+            font-size: 14px;
+            color: #666;
+        }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 12px; }
+        .footer-links a { margin: 0 12px; }
+        .footer-social { margin-bottom: 14px; }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 10px;
+            color: #8B5E3C;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .footer-social a:hover { text-decoration: underline; }
+
+        [data-lang="nl"] { display: none; }
+        body.lang-nl [data-lang="nl"] { display: block; }
+        body.lang-nl span[data-lang="nl"], body.lang-nl a[data-lang="nl"] { display: inline; }
+        body.lang-nl [data-lang="en"] { display: none; }
+
+        @media (max-width: 640px) {
+            .about-page { padding: 88px 0 44px; }
+            .lang-toggle { top: 12px; right: 12px; }
+        }
+    </style>
+
+    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+</head>
+<body>
+    <div class="lang-toggle">
+        <button type="button" class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" id="btn-nl" aria-pressed="false">NL</button>
+    </div>
+
+    <section class="about-page">
+        <div class="container">
+            <img src="/about-photo.jpg" alt="Maureen" class="about-photo">
+
+            <h1 data-lang="en">About Maureen</h1>
+            <h1 data-lang="nl">Over Maureen</h1>
+
+            <p class="about-tagline" data-lang="en">Senior, collector, and accidental app developer.</p>
+            <p class="about-tagline" data-lang="nl">Senior, verzamelaar, en per ongeluk app-ontwikkelaar.</p>
+
+            <p data-lang="en">I'm Maureen, a senior and collector at heart. It started at record fairs — I love browsing through crates of second-hand vinyl. But I kept coming home with albums I already had on my shelf.</p>
+            <p data-lang="nl">Ik ben Maureen, een senior met een hart voor verzamelen. Het begon op platenbeurzen — ik hou van snuffelen door kratten met tweedehandse vinyl. Maar ik kwam steeds thuis met platen die ik al had.</p>
+
+            <p data-lang="en">You spot a familiar cover, it's only €2, you buy it... and at home it turns out you already have that exact pressing. Sound familiar?</p>
+            <p data-lang="nl">Je ziet een bekende hoes, hij kost maar €2, je koopt hem... en thuis staat hij al op de plank. Herkenbaar?</p>
+
+            <p data-lang="en">I started keeping notes on my phone. It worked, but it was slow and messy. Then the same thing started happening with books — I'd see a title at a market, remember enjoying it at some point... and later discover I'd already borrowed and read it from the library.</p>
+            <p data-lang="nl">Ik begon aantekeningen te maken op mijn telefoon. Dat werkte, maar was omslachtig. Daarna begon hetzelfde te gebeuren met boeken — een titel op de markt, ik wist dat ik hem ooit had gelezen... maar had ik hem nou gekocht, of geleend uit de bibliotheek?</p>
+
+            <p data-lang="en">I looked for a simple app that could handle it all. Everything I found was too complicated, needed an account, or came with a subscription I didn't want. So I learned to code and built SeniorEase Library myself.</p>
+            <p data-lang="nl">Ik zocht een eenvoudige app die alles kon bijhouden. Alles wat ik vond was te ingewikkeld, had een account nodig, of had een abonnement dat ik niet wilde. Dus heb ik mezelf leren programmeren en SeniorEase Library zelf gebouwd.</p>
+
+            <p data-lang="en">Scan the barcode — books, music, DVDs, games — it's added instantly. Next time you're at a fair or market, just check your phone.</p>
+            <p data-lang="nl">Scan de barcode — boeken, muziek, dvd's, games — het staat er meteen in. De volgende keer op een beurs of markt check je gewoon je telefoon.</p>
+
+            <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="about-cta" target="_blank" rel="noopener" onclick="plausible('About-PlayStore')">
+                <span data-lang="en">Download on Google Play</span>
+                <span data-lang="nl">Downloaden via Google Play</span>
+            </a>
+            <p class="about-cta-note">
+                <span data-lang="en">Free up to 10 items · One-time €4.99 to unlock</span>
+                <span data-lang="nl">Gratis tot 10 items · Eenmalig €4,99 om te ontgrendelen</span>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="plausible('Social-TikTok')">TikTok @seniorease</a>
+                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
+            </div>
+            <div class="footer-links">
+                <a href="/" data-lang="en">Home</a>
+                <a href="/blog/" data-lang="en">Blog</a>
+                <a href="/about.html" data-lang="en">About</a>
+                <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
+                <a href="/terms/" data-lang="en">Terms & Conditions</a>
+                <a href="/contact.html" data-lang="en">Contact</a>
+                <a href="/" data-lang="nl">Home</a>
+                <a href="/nl/blog/" data-lang="nl">Blog</a>
+                <a href="/about.html" data-lang="nl">Over</a>
+                <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
+                <a href="/terms/" data-lang="nl">Voorwaarden</a>
+                <a href="/contact.html" data-lang="nl">Contact</a>
+            </div>
+            <p>
+                <span data-lang="en">© 2026 SeniorEase · Android only</span>
+                <span data-lang="nl">© 2026 SeniorEase · Alleen Android</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.body.classList.remove('lang-nl');
+            if (lang === 'nl') document.body.classList.add('lang-nl');
+            document.documentElement.lang = lang;
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+            document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+            document.getElementById('btn-nl').setAttribute('aria-pressed', lang === 'nl');
+            try { localStorage.setItem('seniorease-lang', lang); } catch (e) {}
+        }
+        document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
+        document.getElementById('btn-nl').addEventListener('click', function() { setLang('nl'); });
+        var saved = null;
+        try { saved = localStorage.getItem('seniorease-lang'); } catch (e) {}
+        if (saved === 'nl') setLang('nl');
+    </script>
+</body>
+</html>

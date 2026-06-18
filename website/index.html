@@ -523,6 +523,18 @@
         }
         .footer-social a:hover { text-decoration: underline; }
 
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6D4A30;
+            font-weight: 500;
+        }
+
         /* Sticky CTA — mobiel only */
         .sticky-cta {
             display: none;
@@ -578,6 +590,16 @@
                 <span data-lang="en">Try free up to 10 items, no time limit · €4.99 one-time to unlock all · No subscription · 14-day refund</span>
                 <span data-lang="nl">Gratis proberen tot 10 items, geen tijdslimiet · €4,99 eenmalig voor alles · Geen abonnement · 14 dagen geld terug</span>
             </p>
+            <div class="trust-badges">
+                <span data-lang="en">✓ No account needed</span>
+                <span data-lang="nl">✓ Geen account nodig</span>
+                <span data-lang="en">✓ No subscription</span>
+                <span data-lang="nl">✓ Geen abonnement</span>
+                <span data-lang="en">✓ Works offline</span>
+                <span data-lang="nl">✓ Werkt offline</span>
+                <span data-lang="en">✓ 14-day refund</span>
+                <span data-lang="nl">✓ 14 dagen geld terug</span>
+            </div>
         </div>
     </section>
 
@@ -692,6 +714,7 @@
                         <th class="highlight">SeniorEase</th>
                         <th>CLZ Books</th>
                         <th>Goodreads</th>
+                        <th>Discogs</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -700,10 +723,12 @@
                         <td class="highlight">€4.99 one-time</td>
                         <td>~€25/year</td>
                         <td>Free (with ads)</td>
+                        <td>Free / €5/month</td>
                     </tr>
                     <tr>
                         <td>Account required</td>
                         <td class="highlight"><span class="check">✓ No</span></td>
+                        <td><span class="cross">✗ Yes</span></td>
                         <td><span class="cross">✗ Yes</span></td>
                         <td><span class="cross">✗ Yes</span></td>
                     </tr>
@@ -712,24 +737,28 @@
                         <td class="highlight"><span class="check">✓ Fully</span></td>
                         <td><span class="check">✓ Yes</span></td>
                         <td><span class="cross">✗ No</span></td>
+                        <td><span class="cross">✗ No</span></td>
                     </tr>
                     <tr>
                         <td>Books + music + DVDs + games</td>
                         <td class="highlight"><span class="check">✓ All in one app</span></td>
                         <td><span class="cross">✗ Separate apps</span></td>
                         <td><span class="cross">✗ Books only</span></td>
+                        <td><span class="cross">✗ Music only</span></td>
                     </tr>
                     <tr>
                         <td>Your data stays on your phone</td>
                         <td class="highlight"><span class="check">✓ Always</span></td>
                         <td><span class="cross">✗ Cloud sync</span></td>
                         <td><span class="cross">✗ Amazon servers</span></td>
+                        <td><span class="cross">✗ Cloud only</span></td>
                     </tr>
                     <tr>
                         <td>No subscription to forget</td>
                         <td class="highlight"><span class="check">✓ Pay once</span></td>
                         <td><span class="cross">✗ Annual renewal</span></td>
                         <td><span class="check">✓ Free</span></td>
+                        <td><span class="cross">✗ Monthly fee</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -740,6 +769,7 @@
                         <th class="highlight">SeniorEase</th>
                         <th>CLZ Books</th>
                         <th>Goodreads</th>
+                        <th>Discogs</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -748,10 +778,12 @@
                         <td class="highlight">€4,99 eenmalig</td>
                         <td>~€25/jaar</td>
                         <td>Gratis (met advertenties)</td>
+                        <td>Gratis / €5/maand</td>
                     </tr>
                     <tr>
                         <td>Account vereist</td>
                         <td class="highlight"><span class="check">✓ Nee</span></td>
+                        <td><span class="cross">✗ Ja</span></td>
                         <td><span class="cross">✗ Ja</span></td>
                         <td><span class="cross">✗ Ja</span></td>
                     </tr>
@@ -760,24 +792,28 @@
                         <td class="highlight"><span class="check">✓ Volledig</span></td>
                         <td><span class="check">✓ Ja</span></td>
                         <td><span class="cross">✗ Nee</span></td>
+                        <td><span class="cross">✗ Nee</span></td>
                     </tr>
                     <tr>
                         <td>Boeken + muziek + dvd's + games</td>
                         <td class="highlight"><span class="check">✓ Alles in één app</span></td>
                         <td><span class="cross">✗ Aparte apps</span></td>
                         <td><span class="cross">✗ Alleen boeken</span></td>
+                        <td><span class="cross">✗ Alleen muziek</span></td>
                     </tr>
                     <tr>
                         <td>Gegevens blijven op je telefoon</td>
                         <td class="highlight"><span class="check">✓ Altijd</span></td>
                         <td><span class="cross">✗ Cloud sync</span></td>
                         <td><span class="cross">✗ Amazon-servers</span></td>
+                        <td><span class="cross">✗ Alleen cloud</span></td>
                     </tr>
                     <tr>
                         <td>Geen abonnement om te vergeten</td>
                         <td class="highlight"><span class="check">✓ Eenmalig betalen</span></td>
                         <td><span class="cross">✗ Jaarlijkse verlenging</span></td>
                         <td><span class="check">✓ Gratis</span></td>
+                        <td><span class="cross">✗ Maandelijkse kosten</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -990,11 +1026,13 @@
             </div>
             <div class="footer-links">
                 <a href="/blog/" data-lang="en">Blog</a>
+                <a href="/about.html" data-lang="en">About</a>
                 <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
                 <a href="/terms/" data-lang="en">Terms & Conditions</a>
                 <a href="/contact.html" data-lang="en">Contact</a>
                 <a href="/pricing.md" data-lang="en">Pricing</a>
                 <a href="/nl/blog/" data-lang="nl">Blog</a>
+                <a href="/about.html" data-lang="nl">Over</a>
                 <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
                 <a href="/terms/" data-lang="nl">Voorwaarden</a>
                 <a href="/contact.html" data-lang="nl">Contact</a>
