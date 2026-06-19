@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="tiktok-developers-site-verification" content="4CZzEmBwuWUjix0KfC3iQ7xNuGkCyWyv">
-    <meta name="description" content="SeniorEase Library — Track your books, music, DVDs and games in one place. Scan barcodes, no account needed, works offline.">
+    <meta name="description" content="SeniorEase Library: scan barcodes to track books, music, DVDs and games — all in one place. No account, works offline. Try 10 items free. Download on Google Play.">
     <title>SeniorEase Library — Track books, music, DVDs & games</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -24,7 +24,7 @@
     <meta property="og:locale:alternate" content="nl_NL">
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SeniorEase Library — Track books, music, DVDs & games">
     <meta name="twitter:description" content="Scan barcodes to manage your personal collection. No account needed, works offline.">
     <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
@@ -103,10 +103,10 @@
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.maureen.biblitoheek",
       "installUrl": "https://play.google.com/store/apps/details?id=com.maureen.biblitoheek",
       "screenshot": [
-        "https://seniorease.eu/assets/app-library.png",
-        "https://seniorease.eu/assets/app-scan.png",
-        "https://seniorease.eu/assets/app-filter.png",
-        "https://seniorease.eu/assets/app-menu.png"
+        "https://seniorease.eu/assets/Screenshot2Library.png",
+        "https://seniorease.eu/assets/Screenshot1Scan.png",
+        "https://seniorease.eu/assets/Screenshot3Track.png",
+        "https://seniorease.eu/assets/Screenshot4Export.png"
       ],
       "author": {
         "@type": "Person",
@@ -119,6 +119,33 @@
       }
     }
     </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SeniorEase",
+      "url": "https://seniorease.eu",
+      "logo": "https://seniorease.eu/seniorease-icon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@seniorease.eu",
+        "contactType": "customer support"
+      }
+    }
+    </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://seniorease.eu/",
+      "name": "SeniorEase Library"
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -429,16 +456,72 @@
         }
 
         /* Newsletter / email capture */
-        .newsletter { background: #8B5E3C; color: #fff; text-align: center; padding: 56px 0; }
+        .newsletter {
+            background: #8B5E3C;
+            color: #fff;
+            text-align: center;
+            padding: 56px 0;
+        }
         .newsletter h2 { font-size: 22px; color: #fff; margin-bottom: 12px; }
-        .newsletter .newsletter-sub { font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-        .newsletter-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-        .newsletter-form input[type="email"] { flex: 1; min-width: 210px; padding: 14px 18px; border: none; border-radius: 10px; font-size: 16px; color: #1F1F1F; outline: none; font-family: inherit; }
-        .newsletter-form button { background: #fff; color: #8B5E3C; border: none; border-radius: 10px; padding: 14px 24px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+        .newsletter .newsletter-sub {
+            font-size: 16px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 210px;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #1F1F1F;
+            outline: none;
+            font-family: inherit;
+        }
+        .newsletter-form button {
+            background: #fff;
+            color: #8B5E3C;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
         .newsletter-form button:hover { background: #F5EEE6; }
-        .newsletter-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 14px; }
+        .newsletter-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 14px;
+        }
+
+        /* Social links in footer */
         .footer-social { margin-bottom: 14px; }
-        .footer-social a { display: inline-flex; align-items: center; gap: 5px; margin: 0 10px; color: #8B5E3C; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 10px;
+            color: #8B5E3C;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
         .footer-social a:hover { text-decoration: underline; }
 
         /* Trust badges */
@@ -603,16 +686,20 @@
             <h2 data-lang="nl">Bekijk de app</h2>
             <div class="screenshot-track">
                 <div class="phone-mockup">
-                    <img src="/assets/app-library.png" alt="Library list view">
+                    <img data-lang="en" src="/assets/Screenshot2Library.png" alt="SeniorEase Library — books and music collection overview" loading="lazy" width="140" height="249">
+                    <img data-lang="nl" src="/assets/Screenshot2LibraryNL.png" alt="SeniorEase Library — overzicht van je collectie" loading="lazy" width="140" height="249">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-scan.png" alt="Scan ISBN to add a book">
+                    <img data-lang="en" src="/assets/Screenshot1Scan.png" alt="Scan a barcode to add items to your collection" loading="lazy" width="140" height="249">
+                    <img data-lang="nl" src="/assets/Screenshot1ScanNL.png" alt="Barcode scannen om items toe te voegen aan je collectie" loading="lazy" width="140" height="249">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-filter.png" alt="Filter and sort your library">
+                    <img data-lang="en" src="/assets/Screenshot3Track.png" alt="Mark items as read, owned or to-be-read" loading="lazy" width="140" height="249">
+                    <img data-lang="nl" src="/assets/Screenshot3TrackNL.png" alt="Items markeren als gelezen, in bezit of TBR" loading="lazy" width="140" height="249">
                 </div>
                 <div class="phone-mockup">
-                    <img src="/assets/app-menu.png" alt="Backup, export, settings">
+                    <img data-lang="en" src="/assets/Screenshot4Export.png" alt="Export to PDF or CSV, back up your collection" loading="lazy" width="140" height="249">
+                    <img data-lang="nl" src="/assets/Screenshot4ExportNL.png" alt="Exporteren naar PDF of CSV, back-up maken" loading="lazy" width="140" height="249">
                 </div>
             </div>
         </div>
@@ -953,13 +1040,15 @@
                 <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
             </div>
             <div class="footer-links">
-                <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
+                <a href="/blog/" data-lang="en">Blog</a>
                 <a href="/about.html" data-lang="en">About</a>
+                <a href="/privacy-policy.html" data-lang="en">Privacy policy</a>
                 <a href="/terms/" data-lang="en">Terms & Conditions</a>
                 <a href="/contact.html" data-lang="en">Contact</a>
                 <a href="/pricing.html" data-lang="en">Pricing</a>
-                <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
+                <a href="/nl/blog/" data-lang="nl">Blog</a>
                 <a href="/about.html" data-lang="nl">Over</a>
+                <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
                 <a href="/terms/" data-lang="nl">Voorwaarden</a>
                 <a href="/contact.html" data-lang="nl">Contact</a>
                 <a href="/pricing.html" data-lang="nl">Prijzen</a>
