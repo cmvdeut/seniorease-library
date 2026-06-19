@@ -433,6 +433,12 @@
         body.lang-nl span[data-lang="nl"], body.lang-nl a[data-lang="nl"], body.lang-nl img[data-lang="nl"] { display: inline; }
         body.lang-nl [data-lang="en"] { display: none; }
 
+        /* Screenshot taalwissel — hogere specificiteit dan .phone-mockup img */
+        .phone-mockup img[data-lang="nl"] { display: none; }
+        .phone-mockup img[data-lang="en"] { display: block; }
+        body.lang-nl .phone-mockup img[data-lang="nl"] { display: block; }
+        body.lang-nl .phone-mockup img[data-lang="en"] { display: none; }
+
         @media (max-width: 640px) {
             .hero { padding: 88px 0 44px; }
             section { padding: 36px 0; }

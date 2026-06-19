@@ -337,6 +337,12 @@
         body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"], body.lang-en img[data-lang="en"] { display: inline; }
         body.lang-en [data-lang="nl"] { display: none; }
 
+        /* Screenshot taalwissel — hogere specificiteit dan .phone-mockup img */
+        .phone-mockup img[data-lang="en"] { display: none; }
+        .phone-mockup img[data-lang="nl"] { display: block; }
+        body.lang-en .phone-mockup img[data-lang="en"] { display: block; }
+        body.lang-en .phone-mockup img[data-lang="nl"] { display: none; }
+
         @media (max-width: 640px) {
             .hero { padding: 88px 0 44px; }
             section { padding: 36px 0; }
