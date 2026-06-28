@@ -1,0 +1,4 @@
+id,date,time_utc,platform,video_filename,caption,status
+v143-ig,2026-06-29,17:00,instagram,release-v143-scan.jpeg,"We broke the scanner. You tap + to add a book. Camera didn't open. Version 1.4.3 is live. Scan works again. Free on Google Play. No account. #booktok #bookcollection #seniorease #barcodescanner #booklover",scheduled
+v143-fb,2026-06-29,18:00,facebook,release-v143-scan-presentation.png,"Kleine update, groot verschil. In versie 1.4.3 werkt de barcode-scanner weer. Gratis tot 10 items. Geen account nodig.",scheduled
+v143-tt,2026-06-30,17:30,tiktok,release-v143-scan.jpeg,"We broke the scanner. Fixed it in v1.4.3. Tap +. Scan your barcode. Done. Free on Google Play. #booktok #seniorease #barcodescanner",scheduled
