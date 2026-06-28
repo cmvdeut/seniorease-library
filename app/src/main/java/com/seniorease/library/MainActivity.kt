@@ -1,12 +1,17 @@
 @file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 package com.seniorease.library
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +29,7 @@ import com.seniorease.library.data.Item
 import com.seniorease.library.ui.ItemListScreen
 import com.seniorease.library.ui.AddItemDialog
 import com.seniorease.library.ui.SettingsScreen
+import com.seniorease.library.ui.LocaleProvider
 import com.seniorease.library.ui.OnboardingScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -84,6 +90,8 @@ import android.content.res.Configuration
 import android.app.Activity
 import android.content.Context
 import androidx.compose.ui.platform.LocalConfiguration
+import com.seniorease.library.utils.ExportFileNames
+import com.seniorease.library.utils.AppMaintenanceHelper
 import com.seniorease.library.utils.BillingManager
 import com.seniorease.library.utils.LanguageHelper
 import com.seniorease.library.utils.SettingsHelper
@@ -160,6 +168,7 @@ class MainActivity : ComponentActivity() {
         val locale = LanguageHelper.getLocale(newBase)
         val config = Configuration(newBase.resources.configuration)
         config.setLocale(locale)
+        config.setLayoutDirection(locale)
         val context = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             newBase.createConfigurationContext(config)
         } else {
@@ -171,8 +180,17 @@ class MainActivity : ComponentActivity() {
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+        )
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            window.attributes = window.attributes.apply {
+                layoutInDisplayCutoutMode =
+                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+            }
+        }
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         billingManager = BillingManager(applicationContext)
         billingManager.startConnection()
@@ -191,6 +209,146 @@ class MainActivity : ComponentActivity() {
                 else -> isSystemInDarkTheme()
             }
 
+            val activity = this@MainActivity
+            val scope = rememberCoroutineScope()
+            val viewModel: MainViewModel = viewModel(factory = MainViewModelFactory(db, context))
+            val items by viewModel.items.collectAsState()
+
+            val exportLauncher = rememberLauncherForActivityResult(CreateDocument("application/json")) { uri ->
+                if (uri != null) {
+                    scope.launch {
+                        try {
+                            val gson = Gson()
+                            val json = gson.toJson(items)
+                            context.contentResolver.openOutputStream(uri)?.use { it.write(json.toByteArray()) }
+                            Toast.makeText(context, context.getString(R.string.backup_saved), Toast.LENGTH_LONG).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(context, context.getString(R.string.backup_error), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+
+            val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+                if (uri != null) {
+                    scope.launch {
+                        try {
+                            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+                            val json = inputStream?.bufferedReader()?.use { it.readText() }
+                            if (json != null) {
+                                val gson = Gson()
+                                val importedItems = gson.fromJson(json, Array<Item>::class.java).toList()
+                                val existingCodes = viewModel.items.value.map { it.code }
+                                var added = 0
+                                for (item in importedItems) {
+                                    if (!existingCodes.contains(item.code)) {
+                                        viewModel.addItem(item)
+                                        added++
+                                    }
+                                }
+                                Toast.makeText(context, context.getString(R.string.backup_imported, added), Toast.LENGTH_LONG).show()
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(context, context.getString(R.string.backup_import_error), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+
+            val exportCsvLauncher = rememberLauncherForActivityResult(CreateDocument("text/csv")) { uri: Uri? ->
+                if (uri != null) {
+                    scope.launch {
+                        try {
+                            val csvHeader = "${context.getString(R.string.csv_header_title)},${context.getString(R.string.csv_header_author)},${context.getString(R.string.csv_header_type)},${context.getString(R.string.csv_header_code)},${context.getString(R.string.csv_header_status)},${context.getString(R.string.csv_header_medium)},${context.getString(R.string.csv_header_language)}\n"
+                            val csvRows = items.joinToString("\n") { item ->
+                                listOf(
+                                    item.title,
+                                    item.authorOrArtist,
+                                    item.type,
+                                    item.code,
+                                    "${if (item.isReadOrListened) context.getString(R.string.yes) else context.getString(R.string.no)}/${if (item.inPossession) context.getString(R.string.yes) else context.getString(R.string.no)}",
+                                    item.medium ?: "",
+                                    item.language ?: ""
+                                ).joinToString(",") { it.replace(",", " ") }
+                            }
+                            val csv = csvHeader + csvRows
+                            context.contentResolver.openOutputStream(uri)?.use { it.write(csv.toByteArray()) }
+                            Toast.makeText(context, context.getString(R.string.csv_exported), Toast.LENGTH_LONG).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(context, context.getString(R.string.csv_export_error), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+
+            fun createPdfDocument(ctx: Context, itemList: List<Item>): PdfDocument {
+                val pdfDocument = PdfDocument()
+                val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create()
+                val page = pdfDocument.startPage(pageInfo)
+                val canvas = page.canvas
+                val paint = android.graphics.Paint()
+                paint.textSize = 14f
+                var y = 40f
+                canvas.drawText(ctx.getString(R.string.pdf_header_title), 20f, y, paint)
+                canvas.drawText(ctx.getString(R.string.pdf_header_author), 120f, y, paint)
+                canvas.drawText(ctx.getString(R.string.pdf_header_type), 300f, y, paint)
+                canvas.drawText(ctx.getString(R.string.pdf_header_code), 360f, y, paint)
+                canvas.drawText(ctx.getString(R.string.pdf_header_read), 440f, y, paint)
+                canvas.drawText(ctx.getString(R.string.pdf_header_possession), 500f, y, paint)
+                y += 24f
+                paint.strokeWidth = 1f
+                canvas.drawLine(20f, y, 570f, y, paint)
+                y += 18f
+                itemList.forEach { item ->
+                    canvas.drawText(item.title.take(15), 20f, y, paint)
+                    canvas.drawText(item.authorOrArtist.take(15), 120f, y, paint)
+                    canvas.drawText(item.type, 300f, y, paint)
+                    canvas.drawText(item.code, 360f, y, paint)
+                    canvas.drawText(if (item.isReadOrListened) ctx.getString(R.string.yes) else ctx.getString(R.string.no), 440f, y, paint)
+                    canvas.drawText(if (item.inPossession) ctx.getString(R.string.yes) else ctx.getString(R.string.no), 500f, y, paint)
+                    y += 20f
+                    if (y > 800f) return@forEach
+                }
+                pdfDocument.finishPage(page)
+                return pdfDocument
+            }
+
+            val exportPdfLauncher = rememberLauncherForActivityResult(CreateDocument("application/pdf")) { uri ->
+                if (uri != null) {
+                    scope.launch {
+                        try {
+                            val pdfDocument = createPdfDocument(context, items)
+                            context.contentResolver.openOutputStream(uri)?.use { out ->
+                                pdfDocument.writeTo(out)
+                            }
+                            pdfDocument.close()
+                            Toast.makeText(context, context.getString(R.string.pdf_exported), Toast.LENGTH_LONG).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(context, context.getString(R.string.pdf_export_error), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+
+            fun sharePdfFile(ctx: Context, itemList: List<Item>) {
+                try {
+                    val pdfDocument = createPdfDocument(ctx, itemList)
+                    val file = File(ctx.cacheDir, ExportFileNames.PDF_CACHE)
+                    file.outputStream().use { pdfDocument.writeTo(it) }
+                    pdfDocument.close()
+                    val uri = FileProvider.getUriForFile(ctx, ctx.packageName + ".provider", file)
+                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                        type = "application/pdf"
+                        putExtra(Intent.EXTRA_STREAM, uri)
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    ctx.startActivity(Intent.createChooser(shareIntent, ctx.getString(R.string.share_pdf_via)))
+                } catch (e: Exception) {
+                    Toast.makeText(ctx, ctx.getString(R.string.pdf_export_error), Toast.LENGTH_LONG).show()
+                }
+            }
+
+            LocaleProvider {
             BiblitoheekTheme(
                 darkTheme = isDarkTheme,
                 isLargeTextEnabled = isLargeTextEnabled,
@@ -198,9 +356,7 @@ class MainActivity : ComponentActivity() {
                 dynamicColor = false
             ) {
                 val isPremium by billingManager.isPremiumFlow.collectAsState()
-                val activity = context as Activity
 
-                val scope = rememberCoroutineScope()
                 var menuExpanded by remember { mutableStateOf(false) }
                 var showDialog by remember { mutableStateOf(false) }
                 var showUnlockDialog by remember { mutableStateOf(false) }
@@ -211,166 +367,31 @@ class MainActivity : ComponentActivity() {
                 var showStatsDialog by remember { mutableStateOf(false) } // Nieuw
                 var showPrivacyDialog by remember { mutableStateOf(false) } // Privacy beleid
                 var showClearDataDialog by remember { mutableStateOf(false) } // Wis alle data dialoog
+                var showClearCacheDialog by remember { mutableStateOf(false) }
                 var showAboutDialog by remember { mutableStateOf(false) } // Over de app dialoog
                 var showSettingsDialog by remember { mutableStateOf(false) } // Settings
                 var selectedItem by remember { mutableStateOf<Item?>(null) }
                 var lastType by remember { mutableStateOf("boek") }
-                val viewModel: MainViewModel = viewModel(factory = MainViewModelFactory(db, context))
-                val items by viewModel.items.collectAsState()
                 val allAuthors = items.map { it.authorOrArtist }.distinct()
 
-                // File picker launcher voor export
-                val exportLauncher = rememberLauncherForActivityResult(CreateDocument("application/json")) { uri ->
-                    if (uri != null) {
-                        scope.launch {
-                            try {
-                                val gson = Gson()
-                                val json = gson.toJson(items)
-                                context.contentResolver.openOutputStream(uri)?.use { it.write(json.toByteArray()) }
-                                Toast.makeText(context, context.getString(R.string.backup_saved), Toast.LENGTH_LONG).show()
-                            } catch (e: Exception) {
-                                Toast.makeText(context, context.getString(R.string.backup_error), Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-
-                // File picker launcher voor import
-                val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-                    if (uri != null) {
-                        scope.launch {
-                            try {
-                                val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-                                val json = inputStream?.bufferedReader()?.use { it.readText() }
-                                if (json != null) {
-                                    val gson = Gson()
-                                    val importedItems = gson.fromJson(json, Array<Item>::class.java).toList()
-                                    val existingCodes = viewModel.items.value.map { it.code }
-                                    var added = 0
-                                    for (item in importedItems) {
-                                        if (!existingCodes.contains(item.code)) {
-                                            viewModel.addItem(item)
-                                            added++
-                                        }
-                                    }
-                                    Toast.makeText(context, context.getString(R.string.backup_imported, added), Toast.LENGTH_LONG).show()
-                                }
-                            } catch (e: Exception) {
-                                Toast.makeText(context, context.getString(R.string.backup_import_error), Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-
-                val exportCsvLauncher = rememberLauncherForActivityResult(CreateDocument("text/csv")) { uri: Uri? ->
-                    if (uri != null) {
-                        scope.launch {
-                            try {
-                                val csvHeader = "${context.getString(R.string.csv_header_title)},${context.getString(R.string.csv_header_author)},${context.getString(R.string.csv_header_type)},${context.getString(R.string.csv_header_code)},${context.getString(R.string.csv_header_status)},${context.getString(R.string.csv_header_medium)},${context.getString(R.string.csv_header_language)}\n"
-                                val csvRows = items.joinToString("\n") { item ->
-                                    listOf(
-                                        item.title,
-                                        item.authorOrArtist,
-                                        item.type,
-                                        item.code,
-                                        "${if (item.isReadOrListened) context.getString(R.string.yes) else context.getString(R.string.no)}/${if (item.inPossession) context.getString(R.string.yes) else context.getString(R.string.no)}",
-                                        item.medium ?: "",
-                                        item.language ?: ""
-                                    ).joinToString(",") { it.replace(",", " ") }
-                                }
-                                val csv = csvHeader + csvRows
-                                context.contentResolver.openOutputStream(uri)?.use { it.write(csv.toByteArray()) }
-                                Toast.makeText(context, context.getString(R.string.csv_exported), Toast.LENGTH_LONG).show()
-                            } catch (e: Exception) {
-                                Toast.makeText(context, context.getString(R.string.csv_export_error), Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-
-                // Helper functie om PDF te genereren (hergebruikt voor export en share)
-                fun createPdfDocument(context: android.content.Context, items: List<Item>): PdfDocument {
-                    val pdfDocument = PdfDocument()
-                    val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create() // A4
-                    val page = pdfDocument.startPage(pageInfo)
-                    val canvas = page.canvas
-                    val paint = android.graphics.Paint()
-                    paint.textSize = 14f
-                    var y = 40f
-                    
-                    // Header
-                    canvas.drawText(context.getString(R.string.pdf_header_title), 20f, y, paint)
-                    canvas.drawText(context.getString(R.string.pdf_header_author), 120f, y, paint)
-                    canvas.drawText(context.getString(R.string.pdf_header_type), 300f, y, paint)
-                    canvas.drawText(context.getString(R.string.pdf_header_code), 360f, y, paint)
-                    canvas.drawText(context.getString(R.string.pdf_header_read), 440f, y, paint)
-                    canvas.drawText(context.getString(R.string.pdf_header_possession), 500f, y, paint)
-                    y += 24f
-                    
-                    // Lijn
-                    paint.strokeWidth = 1f
-                    canvas.drawLine(20f, y, 570f, y, paint)
-                    y += 18f
-                    
-                    // Data
-                    items.forEach { item ->
-                        canvas.drawText(item.title.take(15), 20f, y, paint)
-                        canvas.drawText(item.authorOrArtist.take(15), 120f, y, paint)
-                        canvas.drawText(item.type, 300f, y, paint)
-                        canvas.drawText(item.code, 360f, y, paint)
-                        canvas.drawText(if (item.isReadOrListened) context.getString(R.string.yes) else context.getString(R.string.no), 440f, y, paint)
-                        canvas.drawText(if (item.inPossession) context.getString(R.string.yes) else context.getString(R.string.no), 500f, y, paint)
-                        y += 20f
-                        if (y > 800f) return@forEach // Max 1 pagina
-                    }
-                    pdfDocument.finishPage(page)
-                    return pdfDocument
-                }
-
-                val exportPdfLauncher = rememberLauncherForActivityResult(CreateDocument("application/pdf")) { uri ->
-                    if (uri != null) {
-                        scope.launch {
-                            try {
-                                val pdfDocument = createPdfDocument(context, items)
-                                context.contentResolver.openOutputStream(uri)?.use { out ->
-                                    pdfDocument.writeTo(out)
-                                }
-                                pdfDocument.close()
-                                Toast.makeText(context, context.getString(R.string.pdf_exported), Toast.LENGTH_LONG).show()
-                            } catch (e: Exception) {
-                                Toast.makeText(context, context.getString(R.string.pdf_export_error), Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-
-                fun sharePdfFile(context: android.content.Context, items: List<Item>) {
-                    try {
-                        val pdfDocument = createPdfDocument(context, items)
-                        val file = File(context.cacheDir, "biblitoheek_export.pdf")
-                        file.outputStream().use { pdfDocument.writeTo(it) }
-                        pdfDocument.close()
-                        val uri = FileProvider.getUriForFile(context, context.packageName + ".provider", file)
-                        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                            type = "application/pdf"
-                            putExtra(Intent.EXTRA_STREAM, uri)
-                            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                        }
-                        context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_pdf_via)))
-                    } catch (e: Exception) {
-                        Toast.makeText(context, context.getString(R.string.pdf_export_error), Toast.LENGTH_LONG).show()
-                    }
-                }
-
                 if (showOnboarding) {
-                    OnboardingScreen(onDone = {
-                        SettingsHelper.markOnboardingDone(context)
-                        showOnboarding = false
-                    })
+                    OnboardingScreen(
+                        onDone = {
+                            SettingsHelper.markOnboardingDone(applicationContext)
+                            showOnboarding = false
+                        },
+                        onLanguageSelected = { language ->
+                            SettingsHelper.markOnboardingLanguageChosen(applicationContext)
+                            LanguageHelper.applyLanguage(applicationContext, language)
+                            activity.recreate()
+                        },
+                    )
                     return@BiblitoheekTheme
                 }
 
                 Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    contentWindowInsets = WindowInsets.safeDrawing,
                     topBar = {
                         TopAppBar(
                             title = {
@@ -392,7 +413,7 @@ class MainActivity : ComponentActivity() {
                                 DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.backup_create)) }, onClick = {
                                         menuExpanded = false
-                                        exportLauncher.launch("biblitoheek_backup.json")
+                                        exportLauncher.launch(ExportFileNames.BACKUP_JSON)
                                     })
                                     DropdownMenuItem(text = { Text(stringResource(R.string.backup_restore)) }, onClick = {
                                         menuExpanded = false
@@ -400,11 +421,11 @@ class MainActivity : ComponentActivity() {
                                     })
                                     DropdownMenuItem(text = { Text(stringResource(R.string.export_csv)) }, onClick = {
                                         menuExpanded = false
-                                        exportCsvLauncher.launch("biblitoheek_export.csv")
+                                        exportCsvLauncher.launch(ExportFileNames.EXPORT_CSV)
                                     })
                                     DropdownMenuItem(text = { Text(stringResource(R.string.export_pdf)) }, onClick = {
                                         menuExpanded = false
-                                        exportPdfLauncher.launch("biblitoheek_export.pdf")
+                                        exportPdfLauncher.launch(ExportFileNames.EXPORT_PDF)
                                     })
                                     DropdownMenuItem(text = { Text(stringResource(R.string.share_pdf)) }, onClick = {
                                         menuExpanded = false
@@ -426,6 +447,16 @@ class MainActivity : ComponentActivity() {
                                         menuExpanded = false
                                         showClearDataDialog = true
                                     })
+                                    DropdownMenuItem(text = { Text(stringResource(R.string.check_for_updates)) }, onClick = {
+                                        menuExpanded = false
+                                        if (!AppMaintenanceHelper.openPlayStoreListing(context)) {
+                                            Toast.makeText(context, context.getString(R.string.play_store_not_found), Toast.LENGTH_LONG).show()
+                                        }
+                                    })
+                                    DropdownMenuItem(text = { Text(stringResource(R.string.clear_cache)) }, onClick = {
+                                        menuExpanded = false
+                                        showClearCacheDialog = true
+                                    })
                                     DropdownMenuItem(text = { Text(stringResource(R.string.about_title)) }, onClick = {
                                         menuExpanded = false
                                         showAboutDialog = true
@@ -435,7 +466,11 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     content = { padding ->
-                        Column(modifier = Modifier.padding(padding)) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(padding),
+                        ) {
                             ItemListScreen(
                                 items = items,
                                 onAddClick = { type ->
@@ -628,6 +663,33 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
+
+                            if (showClearCacheDialog) {
+                                AlertDialog(
+                                    onDismissRequest = { showClearCacheDialog = false },
+                                    title = { Text(stringResource(R.string.clear_cache_title)) },
+                                    text = { Text(stringResource(R.string.clear_cache_message)) },
+                                    confirmButton = {
+                                        Button(onClick = {
+                                            showClearCacheDialog = false
+                                            val ok = AppMaintenanceHelper.clearAppCache(context)
+                                            Toast.makeText(
+                                                context,
+                                                context.getString(if (ok) R.string.clear_cache_success else R.string.clear_cache_error),
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                            if (ok) activity.recreate()
+                                        }) {
+                                            Text(stringResource(R.string.clear_cache_confirm))
+                                        }
+                                    },
+                                    dismissButton = {
+                                        Button(onClick = { showClearCacheDialog = false }) {
+                                            Text(stringResource(R.string.cancel))
+                                        }
+                                    }
+                                )
+                            }
                             
                             // Over de app dialog
                             if (showAboutDialog) {
@@ -653,6 +715,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 )
+            }
             }
         }
     }

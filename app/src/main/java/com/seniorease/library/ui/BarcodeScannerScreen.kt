@@ -10,13 +10,17 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import com.seniorease.library.R
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
@@ -30,6 +34,7 @@ import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.LaunchedEffect
+import kotlinx.coroutines.delay
 
 @Composable
 fun BarcodeScannerScreen(
@@ -39,7 +44,12 @@ fun BarcodeScannerScreen(
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     var scanning by remember { mutableStateOf(true) }
+    var scanEnabled by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(Unit) {
+        delay(2000)
+        scanEnabled = true
+    }
     var hasPermission by remember {
         mutableStateOf(
             ContextCompat.checkSelfPermission(
@@ -96,9 +106,8 @@ fun BarcodeScannerScreen(
                             .build()
                         analysis.setAnalyzer(ContextCompat.getMainExecutor(ctx)) { imageProxy: ImageProxy ->
                             processImageProxy(scanner, imageProxy) { code ->
-                                if (code != null && scanning) {
+                                if (code != null && scanning && scanEnabled) {
                                     scanning = false
-                                    // ContextCompat.getMainExecutor zorgt al dat we op de main thread zijn
                                     onBarcodeScanned(code)
                                 }
                             }
@@ -121,6 +130,14 @@ fun BarcodeScannerScreen(
             )
         } else if (error != null) {
             Text(stringResource(R.string.error, error ?: ""))
+        }
+        TextButton(
+            onClick = onCancel,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(8.dp)
+        ) {
+            Text(stringResource(R.string.cancel))
         }
     }
 }

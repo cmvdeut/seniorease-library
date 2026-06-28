@@ -24,8 +24,8 @@ android {
         applicationId = "com.maureen.biblitoheek"
         minSdk = 26
         targetSdk = 36
-        versionCode = 22
-        versionName = "1.2.2"
+        versionCode = 35
+        versionName = "1.4.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -37,9 +37,9 @@ android {
     signingConfigs {
         create("release") {
             storeFile = file("../upload-keystore.jks")
-            storePassword = project.findProperty("keystore.storePassword") as String? ?: ""
+            storePassword = localProp("keystore.storePassword")
             keyAlias = "upload"
-            keyPassword = project.findProperty("keystore.keyPassword") as String? ?: ""
+            keyPassword = localProp("keystore.keyPassword")
         }
     }
 
@@ -72,6 +72,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -93,6 +94,7 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2024.04.01"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.runtime:runtime")

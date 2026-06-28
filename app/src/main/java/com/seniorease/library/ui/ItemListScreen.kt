@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalUriHandler
 import coil.compose.AsyncImage
 import java.util.Locale
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.seniorease.library.data.Item
 import androidx.compose.material3.Checkbox
@@ -57,10 +60,6 @@ fun ItemListScreen(
     onAddClick: (String) -> Unit,
     onUpdateItem: (Item) -> Unit,
     onItemClick: (Item) -> Unit,
-    isDemo: Boolean = false,
-    maxItems: Int = -1,
-    currentCount: Int = items.size,
-    onUnlockClick: (() -> Unit)? = null // Callback voor unlock dialog
 ) {
     val context = LocalContext.current
     val db = remember { AppDatabase.getDatabase(context) }
@@ -85,6 +84,7 @@ fun ItemListScreen(
     var searchQuery by remember { mutableStateOf("") }
     var showCoverPreview by remember { mutableStateOf(false) }
     var selectedCoverItem by remember { mutableStateOf<Item?>(null) }
+    var expandedItemId by remember { mutableStateOf<Int?>(null) }
 
     val sortedFilteredItems = items
         .filter { filterType == null || it.type == filterType }
@@ -108,46 +108,17 @@ fun ItemListScreen(
         )
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         floatingActionButton = {
-            // Disable FAB als demo limiet bereikt
-            val isLimitReached = isDemo && maxItems > 0 && currentCount >= maxItems
-            // In demo mode: gebruik ExtendedFAB met tekst, anders normale FAB
-            if (isDemo) {
-                ExtendedFloatingActionButton(
-                    onClick = { 
-                        if (!isLimitReached) {
-                            onAddClick("boek")
-                        } else {
-                            // Toon unlock dialog als limiet bereikt
-                            onUnlockClick?.invoke()
-                        }
-                    },
-                    modifier = Modifier.padding(16.dp),
-                    containerColor = if (isLimitReached) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.primary
-                ) {
-                    Text(
-                        text = stringResource(R.string.add),
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-            } else {
-                FloatingActionButton(
-                    onClick = { 
-                        if (!isLimitReached) {
-                            onAddClick("boek")
-                        } else {
-                            // Toon unlock dialog als limiet bereikt
-                            onUnlockClick?.invoke()
-                        }
-                    },
-                    modifier = Modifier.size(72.dp),
-                    containerColor = if (isLimitReached) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.primary
-                ) {
-                    Text(
-                        text = "+",
-                        style = MaterialTheme.typography.headlineLarge
-                    )
-                }
+            FloatingActionButton(
+                onClick = { onAddClick("boek") },
+                modifier = Modifier.size(72.dp),
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Text(
+                    text = "+",
+                    style = MaterialTheme.typography.headlineLarge
+                )
             }
         }
     ) { padding ->
@@ -174,53 +145,57 @@ fun ItemListScreen(
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             )
-            // Sorteer en filter sectie - verbeterd voor senioren
-            Column(
+            // Sorteer- en filtercontrols: één rij met 3 gelijke kolommen
+            val filterButtonPadding = PaddingValues(horizontal = 6.dp, vertical = 4.dp)
+            val filterButtonTextStyle = MaterialTheme.typography.labelMedium
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .height(IntrinsicSize.Min)
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Sorteer sectie
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                // Sort
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = stringResource(R.string.sort),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(end = 8.dp)
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(bottom = 2.dp)
                     )
-                    OutlinedButton(
-                        onClick = { sortMenuExpanded = true },
-                        modifier = Modifier.height(48.dp)
-                    ) {
-                        Text("$sortOption", style = MaterialTheme.typography.bodyLarge)
-                    }
-                    DropdownMenu(expanded = sortMenuExpanded, onDismissRequest = { sortMenuExpanded = false }) {
-                        DropdownMenuItem(text = { Text(stringResource(R.string.sort_title), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_title); sortMenuExpanded = false })
-                        DropdownMenuItem(text = { Text(stringResource(R.string.sort_author), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_author); sortMenuExpanded = false })
-                        DropdownMenuItem(text = { Text(stringResource(R.string.sort_recent), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_recent); sortMenuExpanded = false })
+                    Box {
+                        OutlinedButton(
+                            onClick = { sortMenuExpanded = true },
+                            modifier = Modifier.height(44.dp).fillMaxWidth(),
+                            contentPadding = filterButtonPadding
+                        ) {
+                            Text(
+                                text = sortOption,
+                                style = filterButtonTextStyle,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                        DropdownMenu(expanded = sortMenuExpanded, onDismissRequest = { sortMenuExpanded = false }) {
+                            DropdownMenuItem(text = { Text(stringResource(R.string.sort_title), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_title); sortMenuExpanded = false })
+                            DropdownMenuItem(text = { Text(stringResource(R.string.sort_author), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_author); sortMenuExpanded = false })
+                            DropdownMenuItem(text = { Text(stringResource(R.string.sort_recent), style = MaterialTheme.typography.bodyLarge) }, onClick = { sortOption = context.getString(R.string.sort_recent); sortMenuExpanded = false })
+                        }
                     }
                 }
-                
-                // Type filter sectie
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                // Type
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = stringResource(R.string.filter_type),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(end = 8.dp)
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(bottom = 2.dp)
                     )
                     Box {
                         OutlinedButton(
                             onClick = { typeMenuExpanded = true },
-                            modifier = Modifier.height(48.dp)
+                            modifier = Modifier.height(44.dp).fillMaxWidth(),
+                            contentPadding = filterButtonPadding
                         ) {
                             Text(
                                 text = when (filterType) {
@@ -230,7 +205,11 @@ fun ItemListScreen(
                                     "game" -> stringResource(R.string.item_type_game)
                                     else -> stringResource(R.string.filter_all)
                                 },
-                                style = MaterialTheme.typography.bodyLarge
+                                style = filterButtonTextStyle,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center
                             )
                         }
                         DropdownMenu(
@@ -260,29 +239,26 @@ fun ItemListScreen(
                         }
                     }
                 }
-
-                // Filter sectie - dropdown menu
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                // Filter
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = stringResource(R.string.filter),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(end = 8.dp)
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(bottom = 2.dp)
                     )
-                    
-                    // Filter dropdown menu
                     Box {
                         OutlinedButton(
                             onClick = { filterMenuExpanded = true },
-                            modifier = Modifier.height(48.dp)
+                            modifier = Modifier.height(44.dp).fillMaxWidth(),
+                            contentPadding = filterButtonPadding
                         ) {
                             Text(
                                 text = activeFilterText,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = filterButtonTextStyle,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center
                             )
                         }
                         DropdownMenu(
@@ -360,102 +336,99 @@ fun ItemListScreen(
                     .fillMaxSize()
             ) {
                 items(sortedFilteredItems) { item ->
+                    val isExpanded = expandedItemId == item.id
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
-                            .clickable { onItemClick(item) },
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .clickable {
+                                expandedItemId = if (isExpanded) null else item.id
+                            },
                         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                     ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp)
                         ) {
-                            // Cover afbeelding niet weergeven
-                            Column(modifier = Modifier.weight(1f)) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = item.title,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.padding(bottom = 2.dp)
+                                    )
+                                    Text(
+                                        text = item.authorOrArtist,
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+                                }
+                                if (isExpanded) {
+                                    IconButton(onClick = { onItemClick(item) }) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Edit,
+                                            contentDescription = stringResource(R.string.edit)
+                                        )
+                                    }
+                                }
+                            }
+                            if (isExpanded) {
                                 Text(
-                                    text = item.title, 
-                                    style = MaterialTheme.typography.titleLarge, // Groter voor senioren
-                                    modifier = Modifier.padding(bottom = 4.dp)
+                                    text = stringResource(R.string.item_type_label, item.type),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    modifier = Modifier.padding(top = 8.dp, bottom = 2.dp)
                                 )
                                 Text(
-                                    text = item.authorOrArtist, 
-                                    style = MaterialTheme.typography.titleMedium, // Groter voor senioren
-                                    modifier = Modifier.padding(bottom = 4.dp)
-                                )
-                                Text(
-                                    text = stringResource(R.string.item_type_label, item.type), 
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    modifier = Modifier.padding(bottom = 2.dp)
-                                )
-                                Text(
-                                    text = stringResource(R.string.item_code_label, item.code), 
-                                    style = MaterialTheme.typography.bodyLarge,
+                                    text = stringResource(R.string.item_code_label, item.code),
+                                    style = MaterialTheme.typography.bodyMedium,
                                     modifier = Modifier.padding(bottom = 8.dp)
                                 )
-                                
-                                // Checkboxes met grotere tekst - verdeeld over twee rijen indien nodig
-                                Column(
-                                    modifier = Modifier.padding(top = 8.dp)
-                                ) {
-                                    // Eerste rij: Gelezen/Beluisterd en In bezit
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.Start
-                                    ) {
-                                        Checkbox(
-                                            checked = item.isReadOrListened,
-                                            onCheckedChange = { checked ->
-                                                onUpdateItem(item.copy(isReadOrListened = checked))
-                                            },
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                        Text(
-                                            text = when (item.type) {
-                                                "boek" -> stringResource(R.string.item_read)
-                                                else -> stringResource(R.string.item_listened)
-                                            },
-                                            style = MaterialTheme.typography.bodyLarge,
-                                            modifier = Modifier.padding(end = 12.dp)
-                                        )
-                                        Checkbox(
-                                            checked = item.inPossession,
-                                            onCheckedChange = { checked ->
-                                                onUpdateItem(item.copy(inPossession = checked))
-                                            },
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                        Text(
-                                            text = when (item.type) {
-                                                "boek" -> stringResource(R.string.item_owned_book)
-                                                "muziek" -> stringResource(R.string.item_owned_music)
-                                                "game" -> stringResource(R.string.item_owned_game)
-                                                "dvd" -> stringResource(R.string.item_owned_dvd)
-                                                else -> stringResource(R.string.item_in_possession)
-                                            },
-                                            style = MaterialTheme.typography.bodyLarge
-                                        )
-                                    }
-                                    // Tweede rij: TBR
-                                    Row(
-                                        modifier = Modifier.padding(top = 4.dp),
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        Checkbox(
-                                            checked = item.tbr,
-                                            onCheckedChange = { checked ->
-                                                onUpdateItem(item.copy(tbr = checked))
-                                            },
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                        Text(
-                                            text = stringResource(R.string.item_tbr),
-                                            style = MaterialTheme.typography.bodyLarge
-                                        )
-                                    }
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Checkbox(
+                                        checked = item.isReadOrListened,
+                                        onCheckedChange = { checked ->
+                                            onUpdateItem(item.copy(isReadOrListened = checked))
+                                        }
+                                    )
+                                    Text(
+                                        text = when (item.type) {
+                                            "boek" -> stringResource(R.string.item_read)
+                                            else -> stringResource(R.string.item_listened)
+                                        },
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+                                }
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Checkbox(
+                                        checked = item.inPossession,
+                                        onCheckedChange = { checked ->
+                                            onUpdateItem(item.copy(inPossession = checked))
+                                        }
+                                    )
+                                    Text(
+                                        text = when (item.type) {
+                                            "boek" -> stringResource(R.string.item_owned_book)
+                                            "muziek" -> stringResource(R.string.item_owned_music)
+                                            "game" -> stringResource(R.string.item_owned_game)
+                                            "dvd" -> stringResource(R.string.item_owned_dvd)
+                                            else -> stringResource(R.string.item_in_possession)
+                                        },
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+                                }
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Checkbox(
+                                        checked = item.tbr,
+                                        onCheckedChange = { checked ->
+                                            onUpdateItem(item.copy(tbr = checked))
+                                        }
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.item_tbr),
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
                                 }
                             }
                         }

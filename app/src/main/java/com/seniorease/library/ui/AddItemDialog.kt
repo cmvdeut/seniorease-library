@@ -29,6 +29,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
@@ -38,6 +39,7 @@ import coil.compose.AsyncImage
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.window.Dialog
 
 // Data class voor boek zoekresultaten
 data class BookSearchResult(
@@ -92,7 +94,7 @@ fun AddItemDialog(
     var isReadOrListened by remember { mutableStateOf(item?.isReadOrListened ?: false) }
     var inPossession by remember { mutableStateOf(item?.inPossession ?: false) }
     var tbr by remember { mutableStateOf(item?.tbr ?: false) }
-    var showScanner by remember { mutableStateOf(false) }
+    var showScanner by remember { mutableStateOf(item == null) }
     var isLoading by remember { mutableStateOf(false) }
     var duplicateError by remember { mutableStateOf(false) }
     var debugInfo by remember { mutableStateOf("") }
@@ -659,7 +661,7 @@ fun AddItemDialog(
                                 Box {
                                     OutlinedButton(
                                         onClick = { typeDropdownExpanded = true },
-                                        modifier = Modifier.height(48.dp)
+                                        modifier = Modifier.height(40.dp)
                                     ) {
                                         Text(
                                             text = when (type) {
@@ -669,7 +671,7 @@ fun AddItemDialog(
                                                 "game" -> stringResource(R.string.item_type_game)
                                                 else -> type.replaceFirstChar { it.uppercase() }
                                             },
-                                            style = MaterialTheme.typography.bodyLarge
+                                            style = MaterialTheme.typography.bodyMedium
                                         )
                                     }
                                     DropdownMenu(
@@ -718,71 +720,34 @@ fun AddItemDialog(
                                     onClick = {
                                         showCoverFetchDialog = true
                                     },
-                                    modifier = Modifier.height(32.dp)
+                                    modifier = Modifier.height(40.dp),
+                                    contentPadding = PaddingValues(horizontal = 12.dp)
                                 ) {
-                                    Text(stringResource(R.string.google), style = MaterialTheme.typography.bodySmall)
+                                    Icon(
+                                        imageVector = Icons.Filled.Language,
+                                        contentDescription = stringResource(R.string.google),
+                                        modifier = Modifier.size(20.dp)
+                                    )
                                 }
                             }
                         }
-                    // Titel veld met zoek knop
-                    Row(
+                    // Titel veld
+                    OutlinedTextField(
+                        value = title,
+                        onValueChange = { title = it },
+                        label = { Text(stringResource(R.string.item_title)) },
                         modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
-                    ) {
-                        OutlinedTextField(
-                            value = title,
-                            onValueChange = { title = it },
-                            label = { Text(stringResource(R.string.item_title)) },
-                            modifier = Modifier.weight(1f),
-                            trailingIcon = {
-                                if (title.isNotBlank()) {
-                                    IconButton(onClick = { title = "" }) {
-                                        Icon(
-                                            imageVector = Icons.Default.Close,
-                                            contentDescription = stringResource(R.string.clear_title)
-                                        )
-                                    }
+                        trailingIcon = {
+                            if (title.isNotBlank()) {
+                                IconButton(onClick = { title = "" }) {
+                                    Icon(
+                                        imageVector = Icons.Default.Close,
+                                        contentDescription = stringResource(R.string.clear_title)
+                                    )
                                 }
-                            }
-                        )
-                        Spacer(Modifier.width(8.dp))
-                        Button(
-                            onClick = {
-                                if (title.isNotBlank() || authorOrArtist.isNotBlank()) {
-                                    // Zoek boek via Google Books API
-                                    // Combinatie van titel + auteur heeft voorrang
-                                    scope.launch {
-                                        isLoading = true
-                                        val searchQuery = when {
-                                            title.isNotBlank() && authorOrArtist.isNotBlank() -> {
-                                                // Combinatie: titel + auteur heeft voorrang
-                                                "$title $authorOrArtist"
-                                            }
-                                            title.isNotBlank() -> title
-                                            else -> authorOrArtist
-                                        }
-                                        val results = searchBooksByTitleOrAuthor(searchQuery)
-                                        isLoading = false
-                                        if (results.isNotEmpty()) {
-                                            bookSearchResults = results
-                                            showBookSearchResults = true
-                                        } else {
-                                            // Geen resultaat gevonden
-                                            android.widget.Toast.makeText(context, context.getString(R.string.book_not_found), android.widget.Toast.LENGTH_SHORT).show()
-                                        }
-                                    }
-                                }
-                            },
-                            enabled = (title.isNotBlank() || authorOrArtist.isNotBlank()) && !isLoading,
-                            modifier = Modifier.height(56.dp)
-                        ) {
-                            if (isLoading) {
-                                CircularProgressIndicator(modifier = Modifier.size(20.dp))
-                            } else {
-                                Icon(Icons.Default.Search, contentDescription = stringResource(R.string.search))
                             }
                         }
-                    }
+                    )
                     
                     // Boek zoekresultaten lijst
                     if (showBookSearchResults && bookSearchResults.isNotEmpty()) {
@@ -1111,21 +1076,6 @@ fun AddItemDialog(
                             )
                         }
                     }
-                    
-                    if (showScanner) {
-                        BarcodeScannerScreen(
-                            onBarcodeScanned = { scannedCode ->
-                                android.util.Log.d("BarcodeScan", "Barcode scanned: $scannedCode")
-                                val scanned = scannedCode ?: ""
-                                android.util.Log.d("BarcodeScan", "Setting code to: $scanned, type: $type")
-                                code = scanned
-                                lastScannedCode = scanned // Dit triggert de LaunchedEffect om informatie op te halen
-                                android.util.Log.d("BarcodeScan", "lastScannedCode set to: $lastScannedCode")
-                                showScanner = false
-                            },
-                            onCancel = { showScanner = false }
-                        )
-                    }
                 }
             }
         },
@@ -1169,16 +1119,44 @@ fun AddItemDialog(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (item != null && onDelete != null) {
-                    OutlinedButton(onClick = { showDeleteConfirm = true }) { 
-                        Text(stringResource(R.string.delete)) 
+                    OutlinedButton(
+                        onClick = { showDeleteConfirm = true },
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(stringResource(R.string.delete), maxLines = 1)
                     }
                 }
-                OutlinedButton(onClick = onDismiss) { 
-                    Text(stringResource(R.string.cancel)) 
+                OutlinedButton(
+                    onClick = onDismiss,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(stringResource(R.string.cancel), maxLines = 1)
                 }
             }
         }
     )
+    if (showScanner) {
+        Dialog(onDismissRequest = { showScanner = false }) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(500.dp)
+            ) {
+                BarcodeScannerScreen(
+                    onBarcodeScanned = { scannedCode ->
+                        android.util.Log.d("BarcodeScan", "Barcode scanned: $scannedCode")
+                        val scanned = scannedCode ?: ""
+                        android.util.Log.d("BarcodeScan", "Setting code to: $scanned, type: $type")
+                        code = scanned
+                        lastScannedCode = scanned
+                        android.util.Log.d("BarcodeScan", "lastScannedCode set to: $lastScannedCode")
+                        showScanner = false
+                    },
+                    onCancel = { showScanner = false }
+                )
+            }
+        }
+    }
     if (showDeleteConfirm && item != null && onDelete != null) {
         AlertDialog(
             onDismissRequest = { showDeleteConfirm = false },
