@@ -39,6 +39,7 @@ const filesToCopy = [
   'tiktok-callback.html',
   'llms.txt',
   'pricing.html',
+  'family-setup.html',
   'robots.txt',
   'sitemap.xml',
   'downloads',
