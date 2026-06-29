@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -579,10 +579,13 @@
     </style>
 
     <!-- Privacy-friendly analytics by Plausible -->
-    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61L8G6E9Q5"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-61L8G6E9Q5');
     </script>
 </head>
 <body>
@@ -605,7 +608,7 @@
                 <h1>Houd je boeken, muziek, dvd's en games bij</h1>
                 <p class="subtitle">SeniorEase Library helpt je je volledige persoonlijke collectie bij te houden. Geen account, geen advertenties — gewoon jij en je collectie.</p>
             </div>
-            <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="plausible('Download')">
+            <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
                 <span data-lang="en"><img src="/google-play-badge-en.png" alt="Get it on Google Play" class="play-badge"></span>
                 <span data-lang="nl"><img src="/google-play-badge-nl.png" alt="Downloaden via Google Play" class="play-badge"></span>
             </a>
@@ -942,7 +945,7 @@
                 </span>
             </div>
             <br>
-            <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="plausible('Download')" style="margin-bottom: 12px;">
+            <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="gtag('event', 'download')" style="margin-bottom: 12px;">
                 <span data-lang="en"><img src="/google-play-badge-en.png" alt="Get it on Google Play" class="play-badge"></span>
                 <span data-lang="nl"><img src="/google-play-badge-nl.png" alt="Downloaden via Google Play" class="play-badge"></span>
             </a>
@@ -1065,8 +1068,8 @@
     <footer>
         <div class="container">
             <div class="footer-social">
-                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="plausible('Social-TikTok')">TikTok @seniorease</a>
-                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
+                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="gtag('event', 'social_tiktok')">TikTok @seniorease</a>
+                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'social_instagram')">Instagram @seniorease.library</a>
             </div>
             <div class="footer-links">
                 <a href="/blog/" data-lang="en">Blog</a>
@@ -1133,7 +1136,7 @@
 
     <a id="sticky-cta" class="sticky-cta"
        href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek"
-       target="_blank" rel="noopener" onclick="plausible('Download')" style="display:none;">
+       target="_blank" rel="noopener" onclick="gtag('event', 'download')" style="display:none;">
         <span data-lang="en">Download free on Google Play</span>
         <span data-lang="nl">Gratis downloaden via Google Play</span>
     </a>

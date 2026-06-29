@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -149,10 +149,13 @@
         }
     </style>
 
-    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61L8G6E9Q5"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-61L8G6E9Q5');
     </script>
 </head>
 <body>
@@ -200,8 +203,8 @@
     <footer>
         <div class="container">
             <div class="footer-social">
-                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="plausible('Social-TikTok')">TikTok @seniorease</a>
-                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="plausible('Social-Instagram')">Instagram @seniorease.library</a>
+                <a href="https://www.tiktok.com/@seniorease" target="_blank" rel="noopener" onclick="gtag('event', 'social_tiktok')">TikTok @seniorease</a>
+                <a href="https://www.instagram.com/seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'social_instagram')">Instagram @seniorease.library</a>
             </div>
             <div class="footer-links">
                 <a href="/" data-lang="en">Home</a>

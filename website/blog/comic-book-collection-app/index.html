@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -185,10 +185,13 @@
         .footer-links a { margin: 0 10px; }
     </style>
 
-    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61L8G6E9Q5"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-61L8G6E9Q5');
     </script>
 </head>
 <body>
@@ -245,7 +248,7 @@
             <div class="cta-box">
                 <h2>Try it free — no account needed</h2>
                 <p>Start with up to 10 items for free. Upgrade once to unlock your full collection.</p>
-                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="plausible && plausible('Download-Blog')">
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'download_blog')">
                     Download on Google Play
                 </a>
                 <p class="cta-note">Android only · One-time €4.99 to unlock · No subscription</p>

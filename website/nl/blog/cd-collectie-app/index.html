@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -216,10 +216,13 @@
         .footer-links a { margin: 0 10px; }
     </style>
 
-    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61L8G6E9Q5"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-61L8G6E9Q5');
     </script>
 </head>
 <body>
@@ -278,7 +281,7 @@
             <div class="cta-box">
                 <h2>Probeer het gratis — geen account nodig</h2>
                 <p>Begin met maximaal 10 items gratis. Eenmalig upgraden om je volledige collectie te ontgrendelen.</p>
-                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="plausible && plausible('Download-Blog')">
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'download_blog')">
                     Downloaden via Google Play
                 </a>
                 <p class="cta-note">Alleen Android · Eenmalig €4,99 om te ontgrendelen · Geen abonnement</p>

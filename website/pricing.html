@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -370,10 +370,13 @@
         .footer-links { margin-bottom: 10px; }
     </style>
 
-    <script async src="https://plausible.io/js/pa-d_V9GKNodJMbgWbt4cNSg.js"></script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61L8G6E9Q5"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-61L8G6E9Q5');
     </script>
 </head>
 <body>
@@ -407,7 +410,7 @@
                     <li><span class="feat-check">✓</span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
                     <li><span class="feat-x">—</span> <span data-lang="en">Unlimited items</span><span data-lang="nl">Onbeperkt items</span></li>
                 </ul>
-                <a class="plan-btn secondary" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="plausible && plausible('Download')">
+                <a class="plan-btn secondary" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
                     <span data-lang="en">Download free</span>
                     <span data-lang="nl">Gratis downloaden</span>
                 </a>
@@ -428,7 +431,7 @@
                     <li><span class="feat-check">✓</span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
                     <li><span class="feat-check">✓</span> <span data-lang="en">Pay once, yours forever</span><span data-lang="nl">Eenmalig betalen, altijd van jou</span></li>
                 </ul>
-                <a class="plan-btn primary" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="plausible && plausible('Download-Pricing')">
+                <a class="plan-btn primary" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'download_pricing')">
                     <span data-lang="en">Download on Google Play</span>
                     <span data-lang="nl">Downloaden via Google Play</span>
                 </a>
@@ -660,7 +663,7 @@
             <h2 data-lang="nl">Begin vandaag gratis</h2>
             <p data-lang="en">10 items free. Upgrade anytime. No account required.</p>
             <p data-lang="nl">10 items gratis. Upgrade wanneer je wilt. Geen account nodig.</p>
-            <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="plausible && plausible('Download-Pricing')">
+            <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.seniorease.library" target="_blank" rel="noopener" onclick="gtag('event', 'download_pricing')">
                 <span data-lang="en">Download on Google Play</span>
                 <span data-lang="nl">Downloaden via Google Play</span>
             </a>
