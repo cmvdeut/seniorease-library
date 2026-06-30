@@ -18,3 +18,4 @@ local.properties
 .env*.local
 
 node_modules/
+tiktok-remotion/output/
