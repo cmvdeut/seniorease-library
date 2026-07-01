@@ -187,7 +187,13 @@ async function runPipeline() {
   };
 
   saveDailyReport(content, blotato, meta);
-  await sendEmailDigest(content, blotato, meta);
+
+  try {
+    await sendEmailDigest(content, blotato, meta);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`⚠️  E-mail mislukt (pipeline verder OK): ${message}`);
+  }
 
   console.log("\n" + "=".repeat(60));
   console.log("✅ Pipeline klaar!\n");

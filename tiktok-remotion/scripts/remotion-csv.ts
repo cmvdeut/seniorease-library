@@ -82,9 +82,20 @@ export function readScriptRows(csvPath = SCRIPTS_CSV_EN): ScriptCsvRow[] {
 
   for (let i = 1; i < lines.length; i++) {
     const values = parseCsvLine(lines[i]);
-    const row = Object.fromEntries(
-      headers.map((h, idx) => [h, values[idx] ?? ""])
-    ) as ScriptCsvRow;
+    const obj: Record<string, string> = {};
+    headers.forEach((h, idx) => {
+      obj[h] = values[idx] ?? "";
+    });
+    const row: ScriptCsvRow = {
+      id: obj.id ?? "",
+      hook_text: obj.hook_text ?? "",
+      body_text: obj.body_text ?? "",
+      cta_text: obj.cta_text ?? "",
+      duration_sec: obj.duration_sec ?? "15",
+      visual_suggestion: obj.visual_suggestion ?? "",
+      caption: obj.caption ?? "",
+      hashtags: obj.hashtags ?? "",
+    };
     if (row.id && row.hook_text) rows.push(row);
   }
 
