@@ -17,19 +17,42 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           persist-credentials: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: npm
           cache-dependency-path: tiktok-remotion/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Check required secrets
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
+          BLOTATO_SENIOREASE_TIKTOK_ID: ${{ secrets.BLOTATO_SENIOREASE_TIKTOK_ID }}
+          BLOTATO_SENIOREASE_INSTAGRAM_ID: ${{ secrets.BLOTATO_SENIOREASE_INSTAGRAM_ID }}
+          BLOTATO_LINKEDIN_ID: ${{ secrets.BLOTATO_LINKEDIN_ID }}
+          BLOTATO_FACEBOOK_ACCOUNT_ID: ${{ secrets.BLOTATO_FACEBOOK_ACCOUNT_ID }}
+          BLOTATO_FACEBOOK_PAGE_ID: ${{ secrets.BLOTATO_FACEBOOK_PAGE_ID }}
+        run: |
+          missing=""
+          for key in ANTHROPIC_API_KEY BLOTATO_API_KEY BLOTATO_SENIOREASE_TIKTOK_ID BLOTATO_SENIOREASE_INSTAGRAM_ID BLOTATO_LINKEDIN_ID BLOTATO_FACEBOOK_ACCOUNT_ID BLOTATO_FACEBOOK_PAGE_ID; do
+            if [ -z "${!key}" ]; then
+              missing="$missing $key"
+            fi
+          done
+          if [ -n "$missing" ]; then
+            echo "❌ Ontbrekende GitHub Secrets:$missing"
+            echo "Ga naar: Settings → Secrets and variables → Actions"
+            exit 1
+          fi
+          echo "✅ Alle verplichte secrets aanwezig"
 
       - name: Run daily content pipeline
         env:

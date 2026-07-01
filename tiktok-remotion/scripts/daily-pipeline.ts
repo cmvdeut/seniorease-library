@@ -144,6 +144,11 @@ async function runPipeline() {
   console.log("🚀 Daily Pipeline gestart\n");
   console.log("=".repeat(60));
 
+  if (!process.env.ANTHROPIC_API_KEY?.trim()) {
+    console.error("❌ ANTHROPIC_API_KEY ontbreekt — zet deze in GitHub Secrets.");
+    process.exit(1);
+  }
+
   console.log("\n[1/5] Trend Scout");
   const trends = await scout();
   const topTopic = trends[0]?.title ?? "";
@@ -178,7 +183,13 @@ async function runPipeline() {
   }
 
   console.log("\n[5/5] Blotato inplannen");
-  const blotato = await scheduleDailyToBlotato(content, { freshVideoUrl });
+  let blotato: BlotatoScheduleResult[] = [];
+  try {
+    blotato = await scheduleDailyToBlotato(content, { freshVideoUrl });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`⚠️  Blotato mislukt (pipeline verder OK): ${message}`);
+  }
 
   const meta: DailyReportMeta = {
     scriptId,
@@ -199,7 +210,11 @@ async function runPipeline() {
   console.log("✅ Pipeline klaar!\n");
 }
 
-runPipeline().catch((err) => {
-  console.error("❌ Pipeline mislukt:", err.message);
+runPipeline().catch((err: unknown) => {
+  const message = err instanceof Error ? err.message : String(err);
+  console.error("❌ Pipeline mislukt:", message);
+  if (err instanceof Error && err.stack) {
+    console.error(err.stack);
+  }
   process.exit(1);
 });

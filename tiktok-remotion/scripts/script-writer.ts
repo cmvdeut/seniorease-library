@@ -137,12 +137,19 @@ Genereer content voor 3 platforms. Geef je antwoord ALLEEN als geldig JSON, geen
     system: systemPrompt,
   });
 
-  const raw = (message.content[0] as { text: string }).text;
-  const parsed = parseJsonFromLLM(raw);
+  const block = message.content[0];
+  if (!block || block.type !== "text") {
+    throw new Error("Claude gaf geen tekstantwoord terug.");
+  }
+  const parsed = parseJsonFromLLM(block.text);
+  const tiktok = parsed.tiktok as GeneratedContent["tiktok"] | undefined;
+  if (!tiktok?.hook_text || !tiktok?.body_text) {
+    throw new Error("Claude JSON mist verplichte tiktok-velden (hook_text, body_text).");
+  }
 
   return {
     topic: trendTopic,
-    tiktok: parsed.tiktok as GeneratedContent["tiktok"],
+    tiktok,
     linkedin: String(parsed.linkedin ?? ""),
     facebook: String(parsed.facebook ?? ""),
   };
