@@ -73,6 +73,28 @@ function loadLatestTrend(): string {
   return `${top.title} (r/${top.subreddit})`;
 }
 
+function parseJsonFromLLM(raw: string): Record<string, unknown> {
+  const cleaned = raw.replace(/```json\s*/gi, "").replace(/```/g, "").trim();
+  try {
+    return JSON.parse(cleaned) as Record<string, unknown>;
+  } catch {
+    const start = cleaned.indexOf("{");
+    if (start === -1) {
+      throw new Error("Claude gaf geen geldige JSON terug:\n" + raw);
+    }
+    let depth = 0;
+    for (let i = start; i < cleaned.length; i++) {
+      const ch = cleaned[i];
+      if (ch === "{") depth++;
+      if (ch === "}") depth--;
+      if (depth === 0) {
+        return JSON.parse(cleaned.slice(start, i + 1)) as Record<string, unknown>;
+      }
+    }
+    throw new Error("Claude gaf onvolledige JSON terug:\n" + raw);
+  }
+}
+
 export async function writeContent(topic?: string): Promise<GeneratedContent> {
   const brand = loadBrandProfile();
   const trendTopic = topic ?? loadLatestTrend();
@@ -100,7 +122,7 @@ Genereer content voor 3 platforms. Geef je antwoord ALLEEN als geldig JSON, geen
     "body_text": "Korte uitleg hoe SeniorEase dit oplost (2-3 zinnen, Engels, simpel)",
     "cta_text": "Call to action (max 6 woorden, Engels)",
     "caption": "TikTok/Instagram caption (Engels, max 150 tekens, inclusief emoji)",
-    "hashtags": "#seniorease #vinyl #bookcollector #retro (5-7 relevante hashtags)",
+    "hashtags": "#seniorease #vinyl #bookcollector (max 5 hashtags totaal)",
     "duration_sec": "12-18 (geheel getal, seconden voor Remotion video)",
     "visual_suggestion": "Korte Engelse shotlist voor Remotion (hook card, scan screen, library, CTA)"
   },
@@ -115,19 +137,14 @@ Genereer content voor 3 platforms. Geef je antwoord ALLEEN als geldig JSON, geen
     system: systemPrompt,
   });
 
-  const raw = (message.content[0] as any).text;
-
-  // Haal JSON eruit (soms wrapped in ```json ... ```)
-  const jsonMatch = raw.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error("Claude gaf geen geldige JSON terug:\n" + raw);
-
-  const parsed = JSON.parse(jsonMatch[0]);
+  const raw = (message.content[0] as { text: string }).text;
+  const parsed = parseJsonFromLLM(raw);
 
   return {
     topic: trendTopic,
-    tiktok: parsed.tiktok,
-    linkedin: parsed.linkedin,
-    facebook: parsed.facebook,
+    tiktok: parsed.tiktok as GeneratedContent["tiktok"],
+    linkedin: String(parsed.linkedin ?? ""),
+    facebook: String(parsed.facebook ?? ""),
   };
 }
 

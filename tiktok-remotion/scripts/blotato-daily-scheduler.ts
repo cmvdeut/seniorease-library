@@ -190,10 +190,19 @@ function buildTikTokCaption(content: GeneratedContent): string {
   return `${hook_text} ${body_text} ${cta_text} ↗️ ${hashtags}`.trim();
 }
 
+function limitHashtags(text: string, max: number): string {
+  const tags = text.match(/#[\w]+/g) ?? [];
+  if (tags.length <= max) return text;
+  const withoutTags = text.replace(/#[\w]+/g, " ").replace(/\s+/g, " ").trim();
+  return `${withoutTags}\n\n${tags.slice(0, max).join(" ")}`.trim();
+}
+
 function buildInstagramCaption(content: GeneratedContent): string {
   const base = content.tiktok.caption.trim();
   const tags = content.tiktok.hashtags.trim();
-  return tags && !base.includes("#") ? `${base}\n\n${tags}` : base;
+  const combined =
+    tags && !base.includes("#") ? `${base}\n\n${tags}` : base || tags;
+  return limitHashtags(combined, 5);
 }
 
 function pickVideos(catalog: Record<string, string>): {
