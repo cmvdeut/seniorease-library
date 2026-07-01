@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "brand_name": "SeniorEase Library",
+  "website_url": "https://seniorease.eu/",
+  "extracted_at": "2026-05-12T00:00:00Z",
+
+  "voice": {
+    "formal_casual": 8,
+    "rational_emotional": 5,
+    "playful_serious": 4,
+    "bold_subtle": 6,
+    "traditional_innovative": 3,
+    "expert_accessible": 9,
+    "descriptors": ["warm", "no-nonsense", "trustworthy", "cozy", "approachable"]
+  },
+
+  "colors": {
+    "primary": "#8B5E3C",
+    "secondary": ["#F5EEE6", "#E0D5CA"],
+    "forbidden": ["#FF0000", "#0000FF", "#00FFFF", "neon colors", "cold tech blues"],
+    "background": "#F5EEE6",
+    "text": "#1F1F1F"
+  },
+
+  "typography": {
+    "heading_font": null,
+    "body_font": "system-ui",
+    "pairing_descriptor": "System UI stack (-apple-system, Segoe UI, Roboto) — no Google Fonts, warm and readable, no decorative typefaces"
+  },
+
+  "imagery": {
+    "style": "cozy flat-lay photography",
+    "subjects": [
+      "physical collections on warm wooden surfaces (vinyl, books, DVDs)",
+      "barcode scanning in action on Android phone",
+      "organized bookshelves with warm lighting",
+      "app interface screenshots on phone",
+      "collector lifestyle at record fairs or charity shops"
+    ],
+    "composition": "warm tones, soft natural lighting, uncluttered flat-lay style, cozy home environment",
+    "forbidden": [
+      "corporate stock photos",
+      "cold blue technology imagery",
+      "young tech-startup aesthetics",
+      "cluttered busy compositions",
+      "people under 40 as primary subject",
+      "digital-only or streaming imagery"
+    ]
+  },
+
+  "aesthetic": {
+    "mood_keywords": ["cozy", "trustworthy", "nostalgic", "simple", "warm", "personal"],
+    "texture": "minimal, warm",
+    "negative_space": "generous"
+  },
+
+  "brand_values": [
+    "privacy first — data stays on device",
+    "no-nonsense simplicity — no account, no ads, no fuss",
+    "one-time fairness — €4.99 once, never a subscription",
+    "respect for physical media and collecting culture",
+    "accessibility for all ages — works for non-tech users"
+  ],
+
+  "target_audience": {
+    "age_range": "45-75",
+    "profession": "hobbyist collectors of books, vinyl records, DVDs, CDs, and games",
+    "pain_points": [
+      "buying duplicates at record fairs, charity shops, or book markets",
+      "losing track of large collections (300+ items)",
+      "apps that require accounts, cloud sync, or constant internet",
+      "subscription fatigue — paying monthly for something that should be simple",
+      "intimidating tech that requires setup and passwords"
+    ],
+    "aspirations": [
+      "know exactly what they own before buying anything new",
+      "organize their entire collection without tech hassle",
+      "shop smarter at fairs and second-hand stores",
+      "keep their collection data private and offline",
+      "find a simple tool that just works"
+    ]
+  },
+
+  "screenshots": {
+    "homepage": "./screenshots/seniorease_eu_desktop.png",
+    "secondary": []
+  }
+}
