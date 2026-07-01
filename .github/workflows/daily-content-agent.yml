@@ -1,0 +1,59 @@
+name: Daily Content Agent
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 08:00 NL (CEST) — voor je naar je werk bent
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tiktok-remotion
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: tiktok-remotion/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daily content pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
+          BLOTATO_SENIOREASE_TIKTOK_ID: ${{ secrets.BLOTATO_SENIOREASE_TIKTOK_ID }}
+          BLOTATO_SENIOREASE_INSTAGRAM_ID: ${{ secrets.BLOTATO_SENIOREASE_INSTAGRAM_ID }}
+          BLOTATO_LINKEDIN_ID: ${{ secrets.BLOTATO_LINKEDIN_ID }}
+          BLOTATO_FACEBOOK_ACCOUNT_ID: ${{ secrets.BLOTATO_FACEBOOK_ACCOUNT_ID }}
+          BLOTATO_FACEBOOK_PAGE_ID: ${{ secrets.BLOTATO_FACEBOOK_PAGE_ID }}
+          DAILY_RENDER: "false"
+          GMAIL_FROM: ${{ secrets.GMAIL_FROM }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO: ${{ secrets.GMAIL_TO }}
+        run: npm run agent:daily
+
+      - name: Commit generated content
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          git config user.name "SeniorEase Bot"
+          git config user.email "bot@seniorease.eu"
+          git add tiktok-remotion/content/daily-*.json tiktok-remotion/content/trends-*.json tiktok-remotion/content/seniorease-tiktok-scripts-en.csv
+          if git diff --staged --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "Daily content agent [skip ci]"
+            git pull --rebase origin "${{ github.ref_name }}" && git push
+          fi
