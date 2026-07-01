@@ -1,18 +1,42 @@
 {
   "topic": "Bought the same vinyl record twice at a record fair",
   "tiktok": {
-    "hook_text": "You bought it twice again.",
-    "body_text": "That vinyl you grabbed at the fair last week? You already own it. SeniorEase scans your barcode, checks your collection in seconds—no account, no fuss. €4.99 once. Never buy a duplicate again.",
-    "cta_text": "Scan smarter. Collect better.",
-    "caption": "Stop buying doubles at the record fair 🎵 One scan. One app. One price. seniorease.eu #vinyl #collections",
-    "hashtags": "#seniorease #vinyl #recordcollector #nostalgia #shopping",
+    "hook_text": "You bought it twice, didn't you?",
+    "body_text": "That vinyl record at the fair looked familiar—but you weren't sure if you already owned it. SeniorEase Library remembers your collection so you don't have to. One quick scan with your phone, and you'll know instantly what you own.",
+    "cta_text": "Never buy twice again",
+    "caption": "Spot the duplicate before checkout 🎵 €4.99, no fuss, no account needed. #SeniorEase #VinylCollector #RecordFair",
+    "hashtags": "#seniorease #vinyl #collector #recordfair #bookworm",
     "duration_sec": "15",
-    "visual_suggestion": "Wide shot of vinyl at record fair → close-up of confused face holding two identical records → phone scanning barcode → green checkmark on screen → cozy home library → app icon with €4.99"
+    "visual_suggestion": "Shot 1: Close-up of confused face at record fair (2s) | Shot 2: Phone scanning barcode, app shows 'Already own this!' (5s) | Shot 3: Library shelves/collection (3s) | Shot 4: CTA card with €4.99 price, no subscription (5s)"
   },
-  "linkedin": "The Collector's Dilemma: When Your Collection Owns You\n\nEver walked out of a record fair, charity shop, or book market only to realize at home you already owned that treasure? You're not alone.\n\nSerious collectors—the ones with 300, 500, even 1,000+ items—face a quiet frustration: keeping track. And the cost of duplicates adds up. Fast.\n\nMost solutions demand clouds, accounts, subscriptions. That's not collecting—that's paying rent to technology.\n\nThat's why we built SeniorEase Library differently. Scan a barcode. Your collection lives on your phone. No account. No sync. No monthly fees. €4.99. Once. Forever.\n\nFor collectors who respect their collections—and their privacy.\n\nIf you've ever double-bought something precious, you know the feeling. Let's solve it together.\n\nLearn more: seniorease.eu\n\n#Collecting #PrivacyFirst #SmallBusiness",
-  "facebook": "Je kent het vast: je bent op de rommelmarkt, ziet een prachtige LP staan, en thuis tref je… precies dezelfde LP in je kast aan. Geld om zeep geholpen.\n\nWanneer je tientallen—of honderden—boeken, platen en dvd's hebt verzameld, wordt het steeds moeilijker bij te houden wat je al hebt. En apps die je account en cloud-sync dwingen? Daar hebben we geen zin in.\n\nDaarom hebben we SeniorEase gebouwd: scan je barcode, controleer direct of je het al hebt. Geen account. Geen gedoe. Eenmalig €4.99, klaar.\n\nGekocht is gekocht—geen abonnement, geen verstopte kosten. Alleen jij, je collectie, en je privacy.\n\nHerken je jezelf hierin? Vertel: wat is je meest pijnlijke dubbel aankoop? 📚🎵\n\n#Verzamelen #PrivacyEerst",
+  "linkedin": "Collectors know the feeling: you're browsing a record fair or charity shop, and a beloved album catches your eye. Your heart races—until you get home and realize you already own it. You've just wasted money on a duplicate.\n\nFor serious collectors of vinyl, books, DVDs, or games, this happens more often than we'd like to admit. With collections of 300+ items, keeping track becomes nearly impossible without the right tool.\n\nThat's where SeniorEase Library comes in. A straightforward, privacy-first app (€4.99, once) that lets you scan your collection and check before you buy. No account. No cloud. No monthly fees. No nonsense.\n\nJust you, your collection, and the peace of mind that you'll never accidentally buy that record twice again.\n\nIf you collect—vinyl, books, or anything else—SeniorEase is built with you in mind. Visit seniorease.eu.\n\n#Collections #VinylCommunity #PrivacyFirst",
+  "facebook": "Herkennen jij dit? Je staat op de vlooienmarkt, ziet een mooie plaat liggen… en thuis blijkt het al in je kast te staan. Dubbel betaald, voor niks.\n\nBij een verzameling van 300+ items gebeurt dit vaker dan je zou willen. Je kunt onmogelijk alles in je hoofd houden.\n\nDaarvoor hebben we SeniorEase Library gemaakt: één simpele app (€4,99, eenmalig) waarmee je je platen, boeken of dvd's scant en meteen ziet wat je al hebt. Geen gedoe. Geen account. Geen abonnement.\n\nJust scan, and you know.\n\nHeb jij ook zo'n collectie? Wat is het ergste dubbel dat je ooit hebt gekocht? 😄\n\n#VerzamelaarsDroom #NooitMeerDubbel",
   "remotion": {
-    "scriptId": "24"
+    "scriptId": "25"
   },
-  "blotato": []
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-17T07:00:00+00:00",
+      "postSubmissionId": "451e7818-63d1-4e19-9650-8e911b515d34"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-16T17:30:00+00:00",
+      "postSubmissionId": "10c4e98a-f509-4ecb-8029-86835f038d13",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/8e3b4fc4-c679-4d49-b8c2-c1270b41d80a.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-15T18:00:00+00:00",
+      "postSubmissionId": "a535fe0d-9e9e-40ab-9f7c-4a66634a1363",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/9f34327b-3274-4fc4-82e4-eb7c23e41121.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-16T18:00:00+00:00",
+      "postSubmissionId": "e4718978-45f0-4bbd-956d-3b737b1f6ce0",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/6b06d2d5-bc47-4805-9907-53a01fc98afd.mp4"
+    }
+  ]
 }
