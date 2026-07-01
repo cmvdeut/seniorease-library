@@ -53,6 +53,8 @@ jobs:
             exit 1
           fi
           echo "✅ Alle verplichte secrets aanwezig"
+          echo "   ANTHROPIC_API_KEY: ${#ANTHROPIC_API_KEY} tekens"
+          echo "   BLOTATO_API_KEY: ${#BLOTATO_API_KEY} tekens (moet eindigen op = als in .env)"
 
       - name: Run daily content pipeline
         env:
