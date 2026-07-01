@@ -1,6 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
+const VERCEL_ANALYTICS_SNIPPET = `
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>`;
+
+function injectVercelAnalytics(html) {
+  if (html.includes('/_vercel/insights/script.js')) {
+    return html;
+  }
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `${VERCEL_ANALYTICS_SNIPPET}\n</head>`);
+  }
+  return html;
+}
+
 // Create public directory if it doesn't exist
 if (!fs.existsSync('public')) {
   fs.mkdirSync('public', { recursive: true });
@@ -22,6 +39,9 @@ function copyRecursiveSync(src, dest) {
         path.join(dest, childItemName)
       );
     });
+  } else if (src.endsWith('.html')) {
+    const html = fs.readFileSync(src, 'utf-8');
+    fs.writeFileSync(dest, injectVercelAnalytics(html), 'utf-8');
   } else {
     fs.copyFileSync(src, dest);
   }
