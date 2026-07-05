@@ -1,0 +1,42 @@
+{
+  "topic": "Scanning barcodes to catalog vintage board game collection",
+  "tiktok": {
+    "hook_text": "You've bought this board game twice.",
+    "body_text": "SeniorEase Library lets you scan barcodes to catalog your entire collection—no account, no fuss, no surprises at the market. Just one €4.99 purchase, and you'll never buy a duplicate again.",
+    "cta_text": "Scan smarter, collect proudly.",
+    "caption": "Stop buying duplicates at the flea market 📚 Scan your board games once, check forever. Privacy-first cataloging. #SeniorEase #BoardGameCollector #VintageGames",
+    "hashtags": "#SeniorEase #BoardGameCollector #VintageGames #CollectorLife #NoMoreDuplicates",
+    "duration_sec": "15",
+    "visual_suggestion": "Shot 1: Close-up of same board game in two hands (hook card overlay). Shot 2: Phone scanning barcode smoothly. Shot 3: Library view filling with games. Shot 4: CTA card with app icon and €4.99 price."
+  },
+  "linkedin": "Collectors know the feeling: you're browsing at a board game fair, vintage vinyl shop, or charity market when you spot something perfect—only to get home and realize it's already in your collection. Duplicate purchases waste money and shelf space, and no collector wants that.\n\nSeniorEase Library solves this with straightforward barcode scanning. No accounts. No cloud sync. No monthly fees. Just point, scan, and your collection is cataloged on your device—where your data stays private and secure.\n\nWhether you're managing 50 board games, 300 books, or a mixed collection, a single €4.99 purchase is all you need. Works offline. Works forever. Built for collectors who value simplicity and trust.\n\nIf you're tired of duplicate hunting and complex apps, check us out at seniorease.eu. #Collecting #BoardGames #Privacy #SmartShopping",
+  "facebook": "Ken je dit gevoel? Je bent op een vlooienmarkt, in een tweedehands winkel, of bij een verzamelaarsbeurs—en daar ligt precies het bordspel dat je zoekt. Thuis aangekomen: je hebt het al. 🎲\n\nWij snappen de frustratie van dubbele aankopen. Daarom hebben we SeniorEase Library gemaakt: scan je barcode, en je weet direct of je het al hebt. Geen account nodig, geen gedoe, geen maandelijks gedoe. Eenmalig €4.99, klaar.\n\nOf je nu 50 spellen of 300 items hebt—jouw collectie blijft privé, op je telefoon, altijd beschikbaar.\n\nHerken je dit probleem? Hoe zorg jij nu dat je niet dubbel koopt? 📚",
+  "remotion": {
+    "scriptId": "29"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-23T07:00:00+00:00",
+      "postSubmissionId": "67c3d99c-bc2d-43dc-a8eb-648ddc810379"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-20T17:30:00+00:00",
+      "postSubmissionId": "234bacc0-0b0a-495f-831c-a00c47914b9e",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-19T18:00:00+00:00",
+      "postSubmissionId": "f75d94bf-3fda-4e59-9ad2-400e5e5ae303",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/63fb63b5-f37b-433d-b814-7cd1c261b0eb.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-20T18:00:00+00:00",
+      "postSubmissionId": "b02c3588-4f19-425c-bd53-93b356aa62dc",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/6b06d2d5-bc47-4805-9907-53a01fc98afd.mp4"
+    }
+  ]
+}
