@@ -1,0 +1,42 @@
+{
+  "topic": "Charity shop finds: how I stopped buying books I already own",
+  "tiktok": {
+    "hook_text": "You bought it twice again, didn't you?",
+    "body_text": "Every charity shop visit, every market day—that nagging doubt. Is this already on my shelf? SeniorEase scans your barcode, checks your collection in seconds, and keeps everything private on your phone. No account, no fuss, just peace of mind.",
+    "cta_text": "Scan smarter, collect better",
+    "caption": "Stop the duplicate hunt. One scan = one answer. 📚 €4.99, forever. No subscriptions, no nonsense.",
+    "hashtags": "#CharityShopFinds #BookCollector #VinylHunter #SeniorEase #NoMoreDuplicates",
+    "duration_sec": "15",
+    "visual_suggestion": "Hook card (worried face, 'Did I buy this?'), close-up hands holding book at market, phone barcode scan (satisfying ping), happy collector smile, app icon with €4.99, CTA text appears"
+  },
+  "linkedin": "For collectors, second-hand hunting is a way of life—but it comes with a familiar frustration. You're standing at a car boot sale, vinyl in hand, and that voice creeps in: *Do I already own this?* \n\nFor those managing 300+ items across books, records, and DVDs, memory alone isn't reliable. Yet many solutions demand accounts, cloud syncing, or monthly subscriptions for something that should be simple.\n\nSeniorEase Library solves this quietly: scan the barcode, get an instant answer, move on. Your collection stays private on your device. No account needed. €4.99, once, forever.\n\nIt's designed for people who value their collections and their time. No complexity, no catch—just a tool that respects both.\n\nIf you or someone you know collects, worth a look: seniorease.eu\n\n#Collectors #SecondHand #SimpleTech",
+  "facebook": "Hé, herken je dit moment? Je bent in de rommelmarkt of het goede doelenwinkel, je ziet een mooi boek of een plaat... en dan die twijfel: *heb ik dit al thuis?*\n\nVoor wie een flinke verzameling heeft—en wie niet op deze leeftijd?—is dit voelbaar. Je gaat naar huis, zoekt in de boekenkast, en dan... daar ligt ie inderdaad al. Zonde van het geld.\n\nHet hoeft niet meer. SeniorEase scan je barcode in twee seconden, zegt 'je hebt dit al' of 'nieuw voor je!', en je gaat door met je dag. Dat is het. Geen gedoe met accounts, geen abonnement—€4.99 en je bent klaar.\n\nHerken je dit probleem? Of ken je iemand die dit frustrerend vindt?\n\n#Verzamelaars #Boekenliefde",
+  "remotion": {
+    "scriptId": "30"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-24T07:00:00+00:00",
+      "postSubmissionId": "022198dd-b1c0-4f5f-b8f1-40d8001ccb8c"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-21T17:30:00+00:00",
+      "postSubmissionId": "516d8900-0a73-4362-a05d-7cbb72bc8948",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/8e3b4fc4-c679-4d49-b8c2-c1270b41d80a.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-20T18:00:00+00:00",
+      "postSubmissionId": "461d4491-e5fc-47da-b69b-f18dff657338",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/9f34327b-3274-4fc4-82e4-eb7c23e41121.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-21T18:00:00+00:00",
+      "postSubmissionId": "0b131a01-d723-4667-88f3-51fa3ac41314",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    }
+  ]
+}
