@@ -1,0 +1,42 @@
+{
+  "topic": "Record store tips: check your collection before you buy",
+  "tiktok": {
+    "hook_text": "You bought it twice again, didn't you?",
+    "body_text": "Record store trips are fun—until you realize you already own that album. SeniorEase keeps your entire collection right in your pocket. Scan once, check before you buy, never duplicate again. Simple, private, one payment.",
+    "cta_text": "Scan smarter today",
+    "caption": "Stop the duplicate hunt. Your collection, in your hands. 📚🎵 €4.99, forever. No accounts. No fuss.",
+    "hashtags": "#SeniorEase #VinylCollector #RecordStore #BookLover #NoMoreDuplicates",
+    "duration_sec": "15",
+    "visual_suggestion": "Card: 'You already own this' | Quick scan demo on phone screen | Cozy record store interior | Library shelf full of books | Phone screen showing collection check | Final frame: SeniorEase logo + €4.99"
+  },
+  "linkedin": "The Collector's Dilemma: Avoiding Duplicate Purchases\n\nIf you've built a collection of 300+ books, records, or DVDs, you've likely experienced it—that sinking feeling at a record fair when you realize you already own that album, or at a charity shop when the book's already on your shelf.\n\nIt happens to the best of us. Collections grow organically, scattered across rooms, stored in different places. Keeping track becomes challenging, and the stakes feel higher when you're hunting for rare finds.\n\nThat's where clarity comes in. SeniorEase Library is built specifically for collectors like you—a simple, private way to catalog your entire collection on your phone. No accounts. No cloud dependencies. Just you, your items, and peace of mind.\n\nOne scan at the record store, and you know exactly what you already own. It costs €4.99. Once. Forever.\n\nFor collectors who value both their collection and their privacy, it's worth a look.\n\n#Collectors #VinylCommunity #BookLover",
+  "facebook": "Herkennen jullie dit? Je staat in de platenzaak, vindt wat je al zocht, maar... heb je dit album niet al thuis staan?\n\nOf je bladert door boeken op de rommelmarkt en vraagt je af: staat dit al in mijn kast?\n\nJe collectie groeit, maar soms verlies je het overzicht. En dan koop je per ongeluk hetzelfde dubbel.\n\nDat hoeft niet meer. Met SeniorEase zet je je hele collectie in je telefoon. Eenvoudig, privé, geen gedoe. Wanneer je winkelt, scan je even en weet je: heb ik dit al?\n\n€4.99, eenmalig. Klaar.\n\nHoe groot is jouw collectie? En hoeveel duplicaten heb je al gered? 😊\n\n#seniorease #verzamelen",
+  "remotion": {
+    "scriptId": "31"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-27T07:00:00+00:00",
+      "postSubmissionId": "2dc98865-f66f-4e62-9ece-9df22c8eaea4"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-22T17:30:00+00:00",
+      "postSubmissionId": "6feb6fcc-065f-4354-8186-575d6803836b",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b2be9fa6-90d9-40bb-a839-33625082fb5e.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-21T18:00:00+00:00",
+      "postSubmissionId": "454da327-feef-4bf8-b960-359725fb4686",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/209a5df2-d25c-40ce-98c8-70e606f343d0.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-22T18:00:00+00:00",
+      "postSubmissionId": "946d4697-2d68-44c4-9a86-6f84479d7196",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    }
+  ]
+}
