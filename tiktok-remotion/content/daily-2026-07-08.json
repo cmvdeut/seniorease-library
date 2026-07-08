@@ -1,0 +1,42 @@
+{
+  "topic": "Bought the same vinyl record twice at a record fair",
+  "tiktok": {
+    "hook_text": "You bought it twice already?",
+    "body_text": "That vinyl record you grabbed at the fair? You probably already own it. SeniorEase scans your collection once, then alerts you before you buy duplicates. One €4.99 payment, no account, no fuss. Just peace of mind.",
+    "cta_text": "Never buy double again",
+    "caption": "Record fair guilt is real 💿 Scan once, collect with confidence. SeniorEase keeps your collection sorted.",
+    "hashtags": "#SeniorEase #VinylCollector #RecordFair #NoMoreDuplicates #CollectorLife",
+    "duration_sec": "15",
+    "visual_suggestion": "1) Hook card: 'You already own this?' over record fair scene. 2) Hand scanning vinyl barcode with phone. 3) Library screen showing 'Already in collection' alert. 4) Happy collector at fair, smiling. 5) CTA: SeniorEase logo + €4.99."
+  },
+  "linkedin": "Collecting is a passion—but keeping track shouldn't be a second job. Whether it's vinyl records, books, or DVDs, collectors over 45 face a common frustration: buying duplicates at record fairs, charity shops, and markets. You've spent years building your collection, sometimes 300+ items, and suddenly you're standing in front of a record you already own. The guilt is real, and the wallet suffers. SeniorEase Library solves this with elegant simplicity. One €4.99 purchase gives you a private, offline collection manager. Scan a barcode, get instant feedback on what you own—no cloud storage, no monthly fees, no account required. Your data stays on your device. It's designed for collectors who value their time and their privacy equally. The collecting community deserves tools that respect both. Discover SeniorEase at seniorease.eu—because your collection deserves better than guesswork.",
+  "facebook": "Herken je dit? Je bent op de rommelmarkt en ziet een prachtige LP liggen. Je pakt hem op, je hart klopt sneller... en dan realiseer je je: heb je deze niet al thuis? 😅 Wij kennen dit gevoel. Veel verzamelaars van boeken, vinyl en dvd's hebben er mee te worstelen—vooral als je collectie flink is gegroeid. Maar het hoeft niet zo te zijn. SeniorEase is gemaakt voor jou: je scant je verzameling eenmalig in, en voilà—nooit meer giswerk op markten en in boekenwinkels. €4.99, één keer betaald. Geen account, geen gedoe, geen cloud. Jouw gegevens blijven veilig op jouw telefoon. Hoe voelt het voor jou—ben je ook wel eens iets dubbel gaan kopen? Laat het ons weten! 📚 #VerzamelaarsEenheid #GeenDubbelen",
+  "remotion": {
+    "scriptId": "32"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-28T07:00:00+00:00",
+      "postSubmissionId": "e1b66a0e-8a12-435e-a247-f88add9853a7"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-23T17:30:00+00:00",
+      "postSubmissionId": "dfab2300-7abf-4960-a777-fb278319f081",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/c10f0933-5fea-4c50-a58d-f44fa468fc29.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-22T18:00:00+00:00",
+      "postSubmissionId": "2e9de7c2-b8c8-4116-b65c-ccd7957b2124",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/3b6f0f4b-1f04-4d9e-a5fd-c0779fa227fa.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-23T18:00:00+00:00",
+      "postSubmissionId": "9036c559-0cec-4343-8c04-f6f12721f0cb",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/c10f0933-5fea-4c50-a58d-f44fa468fc29.mp4"
+    }
+  ]
+}
