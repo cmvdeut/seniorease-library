@@ -19,3 +19,7 @@ local.properties
 
 node_modules/
 tiktok-remotion/output/
+tiktok-remotion/.env
+website/.env
+.env
+.env.local
