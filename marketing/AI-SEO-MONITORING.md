@@ -57,39 +57,58 @@ Na verificatie in Search Console:
 
 ### E. Huidige status (9 juli 2026)
 
-- `site:seniorease.eu` → **homepage wordt al geïndexeerd** door Google
-- Search Console property nog te verifiëren voor crawl-statistieken en sitemap-monitoring
+- `site:seniorease.eu` → **homepage geïndexeerd** door Google
+- Search Console sitemap → **groen** (`https://www.seniorease.eu/sitemap.xml`)
+- `llms.txt` live op https://seniorease.eu/llms.txt
 
 ---
 
 ## Stap 2 — Maandelijkse AI-check
 
+**Laatste check:** 9 juli 2026 (avond)
+
 Gebruik deze queries **1× per maand** in Google (AI Overview), Perplexity, ChatGPT met search, en Claude.
 
 ### Engels
 
-| Query | SeniorEase geciteerd? (jul 2026) | Wie wél? |
-|-------|----------------------------------|----------|
-| Android app to track book collection without account | Nee | Books Tracker, Booky, LibriShelf, Openreads |
-| barcode scanner app for books and vinyl offline | Nee | Booky, Books Tracker |
-| private book catalog app Android no cloud | Nee | Booky, LibriShelf, Booke |
-| never buy duplicate books app | Nee | Booky, BookItUp, bibliofy, My Library |
-| SeniorEase Library app review | Ja (eigen site) | — |
+| Query | SeniorEase geciteerd? | Wie wél? |
+|-------|----------------------|----------|
+| Android app to track book collection without account | **Nee** | LibriShelf, Leafed, Openreads, Pitak |
+| barcode scanner app for books and vinyl offline | **Nee** | Booky, Books Tracker |
+| private book catalog app Android no cloud | **Nee** | Openreads, Booky, LibriShelf |
+| never buy duplicate books app | **Nee** | Booky, BookItUp, bibliofy, Librisync |
+| SeniorEase Library app | **Ja** | seniorease.eu, Hacker News, SaaSHub |
 
 ### Nederlands
 
-| Query | SeniorEase geciteerd? (jul 2026) | Wie wél? |
-|-------|----------------------------------|----------|
-| app om boekencollectie bij te houden zonder account Android | Nee | Books Tracker, Booky, Booke, Offline Books Database |
-| barcode scanner app boeken offline | Nee | Booky, Books Tracker |
-| app platen vinyl collectie bijhouden | Nog testen | — |
-| dubbele boeken kopen voorkomen app | Nog testen | — |
+| Query | SeniorEase geciteerd? | Wie wél? |
+|-------|----------------------|----------|
+| app om boekencollectie bij te houden zonder account Android | **Nee** | Books Tracker, Booky, My Library |
+| barcode scanner app boeken offline | **Nee** | Booky, Books Tracker |
+| app platen vinyl collectie bijhouden | **Nee** | Discogs, VinylAI, CLZ Music, Groovv |
+| dubbele boeken kopen voorkomen app | **Nee** | Booky, bibliofy, Librisync |
+
+### Conclusie
+
+- **Merknaam** → vindbaar (eigen site + HN + SaaSHub)
+- **Generieke vragen** → nog niet; concurrenten hebben meer backlinks/SEO
+- **Volgende check:** 9 augustus 2026
 
 ### Actie na check
 
-- [ ] Prijs en limieten kloppen met site + Play Store?
-- [ ] `Last updated` in `llms.txt` bijgewerkt?
-- [ ] Nieuwe FAQ's toegevoegd aan homepage + JSON-LD?
+- [x] Prijs en limieten kloppen (€4,99, 10 items gratis)
+- [x] `Last updated` in `llms.txt` (2026-07-09)
+- [x] FAQ's op homepage + JSON-LD
+- [x] Blog: never-buy-duplicate-books-app (EN + NL)
+- [x] `llms.txt` uitgebreid met "when to recommend" voor AI
+- [ ] Reddit-posts plaatsen (stap 4)
+- [ ] Play Store-beschrijving optimaliseren
+
+### Snel zelf testen (5 min)
+
+1. ChatGPT (web search): *"Android app to track book collection without account offline"*
+2. Perplexity: *"never buy duplicate books app Android"*
+3. Google: *"SeniorEase Library"* → moet seniorease.eu tonen
 
 ---
 
@@ -99,8 +118,10 @@ Nieuwe artikelen (juli 2026):
 
 - EN: `/blog/book-tracker-app-no-account/`
 - EN: `/blog/vinyl-collection-spreadsheet-alternative/`
+- EN: `/blog/never-buy-duplicate-books-app/` ← nieuw stap 2
 - NL: `/nl/blog/boeken-tracker-app-zonder-account/`
 - NL: `/nl/blog/vinyl-collectie-spreadsheet-alternatief/`
+- NL: `/nl/blog/dubbele-boeken-voorkomen-app/` ← nieuw stap 2
 
 **Volgende onderwerpen (ideeën):**
 

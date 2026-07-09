@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop buying duplicate books at charity shops and markets. Check your collection on Android before you buy — scan barcodes, search offline, no account needed.">
+    <title>Never Buy Duplicate Books Again (Android App) — SeniorEase</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/blog/never-buy-duplicate-books-app/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/never-buy-duplicate-books-app/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/dubbele-boeken-voorkomen-app/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/never-buy-duplicate-books-app/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seniorease.eu/blog/never-buy-duplicate-books-app/">
+    <meta property="og:title" content="Never Buy Duplicate Books Again (Android App) — SeniorEase">
+    <meta property="og:description" content="Check your book collection before you buy. Scan your shelf once, search at the charity shop — no duplicates, no account, no subscription.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Never Buy Duplicate Books Again (Android App) — SeniorEase">
+    <meta name="twitter:description" content="Check your book collection before you buy. Scan your shelf once, search at the charity shop — no duplicates, no account, no subscription.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Never Buy Duplicate Books Again (Android App)",
+      "description": "Stop buying duplicate books at charity shops and markets. Check your collection on Android before you buy — scan barcodes, search offline, no account needed.",
+      "author": {"@type": "Person", "name": "Maureen"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "logo": {"@type": "ImageObject", "url": "https://seniorease.eu/seniorease-icon.png"}
+      },
+      "datePublished": "2026-07-09",
+      "dateModified": "2026-07-09",
+      "url": "https://seniorease.eu/blog/never-buy-duplicate-books-app/",
+      "image": "https://seniorease.eu/seniorease-icon.png",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I check if I already own a book before buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open SeniorEase Library on your Android phone and search by title or author. If you scanned your shelf beforehand, the book is already in your catalog. At a charity shop you can also scan the barcode on the spot — the app tells you instantly if it is a duplicate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I search my book collection offline at a market or charity shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once your books are saved in SeniorEase Library, your entire catalog works without Wi-Fi or mobile data. Search, filter and browse anywhere — at a Sunday market, inside a charity shop, or in a car park with no signal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an app to never buy duplicate books again?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SeniorEase Library is built for exactly that. Scan the ISBN barcode on each book you own, then check your collection before every purchase. No account, no cloud, no subscription — just a private list on your phone that stops you buying the same paperback twice."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .site-header .logo-link img { width: 36px; height: 36px; border-radius: 8px; }
+        .site-header .lang-link {
+            font-size: 14px;
+            color: #8B5E3C;
+            text-decoration: none;
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 6px 16px;
+            background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+        .breadcrumb { padding: 16px 0 0; font-size: 13px; color: #888; }
+        .breadcrumb a { color: #8B5E3C; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+        article {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 20px 0 40px;
+            border: 1px solid #E0D5CA;
+        }
+        @media (max-width: 640px) { article { padding: 24px 20px; } }
+        .article-meta { font-size: 13px; color: #888; margin-bottom: 28px; }
+        h1 { font-size: clamp(24px, 4.5vw, 34px); font-weight: 700; color: #8B5E3C; line-height: 1.25; margin-bottom: 10px; }
+        h2 { font-size: 20px; font-weight: 700; color: #6D4A30; margin: 36px 0 14px; }
+        p { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; }
+        ul, ol { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        strong { color: #1F1F1F; }
+        .steps { list-style: none; padding: 0; margin: 0 0 18px; }
+        .steps li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+        .step-num {
+            flex-shrink: 0; width: 32px; height: 32px;
+            background: #8B5E3C; color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; margin-top: 2px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            border-radius: 14px; padding: 32px; text-align: center; margin: 36px 0;
+        }
+        .cta-box h2 { color: #fff; margin: 0 0 10px; }
+        .cta-box p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block; background: #fff; color: #8B5E3C;
+            font-weight: 700; font-size: 16px; padding: 14px 32px;
+            border-radius: 999px; text-decoration: none; transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .faq-list { list-style: none; padding: 0; }
+        .faq-list li { border-top: 1px solid #E0D5CA; padding: 18px 0; }
+        .faq-list li:last-child { border-bottom: 1px solid #E0D5CA; }
+        .faq-q { font-weight: 700; color: #1F1F1F; font-size: 17px; margin-bottom: 8px; }
+        .faq-a { font-size: 16px; color: #555; line-height: 1.65; }
+        footer { padding: 32px 20px; text-align: center; border-top: 1px solid #E0D5CA; background: #fff; font-size: 14px; color: #666; }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/nl/blog/dubbele-boeken-voorkomen-app/">🇳🇱 Nederlands</a>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/blog/">Blog</a><span>›</span>
+            Never Buy Duplicate Books Again
+        </nav>
+
+        <article>
+            <h1>Never Buy Duplicate Books Again (Android App)</h1>
+            <p class="article-meta">By Maureen · July 2026 · 4 min read</p>
+
+            <p>I bought the same Agatha Christie paperback three times. Twice at the charity shop. Once at a Sunday market. Each time I was absolutely sure I did not own it yet. Each time I got home, found it on the shelf, and groaned.</p>
+
+            <p>That is the problem with a book collection that outgrows your memory. You remember the authors you love. You forget the exact titles tucked three rows back on the shelf. So you buy again — and donate the duplicate six months later, still in the bag.</p>
+
+            <p>I built <strong>SeniorEase Library</strong> to fix that. Scan what you own once. Check your collection before you buy. No duplicate books. No wasted euros at the kringloop.</p>
+
+            <h2>Why duplicate books keep happening</h2>
+
+            <p>Charity shops and book markets are dangerous when you love reading. Everything costs €1 or €2. You pick up a novel, think <em>that looks familiar</em>, and buy it anyway because you cannot be sure.</p>
+
+            <p>At home you have hundreds of books. Maybe thousands if you count the boxes in the attic. No one can remember every spine. A spreadsheet works for a while, but updating it feels like homework — so you stop, and the duplicates start again.</p>
+
+            <p>What you need is a <strong>never buy duplicate books app</strong> that lives on your phone, works at the shop, and does not ask for an account or a monthly fee.</p>
+
+            <h2>Check your collection before you buy</h2>
+
+            <p>The habit is simple: scan first, buy second. Before you leave for the market, your shelf is already in the app. At the charity shop, pull out your phone and search by title or author. Already there? Put the book back. Not there? Safe to buy.</p>
+
+            <p>Even faster: scan the ISBN barcode on the back cover right where you stand. SeniorEase Library looks it up and tells you in seconds whether it is already in your catalog.</p>
+
+            <ol class="steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <div><strong>Scan your shelf at home.</strong> Hold your phone over each ISBN barcode. Title, author and cover fill in automatically. One tap to save. Do ten books tonight, ten tomorrow — no rush.</div>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <div><strong>Search before you pay.</strong> At the charity shop or market, type the title or author. Your full collection is searchable in seconds — even with no phone signal.</div>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <div><strong>Scan on the spot if you are unsure.</strong> Point the camera at the barcode on the book in your hand. Duplicate? Leave it on the table. New to you? Buy it with confidence.</div>
+                </li>
+            </ol>
+
+            <h2>Works offline, private, no subscription</h2>
+
+            <p>Markets and charity shops rarely have good Wi-Fi. That is fine — once your books are saved, your entire catalog works offline. Search and browse without mobile data.</p>
+
+            <p>Your collection stays on your phone only. No account, no cloud, no one else seeing what you read. Try it free with up to 10 items — no time limit. Unlock your full library for a one-time payment of €4.99. No subscription, no surprise renewal.</p>
+
+            <h2>More than books — one app for everything you collect</h2>
+
+            <p>If you also pick up vinyl at record fairs or DVDs at the market, you can track all of it in the same app — and check before you buy there too:</p>
+
+            <ul>
+                <li><strong>Books</strong> — ISBN barcode on the back cover</li>
+                <li><strong>Vinyl records and CDs</strong> — barcode on the sleeve</li>
+                <li><strong>DVDs and Blu-rays</strong> — barcode on the case</li>
+                <li><strong>Video games</strong> — barcode on the box</li>
+            </ul>
+
+            <p>One private catalog. Check it anywhere. Stop bringing home things you already own.</p>
+
+            <div class="cta-box">
+                <h2>Stop buying duplicate books — free to try</h2>
+                <p>Scan up to 10 items free. Check your collection at the charity shop before you buy.</p>
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener">
+                    Download on Google Play
+                </a>
+                <p class="cta-note">Android only · One-time €4.99 to unlock · No subscription</p>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+
+            <ul class="faq-list">
+                <li>
+                    <p class="faq-q">How do I check if I already own a book before buying?</p>
+                    <p class="faq-a">Open SeniorEase Library on your Android phone and search by title or author. If you scanned your shelf beforehand, the book is already in your catalog. At a charity shop you can also scan the barcode on the spot — the app tells you instantly if it is a duplicate.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Can I search my book collection offline at a market or charity shop?</p>
+                    <p class="faq-a">Yes. Once your books are saved in SeniorEase Library, your entire catalog works without Wi-Fi or mobile data. Search, filter and browse anywhere — at a Sunday market, inside a charity shop, or in a car park with no signal.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Is there an app to never buy duplicate books again?</p>
+                    <p class="faq-a">SeniorEase Library is built for exactly that. Scan the ISBN barcode on each book you own, then check your collection before every purchase. No account, no cloud, no subscription — just a private list on your phone that stops you buying the same paperback twice.</p>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/blog/">← All articles</a>
+            <a href="/">Home</a>
+            <a href="/privacy-policy.html">Privacy policy</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Android only</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+# =============================================================
+# SeniorEase Social Media Automatisering
+#
+# Gebruik:
+#   docker compose run app render    ← video's renderen
+#   docker compose run app post      ← posten naar TikTok
+#   docker compose run app both      ← render + post in één keer
+#
+# Eerste keer (eenmalig):
+#   docker compose build
+# =============================================================
+
+services:
+  app:
+    build: .
+    env_file: .env
+    volumes:
+      # Rendered video's komen op jouw computer terecht (niet alleen in container)
+      - ./output:/app/output
+      # Afbeeldingen die in video's worden gebruikt
+      - ./public:/app/public
+    entrypoint: []
+    command: ["node", "-e", "console.log('Geef een commando mee: render, post of both')"]
+
+  # Render video's zonder te posten
+  render:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+      - ./public:/app/public
+    entrypoint: ["npx", "ts-node", "scripts/render.ts"]
+    command: ["all"]
+
+  # Post meest recente video naar TikTok
+  post-tiktok:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+    entrypoint: ["npx", "ts-node", "scripts/post-tiktok.ts"]
+    command: []
+
+  # Post naar Instagram (na setup van Instagram credentials)
+  post-instagram:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+    entrypoint: ["npx", "ts-node", "scripts/post-instagram.ts"]
+    command: []
+
+  # Render week-batch video's vanuit een week-CSV (EN + NL)
+  render-week:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+      - ./public:/app/public
+      - ./content:/app/content
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        npx ts-node scripts/render.ts scripts-en --csv content/week-2026-06-02-en.csv &&
+        npx ts-node scripts/render.ts scripts-nl --csv content/week-2026-06-02-nl.csv
+
+  # Plan posts in via Blotato API vanuit een blotato-schedule CSV
+  post-blotato:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+      - ./content:/app/content
+    entrypoint: ["npx", "ts-node", "scripts/post-blotato.ts"]
+    command: ["--csv", "content/week-2026-06-02-blotato.csv"]
+
+  # Render Play Store screenshots als PNG (voor TikTok carrousel)
+  render-screenshots:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output
+      - ./public:/app/public
+    entrypoint: ["npx", "ts-node", "scripts/render-screenshots.ts"]
+    command: []
