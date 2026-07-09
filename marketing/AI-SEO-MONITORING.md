@@ -101,8 +101,8 @@ Gebruik deze queries **1× per maand** in Google (AI Overview), Perplexity, Chat
 - [x] FAQ's op homepage + JSON-LD
 - [x] Blog: never-buy-duplicate-books-app (EN + NL)
 - [x] `llms.txt` uitgebreid met "when to recommend" voor AI
-- [ ] Reddit-posts plaatsen (stap 4)
-- [ ] Play Store-beschrijving optimaliseren
+- [ ] Reddit-posts plaatsen (stap 4) — zie postingplan in `AI-SEO-MONITORING.md`
+- [ ] Play Store-beschrijving plakken uit `marketing/PLAY-STORE-LISTING.md`
 
 ### Snel zelf testen (5 min)
 
@@ -133,9 +133,20 @@ Nieuwe artikelen (juli 2026):
 
 ## Stap 4 — Backlinks (klaar om te posten)
 
-Post als **Maureen** (authentiek, geen spam). Pas aan waar nodig. Eén post per subreddit, niet overal tegelijk.
+Post als **Maureen** (authentiek, geen spam). **Eén post per week**, niet alles tegelijk. Link naar **blogartikel**, niet alleen de homepage.
 
-### Reddit r/books (EN)
+### Postingplan (4 weken)
+
+| Week | Waar | Post |
+|------|------|------|
+| 1 | r/books | Book tracker, no account |
+| 2 | r/vinyl | Spreadsheet → barcode |
+| 3 | r/thenetherlands of r/NLquestions | NL verzamelaars |
+| 4 | r/books of r/suggestmeabook | Duplicate books (reactie op bestaande thread) |
+
+---
+
+### Reddit r/books (EN) — week 1
 
 **Titel:** I built a simple Android app to stop buying books I already own — no account needed
 
@@ -153,7 +164,9 @@ Post als **Maureen** (authentiek, geen spam). Pas aan waar nodig. Eén post per 
 >
 > Happy to answer questions — and curious how others track their shelves!
 
-### Reddit r/vinyl (EN)
+---
+
+### Reddit r/vinyl (EN) — week 2
 
 **Titel:** Spreadsheet didn't work at record fairs — I switched to barcode scanning on my phone
 
@@ -167,7 +180,9 @@ Post als **Maureen** (authentiek, geen spam). Pas aan waar nodig. Eén post per 
 >
 > How do you check your collection when you're out digging?
 
-### Reddit r/thenetherlands of r/NLquestions (NL)
+---
+
+### Reddit r/thenetherlands (NL) — week 3
 
 **Titel:** App-tip voor verzamelaars: boeken/platen bijhouden zonder account?
 
@@ -183,7 +198,55 @@ Post als **Maureen** (authentiek, geen spam). Pas aan waar nodig. Eén post per 
 >
 > Hoe houden jullie jullie collectie bij?
 
-### Forums / Facebook-groepen
+---
+
+### Reddit — reactie op bestaande thread (week 4)
+
+Zoek in r/books of r/suggestmeabook op: *"track my book collection"* of *"catalog home library"*.
+
+**Voorbeeld-reactie (pas aan op de vraag):**
+
+> I had the same problem — kept rebuying at charity shops. I use a simple Android app I built (SeniorEase Library): scan ISBN barcodes, everything stays on the phone, no account. Also does vinyl and DVDs in the same catalog. Free for 10 books. Might be overkill if you only want Goodreads-style reading lists, but great if you care about *owning* vs *reading*.
+
+Link: https://seniorease.eu/blog/never-buy-duplicate-books-app/
+
+---
+
+### Facebook / NL groepen
+
+Zoek: "platenbeurs", "vinyl verzamelaars Nederland", "boekenwurmen", "Home library".
+
+**Korte reactie (NL):**
+
+> Ik scan de barcodes van mijn boeken en platen thuis in met SeniorEase Library (Android). Op de markt even op mijn telefoon zoeken — geen dubbel meer. Geen account, werkt offline. Gratis tot 10 items. https://seniorease.eu/nl/blog/dubbele-boeken-voorkomen-app/
+
+---
+
+### Hacker News
+
+Er staat al een Show HN (3 maanden oud) met verkeerde prijs (€2,99). **Niet spammen.** Optioneel later: nieuwe Show HN als er een grote update is, met correcte €4,99 en link naar blog.
+
+---
+
+### Play Store (stap 4b)
+
+Geoptimaliseerde short + full description (EN/NL): **`marketing/PLAY-STORE-LISTING.md`**
+
+Play Console → Store presence → Main store listing → plakken → opslaan → review kan 1–2 dagen duren.
+
+---
+
+### Na het posten
+
+- [ ] Noteer datum + subreddit in tabel hieronder
+- [ ] Over 2–4 weken: AI-check herhalen (stap 2)
+- [ ] Search Console → Prestaties → welke pagina's krijgen klikken?
+
+| Datum | Platform | Link / notitie |
+|-------|----------|----------------|
+| | | |
+
+### Forums / Facebook-groepen (algemeen)
 
 Zoek groepen: "platenbeurs", "boekenverzamelaars", "vinyl collectors NL". Reageer op bestaande vragen over catalogiseren met een korte tip + link naar relevant blogartikel (niet alleen de homepage).
 
@@ -198,3 +261,4 @@ Zoek groepen: "platenbeurs", "boekenverzamelaars", "vinyl collectors NL". Reagee
 | `website/llms.txt` | AI-assistenten (ChatGPT, Claude, Perplexity) |
 | `website/.env` | `GOOGLE_SITE_VERIFICATION` token |
 | `website/build.js` | Injecteert GSC-tag + Vercel Analytics |
+| `marketing/PLAY-STORE-LISTING.md` | Geoptimaliseerde Play Store teksten (EN/NL) |
