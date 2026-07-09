@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The easiest way to catalog your DVD collection: scan the barcode on any DVD case and the app adds the title, cover and year automatically. Free to try on Android.">
+    <title>Catalog Your DVD Collection in an Afternoon — SeniorEase</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/blog/dvd-collection-app/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/dvd-collection-app/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/dvd-collectie-app/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/dvd-collection-app/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seniorease.eu/blog/dvd-collection-app/">
+    <meta property="og:title" content="Catalog Your DVD Collection in an Afternoon — SeniorEase">
+    <meta property="og:description" content="Scan the barcode on any DVD or Blu-ray case and the app fills in the title, cover and year automatically. No account, works offline.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Catalog Your DVD Collection in an Afternoon — SeniorEase">
+    <meta name="twitter:description" content="Scan the barcode on any DVD or Blu-ray case and the app fills in the title, cover and year automatically. No account, works offline.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Catalog Your DVD Collection in an Afternoon",
+      "description": "The easiest way to catalog your DVD collection: scan the barcode on any DVD case and the app adds the title, cover and year automatically.",
+      "author": {"@type": "Person", "name": "Maureen"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "logo": {"@type": "ImageObject", "url": "https://seniorease.eu/seniorease-icon.png"}
+      },
+      "datePublished": "2026-05-01",
+      "dateModified": "2026-05-01",
+      "url": "https://seniorease.eu/blog/dvd-collection-app/",
+      "image": "https://seniorease.eu/seniorease-icon.png",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best app to catalog a DVD collection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SeniorEase Library is a simple Android app that lets you scan the barcode on any DVD or Blu-ray case. It looks up the title, cover and release year automatically and stores everything locally on your phone — no account or subscription needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the app work for Blu-rays as well as DVDs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SeniorEase Library works with all standard disc cases: DVDs, Blu-rays, 4K UHD, and even old VHS tapes that have a barcode. If the barcode is in the database it will be found automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I export my DVD collection to a list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SeniorEase Library lets you export your collection to a CSV file (spreadsheet) or a PDF list. Useful for insurance purposes, lending to friends, or simply having a backup."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .site-header {
+            background: #fff; border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: #8B5E3C; font-weight: 700; font-size: 17px;
+        }
+        .site-header .logo-link img { width: 36px; height: 36px; border-radius: 8px; }
+        .site-header .lang-link {
+            font-size: 14px; color: #8B5E3C; text-decoration: none;
+            border: 1px solid #E0D5CA; border-radius: 999px; padding: 6px 16px; background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+        .breadcrumb { padding: 16px 0 0; font-size: 13px; color: #888; }
+        .breadcrumb a { color: #8B5E3C; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+        article {
+            background: #fff; border-radius: 16px; padding: 40px;
+            margin: 20px 0 40px; border: 1px solid #E0D5CA;
+        }
+        @media (max-width: 640px) { article { padding: 24px 20px; } }
+        .article-meta { font-size: 13px; color: #888; margin-bottom: 28px; }
+        h1 { font-size: clamp(24px, 4.5vw, 34px); font-weight: 700; color: #8B5E3C; line-height: 1.25; margin-bottom: 10px; }
+        h2 { font-size: 20px; font-weight: 700; color: #6D4A30; margin: 36px 0 14px; }
+        p { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; }
+        ul, ol { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        strong { color: #1F1F1F; }
+        .steps { list-style: none; padding: 0; margin: 0 0 18px; }
+        .steps li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+        .step-num {
+            flex-shrink: 0; width: 32px; height: 32px;
+            background: #8B5E3C; color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; margin-top: 2px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            border-radius: 14px; padding: 32px; text-align: center; margin: 36px 0;
+        }
+        .cta-box h2 { color: #fff; margin: 0 0 10px; }
+        .cta-box p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block; background: #fff; color: #8B5E3C;
+            font-weight: 700; font-size: 16px; padding: 14px 32px;
+            border-radius: 999px; text-decoration: none; transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .faq-list { list-style: none; padding: 0; }
+        .faq-list li { border-top: 1px solid #E0D5CA; padding: 18px 0; }
+        .faq-list li:last-child { border-bottom: 1px solid #E0D5CA; }
+        .faq-q { font-weight: 700; color: #1F1F1F; font-size: 17px; margin-bottom: 8px; }
+        .faq-a { font-size: 16px; color: #555; line-height: 1.65; }
+        footer { padding: 32px 20px; text-align: center; border-top: 1px solid #E0D5CA; background: #fff; font-size: 14px; color: #666; }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/nl/blog/dvd-collectie-app/">🇳🇱 Nederlands</a>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/blog/">Blog</a><span>›</span>
+            Catalog Your DVD Collection in an Afternoon
+        </nav>
+
+        <article>
+            <h1>Catalog Your DVD Collection in an Afternoon</h1>
+            <p class="article-meta">By Maureen · May 2026 · 4 min read</p>
+
+            <p>Somewhere in your house there are boxes of DVDs. Stacked on a shelf, piled in a cupboard, or tucked away in a storage room. You know roughly what's there — but "roughly" isn't good enough when someone asks if you have a particular film, or when you spot something at a car boot sale and can't remember if you already own it.</p>
+
+            <p>Cataloguing a DVD collection sounds like a big job. With a barcode scanner app on your phone, it takes an afternoon.</p>
+
+            <h2>The old way vs the new way</h2>
+
+            <p>People have tried to solve this problem for years. A paper list gets lost or goes out of date. A spreadsheet works, but typing titles one by one is slow and error-prone. Specialist software exists, but most of it requires an account, a monthly fee, or a desktop computer.</p>
+
+            <p>The new way: open an app, point your camera at the barcode on the back of a DVD case, done. The title, cover image and release year are filled in automatically. No typing. No searching. Just scanning.</p>
+
+            <h2>How to catalog your DVDs with SeniorEase Library</h2>
+
+            <ol class="steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <div><strong>Download SeniorEase Library</strong> from Google Play. It's free to start — the first 10 items cost nothing.</div>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <div><strong>Tap the scan button and point your camera at the barcode</strong> on the back of a DVD case. The app finds the film in its database and shows you the title, cover and year. Tap "Add" to save it.</div>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <div><strong>Work through your collection.</strong> Pick up one DVD after another and scan them in sequence. Most people can scan 50-100 DVDs in an hour. Once it's done, your entire collection is searchable from your phone.</div>
+                </li>
+            </ol>
+
+            <h2>Works for Blu-rays too</h2>
+
+            <p>SeniorEase Library works with all standard disc formats:</p>
+
+            <ul>
+                <li><strong>DVDs</strong> — all regions and formats</li>
+                <li><strong>Blu-rays</strong> — standard and 4K UHD</li>
+                <li><strong>Box sets</strong> — scan the outer box barcode to save the whole set</li>
+            </ul>
+
+            <p>If a barcode isn't in the database, you can add the film manually in about 20 seconds.</p>
+
+            <h2>Export to CSV or PDF</h2>
+
+            <p>Once your collection is catalogued, you can export it as a CSV file (opens in Excel or Google Sheets) or as a PDF list. Useful for insurance purposes, lending films to friends, or simply having a backup on your computer.</p>
+
+            <h2>One app for books, music and games too</h2>
+
+            <p>If you have books on the shelf next to the DVDs, scan those too. SeniorEase Library handles everything with a barcode:</p>
+
+            <ul>
+                <li><strong>Books</strong> — ISBN barcode on the back cover</li>
+                <li><strong>Vinyl records and CDs</strong> — barcode on the sleeve or jewel case</li>
+                <li><strong>Video games</strong> — barcode on the game box</li>
+            </ul>
+
+            <div class="cta-box">
+                <h2>Start cataloguing today — free, no account needed</h2>
+                <p>Try it with up to 10 DVDs for free. Upgrade once to catalog your whole collection.</p>
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
+                    Download on Google Play
+                </a>
+                <p class="cta-note">Android only · One-time €4.99 to unlock · No subscription</p>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+
+            <ul class="faq-list">
+                <li>
+                    <p class="faq-q">What is the best app to catalog a DVD collection?</p>
+                    <p class="faq-a">SeniorEase Library is a simple Android app that lets you scan the barcode on any DVD or Blu-ray case. It looks up the title, cover and release year automatically and stores everything locally on your phone — no account or subscription needed.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Does the app work for Blu-rays as well as DVDs?</p>
+                    <p class="faq-a">Yes. SeniorEase Library works with all standard disc cases: DVDs, Blu-rays, 4K UHD, and even old VHS tapes that have a barcode. If the barcode is in the database it will be found automatically.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Can I export my DVD collection to a list?</p>
+                    <p class="faq-a">Yes. SeniorEase Library lets you export your collection to a CSV file (spreadsheet) or a PDF list. Useful for insurance purposes, lending to friends, or simply having a backup.</p>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/blog/">← All articles</a>
+            <a href="/">Home</a>
+            <a href="/privacy-policy.html">Privacy policy</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Android only</p>
+    </footer>
+
+</body>
+</html>

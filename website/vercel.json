@@ -7,6 +7,12 @@
       ]
     },
     {
+      "source": "/sitemap.xml/",
+      "headers": [
+        {"key": "Content-Type", "value": "application/xml; charset=utf-8"}
+      ]
+    },
+    {
       "source": "/downloads/(.*)",
       "headers": [
         {"key": "Content-Type", "value": "application/vnd.android.package-archive"},
@@ -15,6 +21,8 @@
     }
   ],
   "redirects": [
+    {"source": "/sitemap.xml/", "destination": "/sitemap.xml", "permanent": true},
+    {"source": "/robots.txt/", "destination": "/robots.txt", "permanent": true},
     {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "NL"}], "destination": "/nl/", "permanent": false},
     {"source": "/", "has": [{"type": "header", "key": "x-vercel-ip-country", "value": "BE"}], "destination": "/nl/", "permanent": false},
     {"source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true},

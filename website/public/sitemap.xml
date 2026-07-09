@@ -18,6 +18,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://seniorease.eu/about.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/pricing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://seniorease.eu/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -26,11 +41,6 @@
     <loc>https://seniorease.eu/terms/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://seniorease.eu/contact.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://seniorease.eu/family-setup.html</loc>
@@ -52,17 +62,133 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://seniorease.eu/blog/vinyl-record-collection-app/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://seniorease.eu/nl/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://seniorease.eu/blog/barcode-scanner-app-books/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/barcode-scanner-app-books/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/barcode-scanner-app-boeken/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/barcode-scanner-app-boeken/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/barcode-scanner-app-books/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/barcode-scanner-app-boeken/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/vinyl-record-collection-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-record-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://seniorease.eu/nl/blog/vinyl-collectie-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-record-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/cd-collection-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/cd-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/cd-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/cd-collectie-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/cd-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/cd-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/dvd-collection-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/dvd-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/dvd-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/dvd-collectie-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/dvd-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/dvd-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/video-game-collection-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/video-game-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/videogame-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/videogame-collectie-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/video-game-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/videogame-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/comic-book-collection-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/comic-book-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/stripboeken-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/stripboeken-collectie-app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/comic-book-collection-app/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/stripboeken-collectie-app/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/when-your-collection-outgrows-your-memory/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/when-your-collection-outgrows-your-memory/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/als-je-collectie-groter-is-dan-je-geheugen/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/als-je-collectie-groter-is-dan-je-geheugen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/when-your-collection-outgrows-your-memory/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/als-je-collectie-groter-is-dan-je-geheugen/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/book-tracker-app-no-account/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/book-tracker-app-no-account/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/boeken-tracker-app-zonder-account/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/boeken-tracker-app-zonder-account/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/book-tracker-app-no-account/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/boeken-tracker-app-zonder-account/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-spreadsheet-alternatief/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seniorease.eu/nl/blog/vinyl-collectie-spreadsheet-alternatief/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-spreadsheet-alternatief/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

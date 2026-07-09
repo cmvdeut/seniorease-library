@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tired of your vinyl collection spreadsheet? Track records on Android by scanning barcodes. No account, works offline, free to try with 10 items.">
+    <title>Vinyl Collection Spreadsheet Alternative (Android) — SeniorEase</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/vinyl-collectie-spreadsheet-alternatief/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/">
+    <meta property="og:title" content="Vinyl Collection Spreadsheet Alternative (Android) — SeniorEase">
+    <meta property="og:description" content="I tracked 200 vinyl records in a spreadsheet until I bought the same album twice. Here's the app that replaced it.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vinyl Collection Spreadsheet Alternative (Android) — SeniorEase">
+    <meta name="twitter:description" content="I tracked 200 vinyl records in a spreadsheet until I bought the same album twice. Here's the app that replaced it.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Vinyl Collection Spreadsheet Alternative (Android)",
+      "description": "Tired of your vinyl collection spreadsheet? Track records on Android by scanning barcodes. No account, works offline.",
+      "author": {"@type": "Person", "name": "Maureen"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "logo": {"@type": "ImageObject", "url": "https://seniorease.eu/seniorease-icon.png"}
+      },
+      "datePublished": "2026-07-09",
+      "dateModified": "2026-07-09",
+      "url": "https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/",
+      "image": "https://seniorease.eu/seniorease-icon.png",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best alternative to a vinyl collection spreadsheet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SeniorEase Library lets you scan the barcode on any vinyl record sleeve and save it to a searchable collection on your Android phone. No manual typing, no formulas, no columns to maintain. Your records are stored locally with cover images and full search."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I track vinyl records without an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SeniorEase Library stores your vinyl collection on your phone only. There is no sign-up, no cloud sync and no subscription. Your records stay private and available offline once saved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the app work at record fairs with poor Wi-Fi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your saved collection works fully offline — search and browse without any connection. To add a new record by barcode you need a brief internet connection for the lookup, but once it is saved you can check your collection anywhere, even in a basement record fair with no signal."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .site-header .logo-link img { width: 36px; height: 36px; border-radius: 8px; }
+        .site-header .lang-link {
+            font-size: 14px;
+            color: #8B5E3C;
+            text-decoration: none;
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 6px 16px;
+            background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+        .breadcrumb { padding: 16px 0 0; font-size: 13px; color: #888; }
+        .breadcrumb a { color: #8B5E3C; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+        article {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 20px 0 40px;
+            border: 1px solid #E0D5CA;
+        }
+        @media (max-width: 640px) { article { padding: 24px 20px; } }
+        .article-meta { font-size: 13px; color: #888; margin-bottom: 28px; }
+        h1 { font-size: clamp(24px, 4.5vw, 34px); font-weight: 700; color: #8B5E3C; line-height: 1.25; margin-bottom: 10px; }
+        h2 { font-size: 20px; font-weight: 700; color: #6D4A30; margin: 36px 0 14px; }
+        p { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; }
+        ul, ol { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        strong { color: #1F1F1F; }
+        .steps { list-style: none; padding: 0; margin: 0 0 18px; }
+        .steps li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+        .step-num {
+            flex-shrink: 0; width: 32px; height: 32px;
+            background: #8B5E3C; color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; margin-top: 2px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            border-radius: 14px; padding: 32px; text-align: center; margin: 36px 0;
+        }
+        .cta-box h2 { color: #fff; margin: 0 0 10px; }
+        .cta-box p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block; background: #fff; color: #8B5E3C;
+            font-weight: 700; font-size: 16px; padding: 14px 32px;
+            border-radius: 999px; text-decoration: none; transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .faq-list { list-style: none; padding: 0; }
+        .faq-list li { border-top: 1px solid #E0D5CA; padding: 18px 0; }
+        .faq-list li:last-child { border-bottom: 1px solid #E0D5CA; }
+        .faq-q { font-weight: 700; color: #1F1F1F; font-size: 17px; margin-bottom: 8px; }
+        .faq-a { font-size: 16px; color: #555; line-height: 1.65; }
+        footer { padding: 32px 20px; text-align: center; border-top: 1px solid #E0D5CA; background: #fff; font-size: 14px; color: #666; }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/nl/blog/vinyl-collectie-spreadsheet-alternatief/">🇳🇱 Nederlands</a>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/blog/">Blog</a><span>›</span>
+            Vinyl Collection Spreadsheet Alternative
+        </nav>
+
+        <article>
+            <h1>Vinyl Collection Spreadsheet Alternative (Android)</h1>
+            <p class="article-meta">By Maureen · July 2026 · 4 min read</p>
+
+            <p>For two years I tracked my vinyl in a spreadsheet. Artist in column A. Album in column B. Year in column C. Condition in column D. I was proud of it. Two hundred rows, neatly sorted, colour-coded by genre.</p>
+
+            <p>Then I bought <em>Kind of Blue</em> at a record fair for the second time. I had it. I knew I had it. I just could not find it in my spreadsheet on my phone while standing in a crowded hall with no signal and a vendor waiting.</p>
+
+            <p>That was the day I stopped maintaining a vinyl collection spreadsheet.</p>
+
+            <h2>Why spreadsheets fail for record collectors</h2>
+
+            <p>A spreadsheet works fine when you are at home with a keyboard and time to type. It falls apart everywhere else.</p>
+
+            <ul>
+                <li><strong>Typing on a phone is slow.</strong> Artist names, album titles, catalogue numbers — every record takes a minute or more.</li>
+                <li><strong>No cover images.</strong> You scroll through text rows trying to recognise an album you half-remember.</li>
+                <li><strong>Searching is clumsy.</strong> Ctrl+F on a laptop is fine. Searching a Google Sheet on a phone at a record fair is not.</li>
+                <li><strong>It never gets finished.</strong> New purchases pile up unlogged. The spreadsheet drifts further from reality every month.</li>
+            </ul>
+
+            <p>What you actually need is a <strong>track vinyl records app</strong> that works like scanning groceries at a supermarket: point, beep, done.</p>
+
+            <h2>How SeniorEase Library replaces your spreadsheet</h2>
+
+            <p>Most vinyl reissues and modern pressings have a barcode on the back of the sleeve. <strong>SeniorEase Library</strong> reads that barcode and looks up the artist, album title and cover image automatically. One tap to save it.</p>
+
+            <p>No columns. No formulas. No copy-paste from Discogs. Your collection lives on your Android phone — searchable, filterable, with cover art for every record.</p>
+
+            <ol class="steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <div><strong>Download from Google Play.</strong> No account needed. Open the app and tap the scan button.</div>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <div><strong>Scan your shelf.</strong> Work through your collection at home. Most people scan 200 records in an afternoon — faster than any spreadsheet.</div>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <div><strong>Check at the fair.</strong> See a record you like? Search your collection on the spot. If it is already there, walk away. If not, buy with confidence.</div>
+                </li>
+            </ol>
+
+            <h2>What about records without a barcode?</h2>
+
+            <p>Original pressings and some older albums have no barcode on the sleeve. For those, add the record manually — type the artist and title, add a photo if you want. It takes about 20 seconds. Still faster than a spreadsheet row.</p>
+
+            <h2>Private, offline, no subscription</h2>
+
+            <p>Your vinyl collection stays on your phone. No cloud. No account. No monthly fee. Once records are saved, browse and search them offline — perfect for venues with poor Wi-Fi.</p>
+
+            <p>Try it free with up to 10 items. Unlock your full collection for a one-time payment of €4.99. No subscription, ever.</p>
+
+            <p>And if you also collect books, CDs or DVDs, you can track all of it in the same app. One collection, one search, no spreadsheet required.</p>
+
+            <div class="cta-box">
+                <h2>Ditch the spreadsheet — start scanning</h2>
+                <p>Try it free with up to 10 records. No account, no subscription, no cloud.</p>
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
+                    Download on Google Play
+                </a>
+                <p class="cta-note">Android only · One-time €4.99 to unlock · No subscription</p>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+
+            <ul class="faq-list">
+                <li>
+                    <p class="faq-q">What is the best alternative to a vinyl collection spreadsheet?</p>
+                    <p class="faq-a">SeniorEase Library lets you scan the barcode on any vinyl record sleeve and save it to a searchable collection on your Android phone. No manual typing, no formulas, no columns to maintain. Your records are stored locally with cover images and full search.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Can I track vinyl records without an account?</p>
+                    <p class="faq-a">Yes. SeniorEase Library stores your vinyl collection on your phone only. There is no sign-up, no cloud sync and no subscription. Your records stay private and available offline once saved.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Does the app work at record fairs with poor Wi-Fi?</p>
+                    <p class="faq-a">Your saved collection works fully offline — search and browse without any connection. To add a new record by barcode you need a brief internet connection for the lookup, but once it is saved you can check your collection anywhere, even in a basement record fair with no signal.</p>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/blog/">← All articles</a>
+            <a href="/">Home</a>
+            <a href="/privacy-policy.html">Privacy policy</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Android only</p>
+    </footer>
+
+</body>
+</html>

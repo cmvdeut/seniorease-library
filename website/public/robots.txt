@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
+Disallow: /tiktok.html
+Disallow: /generate-qr.html
 
-Sitemap: https://seniorease.eu/sitemap.xml
+# AI / LLM crawlers — welcome (same rules as above)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Machine-readable overview for AI assistants: https://seniorease.eu/llms.txt
+Sitemap: https://www.seniorease.eu/sitemap.xml

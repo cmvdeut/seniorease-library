@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Praktische tips voor verzamelaars: hoe je boeken, vinyl, dvd's en games bijhoudt met een barcode-scanner app. Geen account, werkt offline.">
+    <title>SeniorEase Blog — Tips voor je collectiebeheer</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/nl/blog/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seniorease.eu/nl/blog/">
+    <meta property="og:title" content="SeniorEase Blog — Tips voor je collectiebeheer">
+    <meta property="og:description" content="Praktische tips voor verzamelaars: hoe je boeken, vinyl, dvd's en games bijhoudt met een barcode-scanner app.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="nl_NL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeniorEase Blog — Tips voor je collectiebeheer">
+    <meta name="twitter:description" content="Praktische tips voor verzamelaars: hoe je boeken, vinyl, dvd's en games bijhoudt met een barcode-scanner app.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .site-header .logo-link img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .site-header .lang-link {
+            font-size: 14px;
+            color: #8B5E3C;
+            text-decoration: none;
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 6px 16px;
+            background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+
+        .blog-hero {
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: clamp(26px, 5vw, 36px);
+            font-weight: 700;
+            color: #8B5E3C;
+            margin-bottom: 12px;
+        }
+        .blog-hero p {
+            font-size: 17px;
+            color: #555;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .articles { padding: 0 0 60px; }
+        .article-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 32px;
+            border: 1px solid #E0D5CA;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 94, 60, 0.12);
+        }
+        .article-tag {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8B5E3C;
+            margin-bottom: 10px;
+        }
+        .article-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .article-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #999;
+        }
+        .read-more {
+            font-size: 14px;
+            font-weight: 600;
+            color: #8B5E3C;
+            float: right;
+        }
+
+        footer {
+            padding: 32px 20px;
+            text-align: center;
+            border-top: 1px solid #E0D5CA;
+            background: #fff;
+            font-size: 14px;
+            color: #666;
+        }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/nl/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/blog/">🇬🇧 English</a>
+    </header>
+
+    <div class="container">
+        <div class="blog-hero">
+            <h1>SeniorEase Blog</h1>
+            <p>Praktische tips voor verzamelaars — hoe je boeken, vinyl, dvd's en games bijhoudt zonder gedoe.</p>
+        </div>
+
+        <section class="articles">
+            <a class="article-card" href="/nl/blog/boeken-tracker-app-zonder-account/">
+                <p class="article-tag">Boeken · Privacy</p>
+                <h2>Boeken bijhouden zonder account (Android)</h2>
+                <p>Je wilt weten wat er op je plank staat — geen login, geen sociaal netwerk, geen leesleven op iemand anders' server.</p>
+                <div>
+                    <span class="article-meta">Juli 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/vinyl-collectie-spreadsheet-alternatief/">
+                <p class="article-tag">Vinyl · Spreadsheets</p>
+                <h2>Spreadsheet-alternatief voor je vinylcollectie (Android)</h2>
+                <p>Ik begon met een spreadsheet voor mijn vinyl. Driehonderd rijen later was het nutteloos op de platenbeurs. Dit werkt wél als je voor een krat platen staat.</p>
+                <div>
+                    <span class="article-meta">Juli 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/stripboeken-collectie-app/">
+                <p class="article-tag">Strips · Collectiebeheer</p>
+                <h2>Beste app voor je stripboekencollectie (Android)</h2>
+                <p>Stripverzamelingen groeien nummer voor nummer totdat je niet meer zeker weet wat je hebt. Bij een tweedehands kraam met een bekend nummer in je hand — heb je dit al?</p>
+                <div>
+                    <span class="article-meta">Juni 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/videogame-collectie-app/">
+                <p class="article-tag">Games · Collectiebeheer</p>
+                <h2>Beste app voor je videogame-collectie (Android)</h2>
+                <p>Fysieke gamecollecties groeien sneller dan je verwacht. Een plank vol hoesjes die allemaal op elkaar lijken — en iemand biedt je een titel aan op de markt. Heb je hem al?</p>
+                <div>
+                    <span class="article-meta">Juni 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/cd-collectie-app/">
+                <p class="article-tag">Cd's · Collectiebeheer</p>
+                <h2>Beste app voor je cd-collectie (Android)</h2>
+                <p>Cd's zijn de collectie waar niemand het meer over heeft — gestapeld in lades, dozen, een kast. Omdat je ze niet elke dag ziet, vergeet je wat je hebt. Tot je thuiskomt met een dubbel.</p>
+                <div>
+                    <span class="article-meta">Juni 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/als-je-collectie-groter-is-dan-je-geheugen/">
+                <p class="article-tag">Geheugen · Collectiebeheer</p>
+                <h2>Als je collectie groter wordt dan je geheugen</h2>
+                <p>Als kind kende ik elke Donald Duck die ik had. Als volwassene kende ik mijn platencollectie van buiten. Tot er iets veranderde — en twijfelen op de platenbeurs ineens niet meer leuk was.</p>
+                <div>
+                    <span class="article-meta">Juni 2026 · 5 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/vinyl-collectie-app/">
+                <p class="article-tag">Vinyl · Collectiebeheer</p>
+                <h2>Stop met dubbel kopen op de platenbeurs</h2>
+                <p>Ik kocht hetzelfde Miles Davis-plaat twee keer op de platenbeurs. Zo veranderde een barcode-scanner app mijn manier van shoppen — en stopte het met dubbel kopen.</p>
+                <div>
+                    <span class="article-meta">Mei 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/barcode-scanner-app-boeken/">
+                <p class="article-tag">Boeken · Collectiebeheer</p>
+                <h2>Boeken scannen met je telefoon: de beste barcode-scanner app</h2>
+                <p>Je hebt een kast vol boeken — en ergens daartussen staan titels die je vergeten bent dat je ze hebt. De makkelijkste manier om je boekenplank bij te houden.</p>
+                <div>
+                    <span class="article-meta">Mei 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+
+            <a class="article-card" href="/nl/blog/dvd-collectie-app/">
+                <p class="article-tag">Dvd's · Collectiebeheer</p>
+                <h2>Je dvd-collectie catalogiseren in één middag</h2>
+                <p>Dozen met dvd's, opgestapeld in de kast. Catalogiseren klinkt als een groot project — met een barcode-scanner is het één middag werk. Geen typen, geen spreadsheet.</p>
+                <div>
+                    <span class="article-meta">Mei 2026 · 4 min lezen</span>
+                    <span class="read-more">Lees artikel →</span>
+                </div>
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/nl/">Home</a>
+            <a href="/privacy-policy.html">Privacybeleid</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Alleen Android</p>
+    </footer>
+
+</body>
+</html>

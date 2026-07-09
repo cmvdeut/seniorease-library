@@ -13,6 +13,7 @@
     <link rel="alternate" hreflang="en" href="https://seniorease.eu/">
     <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/">
     <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/">
+    <link rel="alternate" type="text/plain" href="https://seniorease.eu/llms.txt" title="LLM-readable site summary">
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website">
@@ -79,6 +80,30 @@
             "@type": "Answer",
             "text": "No problem. Send an email to support@seniorease.eu within 14 days and you'll get a full refund — no reason needed. Feedback is always welcome, but never required."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Does SeniorEase Library work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Your full catalog works without internet after items are added. Barcode lookup needs a brief connection when you scan a new item."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I avoid buying duplicate books or records?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scan your collection at home with SeniorEase Library. Before buying at a fair, market, or bookstore, search your catalog on your phone to check if you already own the item."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my collection stored in the cloud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your collection data stays on your Android device. You can export to PDF or CSV for your own backup. No account or cloud sync required."
+          }
         }
       ]
     }
@@ -132,7 +157,12 @@
         "@type": "ContactPoint",
         "email": "support@seniorease.eu",
         "contactType": "customer support"
-      }
+      },
+      "sameAs": [
+        "https://play.google.com/store/apps/details?id=com.maureen.biblitoheek",
+        "https://www.tiktok.com/@seniorease",
+        "https://www.instagram.com/seniorease.library"
+      ]
     }
     </script>
 
@@ -142,7 +172,14 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": "https://seniorease.eu/",
-      "name": "SeniorEase Library"
+      "name": "SeniorEase Library",
+      "description": "Android app to track books, music, DVDs and games by scanning barcodes. No account, works offline, private catalog on your device.",
+      "inLanguage": ["en", "nl"],
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "url": "https://seniorease.eu"
+      }
     }
     </script>
 
@@ -587,6 +624,12 @@
       gtag('js', new Date());
       gtag('config', 'G-61L8G6E9Q5');
     </script>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
     <div class="lang-toggle">
@@ -1037,6 +1080,30 @@
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Wat als ik niet tevreden ben?</p>
                 <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug — geen reden nodig. Feedback wordt wél gewaardeerd, maar is nooit verplicht.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">Does it work offline?</p>
+                <p class="faq-a">Yes. Your full catalog works without internet after items are added. Barcode lookup needs a brief connection when you scan something new.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Werkt het offline?</p>
+                <p class="faq-a">Ja. Je volledige catalogus werkt zonder internet nadat items zijn toegevoegd. Barcode-opzoeken heeft wel even verbinding nodig bij een nieuwe scan.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">How do I avoid buying duplicates?</p>
+                <p class="faq-a">Scan your collection at home first. Before buying at a fair, market, or bookstore, search your catalog on your phone to see if you already own it.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Hoe voorkom ik dubbele aankopen?</p>
+                <p class="faq-a">Scan je collectie eerst thuis in. Voordat je koopt op een beurs, markt of in de boekhandel, zoek je catalogus op je telefoon om te zien of je het al hebt.</p>
+            </div>
+            <div class="faq-item" data-lang="en">
+                <p class="faq-q">Is my data stored in the cloud?</p>
+                <p class="faq-a">No. Your collection stays on your Android device. You can export to PDF or CSV for backup. No account or cloud sync required.</p>
+            </div>
+            <div class="faq-item" data-lang="nl">
+                <p class="faq-q">Worden mijn gegevens in de cloud opgeslagen?</p>
+                <p class="faq-a">Nee. Je collectie blijft op je Android-toestel. Je kunt exporteren naar PDF of CSV als back-up. Geen account of cloud-sync nodig.</p>
             </div>
         </div>
     </section>

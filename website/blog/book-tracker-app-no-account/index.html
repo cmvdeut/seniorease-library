@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your book collection on Android without creating an account. Private, offline, local storage — no cloud, no subscription. Free to try with 10 books.">
+    <title>Book Tracker App Without Account (Android) — SeniorEase</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="canonical" href="https://seniorease.eu/blog/book-tracker-app-no-account/">
+    <link rel="alternate" hreflang="en" href="https://seniorease.eu/blog/book-tracker-app-no-account/">
+    <link rel="alternate" hreflang="nl" href="https://seniorease.eu/nl/blog/boeken-tracker-app-zonder-account/">
+    <link rel="alternate" hreflang="x-default" href="https://seniorease.eu/blog/book-tracker-app-no-account/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seniorease.eu/blog/book-tracker-app-no-account/">
+    <meta property="og:title" content="Book Tracker App Without Account (Android) — SeniorEase">
+    <meta property="og:description" content="A private book catalog on your Android phone. No account, no cloud, no subscription. Scan barcodes and check your shelf anywhere.">
+    <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book Tracker App Without Account (Android) — SeniorEase">
+    <meta name="twitter:description" content="A private book catalog on your Android phone. No account, no cloud, no subscription. Scan barcodes and check your shelf anywhere.">
+    <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
+
+    <meta name="author" content="Maureen, SeniorEase">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Book Tracker App Without Account (Android)",
+      "description": "Track your book collection on Android without creating an account. Private, offline, local storage — no cloud, no subscription.",
+      "author": {"@type": "Person", "name": "Maureen"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "SeniorEase",
+        "logo": {"@type": "ImageObject", "url": "https://seniorease.eu/seniorease-icon.png"}
+      },
+      "datePublished": "2026-07-09",
+      "dateModified": "2026-07-09",
+      "url": "https://seniorease.eu/blog/book-tracker-app-no-account/",
+      "image": "https://seniorease.eu/seniorease-icon.png",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I track my books without creating an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SeniorEase Library stores your entire book catalog locally on your Android phone. There is no sign-up, no email address, and no account to manage. Open the app and start scanning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my book collection stored in the cloud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your collection stays on your phone only. SeniorEase Library does not upload your books to a server or sync them to the cloud. Your private book catalog is yours alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a book tracker without an account work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your saved collection is always available offline. You can search, filter and browse your books without Wi-Fi or mobile data. To look up a new book by barcode you need a brief internet connection, but once saved it works anywhere."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #F5EEE6 0%, #E0D5CA 100%);
+            color: #1F1F1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #E0D5CA;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #8B5E3C;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .site-header .logo-link img { width: 36px; height: 36px; border-radius: 8px; }
+        .site-header .lang-link {
+            font-size: 14px;
+            color: #8B5E3C;
+            text-decoration: none;
+            border: 1px solid #E0D5CA;
+            border-radius: 999px;
+            padding: 6px 16px;
+            background: #F5EEE6;
+        }
+        .site-header .lang-link:hover { background: #E0D5CA; }
+        .breadcrumb { padding: 16px 0 0; font-size: 13px; color: #888; }
+        .breadcrumb a { color: #8B5E3C; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+        article {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 20px 0 40px;
+            border: 1px solid #E0D5CA;
+        }
+        @media (max-width: 640px) { article { padding: 24px 20px; } }
+        .article-meta { font-size: 13px; color: #888; margin-bottom: 28px; }
+        h1 { font-size: clamp(24px, 4.5vw, 34px); font-weight: 700; color: #8B5E3C; line-height: 1.25; margin-bottom: 10px; }
+        h2 { font-size: 20px; font-weight: 700; color: #6D4A30; margin: 36px 0 14px; }
+        p { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; }
+        ul, ol { font-size: 17px; color: #333; line-height: 1.75; margin-bottom: 18px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        strong { color: #1F1F1F; }
+        .steps { list-style: none; padding: 0; margin: 0 0 18px; }
+        .steps li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+        .step-num {
+            flex-shrink: 0; width: 32px; height: 32px;
+            background: #8B5E3C; color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; margin-top: 2px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%);
+            border-radius: 14px; padding: 32px; text-align: center; margin: 36px 0;
+        }
+        .cta-box h2 { color: #fff; margin: 0 0 10px; }
+        .cta-box p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block; background: #fff; color: #8B5E3C;
+            font-weight: 700; font-size: 16px; padding: 14px 32px;
+            border-radius: 999px; text-decoration: none; transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .faq-list { list-style: none; padding: 0; }
+        .faq-list li { border-top: 1px solid #E0D5CA; padding: 18px 0; }
+        .faq-list li:last-child { border-bottom: 1px solid #E0D5CA; }
+        .faq-q { font-weight: 700; color: #1F1F1F; font-size: 17px; margin-bottom: 8px; }
+        .faq-a { font-size: 16px; color: #555; line-height: 1.65; }
+        footer { padding: 32px 20px; text-align: center; border-top: 1px solid #E0D5CA; background: #fff; font-size: 14px; color: #666; }
+        footer a { color: #8B5E3C; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="logo-link" href="/">
+            <img src="/seniorease-icon.png" alt="SeniorEase Library">
+            SeniorEase
+        </a>
+        <a class="lang-link" href="/nl/blog/boeken-tracker-app-zonder-account/">🇳🇱 Nederlands</a>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/blog/">Blog</a><span>›</span>
+            Book Tracker App Without Account
+        </nav>
+
+        <article>
+            <h1>Book Tracker App Without Account (Android)</h1>
+            <p class="article-meta">By Maureen · July 2026 · 4 min read</p>
+
+            <p>I wanted a book tracker. What I did not want was another account.</p>
+
+            <p>Every app I tried asked for an email address before I could add a single book. Some wanted me to connect with friends. Others wanted to recommend what I should read next. I just wanted a private list of what I own — so I could stop buying the same paperback twice at the charity shop.</p>
+
+            <p>That is why I built <strong>SeniorEase Library</strong> differently. No account. No sign-up. No cloud. Your books stay on your phone.</p>
+
+            <h2>Why a book tracker without an account matters</h2>
+
+            <p>Your book collection is personal. Maybe you have three hundred novels on a shelf. Maybe you collect first editions you would rather not broadcast to the internet. Maybe you simply do not want another password to remember.</p>
+
+            <p>Most book apps treat your collection as social content — something to share, rate and discuss. A <strong>private book catalog on Android</strong> should work the other way around: your data stays local, searchable, and entirely under your control.</p>
+
+            <p>SeniorEase Library stores everything on your device. No server. No sync. No one else's algorithm deciding what you should read.</p>
+
+            <h2>How it works: scan, save, check anywhere</h2>
+
+            <p>Adding books takes seconds. Hold your phone over the ISBN barcode on the back cover and the app fills in the title, author and cover image. Tap save. Done.</p>
+
+            <ol class="steps">
+                <li>
+                    <span class="step-num">1</span>
+                    <div><strong>Download from Google Play.</strong> Open the app — no email, no password, no onboarding survey. You land straight in your empty collection.</div>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <div><strong>Scan your shelf.</strong> Pick up a book, tap scan, point the camera at the barcode. Title and author appear automatically. Add it with one tap.</div>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <div><strong>Check before you buy.</strong> At a secondhand shop or library sale, search your collection on the spot. If it is already there, put the book back and save your money.</div>
+                </li>
+            </ol>
+
+            <h2>Offline, private, and no subscription</h2>
+
+            <p>Once your books are saved, your catalog works without internet. Search by title or author. Filter and sort however you like. Everything runs locally on your Android phone.</p>
+
+            <p>There is no monthly fee. Try it free with up to 10 items — no time limit. Unlock your full collection for a one-time payment of €4.99. That is it. No subscription, no recurring charge, no surprise renewal email.</p>
+
+            <h2>More than just books</h2>
+
+            <p>Most collectors do not stop at books. If you also have vinyl, DVDs or games, you can track all of it in the same app — still without an account:</p>
+
+            <ul>
+                <li><strong>Books</strong> — ISBN barcode on the back cover</li>
+                <li><strong>Vinyl records and CDs</strong> — barcode on the sleeve</li>
+                <li><strong>DVDs and Blu-rays</strong> — barcode on the case</li>
+                <li><strong>Video games</strong> — barcode on the box</li>
+            </ul>
+
+            <p>One private catalog for everything you collect. No cloud. No account. Just your collection, on your phone, whenever you need it.</p>
+
+            <div class="cta-box">
+                <h2>Start your private book catalog — free</h2>
+                <p>Try it with up to 10 books. No account, no subscription, no cloud.</p>
+                <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
+                    Download on Google Play
+                </a>
+                <p class="cta-note">Android only · One-time €4.99 to unlock · No subscription</p>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+
+            <ul class="faq-list">
+                <li>
+                    <p class="faq-q">Can I track my books without creating an account?</p>
+                    <p class="faq-a">Yes. SeniorEase Library stores your entire book catalog locally on your Android phone. There is no sign-up, no email address, and no account to manage. Open the app and start scanning.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Is my book collection stored in the cloud?</p>
+                    <p class="faq-a">No. Your collection stays on your phone only. SeniorEase Library does not upload your books to a server or sync them to the cloud. Your private book catalog is yours alone.</p>
+                </li>
+                <li>
+                    <p class="faq-q">Does a book tracker without an account work offline?</p>
+                    <p class="faq-a">Your saved collection is always available offline. You can search, filter and browse your books without Wi-Fi or mobile data. To look up a new book by barcode you need a brief internet connection, but once saved it works anywhere.</p>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/blog/">← All articles</a>
+            <a href="/">Home</a>
+            <a href="/privacy-policy.html">Privacy policy</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <p>© 2026 SeniorEase · Android only</p>
+    </footer>
+
+</body>
+</html>

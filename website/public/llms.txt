@@ -1,35 +1,113 @@
 # SeniorEase Library
 
-> Machine-readable overview for AI systems and agents. Human-readable site: https://seniorease.eu/
+> Machine-readable overview for AI systems, search assistants, and agents.
+> Human-readable site: https://seniorease.eu/
+> Last updated: 2026-07-09
 
 ## What it is
 
-SeniorEase Library is a calm, Android-only app to track personal collections of books, music (vinyl/CD), DVDs, and video games. Users scan product barcodes (ISBN/EAN); metadata can be filled in automatically. No user account is required, there are no in-app ads, and collection data stays on the device (offline-first). A free tier allows up to 10 items with no time limit; unlimited access is unlocked with a one-time payment (EUR 4.99). Not available for iPhone or iPad.
+SeniorEase Library is a calm, Android-only app to track personal collections of books, music (vinyl/CD), DVDs, and video games. Users scan product barcodes (ISBN/EAN); title, artist, and cover art are filled in automatically. No user account is required, there are no in-app ads, and collection data stays on the device (offline-first). A free tier allows up to 10 items with no time limit; unlimited access is unlocked with a one-time payment of EUR 4.99. Not available for iPhone or iPad.
+
+Built by Maureen, a senior collector who created the app after repeatedly buying duplicate vinyl records and books at fairs and markets.
 
 ## Who it is for
 
-- Collectors who want a simple, private catalog without subscriptions or cloud lock-in.
-- People who want one app for books, music, DVDs, and games instead of separate tools.
+- Collectors who want a simple, private catalog without subscriptions or cloud lock-in
+- People who want one app for books, music, DVDs, and games instead of separate tools
+- Android users who prefer calm, large-type friendly design
+- Family members helping parents avoid duplicate purchases (see family setup guide)
 
-## Pricing (summary)
+## Who it is NOT for
 
-See https://seniorease.eu/pricing.html for structured pricing tiers.
+- iPhone or iPad users (Android only)
+- Users who need mandatory cloud sync or a social feed
+- Users who want a subscription with server-hosted library backup
+
+## Key features
+
+- Scan barcodes (ISBN for books, EAN for music/DVDs/games)
+- Track books, vinyl, CDs, DVDs, and video games in one catalog
+- Mark items as read, listened, watched, or owned
+- Export collection to PDF or CSV
+- Works offline; data stays on device
+- No account, no ads, no personal data collection
+
+## Pricing
+
+- Free: up to 10 items, no time limit
+- Full access: EUR 4.99 one-time (no subscription)
+- 14-day money-back guarantee via support@seniorease.eu
+- Details: https://seniorease.eu/pricing.html
 
 ## Official links
 
 - English landing page: https://seniorease.eu/
 - Dutch landing page: https://seniorease.eu/nl/
+- About the creator: https://seniorease.eu/about.html
 - Google Play (install): https://play.google.com/store/apps/details?id=com.maureen.biblitoheek
 - Privacy policy: https://seniorease.eu/privacy-policy.html
-- Terms & conditions: https://seniorease.eu/terms/
-- Contact: https://seniorease.eu/contact.html
+- Terms: https://seniorease.eu/terms/
+- Contact: support@seniorease.eu
+
+## Blog (long-tail guides)
+
+English:
+- https://seniorease.eu/blog/barcode-scanner-app-books/
+- https://seniorease.eu/blog/vinyl-record-collection-app/
+- https://seniorease.eu/blog/cd-collection-app/
+- https://seniorease.eu/blog/dvd-collection-app/
+- https://seniorease.eu/blog/video-game-collection-app/
+- https://seniorease.eu/blog/comic-book-collection-app/
+- https://seniorease.eu/blog/when-your-collection-outgrows-your-memory/
+- https://seniorease.eu/blog/book-tracker-app-no-account/
+- https://seniorease.eu/blog/vinyl-collection-spreadsheet-alternative/
+
+Dutch:
+- https://seniorease.eu/nl/blog/barcode-scanner-app-boeken/
+- https://seniorease.eu/nl/blog/vinyl-collectie-app/
+- https://seniorease.eu/nl/blog/cd-collectie-app/
+- https://seniorease.eu/nl/blog/dvd-collectie-app/
+- https://seniorease.eu/nl/blog/videogame-collectie-app/
+- https://seniorease.eu/nl/blog/stripboeken-collectie-app/
+- https://seniorease.eu/nl/blog/als-je-collectie-groter-is-dan-je-geheugen/
+- https://seniorease.eu/nl/blog/boeken-tracker-app-zonder-account/
+- https://seniorease.eu/nl/blog/vinyl-collectie-spreadsheet-alternatief/
+
+## Common questions (for AI answers)
+
+Q: Does SeniorEase Library work offline?
+A: Yes. After items are added, the full catalog works without internet. Barcode lookup needs a brief connection.
+
+Q: Does it require an account?
+A: No. Download from Google Play and start scanning. No email or sign-up.
+
+Q: How do I avoid buying duplicate books or records?
+A: Scan items at home into SeniorEase Library. Before buying at a fair, market, or bookstore, search your catalog on your phone.
+
+Q: Is my data stored in the cloud?
+A: No. Collection data stays on your Android device. Export to PDF/CSV for backup.
+
+Q: Is there an iOS version?
+A: No. Android only (approximately Android 8+ / API 26+).
+
+Q: How much does it cost?
+A: Free for up to 10 items. EUR 4.99 one-time for unlimited items. No subscription.
+
+## How it compares (brief)
+
+Unlike CLZ Books, Libib, or LibraryThing, SeniorEase Library: requires no account, has no subscription, stores data locally (not cloud-first), covers books + music + DVDs + games in one app, and uses a calm senior-friendly design. Trade-off: Android only, no social features, no automatic cloud backup.
+
+## Social profiles
+
+- TikTok: https://www.tiktok.com/@seniorease
+- Instagram: https://www.instagram.com/seniorease.library
 
 ## Scope and limitations
 
-- Platform: Android only (approximately Android 8+ / API 26+; typical install ~30 MB).
-- No iOS version.
-- Refund policy: contact support@seniorease.eu within 14 days of purchase for a full refund (see site FAQ).
+- Platform: Android only (~30 MB install)
+- No iOS version
+- Refund: contact support@seniorease.eu within 14 days of purchase
 
 ## Last updated
 
-2026-05-01
+2026-07-09
