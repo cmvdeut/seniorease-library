@@ -1,0 +1,42 @@
+{
+  "topic": "How do you keep track of 500+ books in your collection?",
+  "tiktok": {
+    "hook_text": "You've bought this book twice already.",
+    "body_text": "Stop wasting money on duplicates at record fairs and charity shops. SeniorEase Library tracks your 500+ books, vinyl, and DVDs with one simple scan. No account, no subscription—just €4.99 and peace of mind.",
+    "cta_text": "Scan once, never doubt again.",
+    "caption": "500 books? Never buy the same one twice. 📚 One-time €4.99, no subscriptions. seniorease.eu",
+    "hashtags": "#SeniorEase #BookCollector #VinylLife #NoSubscription #KeepTrack",
+    "duration_sec": "15",
+    "visual_suggestion": "Hook card: 'You've bought this book twice already' + hand holding duplicate books. Scene: scanning barcode with phone. Scene: collection grid on screen (books, vinyl, DVDs). Scene: happy face at market refusing duplicate. Final frame: '€4.99. Forever. No subscriptions.' with app logo."
+  },
+  "linkedin": "Managing a collection of 500+ books, records, or DVDs is no small feat—it's a labor of love. Yet many collectors face a recurring frustration: standing at a market, a charity shop, or an estate sale, only to discover they already own that edition. The financial and emotional toll of duplicate purchases adds up quickly. Traditional solutions demand constant internet, monthly subscriptions, or invasive account requirements. SeniorEase Library offers a different approach. Built with collectors in mind, it lets you scan and catalog your entire collection locally on your device. No cloud sync, no account setup, no ongoing fees—just €4.99, once, forever. Your data remains yours alone. Whether you're managing books, vinyl, DVDs, or games, SeniorEase respects both your privacy and your passion for collecting. Peace of mind, the simple way. Curious? Visit seniorease.eu. #Collectors #Privacy #Simplicity",
+  "facebook": "Herken je dit? Je staat op de rommelmarkt, ziet een boek dat je geweldig vindt, en... je hebt het al thuis staan. Of erger nog: je koopt het toch, en pas thuis zie je dat het al op de plank staat.\n\nJe collectie van 400, 500 of zelfs 600 boeken, vinyl en dvd's groeit, maar je kunt niet alles onthouden. En die apps met abonnementen en accounts? Daar heb je geen zin in.\n\nWij begrijpen dat. Daarom hebben we SeniorEase Library gemaakt: €4.99, eenmalig betaald, en klaar. Scan je collectie, draag je telefoon mee naar de markt, en je weet meteen of je iets al hebt. Geen gedoe, geen abonnement, geen cloud.\n\nVerken je je collectie liever thuis? Dat kan ook.\n\nHoe ziet jouw ideale manier uit om je collectie bij te houden?\n\n#SeniorEase #Boekenverzamelaar",
+  "remotion": {
+    "scriptId": "33"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-29T07:00:00+00:00",
+      "postSubmissionId": "c9701d97-3e90-4cfb-9532-ede5ecb00c52"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-24T17:30:00+00:00",
+      "postSubmissionId": "5287d9a8-fc17-4a13-b45f-14543aa9fa44",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-23T18:00:00+00:00",
+      "postSubmissionId": "8096ee73-54de-4789-8233-98eb339f9df9",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/15dd2007-599c-4efc-818e-ce6090e0d18d.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-24T18:00:00+00:00",
+      "postSubmissionId": "7f4b92d2-10ea-4ae5-834e-8d0d2b1e628a",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/6b06d2d5-bc47-4805-9907-53a01fc98afd.mp4"
+    }
+  ]
+}
