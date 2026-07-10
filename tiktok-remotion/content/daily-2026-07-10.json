@@ -1,0 +1,42 @@
+{
+  "topic": "Found duplicates while sorting through my DVD collection",
+  "tiktok": {
+    "hook_text": "You bought it twice again, didn't you?",
+    "body_text": "That third copy of *The Lord of the Rings* gathering dust? SeniorEase stops the guessing game. Scan your collection once, keep a simple list on your phone. No account, no fuss—just you and your books, knowing exactly what you own.",
+    "cta_text": "Stop buying doubles today",
+    "caption": "Found another duplicate in your collection? You're not alone. €4.99 solves this forever. 📚 #SeniorEase #DVDCollection #BookCollector #Vinyl #SmartCollecting",
+    "hashtags": "#SeniorEase #DVDCollection #BookCollector #Vinyl #SmartCollecting",
+    "duration_sec": "15",
+    "visual_suggestion": "Shot 1: Close-up hands holding two identical DVDs (hook card overlay). Shot 2: Phone scanning barcode of DVD. Shot 3: Simple list appearing on phone screen. Shot 4: Satisfied smile, thumbs up. Shot 5: €4.99 price + 'No subscription' badge. Shot 6: Download button CTA."
+  },
+  "linkedin": "Collectors know the feeling: you're at a car boot sale, charity shop, or vinyl fair—and suddenly you spot a book or album you're *sure* you own. Do you buy it? Skip it? Without a reliable system, too many of us guess wrong and end up with expensive duplicates gathering dust at home.\n\nFor serious collectors—whether you have 100 items or 500+—keeping track shouldn't require a spreadsheet, a cloud account, or remembering passwords. SeniorEase Library solves this with radical simplicity: scan your collection once with your phone's camera, and you'll never buy a duplicate again.\n\nNo subscription. No data leaving your device. One fair price: €4.99, forever.\n\nBecause collecting should bring joy, not regret.\n\nLearn more at seniorease.eu\n\n#Collectors #SmallTools #Privacy",
+  "facebook": "Herken je dit? Je bent in de boekenbeurs of op de vlooienmarkt, en daar ligt precies dat boek dat je al thuis hebt staan—of heb je het al? Je koopt het tóch maar, en thuis blijkt je inderdaad al twee exemplaren te hebben.\n\nBij een echte verzameling van honderd, tweehonderd of meer items wordt dit steeds erger. Dan heb je echt een systeem nodig—maar niet zo'n ingewikkeeld gedoe met apps, accounts en abonnementen.\n\nDaarvoor is SeniorEase Library. Eenmalig €4.99, scan je verzameling in, en je weet altijd exact wat je hebt. Geen gedoe, geen abonnement, geen gedoe met wachtwoorden. Gewoon jouw boeken, platen en films, altijd in je zak.\n\nHeb jij ook al eens dubbel gekocht? Vertel het in de reacties! 📚\n\n#Verzamelaars #Boeken",
+  "remotion": {
+    "scriptId": "34"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-07-30T07:00:00+00:00",
+      "postSubmissionId": "cc234166-557c-448a-a178-76dcb0e3226a"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-25T17:30:00+00:00",
+      "postSubmissionId": "75fd61ba-2fbd-48d9-9c52-15ecb9ca0a03",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-07-29T18:00:00+00:00",
+      "postSubmissionId": "2c2d23aa-8f20-48c0-b445-dc618ccd869a",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/63fb63b5-f37b-433d-b814-7cd1c261b0eb.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-07-29T18:00:00+00:00",
+      "postSubmissionId": "5212ef86-78c2-467d-ad00-41330b3c1e02",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    }
+  ]
+}
