@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SeniorEase Library: scan barcodes om boeken, muziek, dvd's en games bij te houden. Geen account, werkt offline. Probeer 10 items gratis. Download in de Play Store.">
-    <title>SeniorEase Library ó Boeken, muziek, dvd's en games bijhouden</title>
+    <title>SeniorEase Library &mdash; Boeken, muziek, dvd's en games bijhouden</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <!-- Canonical & hreflang -->
@@ -17,7 +17,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seniorease.eu/nl/">
-    <meta property="og:title" content="SeniorEase Library ó Boeken, muziek, dvd's en games bijhouden">
+    <meta property="og:title" content="SeniorEase Library &mdash; Boeken, muziek, dvd's en games bijhouden">
     <meta property="og:description" content="Scan barcodes om je persoonlijke collectie bij te houden. Geen account nodig, werkt offline.">
     <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
     <meta property="og:locale" content="nl_NL">
@@ -25,7 +25,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SeniorEase Library ó Boeken, muziek, dvd's en games bijhouden">
+    <meta name="twitter:title" content="SeniorEase Library &mdash; Boeken, muziek, dvd's en games bijhouden">
     <meta name="twitter:description" content="Scan barcodes om je persoonlijke collectie bij te houden. Geen account nodig, werkt offline.">
     <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
 
@@ -45,7 +45,7 @@
           "name": "Is dit veilig om te downloaden?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja. De app staat in de officiÎle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens."
+            "text": "Ja. De app staat in de officiùle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens."
           }
         },
         {
@@ -69,7 +69,7 @@
           "name": "Kan ik het eerst gratis uitproberen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van Ä4,99."
+            "text": "Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van &euro;4,99."
           }
         },
         {
@@ -77,7 +77,7 @@
           "name": "Wat als ik niet tevreden ben?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Geen probleem. Stuur een e-mail naar support@seniorease.eu binnen 14 dagen en je krijgt je geld terug ó geen reden nodig. Feedback wordt wÈl gewaardeerd, maar is nooit verplicht."
+            "text": "Geen probleem. Stuur een e-mail naar support@seniorease.eu binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wùl gewaardeerd, maar is nooit verplicht."
           }
         },
         {
@@ -135,11 +135,6 @@
       "author": {
         "@type": "Person",
         "name": "Maureen"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "12"
       }
     }
     </script>
@@ -172,7 +167,7 @@
       "@type": "WebSite",
       "url": "https://seniorease.eu/",
       "name": "SeniorEase Library",
-      "description": "Android-app om boeken, muziek, dvd's en games bij te houden via barcodes. Geen account, werkt offline, privÈcatalogus op je toestel.",
+      "description": "Android-app om boeken, muziek, dvd's en games bij te houden via barcodes. Geen account, werkt offline, priv&eacute;-catalogus op je toestel.",
       "inLanguage": ["en", "nl"],
       "publisher": {
         "@type": "Organization",
@@ -195,7 +190,7 @@
             touch-action: pan-y;
         }
 
-        /* Language toggle ó top right */
+        /* Language toggle ù top right */
         .lang-toggle {
             position: fixed;
             top: 16px;
@@ -289,7 +284,7 @@
         }
         .good-fit-col li { padding: 6px 0 6px 22px; position: relative; }
         .good-fit-col li::before {
-            content: "∑";
+            content: "\\2713";
             position: absolute;
             left: 0;
             font-weight: 700;
@@ -311,7 +306,7 @@
         .features h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 24px; text-align: center; }
         .feature-list { list-style: none; padding: 0; font-size: 17px; color: #555; line-height: 1.8; }
         .feature-list li { padding: 10px 0; padding-left: 28px; position: relative; }
-        .feature-list li::before { content: "?"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
+        .feature-list li::before { content: "\2713"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
 
         /* Comparison */
         .comparison { background: #fff; border-top: 1px solid #E0D5CA; }
@@ -325,7 +320,9 @@
         .comparison-table tr:last-child td { border-bottom: none; }
         .comparison-table td.highlight { font-weight: 600; color: #4a7c2f; }
         .comparison-table .check { color: #4a7c2f; font-weight: 700; }
+        .comparison-table .check::before { content: "\2713\00a0"; }
         .comparison-table .cross { color: #c0392b; }
+        .comparison-table .cross::before { content: "\2717\00a0"; }
 
         /* Reviews */
         .reviews { background: #fff; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; }
@@ -337,6 +334,13 @@
         .review-card .author { font-weight: 600; color: #8B5E3C; font-size: 14px; }
         .review-card .detail { font-size: 13px; color: #888; font-weight: 400; margin-top: 2px; }
         .review-grid .review-card:last-child:nth-child(odd) { grid-column: span 2; }
+
+        .rating-stars::before {
+            content: "\2605\2605\2605\2605\2605";
+            letter-spacing: 2px;
+            color: #d4a84b;
+        }
+        .reviews .review-disclaimer { font-size: 13px; color: #888; text-align: center; margin-top: 24px; line-height: 1.6; max-width: 520px; margin-left: auto; margin-right: auto; }
 
         /* Screenshots */
         .screenshots { background: #F5EEE6; border-top: 1px solid #E0D5CA; border-bottom: 1px solid #E0D5CA; overflow: hidden; }
@@ -358,6 +362,8 @@
         .qr-block img { display: block; max-width: 220px; height: auto; }
         .qr-caption { font-size: 14px; color: #666; margin-top: 12px; }
         .steps { margin-top: 24px; text-align: left; padding-left: 24px; }
+        .trust-item::before { content: "\2713\00a0"; color: #2A9D5C; font-weight: 700; }
+        .guarantee-badge::before { content: "\2713\00a0"; color: #6D8C3A; font-weight: 700; }
         .steps li { margin-bottom: 10px; color: #555; font-size: 16px; line-height: 1.6; }
 
         /* Privacy */
@@ -365,7 +371,7 @@
         .privacy h2 { font-size: 22px; color: #8B5E3C; margin-bottom: 20px; text-align: center; }
         .privacy-list { list-style: none; padding: 0; font-size: 16px; color: #555; line-height: 1.8; }
         .privacy-list li { padding: 8px 0; padding-left: 26px; position: relative; }
-        .privacy-list li::before { content: "?"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
+        .privacy-list li::before { content: "\2713"; position: absolute; left: 0; color: #8B5E3C; font-weight: 700; }
 
         /* FAQ */
         .faq { background: #F5EEE6; border-top: 1px solid #E0D5CA; }
@@ -382,7 +388,7 @@
         .footer-links { margin-bottom: 12px; }
         .footer-links a { margin: 0 12px; }
 
-        /* Lang switching ó NL is standaard op deze pagina */
+        /* Lang switching ù NL is standaard op deze pagina */
         [data-lang="en"] { display: none; }
         [data-lang="nl"] { display: block; }
         span[data-lang="nl"], a[data-lang="nl"], img[data-lang="nl"] { display: inline; }
@@ -390,7 +396,7 @@
         body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"], body.lang-en img[data-lang="en"] { display: inline; }
         body.lang-en [data-lang="nl"] { display: none; }
 
-        /* Screenshot taalwissel ó hogere specificiteit dan .phone-mockup img */
+        /* Screenshot taalwissel ù hogere specificiteit dan .phone-mockup img */
         .phone-mockup img[data-lang="en"] { display: none; }
         .phone-mockup img[data-lang="nl"] { display: block; }
         body.lang-en .phone-mockup img[data-lang="en"] { display: block; }
@@ -436,7 +442,7 @@
             font-weight: 500;
         }
 
-        /* Sticky CTA ó mobiel only */
+        /* Sticky CTA ù mobiel only */
         .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%); color: #fff; text-align: center; padding: 16px 20px; font-size: 17px; font-weight: 600; text-decoration: none; z-index: 200; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
         @media (max-width: 640px) { .sticky-cta { display: block; } }
     </style>
@@ -465,47 +471,47 @@
             </div>
             <div data-lang="en">
                 <h1>Track your books, music, DVDs & games</h1>
-                <p class="subtitle">SeniorEase Library helps you manage your entire personal collection. No account, no ads, no fuss ó just you and your collection.</p>
+                <p class="subtitle">SeniorEase Library helps you manage your entire personal collection. No account, no ads, no fuss &mdash; just you and your collection.</p>
             </div>
             <div data-lang="nl">
                 <h1>Houd je boeken, muziek, dvd's en games bij</h1>
-                <p class="subtitle">SeniorEase Library helpt je je volledige persoonlijke collectie bij te houden. Geen account, geen advertenties ó gewoon jij en je collectie.</p>
+                <p class="subtitle">SeniorEase Library helpt je je volledige persoonlijke collectie bij te houden. Geen account, geen advertenties &mdash; gewoon jij en je collectie.</p>
             </div>
             <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
                 <span data-lang="en"><img src="/google-play-badge-en.png" alt="Get it on Google Play" class="play-badge"></span>
                 <span data-lang="nl"><img src="/google-play-badge-nl.png" alt="Downloaden via Google Play" class="play-badge"></span>
             </a>
             <p class="cta-note">
-                <span data-lang="en">Try free up to 10 items, no time limit ∑ Ä4.99 one-time to unlock all ∑ No subscription ∑ 14-day refund</span>
-                <span data-lang="nl">Gratis proberen tot 10 items, geen tijdslimiet ∑ Ä4,99 eenmalig voor alles ∑ Geen abonnement ∑ 14 dagen geld terug</span>
+                <span data-lang="en">Try free up to 10 items, no time limit &middot; &euro;4.99 one-time to unlock all &middot; No subscription &middot; 14-day refund</span>
+                <span data-lang="nl">Gratis proberen tot 10 items, geen tijdslimiet &middot; &euro;4,99 eenmalig voor alles &middot; Geen abonnement &middot; 14 dagen geld terug</span>
             </p>
             <div class="trust-badges">
-                <span data-lang="en">? No account needed</span>
-                <span data-lang="nl">? Geen account nodig</span>
-                <span data-lang="en">? No subscription</span>
-                <span data-lang="nl">? Geen abonnement</span>
-                <span data-lang="en">? Works offline</span>
-                <span data-lang="nl">? Werkt offline</span>
-                <span data-lang="en">? 14-day refund</span>
-                <span data-lang="nl">? 14 dagen geld terug</span>
+                <span data-lang="en" class="trust-item">No account needed</span>
+                <span data-lang="nl" class="trust-item">Geen account nodig</span>
+                <span data-lang="en" class="trust-item">No subscription</span>
+                <span data-lang="nl" class="trust-item">Geen abonnement</span>
+                <span data-lang="en" class="trust-item">Works offline</span>
+                <span data-lang="nl" class="trust-item">Werkt offline</span>
+                <span data-lang="en" class="trust-item">14-day refund</span>
+                <span data-lang="nl" class="trust-item">14 dagen geld terug</span>
             </div>
         </div>
     </section>
 
     <section class="family-banner" aria-label="Family Setup">
         <div class="container">
-            <p data-lang="en">Helping a parent who keeps buying duplicates? <a href="/family-setup.html">Free 30-minute setup guide</a> ó download, sit together, scan 10 items</p>
-            <p data-lang="nl">Ouder die steeds dubbel koopt? <a href="/nl/family-setup.html">Gratis gids: 30 min samen opstarten</a> ó download, scan 10 items</p>
+            <p data-lang="en">Helping a parent who keeps buying duplicates? <a href="/family-setup.html">Free 30-minute setup guide</a> ù download, sit together, scan 10 items</p>
+            <p data-lang="nl">Ouder die steeds dubbel koopt? <a href="/nl/family-setup.html">Gratis gids: 30 min samen opstarten</a> ù download, scan 10 items</p>
         </div>
     </section>
 
     <section class="definition-block" aria-label="Wat is SeniorEase Library">
         <div class="container">
-            <p class="definition-lead" data-lang="en">SeniorEase Library is an Android app that tracks books, music, DVDs, and games in one private catalog. Scan barcodes to add items; no account or ads; data stays on your device and works offline. The free tier includes up to ten items. Unlock unlimited items for a one-time Ä4.99. Not for iPhone or iPad.</p>
-            <p class="definition-lead" data-lang="nl">SeniorEase Library is een Android-app om boeken, muziek, dvd's en games in ÈÈn privÈcatalogus bij te houden. Scan barcodes om items toe te voegen; geen account of advertenties; gegevens blijven op je toestel en werken offline. De gratis versie telt tot tien items. Onbeperkt voor een eenmalige Ä4,99. Niet voor iPhone of iPad.</p>
+            <p class="definition-lead" data-lang="en">SeniorEase Library is an Android app that tracks books, music, DVDs, and games in one private catalog. Scan barcodes to add items; no account or ads; data stays on your device and works offline. The free tier includes up to ten items. Unlock unlimited items for a one-time &euro;4.99. Not for iPhone or iPad.</p>
+            <p class="definition-lead" data-lang="nl">SeniorEase Library is een Android-app om boeken, muziek, dvd's en games in &eacute;&eacute;n priv&eacute;-catalogus bij te houden. Scan barcodes om items toe te voegen; geen account of advertenties; gegevens blijven op je toestel en werken offline. De gratis versie telt tot tien items. Onbeperkt voor een eenmalige &euro;4,99. Niet voor iPhone of iPad.</p>
             <div class="good-fit-grid" data-lang="en">
                 <div class="good-fit-col">
-                    <h3>Good fit if youÖ</h3>
+                    <h3>Good fit if youù</h3>
                     <ul>
                         <li>Want one simple app for books, music, DVDs, and games</li>
                         <li>Prefer no account, no ads, and data that stays on your phone</li>
@@ -513,7 +519,7 @@
                     </ul>
                 </div>
                 <div class="good-fit-col">
-                    <h3>Not the best fit if youÖ</h3>
+                    <h3>Not the best fit if youù</h3>
                     <ul>
                         <li>Need iPhone or iPad (Android only)</li>
                         <li>Want mandatory cloud sync or a social feed</li>
@@ -523,15 +529,15 @@
             </div>
             <div class="good-fit-grid" data-lang="nl">
                 <div class="good-fit-col">
-                    <h3>Past goed als jeÖ</h3>
+                    <h3>Past goed als jeù</h3>
                     <ul>
-                        <li>EÈn rustige app wilt voor boeken, muziek, dvd's en games</li>
+                        <li>Eùn rustige app wilt voor boeken, muziek, dvd's en games</li>
                         <li>Geen account, geen ads en gegevens op je telefoon wilt</li>
                         <li>Android gebruikt en een duidelijke, seniorvriendelijke app zoekt</li>
                     </ul>
                 </div>
                 <div class="good-fit-col">
-                    <h3>Minder geschikt als jeÖ</h3>
+                    <h3>Minder geschikt als jeù</h3>
                     <ul>
                         <li>iPhone of iPad nodig hebt (alleen Android)</li>
                         <li>Verplichte cloud-sync of een sociale feed wilt</li>
@@ -547,8 +553,8 @@
         <div class="container">
             <h2 data-lang="en">The story behind the app</h2>
             <h2 data-lang="nl">Het verhaal achter de app</h2>
-            <p data-lang="en">I'm Maureen, a senior and collector at heart. It started at record fairs ó I love browsing through crates of second-hand vinyl. But I kept coming home with albums I already had on my shelf.<br><br>You spot a familiar cover, it's only Ä2, you buy it... and at home it turns out you already have that exact pressing. Sound familiar?<br><br>I started keeping notes on my phone. It worked, but it was slow and messy. Then the same thing started happening with books ó I'd see a title at a market, remember enjoying it at some point... and later discover I'd already borrowed and read it from the library.<br><br>I looked for a simple app that could handle it all. Everything I found was too complicated, needed an account, or came with a subscription I didn't want. So I learned to code and built SeniorEase Library myself.<br><br>Scan the barcode ó books, music, DVDs, games ó it's added instantly. Next time you're at a fair or market, just check your phone.</p>
-            <p data-lang="nl">Ik ben Maureen, een senior met een hart voor verzamelen. Het begon op platenbeurzen ó ik hou van snuffelen door kratten met tweedehandse vinyl. Maar ik kwam steeds thuis met platen die ik al had.<br><br>Je ziet een bekende hoes, hij kost maar Ä2, je koopt hem... en thuis staat hij al op de plank. Herkenbaar?<br><br>Ik begon aantekeningen te maken op mijn telefoon. Dat werkte, maar was omslachtig. Daarna begon hetzelfde te gebeuren met boeken ó een titel op de markt, ik wist dat ik hem ooit had gelezen... maar had ik hem nou gekocht, of geleend uit de bibliotheek?<br><br>Ik zocht een eenvoudige app die alles kon bijhouden. Alles wat ik vond was te ingewikkeld, had een account nodig, of had een abonnement dat ik niet wilde. Dus heb ik mezelf leren programmeren en SeniorEase Library zelf gebouwd.<br><br>Scan de barcode ó boeken, muziek, dvd's, games ó het staat er meteen in. De volgende keer op een beurs of markt check je gewoon je telefoon.</p>
+            <p data-lang="en">I'm Maureen, a senior and collector at heart. It started at record fairs &mdash; I love browsing through crates of second-hand vinyl. But I kept coming home with albums I already had on my shelf.<br><br>You spot a familiar cover, it's only &euro;2, you buy it... and at home it turns out you already have that exact pressing. Sound familiar?<br><br>I started keeping notes on my phone. It worked, but it was slow and messy. Then the same thing started happening with books &mdash; I'd see a title at a market, remember enjoying it at some point... and later discover I'd already borrowed and read it from the library.<br><br>I looked for a simple app that could handle it all. Everything I found was too complicated, needed an account, or came with a subscription I didn't want. So I learned to code and built SeniorEase Library myself.<br><br>Scan the barcode &mdash; books, music, DVDs, games &mdash; it's added instantly. Next time you're at a fair or market, just check your phone.</p>
+            <p data-lang="nl">Ik ben Maureen, een senior met een hart voor verzamelen. Het begon op platenbeurzen &mdash; ik hou van snuffelen door kratten met tweedehandse vinyl. Maar ik kwam steeds thuis met platen die ik al had.<br><br>Je ziet een bekende hoes, hij kost maar &euro;2, je koopt hem... en thuis staat hij al op de plank. Herkenbaar?<br><br>Ik begon aantekeningen te maken op mijn telefoon. Dat werkte, maar was omslachtig. Daarna begon hetzelfde te gebeuren met boeken &mdash; een titel op de markt, ik wist dat ik hem ooit had gelezen... maar had ik hem nou gekocht, of geleend uit de bibliotheek?<br><br>Ik zocht een eenvoudige app die alles kon bijhouden. Alles wat ik vond was te ingewikkeld, had een account nodig, of had een abonnement dat ik niet wilde. Dus heb ik mezelf leren programmeren en SeniorEase Library zelf gebouwd.<br><br>Scan de barcode &mdash; boeken, muziek, dvd's, games &mdash; het staat er meteen in. De volgende keer op een beurs of markt check je gewoon je telefoon.</p>
         </div>
     </section>
 
@@ -559,17 +565,17 @@
             <h2 data-lang="nl">Wat je kunt doen</h2>
             <ul class="feature-list" data-lang="en">
                 <li>Track books, music, DVDs and games in one place</li>
-                <li>Scan barcodes ó title and artist filled in automatically</li>
+                <li>Scan barcodes ù title and artist filled in automatically</li>
                 <li>Mark items as read, listened, watched or owned</li>
                 <li>Export your collection to PDF or CSV</li>
-                <li>Everything stays on your device ó no cloud, no account</li>
+                <li>Everything stays on your device ù no cloud, no account</li>
             </ul>
             <ul class="feature-list" data-lang="nl">
-                <li>Boeken, muziek, dvd's en games bijhouden op ÈÈn plek</li>
-                <li>Barcodes scannen ó titel en artiest automatisch ingevuld</li>
+                <li>Boeken, muziek, dvd's en games bijhouden op &eacute;&eacute;n plek</li>
+                <li>Barcodes scannen ù titel en artiest automatisch ingevuld</li>
                 <li>Items markeren als gelezen, beluisterd, bekeken of in bezit</li>
                 <li>Exporteren naar PDF of CSV</li>
-                <li>Alles blijft op je toestel ó geen cloud, geen account</li>
+                <li>Alles blijft op je toestel ù geen cloud, geen account</li>
             </ul>
         </div>
     </section>
@@ -581,8 +587,8 @@
             <h2 data-lang="nl">Bekijk de app</h2>
             <div class="screenshot-track">
                 <div class="phone-mockup">
-                    <img data-lang="en" src="/assets/Screenshot2Library.png" alt="SeniorEase Library ó books and music collection overview" loading="lazy" width="140" height="249">
-                    <img data-lang="nl" src="/assets/Screenshot2LibraryNL.png" alt="SeniorEase Library ó overzicht van je collectie" loading="lazy" width="140" height="249">
+                    <img data-lang="en" src="/assets/Screenshot2Library.png" alt="SeniorEase Library &mdash; books and music collection overview" loading="lazy" width="140" height="249">
+                    <img data-lang="nl" src="/assets/Screenshot2LibraryNL.png" alt="SeniorEase Library &mdash; overzicht van je collectie" loading="lazy" width="140" height="249">
                 </div>
                 <div class="phone-mockup">
                     <img data-lang="en" src="/assets/Screenshot1Scan.png" alt="Scan a barcode to add items to your collection" loading="lazy" width="140" height="249">
@@ -606,27 +612,27 @@
             <p class="section-label" data-lang="en">Why SeniorEase?</p>
             <p class="section-label" data-lang="nl">Waarom SeniorEase?</p>
             <h2 data-lang="en">Simple, private, yours forever</h2>
-            <h2 data-lang="nl">Eenvoudig, privÈ, voor altijd van jou</h2>
+            <h2 data-lang="nl">Eenvoudig, priv&eacute;, voor altijd van jou</h2>
             <table class="comparison-table" data-lang="en">
                 <thead><tr><th></th><th class="highlight">SeniorEase</th><th>CLZ Books</th><th>Goodreads</th><th>Discogs</th></tr></thead>
                 <tbody>
-                    <tr><td>Price</td><td class="highlight">Ä4.99 one-time</td><td>~Ä25/year</td><td>Free (with ads)</td><td>Free / Ä5/month</td></tr>
-                    <tr><td>Account required</td><td class="highlight"><span class="check">? No</span></td><td><span class="cross">? Yes</span></td><td><span class="cross">? Yes</span></td><td><span class="cross">? Yes</span></td></tr>
-                    <tr><td>Works offline</td><td class="highlight"><span class="check">? Fully</span></td><td><span class="check">? Yes</span></td><td><span class="cross">? No</span></td><td><span class="cross">? No</span></td></tr>
-                    <tr><td>Books + music + DVDs + games</td><td class="highlight"><span class="check">? All in one app</span></td><td><span class="cross">? Separate apps</span></td><td><span class="cross">? Books only</span></td><td><span class="cross">? Music only</span></td></tr>
-                    <tr><td>Your data stays on your phone</td><td class="highlight"><span class="check">? Always</span></td><td><span class="cross">? Cloud sync</span></td><td><span class="cross">? Amazon servers</span></td><td><span class="cross">? Cloud only</span></td></tr>
-                    <tr><td>No subscription to forget</td><td class="highlight"><span class="check">? Pay once</span></td><td><span class="cross">? Annual renewal</span></td><td><span class="check">? Free</span></td><td><span class="cross">? Monthly fee</span></td></tr>
+                    <tr><td>Price</td><td class="highlight">&euro;4.99 one-time</td><td>~&euro;25/year</td><td>Free (with ads)</td><td>Free / &euro;5/month</td></tr>
+                    <tr><td>Account required</td><td class="highlight"><span class="check">No</span></td><td><span class="cross">Yes</span></td><td><span class="cross">Yes</span></td><td><span class="cross">Yes</span></td></tr>
+                    <tr><td>Works offline</td><td class="highlight"><span class="check">Fully</span></td><td><span class="check">Yes</span></td><td><span class="cross">No</span></td><td><span class="cross">No</span></td></tr>
+                    <tr><td>Books + music + DVDs + games</td><td class="highlight"><span class="check">All in one app</span></td><td><span class="cross">Separate apps</span></td><td><span class="cross">Books only</span></td><td><span class="cross">Music only</span></td></tr>
+                    <tr><td>Your data stays on your phone</td><td class="highlight"><span class="check">Always</span></td><td><span class="cross">Cloud sync</span></td><td><span class="cross">Amazon servers</span></td><td><span class="cross">Cloud only</span></td></tr>
+                    <tr><td>No subscription to forget</td><td class="highlight"><span class="check">Pay once</span></td><td><span class="cross">Annual renewal</span></td><td><span class="check">Free</span></td><td><span class="cross">Monthly fee</span></td></tr>
                 </tbody>
             </table>
             <table class="comparison-table" data-lang="nl">
                 <thead><tr><th></th><th class="highlight">SeniorEase</th><th>CLZ Books</th><th>Goodreads</th><th>Discogs</th></tr></thead>
                 <tbody>
-                    <tr><td>Prijs</td><td class="highlight">Ä4,99 eenmalig</td><td>~Ä25/jaar</td><td>Gratis (met advertenties)</td><td>Gratis / Ä5/maand</td></tr>
-                    <tr><td>Account vereist</td><td class="highlight"><span class="check">? Nee</span></td><td><span class="cross">? Ja</span></td><td><span class="cross">? Ja</span></td><td><span class="cross">? Ja</span></td></tr>
-                    <tr><td>Werkt offline</td><td class="highlight"><span class="check">? Volledig</span></td><td><span class="check">? Ja</span></td><td><span class="cross">? Nee</span></td><td><span class="cross">? Nee</span></td></tr>
-                    <tr><td>Boeken + muziek + dvd's + games</td><td class="highlight"><span class="check">? Alles in ÈÈn app</span></td><td><span class="cross">? Aparte apps</span></td><td><span class="cross">? Alleen boeken</span></td><td><span class="cross">? Alleen muziek</span></td></tr>
-                    <tr><td>Gegevens blijven op je telefoon</td><td class="highlight"><span class="check">? Altijd</span></td><td><span class="cross">? Cloud sync</span></td><td><span class="cross">? Amazon-servers</span></td><td><span class="cross">? Alleen cloud</span></td></tr>
-                    <tr><td>Geen abonnement om te vergeten</td><td class="highlight"><span class="check">? Eenmalig betalen</span></td><td><span class="cross">? Jaarlijkse verlenging</span></td><td><span class="check">? Gratis</span></td><td><span class="cross">? Maandelijkse kosten</span></td></tr>
+                    <tr><td>Prijs</td><td class="highlight">&euro;4,99 eenmalig</td><td>~&euro;25/jaar</td><td>Gratis (met advertenties)</td><td>Gratis / &euro;5/maand</td></tr>
+                    <tr><td>Account vereist</td><td class="highlight"><span class="check">Nee</span></td><td><span class="cross">Ja</span></td><td><span class="cross">Ja</span></td><td><span class="cross">Ja</span></td></tr>
+                    <tr><td>Werkt offline</td><td class="highlight"><span class="check">Volledig</span></td><td><span class="check">Ja</span></td><td><span class="cross">Nee</span></td><td><span class="cross">Nee</span></td></tr>
+                    <tr><td>Boeken + muziek + dvd's + games</td><td class="highlight"><span class="check">Alles in &eacute;&eacute;n app</span></td><td><span class="cross">Aparte apps</span></td><td><span class="cross">Alleen boeken</span></td><td><span class="cross">Alleen muziek</span></td></tr>
+                    <tr><td>Gegevens blijven op je telefoon</td><td class="highlight"><span class="check">Altijd</span></td><td><span class="cross">Cloud sync</span></td><td><span class="cross">Amazon-servers</span></td><td><span class="cross">Alleen cloud</span></td></tr>
+                    <tr><td>Geen abonnement om te vergeten</td><td class="highlight"><span class="check">Eenmalig betalen</span></td><td><span class="cross">Jaarlijkse verlenging</span></td><td><span class="check">Gratis</span></td><td><span class="cross">Maandelijkse kosten</span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -635,32 +641,34 @@
     <!-- Reviews -->
     <section class="reviews">
         <div class="container">
-            <p class="section-label" data-lang="en">What collectors say</p>
-            <p class="section-label" data-lang="nl">Wat verzamelaars zeggen</p>
+            <p class="section-label" data-lang="en">Beta tester feedback</p>
+            <p class="section-label" data-lang="nl">Feedback van beta-testers</p>
             <div style="text-align:center; margin-bottom: 16px;">
                 <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener"
                    style="display:inline-flex; align-items:center; gap:8px; background:#fff9e6; border:1px solid #d4a84b; border-radius:999px; padding:8px 20px; font-size:15px; color:#7a6213; font-weight:600; text-decoration:none;">
-                    ?????
-                    <span data-lang="en">4.8 ∑ 12 ratings on Google Play</span>
-                    <span data-lang="nl">4,8 ∑ 12 beoordelingen in de Play Store</span>
+                    <span class="rating-stars" aria-hidden="true"></span>
+                    <span data-lang="en">4.8 &middot; 12 ratings from beta testers</span>
+                    <span data-lang="nl">4,8 &middot; 12 beoordelingen van beta-testers</span>
                 </a>
             </div>
-            <h2 data-lang="en">Loved by collectors</h2>
-            <h2 data-lang="nl">Geliefd bij verzamelaars</h2>
+            <h2 data-lang="en">What beta testers say</h2>
+            <h2 data-lang="nl">Wat beta-testers zeggen</h2>
             <div class="review-grid" data-lang="en">
                 <div class="review-card"><p class="quote">"I've been collecting vinyl for 40 years and I always bought duplicates at record fairs. Not anymore."</p><div class="author">Thomas H.</div><div class="detail">312 records tracked</div></div>
-                <div class="review-card"><p class="quote">"My husband set it up for me in two minutes. I scanned my whole bookshelf and DVD collection in one afternoon!"</p><div class="author">Margaret B.</div><div class="detail">78 books ∑ 54 DVDs tracked</div></div>
-                <div class="review-card"><p class="quote">"No account to create. Just downloaded it and started scanning. Books, CDs, games ó everything in one place."</p><div class="author">Peter V.</div><div class="detail">204 items tracked</div></div>
+                <div class="review-card"><p class="quote">"My husband set it up for me in two minutes. I scanned my whole bookshelf and DVD collection in one afternoon!"</p><div class="author">Margaret B.</div><div class="detail">78 books &middot; 54 DVDs tracked</div></div>
+                <div class="review-card"><p class="quote">"No account to create. Just downloaded it and started scanning. Books, CDs, games &mdash; everything in one place."</p><div class="author">Peter V.</div><div class="detail">204 items tracked</div></div>
                 <div class="review-card"><p class="quote">"Other apps had so many menus I gave up. This one is clear and simple. Exactly what I needed."</p><div class="author">Susan K.</div><div class="detail">53 books tracked</div></div>
-                <div class="review-card"><p class="quote">"I bought this for my dad who's been collecting vinyl for thirty years but can never remember which pressings he already owns. He takes his phone to every record fair now ó no more duplicates."</p><div class="author">Sandra M.</div><div class="detail">Gift for her father ∑ vinyl collector</div></div>
+                <div class="review-card"><p class="quote">"I bought this for my dad who's been collecting vinyl for thirty years but can never remember which pressings he already owns. He takes his phone to every record fair now ù no more duplicates."</p><div class="author">Sandra M.</div><div class="detail">Gift for her father &middot; vinyl collector</div></div>
             </div>
             <div class="review-grid" data-lang="nl">
                 <div class="review-card"><p class="quote">"Ik verzamel al 40 jaar vinyl en kocht altijd dubbelen op platenbeurzen. Niet meer."</p><div class="author">Thomas H.</div><div class="detail">312 platen bijgehouden</div></div>
-                <div class="review-card"><p class="quote">"Mijn man had het in twee minuten opgezet. Ik heb mijn hele boekenkast Èn dvd-collectie in ÈÈn middag gescand!"</p><div class="author">Margaret B.</div><div class="detail">78 boeken ∑ 54 dvd's bijgehouden</div></div>
-                <div class="review-card"><p class="quote">"Gewoon downloaden en scannen. Geen account nodig. Boeken, cd's, games ó alles op ÈÈn plek. Geen gedoe, niets."</p><div class="author">Peter V.</div><div class="detail">204 items bijgehouden</div></div>
+                <div class="review-card"><p class="quote">"Mijn man had het in twee minuten opgezet. Ik heb mijn hele boekenkast &eacute;n dvd-collectie in &eacute;&eacute;n middag gescand!"</p><div class="author">Margaret B.</div><div class="detail">78 boeken &middot; 54 dvd's bijgehouden</div></div>
+                <div class="review-card"><p class="quote">"Gewoon downloaden en scannen. Geen account nodig. Boeken, cd's, games &mdash; alles op &eacute;&eacute;n plek. Geen gedoe, niets."</p><div class="author">Peter V.</div><div class="detail">204 items bijgehouden</div></div>
                 <div class="review-card"><p class="quote">"Andere apps hadden zoveel menu's dat ik het opgaf. Deze is helder en simpel. Precies wat ik nodig had."</p><div class="author">Susan K.</div><div class="detail">53 boeken bijgehouden</div></div>
-                <div class="review-card"><p class="quote">"Ik heb dit voor mijn vader gekocht die al dertig jaar vinyl verzamelt maar niet meer weet welke persing hij al heeft. Nu neemt hij zijn telefoon mee naar elke platenbeurs. Geen dubbelen meer."</p><div class="author">Sandra M.</div><div class="detail">Cadeau voor haar vader ∑ vinylverzamelaar</div></div>
+                <div class="review-card"><p class="quote">"Ik heb dit voor mijn vader gekocht die al dertig jaar vinyl verzamelt maar niet meer weet welke persing hij al heeft. Nu neemt hij zijn telefoon mee naar elke platenbeurs. Geen dubbelen meer."</p><div class="author">Sandra M.</div><div class="detail">Cadeau voor haar vader &middot; vinylverzamelaar</div></div>
             </div>
+            <p class="review-disclaimer" data-lang="en">These quotes and ratings come from volunteers who tested the app before public launch.</p>
+            <p class="review-disclaimer" data-lang="nl">Deze reacties en beoordelingen komen van vrijwilligers die de app vùùr de publieke lancering hebben getest.</p>
         </div>
     </section>
 
@@ -670,8 +678,8 @@
             <h2 data-lang="en">Now available on Google Play</h2>
             <h2 data-lang="nl">Nu beschikbaar in de Play Store</h2>
             <div style="margin-bottom: 20px; display: inline-block; background: #fff; border: 1px solid #E0D5CA; border-radius: 12px; padding: 16px 28px; font-size: 16px; color: #555; line-height: 1.8;">
-                <span data-lang="en">Free to download ∑ Ä4.99 to unlock full access (one-time) ∑ No subscription</span>
-                <span data-lang="nl">Gratis te downloaden ∑ Ä4,99 voor volledige toegang (eenmalig) ∑ Geen abonnement</span>
+                <span data-lang="en">Free to download &middot; &euro;4.99 to unlock full access (one-time) &middot; No subscription</span>
+                <span data-lang="nl">Gratis te downloaden &middot; &euro;4,99 voor volledige toegang (eenmalig) &middot; Geen abonnement</span>
             </div>
             <br>
             <a href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" class="play-badge-link" target="_blank" rel="noopener" onclick="gtag('event', 'download')" style="margin-bottom: 12px;">
@@ -679,8 +687,8 @@
                 <span data-lang="nl"><img src="/google-play-badge-nl.png" alt="Downloaden via Google Play" class="play-badge"></span>
             </a>
             <p style="margin: 8px 0 20px; font-size: 15px; color: #6D8C3A;">
-                <span data-lang="en">? 14-day money-back guarantee ∑ No questions asked</span>
-                <span data-lang="nl">? 14 dagen geld-teruggarantie ∑ Geen vragen gesteld</span>
+                <span data-lang="en" class="guarantee-badge">14-day money-back guarantee &middot; No questions asked</span>
+                <span data-lang="nl" class="guarantee-badge">14 dagen geld-teruggarantie &middot; Geen vragen gesteld</span>
             </p>
             <div class="qr-block">
                 <img src="/qr-code-playstore.png" alt="QR Code Google Play">
@@ -733,7 +741,7 @@
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Is dit veilig om te downloaden?</p>
-                <p class="faq-a">Ja. De app staat in de officiÎle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens.</p>
+                <p class="faq-a">Ja. De app staat in de officiùle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens.</p>
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Do I need an account?</p>
@@ -753,19 +761,19 @@
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Can I try it before paying?</p>
-                <p class="faq-a">Yes. The free version lets you store up to 10 items with no time limit. Unlock full access for a one-time payment of Ä4.99.</p>
+                <p class="faq-a">Yes. The free version lets you store up to 10 items with no time limit. Unlock full access for a one-time payment of &euro;4.99.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Kan ik het eerst gratis uitproberen?</p>
-                <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van Ä4,99.</p>
+                <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Volledige toegang ontgrendel je met een eenmalige betaling van &euro;4,99.</p>
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">What if I'm not satisfied?</p>
-                <p class="faq-a">No problem. Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days and you'll get a full refund ó no reason needed. Feedback is always welcome, but never required.</p>
+                <p class="faq-a">No problem. Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days and you'll get a full refund &mdash; no reason needed. Feedback is always welcome, but never required.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Wat als ik niet tevreden ben?</p>
-                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug ó geen reden nodig. Feedback wordt wÈl gewaardeerd, maar is nooit verplicht.</p>
+                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wùl gewaardeerd, maar is nooit verplicht.</p>
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Does it work offline?</p>
@@ -795,13 +803,13 @@
     </section>
 
     <!-- Newsletter / Email Capture -->
-    <!-- Stap: log in op mailchimp.com ? Audience ? Signup forms ? Embedded forms ? kopieer de action-URL en plak hieronder -->
+    <!-- Stap: log in op mailchimp.com &gt; Audience &gt; Signup forms &gt; Embedded forms &gt; kopieer de action-URL en plak hieronder -->
     <section class="newsletter">
         <div class="container">
             <h2 data-lang="en">Tips for collectors, in your inbox</h2>
             <h2 data-lang="nl">Tips voor verzamelaars, in je inbox</h2>
-            <p class="newsletter-sub" data-lang="en">New articles, app updates ó practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
-            <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates ó praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
+            <p class="newsletter-sub" data-lang="en">New articles, app updates ù practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
+            <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates ù praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
             <form class="newsletter-form" method="POST"
                   action="https://dcaf15e0.sibforms.com/serve/MUIFAGNZbOdxCVaYIDVD8OkwpT2r9Q7tVHbd61auA9zT5huYXZRrrJJUYo8idSklwjepcM6w5DlZz-ycuF8OTwXvLYNsP4lgO-SVoE9nBMZH2X-Tp-HJ5TzQC034ruRlur_MQFZwsw4r5yb63e1Jdb-VJXrYB96vM7MQwr55_HJ7yBUmVT58-SmkIvzDr8zammIEQRtmbtxkr2geUQ==">
                 <input type="email" id="EMAIL" name="EMAIL" placeholder="jouw@email.nl" required>
@@ -812,8 +820,8 @@
                 </button>
             </form>
             <p class="newsletter-note">
-                <span data-lang="en">No spam ∑ Unsubscribe anytime</span>
-                <span data-lang="nl">Geen spam ∑ Altijd uitschrijven</span>
+                <span data-lang="en">No spam ù Unsubscribe anytime</span>
+                <span data-lang="nl">Geen spam ù Altijd uitschrijven</span>
             </p>
         </div>
     </section>
@@ -836,11 +844,11 @@
                 <a href="/privacy-policy.html" data-lang="nl">Privacybeleid</a>
                 <a href="/terms/" data-lang="nl">Voorwaarden</a>
                 <a href="/contact.html" data-lang="nl">Contact</a>
-                <a href="/pricing.html" data-lang="nl">Prijzen</a>
+                <a href="/pricing.html?lang=nl" data-lang="nl">Prijzen</a>
             </div>
             <p>
-                <span data-lang="en">© 2026 SeniorEase ∑ Android only</span>
-                <span data-lang="nl">© 2026 SeniorEase ∑ Alleen Android</span>
+                <span data-lang="en">&copy; 2026 SeniorEase &middot; Android only</span>
+                <span data-lang="nl">&copy; 2026 SeniorEase &middot; Alleen Android</span>
             </p>
         </div>
     </footer>
@@ -877,7 +885,7 @@
         if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
             var banner = document.createElement('div');
             banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#fff3cd;border-top:1px solid #ffc107;padding:14px 20px;font-size:15px;text-align:center;z-index:999;';
-            banner.innerHTML = 'Deze app is alleen beschikbaar voor Android. Niet beschikbaar voor iPhone of iPad. <button onclick="this.parentNode.remove()" style="margin-left:12px;background:none;border:none;font-size:18px;cursor:pointer;">?</button>';
+            banner.innerHTML = 'Deze app is alleen beschikbaar voor Android. Niet beschikbaar voor iPhone of iPad. <button onclick="this.parentNode.remove()" style="margin-left:12px;background:none;border:none;font-size:18px;cursor:pointer;">&times;</button>';
             document.body.appendChild(banner);
         }
     </script>

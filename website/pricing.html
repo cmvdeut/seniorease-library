@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SeniorEase Library pricing: free up to 10 items, then €4.99 one-time for unlimited. No subscription. No account. 14-day refund guarantee.">
-    <title>Pricing — SeniorEase Library</title>
+    <meta name="description" content="SeniorEase Library pricing: free up to 10 items, then &euro;4.99 one-time for unlimited. No subscription. No account. 14-day refund guarantee.">
+    <title>Pricing &mdash; SeniorEase Library</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="canonical" href="https://seniorease.eu/pricing.html">
@@ -14,14 +14,14 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seniorease.eu/pricing.html">
-    <meta property="og:title" content="Pricing — SeniorEase Library">
-    <meta property="og:description" content="Free up to 10 items, then €4.99 one-time. No subscription, no account, 14-day refund.">
+    <meta property="og:title" content="Pricing &mdash; SeniorEase Library">
+    <meta property="og:description" content="Free up to 10 items, then &euro;4.99 one-time. No subscription, no account, 14-day refund.">
     <meta property="og:image" content="https://seniorease.eu/seniorease-icon.png">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pricing — SeniorEase Library">
-    <meta name="twitter:description" content="Free up to 10 items, then €4.99 one-time. No subscription.">
+    <meta name="twitter:title" content="Pricing &mdash; SeniorEase Library">
+    <meta name="twitter:description" content="Free up to 10 items, then &euro;4.99 one-time. No subscription.">
     <meta name="twitter:image" content="https://seniorease.eu/seniorease-icon.png">
 
     <meta name="author" content="Maureen, SeniorEase">
@@ -64,7 +64,7 @@
           "name": "Can I try SeniorEase Library before paying?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The free version lets you store up to 10 items with no time limit. When you're ready to add more, you unlock full access for a one-time payment of €4.99."
+            "text": "Yes. The free version lets you store up to 10 items with no time limit. When you're ready to add more, you unlock full access for a one-time payment of &euro;4.99."
           }
         },
         {
@@ -72,7 +72,7 @@
           "name": "Is it really a one-time payment? No subscription?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, one-time. You pay €4.99 once and the app is yours forever. No annual renewals, no monthly fees, no surprise charges."
+            "text": "Yes, one-time. You pay &euro;4.99 once and the app is yours forever. No annual renewals, no monthly fees, no surprise charges."
           }
         },
         {
@@ -80,7 +80,7 @@
           "name": "What if I'm not satisfied?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Send an email to support@seniorease.eu within 14 days and you'll get a full refund — no reason needed."
+            "text": "Send an email to support@seniorease.eu within 14 days and you'll get a full refund &mdash; no reason needed."
           }
         },
         {
@@ -133,7 +133,15 @@
         .lang-btn.active { background: #8B5E3C; color: #fff; }
         .lang-btn:hover:not(.active) { background: #F5EEE6; color: #6D4A30; }
 
+        /* Lang switching */
         [data-lang="nl"] { display: none; }
+        body.lang-nl [data-lang="nl"] { display: block; }
+        body.lang-nl span[data-lang="nl"], body.lang-nl a[data-lang="nl"] { display: inline; }
+        body.lang-nl [data-lang="en"] { display: none; }
+        table.comparison-table[data-lang="en"] { display: table; }
+        table.comparison-table[data-lang="nl"] { display: none; }
+        body.lang-nl table.comparison-table[data-lang="nl"] { display: table; }
+        body.lang-nl table.comparison-table[data-lang="en"] { display: none; }
 
         .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
 
@@ -227,8 +235,9 @@
             gap: 10px;
         }
         .plan-features li:last-child { border-bottom: none; }
-        .feat-check { color: #2A9D5C; font-weight: 700; flex-shrink: 0; }
-        .feat-x { color: #aaa; flex-shrink: 0; }
+        .feat-check, .feat-x { flex-shrink: 0; width: 1.1em; display: inline-block; text-align: center; }
+        .feat-check::before { content: "\2713"; color: #2A9D5C; font-weight: 700; font-size: 15px; }
+        .feat-x::before { content: "\2717"; color: #aaa; font-weight: 700; font-size: 15px; }
 
         .plan-btn {
             display: block;
@@ -275,7 +284,14 @@
             border-bottom: 1px solid #F5EEE6;
         }
         .feature-row:last-child { border-bottom: none; }
-        .feature-icon { font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+        .feature-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #8B5E3C;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
         .feature-text strong { display: block; font-size: 16px; color: #1F1F1F; margin-bottom: 2px; }
         .feature-text span { font-size: 14px; color: #666; }
 
@@ -308,7 +324,9 @@
         .comparison-table td:first-child { text-align: left; color: #555; }
         .comparison-table th.hl, .comparison-table td.hl { background: #FFF8F3; color: #8B5E3C; font-weight: 700; }
         .check { color: #2A9D5C; font-weight: 700; }
+        .check::before { content: "\2713\00a0"; }
         .cross { color: #bbb; }
+        .cross::before { content: "\2717\00a0"; }
 
         /* FAQ */
         .faq-section {
@@ -382,8 +400,8 @@
 <body>
 
     <div class="lang-toggle" role="group" aria-label="Language">
-        <button class="lang-btn active" onclick="setLang('en')" aria-pressed="true">EN</button>
-        <button class="lang-btn" onclick="setLang('nl')" aria-pressed="false">NL</button>
+        <button type="button" class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" id="btn-nl" aria-pressed="false">NL</button>
     </div>
 
     <div class="container">
@@ -400,15 +418,15 @@
             <div class="pricing-card">
                 <p class="plan-name" data-lang="en">Free</p>
                 <p class="plan-name" data-lang="nl">Gratis</p>
-                <p class="plan-price">€0</p>
+                <p class="plan-price">&euro;0</p>
                 <p class="plan-note" data-lang="en">Always free, no time limit</p>
                 <p class="plan-note" data-lang="nl">Altijd gratis, geen tijdslimiet</p>
                 <ul class="plan-features">
-                    <li><span class="feat-check">?</span> <span data-lang="en">Up to 10 items</span><span data-lang="nl">Tot 10 items</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">Barcode scanning</span><span data-lang="nl">Barcodes scannen</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">Works offline</span><span data-lang="nl">Werkt offline</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
-                    <li><span class="feat-x">—</span> <span data-lang="en">Unlimited items</span><span data-lang="nl">Onbeperkt items</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Up to 10 items</span><span data-lang="nl">Tot 10 items</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Barcode scanning</span><span data-lang="nl">Barcodes scannen</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Works offline</span><span data-lang="nl">Werkt offline</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
+                    <li><span class="feat-x" aria-hidden="true"></span> <span data-lang="en">Unlimited items</span><span data-lang="nl">Onbeperkt items</span></li>
                 </ul>
                 <a class="plan-btn secondary" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="gtag('event', 'download')">
                     <span data-lang="en">Download free</span>
@@ -421,15 +439,15 @@
                 <div class="featured-badge" data-lang="nl">Meest gekozen</div>
                 <p class="plan-name" data-lang="en">Full access</p>
                 <p class="plan-name" data-lang="nl">Volledige toegang</p>
-                <p class="plan-price"><sup>€</sup>4<span style="font-size:28px">,99</span></p>
-                <p class="plan-note" data-lang="en">One-time · no subscription</p>
-                <p class="plan-note" data-lang="nl">Eenmalig · geen abonnement</p>
+                <p class="plan-price"><sup>&euro;</sup>4<span style="font-size:28px">,99</span></p>
+                <p class="plan-note" data-lang="en">One-time &mdash; no subscription</p>
+                <p class="plan-note" data-lang="nl">Eenmalig &mdash; geen abonnement</p>
                 <ul class="plan-features">
-                    <li><span class="feat-check">?</span> <span data-lang="en">Unlimited items</span><span data-lang="nl">Onbeperkt items</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">Barcode scanning</span><span data-lang="nl">Barcodes scannen</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">Works offline</span><span data-lang="nl">Werkt offline</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
-                    <li><span class="feat-check">?</span> <span data-lang="en">Pay once, yours forever</span><span data-lang="nl">Eenmalig betalen, altijd van jou</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Unlimited items</span><span data-lang="nl">Onbeperkt items</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Barcode scanning</span><span data-lang="nl">Barcodes scannen</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Works offline</span><span data-lang="nl">Werkt offline</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">No account needed</span><span data-lang="nl">Geen account nodig</span></li>
+                    <li><span class="feat-check" aria-hidden="true"></span> <span data-lang="en">Pay once, yours forever</span><span data-lang="nl">Eenmalig betalen, altijd van jou</span></li>
                 </ul>
                 <a class="plan-btn primary" href="https://play.google.com/store/apps/details?id=com.maureen.biblitoheek" target="_blank" rel="noopener" onclick="gtag('event', 'download_pricing')">
                     <span data-lang="en">Download on Google Play</span>
@@ -444,48 +462,48 @@
             <h2 data-lang="nl">Dit zit erin</h2>
 
             <div class="feature-row">
-                <div class="feature-icon">??</div>
+                <div class="feature-icon" aria-hidden="true"></div>
                 <div class="feature-text">
                     <strong data-lang="en">Barcode scanning</strong>
                     <strong data-lang="nl">Barcodes scannen</strong>
-                    <span data-lang="en">Point your camera at a barcode — the app looks up the title and saves it in seconds.</span>
-                    <span data-lang="nl">Camera op de barcode — de app zoekt de titel op en slaat hem op in seconden.</span>
+                    <span data-lang="en">Point your camera at a barcode &mdash; the app looks up the title and saves it in seconds.</span>
+                    <span data-lang="nl">Camera op de barcode &mdash; de app zoekt de titel op en slaat hem op in seconden.</span>
                 </div>
             </div>
             <div class="feature-row">
-                <div class="feature-icon">??</div>
+                <div class="feature-icon" aria-hidden="true"></div>
                 <div class="feature-text">
                     <strong data-lang="en">All types in one list</strong>
-                    <strong data-lang="nl">Alles op één plek</strong>
-                    <span data-lang="en">Books, vinyl, CDs, DVDs, games, and comics — one search across your whole collection.</span>
-                    <span data-lang="nl">Boeken, vinyl, cd's, dvd's, games en strips — één zoekopdracht door je hele collectie.</span>
+                    <strong data-lang="nl">Alles op &eacute;&eacute;n plek</strong>
+                    <span data-lang="en">Books, vinyl, CDs, DVDs, games, and comics &mdash; one search across your whole collection.</span>
+                    <span data-lang="nl">Boeken, vinyl, cd's, dvd's, games en strips &mdash; &eacute;&eacute;n zoekopdracht door je hele collectie.</span>
                 </div>
             </div>
             <div class="feature-row">
-                <div class="feature-icon">??</div>
+                <div class="feature-icon" aria-hidden="true"></div>
                 <div class="feature-text">
                     <strong data-lang="en">No account, fully private</strong>
-                    <strong data-lang="nl">Geen account, volledig privé</strong>
+                    <strong data-lang="nl">Geen account, volledig priv&eacute;</strong>
                     <span data-lang="en">Your data never leaves your phone. Nothing is stored in the cloud. No sign-up required.</span>
                     <span data-lang="nl">Je gegevens verlaten je telefoon nooit. Niets wordt opgeslagen in de cloud. Geen registratie nodig.</span>
                 </div>
             </div>
             <div class="feature-row">
-                <div class="feature-icon">??</div>
+                <div class="feature-icon" aria-hidden="true"></div>
                 <div class="feature-text">
                     <strong data-lang="en">Works offline</strong>
                     <strong data-lang="nl">Werkt offline</strong>
-                    <span data-lang="en">At the market, at the fair — your collection is always available. No internet needed to browse or search.</span>
-                    <span data-lang="nl">Op de markt, op de beurs — je collectie is altijd beschikbaar. Geen internet nodig om te zoeken.</span>
+                    <span data-lang="en">At the market, at the fair &mdash; your collection is always available. No internet needed to browse or search.</span>
+                    <span data-lang="nl">Op de markt, op de beurs &mdash; je collectie is altijd beschikbaar. Geen internet nodig om te zoeken.</span>
                 </div>
             </div>
             <div class="feature-row">
-                <div class="feature-icon">??</div>
+                <div class="feature-icon" aria-hidden="true"></div>
                 <div class="feature-text">
                     <strong data-lang="en">Manual entry for items without barcodes</strong>
                     <strong data-lang="nl">Handmatig invoeren zonder barcode</strong>
-                    <span data-lang="en">Old records, vintage books — add anything manually with a title, notes, or condition. Takes about 10 seconds.</span>
-                    <span data-lang="nl">Oude platen, vintage boeken — voeg alles handmatig toe met titel, notities of staat. Duurt ongeveer 10 seconden.</span>
+                    <span data-lang="en">Old records, vintage books &mdash; add anything manually with a title, notes, or condition. Takes about 10 seconds.</span>
+                    <span data-lang="nl">Oude platen, vintage boeken &mdash; voeg alles handmatig toe met titel, notities of staat. Duurt ongeveer 10 seconden.</span>
                 </div>
             </div>
         </div>
@@ -507,45 +525,45 @@
                 <tbody>
                     <tr>
                         <td>Price</td>
-                        <td class="hl">€4.99 one-time</td>
-                        <td>~€25/year</td>
+                        <td class="hl">&euro;4.99 one-time</td>
+                        <td>~&euro;25/year</td>
                         <td>Free (with ads)</td>
-                        <td>Free / €5/month</td>
+                        <td>Free / &euro;5/month</td>
                     </tr>
                     <tr>
                         <td>Account required</td>
-                        <td class="hl"><span class="check">? No</span></td>
-                        <td><span class="cross">? Yes</span></td>
-                        <td><span class="cross">? Yes</span></td>
-                        <td><span class="cross">? Yes</span></td>
+                        <td class="hl"><span class="check">No</span></td>
+                        <td><span class="cross">Yes</span></td>
+                        <td><span class="cross">Yes</span></td>
+                        <td><span class="cross">Yes</span></td>
                     </tr>
                     <tr>
                         <td>Works offline</td>
-                        <td class="hl"><span class="check">? Fully</span></td>
-                        <td><span class="check">? Yes</span></td>
-                        <td><span class="cross">? No</span></td>
-                        <td><span class="cross">? No</span></td>
+                        <td class="hl"><span class="check">Fully</span></td>
+                        <td><span class="check">Yes</span></td>
+                        <td><span class="cross">No</span></td>
+                        <td><span class="cross">No</span></td>
                     </tr>
                     <tr>
                         <td>Books + music + DVDs + games</td>
-                        <td class="hl"><span class="check">? All in one</span></td>
-                        <td><span class="cross">? Separate apps</span></td>
-                        <td><span class="cross">? Books only</span></td>
-                        <td><span class="cross">? Music only</span></td>
+                        <td class="hl"><span class="check">All in one</span></td>
+                        <td><span class="cross">Separate apps</span></td>
+                        <td><span class="cross">Books only</span></td>
+                        <td><span class="cross">Music only</span></td>
                     </tr>
                     <tr>
                         <td>Your data stays on your phone</td>
-                        <td class="hl"><span class="check">? Always</span></td>
-                        <td><span class="cross">? Cloud sync</span></td>
-                        <td><span class="cross">? Amazon servers</span></td>
-                        <td><span class="cross">? Cloud only</span></td>
+                        <td class="hl"><span class="check">Always</span></td>
+                        <td><span class="cross">Cloud sync</span></td>
+                        <td><span class="cross">Amazon servers</span></td>
+                        <td><span class="cross">Cloud only</span></td>
                     </tr>
                     <tr>
                         <td>No subscription to forget</td>
-                        <td class="hl"><span class="check">? Pay once</span></td>
-                        <td><span class="cross">? Annual renewal</span></td>
-                        <td><span class="check">? Free</span></td>
-                        <td><span class="cross">? Monthly fee</span></td>
+                        <td class="hl"><span class="check">Pay once</span></td>
+                        <td><span class="cross">Annual renewal</span></td>
+                        <td><span class="check">Free</span></td>
+                        <td><span class="cross">Monthly fee</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -562,45 +580,45 @@
                 <tbody>
                     <tr>
                         <td>Prijs</td>
-                        <td class="hl">€4,99 eenmalig</td>
-                        <td>~€25/jaar</td>
+                        <td class="hl">&euro;4,99 eenmalig</td>
+                        <td>~&euro;25/jaar</td>
                         <td>Gratis (met advertenties)</td>
-                        <td>Gratis / €5/maand</td>
+                        <td>Gratis / &euro;5/maand</td>
                     </tr>
                     <tr>
                         <td>Account vereist</td>
-                        <td class="hl"><span class="check">? Nee</span></td>
-                        <td><span class="cross">? Ja</span></td>
-                        <td><span class="cross">? Ja</span></td>
-                        <td><span class="cross">? Ja</span></td>
+                        <td class="hl"><span class="check">Nee</span></td>
+                        <td><span class="cross">Ja</span></td>
+                        <td><span class="cross">Ja</span></td>
+                        <td><span class="cross">Ja</span></td>
                     </tr>
                     <tr>
                         <td>Werkt offline</td>
-                        <td class="hl"><span class="check">? Volledig</span></td>
-                        <td><span class="check">? Ja</span></td>
-                        <td><span class="cross">? Nee</span></td>
-                        <td><span class="cross">? Nee</span></td>
+                        <td class="hl"><span class="check">Volledig</span></td>
+                        <td><span class="check">Ja</span></td>
+                        <td><span class="cross">Nee</span></td>
+                        <td><span class="cross">Nee</span></td>
                     </tr>
                     <tr>
                         <td>Boeken + muziek + dvd's + games</td>
-                        <td class="hl"><span class="check">? Alles in één</span></td>
-                        <td><span class="cross">? Aparte apps</span></td>
-                        <td><span class="cross">? Alleen boeken</span></td>
-                        <td><span class="cross">? Alleen muziek</span></td>
+                        <td class="hl"><span class="check">Alles in &eacute;&eacute;n</span></td>
+                        <td><span class="cross">Aparte apps</span></td>
+                        <td><span class="cross">Alleen boeken</span></td>
+                        <td><span class="cross">Alleen muziek</span></td>
                     </tr>
                     <tr>
                         <td>Gegevens blijven op je telefoon</td>
-                        <td class="hl"><span class="check">? Altijd</span></td>
-                        <td><span class="cross">? Cloud sync</span></td>
-                        <td><span class="cross">? Amazon-servers</span></td>
-                        <td><span class="cross">? Alleen cloud</span></td>
+                        <td class="hl"><span class="check">Altijd</span></td>
+                        <td><span class="cross">Cloud sync</span></td>
+                        <td><span class="cross">Amazon-servers</span></td>
+                        <td><span class="cross">Alleen cloud</span></td>
                     </tr>
                     <tr>
                         <td>Geen abonnement om te vergeten</td>
-                        <td class="hl"><span class="check">? Eenmalig betalen</span></td>
-                        <td><span class="cross">? Jaarlijkse verlenging</span></td>
-                        <td><span class="check">? Gratis</span></td>
-                        <td><span class="cross">? Maandelijkse kosten</span></td>
+                        <td class="hl"><span class="check">Eenmalig betalen</span></td>
+                        <td><span class="cross">Jaarlijkse verlenging</span></td>
+                        <td><span class="check">Gratis</span></td>
+                        <td><span class="cross">Maandelijkse kosten</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -613,47 +631,47 @@
 
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Can I try SeniorEase Library before paying?</p>
-                <p class="faq-a">Yes. The free version lets you store up to 10 items with no time limit. When you're ready to add more, you unlock full access for a one-time payment of €4.99 — directly in the app via Google Play.</p>
+                <p class="faq-a">Yes. The free version lets you store up to 10 items with no time limit. When you're ready to add more, you unlock full access for a one-time payment of &euro;4.99 &mdash; directly in the app via Google Play.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Kan ik het eerst gratis uitproberen?</p>
-                <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Wanneer je meer wilt toevoegen, ontgrendel je volledige toegang met een eenmalige betaling van €4,99 — rechtstreeks in de app via Google Play.</p>
+                <p class="faq-a">Ja. De gratis versie laat je tot 10 items opslaan zonder tijdslimiet. Wanneer je meer wilt toevoegen, ontgrendel je volledige toegang met een eenmalige betaling van &euro;4,99 &mdash; rechtstreeks in de app via Google Play.</p>
             </div>
 
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Is it really a one-time payment? No subscription?</p>
-                <p class="faq-a">Yes, truly one-time. You pay €4.99 once and the app is yours forever. No annual renewals, no monthly fees, no surprise charges. Nothing to cancel and forget about.</p>
+                <p class="faq-a">Yes, truly one-time. You pay &euro;4.99 once and the app is yours forever. No annual renewals, no monthly fees, no surprise charges. Nothing to cancel and forget about.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Is het echt een eenmalige betaling? Geen abonnement?</p>
-                <p class="faq-a">Ja, echt eenmalig. Je betaalt €4,99 en de app is voor altijd van jou. Geen jaarlijkse verlenging, geen maandelijkse kosten, geen verrassingen. Niets om op te zeggen of te vergeten.</p>
+                <p class="faq-a">Ja, echt eenmalig. Je betaalt &euro;4,99 en de app is voor altijd van jou. Geen jaarlijkse verlenging, geen maandelijkse kosten, geen verrassingen. Niets om op te zeggen of te vergeten.</p>
             </div>
 
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">What if I'm not satisfied?</p>
-                <p class="faq-a">No problem. Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days of your purchase and you'll get a full refund — no reason needed. Feedback is always welcome, but never required.</p>
+                <p class="faq-a">No problem. Send an email to <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> within 14 days of your purchase and you'll get a full refund &mdash; no reason needed. Feedback is always welcome, but never required.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Wat als ik niet tevreden ben?</p>
-                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen na je aankoop en je krijgt je geld volledig terug — geen reden nodig. Feedback is altijd welkom, maar nooit verplicht.</p>
+                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen na je aankoop en je krijgt je geld volledig terug &mdash; geen reden nodig. Feedback is altijd welkom, maar nooit verplicht.</p>
             </div>
 
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Do I need an account to use SeniorEase Library?</p>
-                <p class="faq-a">No account at all. Download the app and start scanning. Your data stays on your phone — nothing goes to a server or the cloud.</p>
+                <p class="faq-a">No account at all. Download the app and start scanning. Your data stays on your phone &mdash; nothing goes to a server or the cloud.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Heb ik een account nodig?</p>
-                <p class="faq-a">Helemaal geen account. Download de app en begin met scannen. Je gegevens blijven op je telefoon — niets gaat naar een server of de cloud.</p>
+                <p class="faq-a">Helemaal geen account. Download de app en begin met scannen. Je gegevens blijven op je telefoon &mdash; niets gaat naar een server of de cloud.</p>
             </div>
 
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Where does the payment happen?</p>
-                <p class="faq-a">Inside the app, via Google Play. It's the standard Android in-app purchase — the same system you'd use for any other app on the Play Store.</p>
+                <p class="faq-a">Inside the app, via Google Play. It's the standard Android in-app purchase &mdash; the same system you'd use for any other app on the Play Store.</p>
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Waar vindt de betaling plaats?</p>
-                <p class="faq-a">In de app zelf, via Google Play. Het is de standaard Android in-app aankoop — hetzelfde systeem dat je gebruikt voor elke andere app in de Play Store.</p>
+                <p class="faq-a">In de app zelf, via Google Play. Het is de standaard Android in-app aankoop &mdash; hetzelfde systeem dat je gebruikt voor elke andere app in de Play Store.</p>
             </div>
         </div>
 
@@ -667,8 +685,8 @@
                 <span data-lang="en">Download on Google Play</span>
                 <span data-lang="nl">Downloaden via Google Play</span>
             </a>
-            <p class="cta-note" data-lang="en">Android only · €4.99 one-time to unlock · 14-day refund guarantee</p>
-            <p class="cta-note" data-lang="nl">Alleen Android · €4,99 eenmalig om te ontgrendelen · 14 dagen geld-terug-garantie</p>
+            <p class="cta-note" data-lang="en">Android only &mdash; &euro;4.99 one-time to unlock &mdash; 14-day refund guarantee</p>
+            <p class="cta-note" data-lang="nl">Alleen Android &mdash; &euro;4,99 eenmalig om te ontgrendelen &mdash; 14 dagen geld-terug-garantie</p>
         </div>
 
     </div>
@@ -687,22 +705,33 @@
             <a href="/contact.html" data-lang="nl">Contact</a>
         </div>
         <p>
-            <span data-lang="en">© 2026 SeniorEase · Android only</span>
-            <span data-lang="nl">© 2026 SeniorEase · Alleen Android</span>
+            <span data-lang="en">&copy; 2026 SeniorEase &middot; Android only</span>
+            <span data-lang="nl">&copy; 2026 SeniorEase &middot; Alleen Android</span>
         </p>
     </footer>
 
     <script>
         function setLang(lang) {
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                el.style.display = el.dataset.lang === lang ? '' : 'none';
-            });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
-                btn.setAttribute('aria-pressed', btn.textContent.toLowerCase() === lang);
-            });
+            document.body.classList.remove('lang-nl');
+            if (lang === 'nl') document.body.classList.add('lang-nl');
+            document.documentElement.lang = lang;
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+            document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+            document.getElementById('btn-nl').setAttribute('aria-pressed', lang === 'nl');
+            document.title = lang === 'nl'
+                ? 'Prijzen \u2014 SeniorEase Library'
+                : 'Pricing \u2014 SeniorEase Library';
+            try { localStorage.setItem('seniorease-lang', lang); } catch (e) {}
         }
-        setLang('en');
+        document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
+        document.getElementById('btn-nl').addEventListener('click', function() { setLang('nl'); });
+        var saved = null;
+        try { saved = localStorage.getItem('seniorease-lang'); } catch (e) {}
+        var urlLang = new URLSearchParams(window.location.search).get('lang');
+        if (urlLang === 'nl' || saved === 'nl') {
+            setLang('nl');
+        }
     </script>
 </body>
 </html>
