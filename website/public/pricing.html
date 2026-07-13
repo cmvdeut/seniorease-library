@@ -133,16 +133,6 @@
         .lang-btn.active { background: #8B5E3C; color: #fff; }
         .lang-btn:hover:not(.active) { background: #F5EEE6; color: #6D4A30; }
 
-        /* Lang switching */
-        [data-lang="nl"] { display: none; }
-        body.lang-nl [data-lang="nl"] { display: block; }
-        body.lang-nl span[data-lang="nl"], body.lang-nl a[data-lang="nl"] { display: inline; }
-        body.lang-nl [data-lang="en"] { display: none; }
-        table.comparison-table[data-lang="en"] { display: table; }
-        table.comparison-table[data-lang="nl"] { display: none; }
-        body.lang-nl table.comparison-table[data-lang="nl"] { display: table; }
-        body.lang-nl table.comparison-table[data-lang="en"] { display: none; }
-
         .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
 
         .page-hero {
@@ -386,6 +376,25 @@
         footer a { color: #8B5E3C; text-decoration: none; margin: 0 10px; }
         footer a:hover { text-decoration: underline; }
         .footer-links { margin-bottom: 10px; }
+
+        /* Lang switching ? keep last so it overrides component display rules */
+        [data-lang="nl"] { display: none !important; }
+        body:not(.lang-nl) [data-lang="en"] { display: block !important; }
+        body:not(.lang-nl) span[data-lang="en"],
+        body:not(.lang-nl) a[data-lang="en"] { display: inline !important; }
+        body:not(.lang-nl) .feature-text strong[data-lang="en"],
+        body:not(.lang-nl) .feature-text span[data-lang="en"] { display: block !important; }
+        body:not(.lang-nl) table.comparison-table[data-lang="en"] { display: table !important; }
+        body:not(.lang-nl) table.comparison-table[data-lang="nl"] { display: none !important; }
+
+        body.lang-nl [data-lang="en"] { display: none !important; }
+        body.lang-nl [data-lang="nl"] { display: block !important; }
+        body.lang-nl span[data-lang="nl"],
+        body.lang-nl a[data-lang="nl"] { display: inline !important; }
+        body.lang-nl .feature-text strong[data-lang="nl"],
+        body.lang-nl .feature-text span[data-lang="nl"] { display: block !important; }
+        body.lang-nl table.comparison-table[data-lang="nl"] { display: table !important; }
+        body.lang-nl table.comparison-table[data-lang="en"] { display: none !important; }
     </style>
 
         <!-- Google tag (gtag.js) -->
@@ -404,6 +413,14 @@
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<script>
+try {
+    if (new URLSearchParams(location.search).get('lang') === 'nl' || localStorage.getItem('seniorease-lang') === 'nl') {
+        document.body.classList.add('lang-nl');
+        document.documentElement.lang = 'nl';
+    }
+} catch (e) {}
+</script>
 
     <div class="lang-toggle" role="group" aria-label="Language">
         <button type="button" class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
@@ -721,10 +738,12 @@
             document.body.classList.remove('lang-nl');
             if (lang === 'nl') document.body.classList.add('lang-nl');
             document.documentElement.lang = lang;
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-            document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
-            document.getElementById('btn-nl').setAttribute('aria-pressed', lang === 'nl');
+            var enBtn = document.getElementById('btn-en');
+            var nlBtn = document.getElementById('btn-nl');
+            enBtn.classList.toggle('active', lang === 'en');
+            enBtn.setAttribute('aria-pressed', lang === 'en');
+            nlBtn.classList.toggle('active', lang === 'nl');
+            nlBtn.setAttribute('aria-pressed', lang === 'nl');
             document.title = lang === 'nl'
                 ? 'Prijzen \u2014 SeniorEase Library'
                 : 'Pricing \u2014 SeniorEase Library';

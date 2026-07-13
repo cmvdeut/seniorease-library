@@ -45,7 +45,7 @@
           "name": "Is dit veilig om te downloaden?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja. De app staat in de officiùle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens."
+            "text": "Ja. De app staat in de officiÔøΩle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens."
           }
         },
         {
@@ -77,7 +77,7 @@
           "name": "Wat als ik niet tevreden ben?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Geen probleem. Stuur een e-mail naar support@seniorease.eu binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wùl gewaardeerd, maar is nooit verplicht."
+            "text": "Geen probleem. Stuur een e-mail naar support@seniorease.eu binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wÔøΩl gewaardeerd, maar is nooit verplicht."
           }
         },
         {
@@ -190,7 +190,7 @@
             touch-action: pan-y;
         }
 
-        /* Language toggle ù top right */
+        /* Language toggle ÔøΩ top right */
         .lang-toggle {
             position: fixed;
             top: 16px;
@@ -283,8 +283,9 @@
             line-height: 1.65;
         }
         .good-fit-col li { padding: 6px 0 6px 22px; position: relative; }
+        .good-fit-col.not-fit li::before { content: "\2717"; color: #c0392b; }
         .good-fit-col li::before {
-            content: "\\2713";
+            content: "\2713";
             position: absolute;
             left: 0;
             font-weight: 700;
@@ -388,7 +389,7 @@
         .footer-links { margin-bottom: 12px; }
         .footer-links a { margin: 0 12px; }
 
-        /* Lang switching ù NL is standaard op deze pagina */
+        /* Lang switching ÔøΩ NL is standaard op deze pagina */
         [data-lang="en"] { display: none; }
         [data-lang="nl"] { display: block; }
         span[data-lang="nl"], a[data-lang="nl"], img[data-lang="nl"] { display: inline; }
@@ -396,7 +397,7 @@
         body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"], body.lang-en img[data-lang="en"] { display: inline; }
         body.lang-en [data-lang="nl"] { display: none; }
 
-        /* Screenshot taalwissel ù hogere specificiteit dan .phone-mockup img */
+        /* Screenshot taalwissel ÔøΩ hogere specificiteit dan .phone-mockup img */
         .phone-mockup img[data-lang="en"] { display: none; }
         .phone-mockup img[data-lang="nl"] { display: block; }
         body.lang-en .phone-mockup img[data-lang="en"] { display: block; }
@@ -442,7 +443,7 @@
             font-weight: 500;
         }
 
-        /* Sticky CTA ù mobiel only */
+        /* Sticky CTA ÔøΩ mobiel only */
         .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #8B5E3C 0%, #6D4A30 100%); color: #fff; text-align: center; padding: 16px 20px; font-size: 17px; font-weight: 600; text-decoration: none; z-index: 200; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
         @media (max-width: 640px) { .sticky-cta { display: block; } }
     </style>
@@ -500,8 +501,8 @@
 
     <section class="family-banner" aria-label="Family Setup">
         <div class="container">
-            <p data-lang="en">Helping a parent who keeps buying duplicates? <a href="/family-setup.html">Free 30-minute setup guide</a> ù download, sit together, scan 10 items</p>
-            <p data-lang="nl">Ouder die steeds dubbel koopt? <a href="/nl/family-setup.html">Gratis gids: 30 min samen opstarten</a> ù download, scan 10 items</p>
+            <p data-lang="en">Helping a parent who keeps buying duplicates? <a href="/family-setup.html">Free 30-minute setup guide</a> ÔøΩ download, sit together, scan 10 items</p>
+            <p data-lang="nl">Ouder die steeds dubbel koopt? <a href="/nl/family-setup.html">Gratis gids: 30 min samen opstarten</a> ÔøΩ download, scan 10 items</p>
         </div>
     </section>
 
@@ -511,15 +512,15 @@
             <p class="definition-lead" data-lang="nl">SeniorEase Library is een Android-app om boeken, muziek, dvd's en games in &eacute;&eacute;n priv&eacute;-catalogus bij te houden. Scan barcodes om items toe te voegen; geen account of advertenties; gegevens blijven op je toestel en werken offline. De gratis versie telt tot tien items. Onbeperkt voor een eenmalige &euro;4,99. Niet voor iPhone of iPad.</p>
             <div class="good-fit-grid" data-lang="en">
                 <div class="good-fit-col">
-                    <h3>Good fit if youù</h3>
+                    <h3>Good fit if you:</h3>
                     <ul>
                         <li>Want one simple app for books, music, DVDs, and games</li>
                         <li>Prefer no account, no ads, and data that stays on your phone</li>
                         <li>Use Android and like calm, large-type friendly design</li>
                     </ul>
                 </div>
-                <div class="good-fit-col">
-                    <h3>Not the best fit if youù</h3>
+                <div class="good-fit-col not-fit">
+                    <h3>Not the best fit if you:</h3>
                     <ul>
                         <li>Need iPhone or iPad (Android only)</li>
                         <li>Want mandatory cloud sync or a social feed</li>
@@ -529,15 +530,15 @@
             </div>
             <div class="good-fit-grid" data-lang="nl">
                 <div class="good-fit-col">
-                    <h3>Past goed als jeù</h3>
+                    <h3>Past goed als je:</h3>
                     <ul>
-                        <li>Eùn rustige app wilt voor boeken, muziek, dvd's en games</li>
+                        <li>&Eacute;&eacute;n rustige app wilt voor boeken, muziek, dvd's en games</li>
                         <li>Geen account, geen ads en gegevens op je telefoon wilt</li>
                         <li>Android gebruikt en een duidelijke, seniorvriendelijke app zoekt</li>
                     </ul>
                 </div>
-                <div class="good-fit-col">
-                    <h3>Minder geschikt als jeù</h3>
+                <div class="good-fit-col not-fit">
+                    <h3>Minder geschikt als je:</h3>
                     <ul>
                         <li>iPhone of iPad nodig hebt (alleen Android)</li>
                         <li>Verplichte cloud-sync of een sociale feed wilt</li>
@@ -565,17 +566,17 @@
             <h2 data-lang="nl">Wat je kunt doen</h2>
             <ul class="feature-list" data-lang="en">
                 <li>Track books, music, DVDs and games in one place</li>
-                <li>Scan barcodes ù title and artist filled in automatically</li>
+                <li>Scan barcodes ÔøΩ title and artist filled in automatically</li>
                 <li>Mark items as read, listened, watched or owned</li>
                 <li>Export your collection to PDF or CSV</li>
-                <li>Everything stays on your device ù no cloud, no account</li>
+                <li>Everything stays on your device ÔøΩ no cloud, no account</li>
             </ul>
             <ul class="feature-list" data-lang="nl">
                 <li>Boeken, muziek, dvd's en games bijhouden op &eacute;&eacute;n plek</li>
-                <li>Barcodes scannen ù titel en artiest automatisch ingevuld</li>
+                <li>Barcodes scannen ÔøΩ titel en artiest automatisch ingevuld</li>
                 <li>Items markeren als gelezen, beluisterd, bekeken of in bezit</li>
                 <li>Exporteren naar PDF of CSV</li>
-                <li>Alles blijft op je toestel ù geen cloud, geen account</li>
+                <li>Alles blijft op je toestel ÔøΩ geen cloud, geen account</li>
             </ul>
         </div>
     </section>
@@ -658,7 +659,7 @@
                 <div class="review-card"><p class="quote">"My husband set it up for me in two minutes. I scanned my whole bookshelf and DVD collection in one afternoon!"</p><div class="author">Margaret B.</div><div class="detail">78 books &middot; 54 DVDs tracked</div></div>
                 <div class="review-card"><p class="quote">"No account to create. Just downloaded it and started scanning. Books, CDs, games &mdash; everything in one place."</p><div class="author">Peter V.</div><div class="detail">204 items tracked</div></div>
                 <div class="review-card"><p class="quote">"Other apps had so many menus I gave up. This one is clear and simple. Exactly what I needed."</p><div class="author">Susan K.</div><div class="detail">53 books tracked</div></div>
-                <div class="review-card"><p class="quote">"I bought this for my dad who's been collecting vinyl for thirty years but can never remember which pressings he already owns. He takes his phone to every record fair now ù no more duplicates."</p><div class="author">Sandra M.</div><div class="detail">Gift for her father &middot; vinyl collector</div></div>
+                <div class="review-card"><p class="quote">"I bought this for my dad who's been collecting vinyl for thirty years but can never remember which pressings he already owns. He takes his phone to every record fair now ÔøΩ no more duplicates."</p><div class="author">Sandra M.</div><div class="detail">Gift for her father &middot; vinyl collector</div></div>
             </div>
             <div class="review-grid" data-lang="nl">
                 <div class="review-card"><p class="quote">"Ik verzamel al 40 jaar vinyl en kocht altijd dubbelen op platenbeurzen. Niet meer."</p><div class="author">Thomas H.</div><div class="detail">312 platen bijgehouden</div></div>
@@ -668,7 +669,7 @@
                 <div class="review-card"><p class="quote">"Ik heb dit voor mijn vader gekocht die al dertig jaar vinyl verzamelt maar niet meer weet welke persing hij al heeft. Nu neemt hij zijn telefoon mee naar elke platenbeurs. Geen dubbelen meer."</p><div class="author">Sandra M.</div><div class="detail">Cadeau voor haar vader &middot; vinylverzamelaar</div></div>
             </div>
             <p class="review-disclaimer" data-lang="en">These quotes and ratings come from volunteers who tested the app before public launch.</p>
-            <p class="review-disclaimer" data-lang="nl">Deze reacties en beoordelingen komen van vrijwilligers die de app vùùr de publieke lancering hebben getest.</p>
+            <p class="review-disclaimer" data-lang="nl">Deze reacties en beoordelingen komen van vrijwilligers die de app vÔøΩÔøΩr de publieke lancering hebben getest.</p>
         </div>
     </section>
 
@@ -741,7 +742,7 @@
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Is dit veilig om te downloaden?</p>
-                <p class="faq-a">Ja. De app staat in de officiùle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens.</p>
+                <p class="faq-a">Ja. De app staat in de officiÔøΩle Google Play Store en draait alleen op je telefoon. We verzamelen geen persoonlijke gegevens.</p>
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Do I need an account?</p>
@@ -773,7 +774,7 @@
             </div>
             <div class="faq-item" data-lang="nl">
                 <p class="faq-q">Wat als ik niet tevreden ben?</p>
-                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wùl gewaardeerd, maar is nooit verplicht.</p>
+                <p class="faq-a">Geen probleem. Stuur een e-mail naar <a href="mailto:support@seniorease.eu">support@seniorease.eu</a> binnen 14 dagen en je krijgt je geld terug &mdash; geen reden nodig. Feedback wordt wÔøΩl gewaardeerd, maar is nooit verplicht.</p>
             </div>
             <div class="faq-item" data-lang="en">
                 <p class="faq-q">Does it work offline?</p>
@@ -808,8 +809,8 @@
         <div class="container">
             <h2 data-lang="en">Tips for collectors, in your inbox</h2>
             <h2 data-lang="nl">Tips voor verzamelaars, in je inbox</h2>
-            <p class="newsletter-sub" data-lang="en">New articles, app updates ù practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
-            <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates ù praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
+            <p class="newsletter-sub" data-lang="en">New articles, app updates ÔøΩ practical advice for managing your collection. No spam. Unsubscribe anytime.</p>
+            <p class="newsletter-sub" data-lang="nl">Nieuwe artikelen, app-updates ÔøΩ praktische tips voor het bijhouden van je collectie. Geen spam. Altijd uitschrijven.</p>
             <form class="newsletter-form" method="POST"
                   action="https://dcaf15e0.sibforms.com/serve/MUIFAGNZbOdxCVaYIDVD8OkwpT2r9Q7tVHbd61auA9zT5huYXZRrrJJUYo8idSklwjepcM6w5DlZz-ycuF8OTwXvLYNsP4lgO-SVoE9nBMZH2X-Tp-HJ5TzQC034ruRlur_MQFZwsw4r5yb63e1Jdb-VJXrYB96vM7MQwr55_HJ7yBUmVT58-SmkIvzDr8zammIEQRtmbtxkr2geUQ==">
                 <input type="email" id="EMAIL" name="EMAIL" placeholder="jouw@email.nl" required>
@@ -820,8 +821,8 @@
                 </button>
             </form>
             <p class="newsletter-note">
-                <span data-lang="en">No spam ù Unsubscribe anytime</span>
-                <span data-lang="nl">Geen spam ù Altijd uitschrijven</span>
+                <span data-lang="en">No spam ÔøΩ Unsubscribe anytime</span>
+                <span data-lang="nl">Geen spam ÔøΩ Altijd uitschrijven</span>
             </p>
         </div>
     </section>
