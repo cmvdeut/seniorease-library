@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>SeniorEase — Caption Helper</title>
+  <title>SeniorEase � Caption Helper</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -93,11 +93,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>📅 SeniorEase — Caption Helper</h1>
-    <p class="subtitle">Geplande TikTok &amp; Instagram posts. Klik "Copy" om de caption te kopiëren.</p>
+    <h1>?? SeniorEase � Caption Helper</h1>
+    <p class="subtitle">Geplande TikTok &amp; Instagram posts. Klik "Copy" om de caption te kopi�ren.</p>
 
     <div class="pending-banner" id="pending-section">
-      <h2>⏳ Wacht in TikTok inbox — voeg caption toe:</h2>
+      <h2>? Wacht in TikTok inbox � voeg caption toe:</h2>
       <div class="caption-box" id="pending-caption">
         <button class="copy-btn" onclick="copyEl('pending-caption')">Copy</button>
       </div>
@@ -170,15 +170,15 @@
       const id = 'cap-' + (cardIdx++);
       const date = post.scheduled_label || new Date(post.scheduled_time_unix * 1000).toLocaleString('nl-NL');
       const platform = post.platform || '';
-      const platformLabel = platform === 'tiktok' ? '🎵 TikTok' : '📸 Instagram';
+      const platformLabel = platform === 'tiktok' ? '?? TikTok' : '?? Instagram';
       const caption = post.caption || post.caption_preview || '';
       const file = post.video_file || '';
       return '<div class="card">' +
         '<div class="card-header"><div class="meta">' +
-        '<span class="date">📅 ' + escHtml(date) + '</span>' +
+        '<span class="date">?? ' + escHtml(date) + '</span>' +
         '<span class="platform-tag ' + platform + '">' + platformLabel + '</span>' +
         '</div></div>' +
-        '<div class="video-name">📁 ' + escHtml(file) + '</div>' +
+        '<div class="video-name">?? ' + escHtml(file) + '</div>' +
         '<div class="caption-box" id="' + id + '">' +
         '<button class="copy-btn" onclick="copyEl(\'' + id + '\')">Copy</button>' +
         escHtml(caption) + '</div></div>';

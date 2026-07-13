@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>TikTok OAuth — SeniorEase</title>
+    <title>TikTok OAuth � SeniorEase</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,7 +109,7 @@
             <!-- Filled by JS -->
         </div>
 
-        <p class="back"><a href="/">← Terug naar SeniorEase Library</a></p>
+        <p class="back"><a href="/">? Terug naar SeniorEase Library</a></p>
     </div>
 
     <script>
@@ -135,7 +135,7 @@
                 '<label style="display:block; font-size:13px; color:#666; margin-bottom:6px;">Authorization code (kopieer voor de curl-commando):</label>' +
                 '<div class="code-box" id="codeEl">' + escapeHtml(code) + '</div>' +
                 (state ? '<p style="font-size:13px; color:#666;">State: ' + escapeHtml(state) + '</p>' : '') +
-                '<button type="button" class="btn" id="copyBtn">Code kopiëren</button>' +
+                '<button type="button" class="btn" id="copyBtn">Code kopi�ren</button>' +
                 '<div class="step">Wissel deze code in voor tokens met het curl-commando uit TIKTOK-SETUP.md. Gebruik als redirect_uri <strong>exact</strong> wat je in het TikTok-dashboard hebt ingesteld (bijv. <code>https://www.seniorease.eu/tiktok-callback</code>).</div>';
 
             document.getElementById('copyBtn').addEventListener('click', function() {
@@ -144,7 +144,7 @@
                     btn.textContent = 'Gekopieerd!';
                     btn.classList.add('copied');
                     setTimeout(function() {
-                        btn.textContent = 'Code kopiëren';
+                        btn.textContent = 'Code kopi�ren';
                         btn.classList.remove('copied');
                     }, 2000);
                 });
