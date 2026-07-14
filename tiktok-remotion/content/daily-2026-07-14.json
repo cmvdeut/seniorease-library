@@ -1,0 +1,42 @@
+{
+  "topic": "Record store tips: check your collection before you buy",
+  "tiktok": {
+    "hook_text": "You bought it twice again, didn't you?",
+    "body_text": "Record fairs, charity shops, book markets — it's easy to lose track. SeniorEase scans your collection once, then tells you instantly if you already own something. No account, no fuss, no subscription. Just €4.99 and peace of mind.",
+    "cta_text": "Check your collection today",
+    "caption": "Stop buying doubles. Scan once, know forever. 📚 #SeniorEase #VinylCollector #BookCollector",
+    "hashtags": "#seniorease #vinyl #bookcollector #recordfair #collectortips",
+    "duration_sec": "15",
+    "visual_suggestion": "Hook card: 'You bought it twice again?' → Close-up of scanning vinyl barcode with phone → Library shelf with 300+ items → SeniorEase app confirmation screen → Final CTA: 'No account. No subscription. Just €4.99'"
+  },
+  "linkedin": "For collectors, the hunt never stops—and neither does the frustration of accidentally buying duplicates. Whether you're scanning record store shelves or browsing a weekend market, tracking 300+ items in your head isn't realistic. Yet most solutions demand accounts, subscriptions, or cloud syncing. That's where the real problem lies: technology should serve collectors, not complicate their passion. SeniorEase Library solves this with radical simplicity. Scan your collection once with your phone's camera. The app remembers what you own—permanently—right on your device. No login. No monthly fees. No data leaving your hands. Just €4.99, once, and you'll never buy a duplicate again. For serious collectors who value their privacy and their time, that's not just fair—it's respectful. Discover how peace of mind costs less than a coffee. Visit seniorease.eu. #Collectors #VinylCommunity #BookLovers",
+  "facebook": "Herken je dit? Je staat in de boekenzaak of op de plateaubeurs, ziet een klassieker en denkt: 'Dit wil ik hebben!' Thuis ontdek je dan... je had het al. 😅 Met een collectie van 300+ items is het onmogelijk alles in je hoofd te houden. SeniorEase helpt. Scan je collectie eenmaal met je telefoon. Voortaan zie je meteen of je iets al bezit—geen account nodig, geen abonnement, geen gedoe. Gewoon €4.99 en klaar. Jouw gegevens blijven op je toestel. Herken je dit probleem? Laat een reactie achter—hoe hou jij je verzameling bij?",
+  "remotion": {
+    "scriptId": "37"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-08-04T07:00:00+00:00",
+      "postSubmissionId": "acaf36d4-b904-487c-9c1c-bd545abd3776"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-28T17:30:00+00:00",
+      "postSubmissionId": "2a7f434b-6177-4646-bdf1-483205e78c60",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-08-01T18:00:00+00:00",
+      "postSubmissionId": "57d69a7c-1ef5-44b4-9a4b-f3d6ff7449ba",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/15dd2007-599c-4efc-818e-ce6090e0d18d.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-08-01T18:00:00+00:00",
+      "postSubmissionId": "d1bc2c53-16d9-48a0-b252-486e34b51369",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    }
+  ]
+}
