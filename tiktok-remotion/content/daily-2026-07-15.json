@@ -1,0 +1,42 @@
+{
+  "topic": "Bought the same vinyl record twice at a record fair",
+  "tiktok": {
+    "hook_text": "You bought it twice already.",
+    "body_text": "Sound familiar? At record fairs, charity shops, and markets, it's easy to lose track of what you own. SeniorEase Library helps you scan your collection once—no accounts, no passwords, no fuss. Just point, scan, and you'll never buy a duplicate again.",
+    "cta_text": "Scan smart. Collect better.",
+    "caption": "Caught you red-handed? 📀 Never buy the same record twice. SeniorEase makes it simple. #seniorease #vinyl #collecting",
+    "hashtags": "#seniorease #vinyl #collectorslife #recordfair #nodup",
+    "duration_sec": "15",
+    "visual_suggestion": "0-2s: Close-up hand holding two identical vinyl records, confused expression. 2-4s: Text overlay 'Oops. Again?' 4-10s: Phone screen showing SeniorEase app scanning a record, library growing. 10-15s: Happy collector at market, phone in hand, confident smile. Final card: SeniorEase logo + '€4.99 once. Forever yours.'"
+  },
+  "linkedin": "How many times have you stood at a record fair, picked up an album, and wondered: 'Do I already own this?' Most collectors with 300+ items know the feeling—and the regret when you get home and realise you've bought a duplicate. Again.\n\nIt's not just about the money wasted. It's the friction of managing a large, beloved collection without letting it manage you. Cloud apps demand subscriptions and internet. Spreadsheets feel sterile. Your collection deserves better.\n\nSeniorEase Library solves this with radical simplicity: scan your items once, keep your data private on your device, and never wonder again. €4.99. Once. No subscriptions, no accounts, no nonsense—just you and your collection, exactly as it should be.\n\nIf you're tired of the tech theatre around something this straightforward, we built this for you.\n\nLearn more at seniorease.eu\n\n#Collections #Simplicity #PrivacyFirst",
+  "facebook": "Herkennen jullie dit? Je bent op de rommelmarkt of in de platenzaak, ziet een mooi album liggen, en... twijfel je. *Heb ik dit al thuis?* En thuis aangekomen: jawel, je had het al! 💿\n\nMet een grote verzameling is het onmogelijk alles uit je hoofd te onthouden. Maar daar hoeft het niet aan te liggen. Met SeniorEase kun je je hele collectie in 5 minuten inscannen. Geen gedoe, geen account nodig, geen abonnement. €4.99, eenmalig, klaar.\n\nEen simpel tikkie op de barcode en je weet precies wat je hebt. Nooit meer geld verspillen aan dubbelen.\n\nHeb jij ook al twee keer hetzelfde gekocht? Hoe zorg jij nu voor je verzameling? 📚\n\n#SeniorEase #Verzamelen",
+  "remotion": {
+    "scriptId": "38"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-08-05T07:00:00+00:00",
+      "postSubmissionId": "1d967402-b044-467d-a1e2-aadaba14d810"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-07-29T17:30:00+00:00",
+      "postSubmissionId": "a09264a1-ac51-4cbd-b1b9-422509ed3c96",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-08-02T18:00:00+00:00",
+      "postSubmissionId": "a02f3055-fe6c-4b98-8178-0451d92ef046",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/63fb63b5-f37b-433d-b814-7cd1c261b0eb.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-08-02T18:00:00+00:00",
+      "postSubmissionId": "f95317b1-d4ce-4548-baff-d7abae174f98",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    }
+  ]
+}
