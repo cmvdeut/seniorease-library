@@ -1,0 +1,42 @@
+{
+  "topic": "Found duplicates while sorting through my DVD collection",
+  "tiktok": {
+    "hook_text": "Found three copies of the same DVD?",
+    "body_text": "You're not alone. Most collectors end up buying duplicates at fairs and charity shops. SeniorEase scans your barcode, checks what you own, and stops you from buying the same thing twice. Simple, private, one-time €4.99.",
+    "cta_text": "Scan smarter, collect better",
+    "caption": "That moment you realize you own three copies 😅 Never again with SeniorEase. One scan, one price, forever. #CollectorLife #DVDCollection #SeniorEase",
+    "hashtags": "#seniorease #dvdcollector #bookworm #vinyllife #noDuplicates",
+    "duration_sec": "15",
+    "visual_suggestion": "Shot 1: Close-up of three identical DVDs (hook card overlay). Shot 2: Hand scanning barcode with phone. Shot 3: Green checkmark on screen 'Already own this'. Shot 4: Library shelf with organized collection. Shot 5: App icon + €4.99 text on screen."
+  },
+  "linkedin": "We've all been there: hunting through record fairs, browsing charity shop shelves, and discovering weeks later you already owned that book or vinyl. For serious collectors—those with 300+ items—it's not just wasteful, it's frustrating. You lose track. You lose money. You lose the joy of the hunt. The problem isn't laziness; it's scale. Your collection has grown beyond what anyone can memorize. That's why we built SeniorEase Library. A simple barcode scanner that remembers your entire collection so you don't have to. No account creation. No cloud sync. No monthly fees. Just €4.99, once, and your data stays on your device. Because collectors deserve respect—and privacy. Whether you're 55 or 75, tech-savvy or not, you shouldn't need a degree in app management to protect your collection. Discover how SeniorEase makes collecting smarter at seniorease.eu.",
+  "facebook": "Herkent u dit? U vindt een prachtig boek op de rommelmarkt, en thuis ontdekt u: u hebt het al. Drie keer zelfs. Het gebeurt alle verzamelaars. Uw collectie is zo groot geworden, dat u niet alles meer in uw hoofd kunt onthouden. En dan die frustratie—geld verspild, planken vol dubbels. Wat als u voortaan gewoon uw telefoontje kon pakken, even de barcode scannen, en meteen wist: heb ik dit al? SeniorEase doet precies dat. Eenvoudig. Geen gedoe. €4.99, eenmalig betaald, en klaar. Geen abonnement, geen account, geen nonsens. Uw gegevens blijven op uw telefoon. Hoe groot is uw collectie, en hoeveel dubbels hebt u al ontdekt?",
+  "remotion": {
+    "scriptId": "40"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-08-10T07:00:00+00:00",
+      "postSubmissionId": "25765ab9-2a2f-4211-916d-7deda3d556aa"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-08-01T17:30:00+00:00",
+      "postSubmissionId": "5935f70a-b198-479e-8f86-680682079689",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b2be9fa6-90d9-40bb-a839-33625082fb5e.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-08-05T18:00:00+00:00",
+      "postSubmissionId": "f63677c6-92e7-4009-80fc-1f757281dd24",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/209a5df2-d25c-40ce-98c8-70e606f343d0.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-08-05T18:00:00+00:00",
+      "postSubmissionId": "1568dbb1-68d1-4cdb-9263-206a066b53e8",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/6b06d2d5-bc47-4805-9907-53a01fc98afd.mp4"
+    }
+  ]
+}
