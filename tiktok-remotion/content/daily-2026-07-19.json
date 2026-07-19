@@ -1,0 +1,42 @@
+{
+  "topic": "Scanning barcodes to catalog vintage board game collection",
+  "tiktok": {
+    "hook_text": "You bought it twice. Again.",
+    "body_text": "Scanning barcodes into SeniorEase takes seconds. Your entire board game collection stays organized on your phone—no account, no cloud, no fuss. €4.99 once. Never buy a duplicate again.",
+    "cta_text": "Download SeniorEase today",
+    "caption": "Stop the duplicate board game hunt 🎲 One scan. One payment. Problem solved. #seniorease #boardgamecollector #vinyllife",
+    "hashtags": "#seniorease #boardgamecollector #vinyllife #collection #nofuss",
+    "duration_sec": "15",
+    "visual_suggestion": "Hook card (red background: 'You bought it twice'), hands scanning game barcode on phone, quick library view on screen, smiling collector at desk, final CTA card (€4.99 once)"
+  },
+  "linkedin": "Collectors know the feeling: you're at a fair or flea market, spot a treasure, and wonder—do I already own this? The answer shouldn't require three apps, a subscription, or trusting your memory. Yet most of us struggle to keep track of collections that have grown over decades. Whether it's 200 board games, vinyl records, or vintage books, losing sight of what you own means buying duplicates—wasting money on what's already on your shelf. SeniorEase Library solves this with radical simplicity: scan barcodes, keep your collection on your phone, no accounts or subscriptions required. €4.99. Once. Your data stays with you. Privacy first, always. Perfect for collectors who value their collections and their time. Discover how: seniorease.eu #Collections #Privacy #SimpleTools",
+  "facebook": "Herken je dit? Je bent op de rommelmarkt, ziet een leuke bordspel, en je twijfelt... heb ik dit al thuis staan? En je bent het vergeten. Dus je koopt het opnieuw. Niemand wil zijn geld verspillen aan dubbels! Wat je nodig hebt, is simpel: één app die je hele verzameling onthoudt. SeniorEase scant barcodes, geen gedoe met accounts of cloud. Eenmalig €4.99, klaar. Jouw gegevens blijven op jouw telefoon. Zo makkelijk als het hoort te zijn. Heb jij ook een grote verzameling waar je soms het overzicht kwijt bent? #SeniorEase #VerzamelaarsLeven",
+  "remotion": {
+    "scriptId": "42"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-08-12T07:00:00+00:00",
+      "postSubmissionId": "bb793780-4ea0-49f8-a190-393f447a4ceb"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-08-03T17:30:00+00:00",
+      "postSubmissionId": "eb02ad31-c390-4f31-91ac-a32201ce6a69",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-08-07T18:00:00+00:00",
+      "postSubmissionId": "3b94fadb-2904-454b-bfed-7d560c428bd0",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/15dd2007-599c-4efc-818e-ce6090e0d18d.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-08-07T18:00:00+00:00",
+      "postSubmissionId": "fc70cbe2-6a93-48df-8f5e-54ffdfa13773",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/fc2c7309-b6c1-4b65-bd4c-b0bd6dfea1d9.mp4"
+    }
+  ]
+}
