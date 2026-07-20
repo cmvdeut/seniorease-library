@@ -11,10 +11,14 @@ object SettingsHelper {
     private const val KEY_REVIEW_REQUESTED = "review_requested"
     private const val KEY_THEME_MODE = "theme_mode"
     private const val KEY_ONBOARDING_DONE = "onboarding_done"
+    private const val KEY_ONBOARDING_LANGUAGE_CHOSEN = "onboarding_language_chosen"
+    private const val KEY_LAST_ITEM_TYPE = "last_item_type"
+    private const val KEY_FORCE_FREE_LIMIT = "force_free_limit_test"
 
     const val THEME_SYSTEM = "system"
     const val THEME_LIGHT = "light"
     const val THEME_DARK = "dark"
+    const val DEFAULT_ITEM_TYPE = "boek"
     
     /**
      * Haal de grote tekst instelling op
@@ -83,5 +87,36 @@ object SettingsHelper {
     fun markOnboardingDone(context: Context) {
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit().putBoolean(KEY_ONBOARDING_DONE, true).apply()
+    }
+
+    fun isOnboardingLanguageChosen(context: Context): Boolean {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getBoolean(KEY_ONBOARDING_LANGUAGE_CHOSEN, false)
+    }
+
+    fun markOnboardingLanguageChosen(context: Context) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putBoolean(KEY_ONBOARDING_LANGUAGE_CHOSEN, true).apply()
+    }
+
+    fun getLastItemType(context: Context): String {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_LAST_ITEM_TYPE, DEFAULT_ITEM_TYPE) ?: DEFAULT_ITEM_TYPE
+    }
+
+    fun setLastItemType(context: Context, type: String) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putString(KEY_LAST_ITEM_TYPE, type).apply()
+    }
+
+    /** Debug-only: treat app as free even if Play purchase/promo exists. */
+    fun isForceFreeLimit(context: Context): Boolean {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getBoolean(KEY_FORCE_FREE_LIMIT, false)
+    }
+
+    fun setForceFreeLimit(context: Context, enabled: Boolean) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putBoolean(KEY_FORCE_FREE_LIMIT, enabled).apply()
     }
 }

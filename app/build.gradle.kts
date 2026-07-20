@@ -24,8 +24,8 @@ android {
         applicationId = "com.maureen.biblitoheek"
         minSdk = 26
         targetSdk = 36
-        versionCode = 35
-        versionName = "1.4.3"
+        versionCode = 38
+        versionName = "1.4.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 

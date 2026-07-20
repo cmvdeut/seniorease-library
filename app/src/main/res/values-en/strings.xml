@@ -10,6 +10,7 @@
     <string name="cancel">Cancel</string>
     <string name="close">Close</string>
     <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
     <string name="add">Add</string>
     <string name="search">Search</string>
     <string name="yes">Yes</string>
@@ -20,10 +21,13 @@
     <string name="library">SeniorEase Library</string>
     <string name="about_title">About</string>
     <string name="about_description">SeniorEase Library — your personal collection of books, music, DVDs and games.</string>
+    <string name="about_tips_title">Scanning tips</string>
+    <string name="about_tips_text">1. First choose the type: book, music, DVD or game.\n2. Then scan the barcode.\n3. The type stays selected for the next scan.\n4. No title found? Enter the title and author/artist yourself. The barcode is still saved.</string>
     <string name="about_version">Version: %1$s</string>
     <string name="about_website">Website: seniorease.eu</string>
     <string name="about_contact">Contact: info@seniorease.eu</string>
     <string name="scan_type_label">Scan as:</string>
+    <string name="type_tip">Choose type first. It stays selected for the next scan.</string>
     <string name="app_version">Version %1$s</string>
     <string name="demo_status">Demo – %1$d of %2$d items</string>
     <string name="demo_limit_warning_title">⚠️ Demo limit reached</string>
@@ -58,6 +62,14 @@
     <string name="statistics">Statistics</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="clear_all_data">Clear all data</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="clear_cache">Clear temporary files</string>
+    <string name="clear_cache_title">Clear temporary files?</string>
+    <string name="clear_cache_message">Export files and temporary images will be removed. Your collection and settings are kept. The app will restart afterwards.</string>
+    <string name="clear_cache_confirm">Clear</string>
+    <string name="clear_cache_success">Temporary files cleared.</string>
+    <string name="clear_cache_error">Could not clear cache.</string>
+    <string name="play_store_not_found">Could not open Play Store.</string>
 
     <!-- Sort & Filter -->
     <string name="sort">Sort by:</string>
@@ -138,7 +150,7 @@
     <string name="pdf_exported">PDF exported</string>
     <string name="pdf_export_error">Error exporting PDF</string>
     <string name="duplicate_code">This code already exists in your library.</string>
-    <string name="book_not_found">No book found. Please check the title or author.</string>
+    <string name="book_not_found">No book info found for this ISBN. The number is saved — please enter the title and author yourself.</string>
     <string name="fetching_book_data">Fetching book information…</string>
     <string name="fetching_cover">Loading…</string>
     <string name="fetch_error">Error loading: %1$s</string>
@@ -239,14 +251,17 @@
     <string name="onboarding_skip">Skip</string>
     <string name="onboarding_next">Next</string>
     <string name="onboarding_get_started">Get started</string>
+    <string name="onboarding_language_title">Choose your language · Kies uw taal</string>
+    <string name="onboarding_language_nl">NL</string>
+    <string name="onboarding_language_en">EN</string>
     <string name="onboarding_1_title">Welcome to\nSeniorEase Library</string>
     <string name="onboarding_1_desc">Your personal collection of books, music, DVDs and games — all in one place.</string>
-    <string name="onboarding_2_title">Scan any barcode</string>
-    <string name="onboarding_2_desc">Hold your camera over a barcode. Title and author are filled in automatically.</string>
+    <string name="onboarding_2_title">Choose type, then scan</string>
+    <string name="onboarding_2_desc">First choose book, music, DVD or game. Then scan the barcode. The type stays selected for the next scan. No info found? Enter the title and author yourself.</string>
     <string name="onboarding_3_title">Always organised</string>
     <string name="onboarding_3_desc">Everything in one place. Filter by read, to-read or owned.</string>
     <string name="onboarding_4_title">You\'re ready!</string>
-    <string name="onboarding_4_desc">No account needed. Works offline. Tap + to add your first item.</string>
+    <string name="onboarding_4_desc">No account needed. Works offline. Tap + to start. Tip: for vinyl, choose Music first.</string>
 
     <!-- Theme -->
     <string name="settings_theme">Theme</string>
@@ -260,6 +275,14 @@
     <string name="premium_unlock_message">You have reached the limit of 10 items in the free version.\n\nUnlock unlimited access with a one-time purchase of €4.99.</string>
     <string name="premium_buy_button">Buy (€4.99)</string>
     <string name="premium_restore_button">Restore Purchase</string>
+    <string name="premium_redeem_button">Redeem code</string>
+    <string name="premium_redeem_title">Promo code</string>
+    <string name="premium_redeem_message">Paste the code you received. You will be taken to Google Play to redeem it.</string>
+    <string name="premium_redeem_hint">Promo code</string>
+    <string name="premium_redeem_paste">Paste</string>
+    <string name="premium_redeem_continue">Continue</string>
+    <string name="premium_redeem_empty">Please enter a code first.</string>
+    <string name="premium_redeem_open_error">Could not open Google Play. Please try again.</string>
     <string name="premium_status_active">Premium: Active ✓</string>
     <string name="premium_status_free">Free version (%1$d/10 items)</string>
 </resources>

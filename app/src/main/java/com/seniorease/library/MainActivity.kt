@@ -61,12 +61,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -99,6 +102,11 @@ import java.util.Locale
 import androidx.compose.foundation.layout.Arrangement
 import com.google.android.play.core.review.ReviewManagerFactory
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 
 class MainViewModel(private val db: AppDatabase, private val context: Context) : ViewModel() {
     private val _items = MutableStateFlow<List<Item>>(emptyList())
@@ -114,10 +122,34 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
         }
     }
 
+    private suspend fun refreshItems() {
+        _items.value = db.itemDao().getAllSortedByNewest()
+    }
+
     fun addItem(item: Item, onResult: (Boolean, String?) -> Unit = { _, _ -> }) {
         viewModelScope.launch {
             db.itemDao().insert(item)
-            loadItems()
+            refreshItems()
+            onResult(true, null)
+        }
+    }
+
+    fun tryAddItem(
+        item: Item,
+        isPremium: Boolean,
+        freeLimit: Int,
+        onLimitReached: () -> Unit,
+        onResult: (Boolean, String?) -> Unit = { _, _ -> }
+    ) {
+        viewModelScope.launch {
+            val currentCount = db.itemDao().getCount()
+            if (!isPremium && currentCount >= freeLimit) {
+                onLimitReached()
+                onResult(false, "limit")
+                return@launch
+            }
+            db.itemDao().insert(item)
+            refreshItems()
             onResult(true, null)
         }
     }
@@ -127,7 +159,7 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
     fun deleteItem(item: Item, onResult: () -> Unit = {}) {
         viewModelScope.launch {
             db.itemDao().delete(item)
-            loadItems()
+            refreshItems()
             onResult()
         }
     }
@@ -135,7 +167,7 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
     fun updateItem(item: Item, onResult: () -> Unit = {}) {
         viewModelScope.launch {
             db.itemDao().update(item)
-            loadItems()
+            refreshItems()
             onResult()
         }
     }
@@ -143,7 +175,7 @@ class MainViewModel(private val db: AppDatabase, private val context: Context) :
     fun clearAllData(onResult: () -> Unit = {}) {
         viewModelScope.launch {
             db.itemDao().clearAllItems()
-            loadItems()
+            refreshItems()
             onResult()
         }
     }
@@ -356,13 +388,30 @@ class MainActivity : ComponentActivity() {
                 dynamicColor = false
             ) {
                 val isPremium by billingManager.isPremiumFlow.collectAsState()
+                var forceFreeLimit by remember {
+                    mutableStateOf(SettingsHelper.isForceFreeLimit(context))
+                }
+                val effectivePremium = isPremium && !forceFreeLimit
 
                 var menuExpanded by remember { mutableStateOf(false) }
                 var showDialog by remember { mutableStateOf(false) }
                 var showUnlockDialog by remember { mutableStateOf(false) }
+                var showRedeemCodeDialog by remember { mutableStateOf(false) }
+                var redeemCodeText by remember { mutableStateOf("") }
 
-                LaunchedEffect(isPremium) {
-                    if (isPremium) showUnlockDialog = false
+                LaunchedEffect(effectivePremium) {
+                    if (effectivePremium) showUnlockDialog = false
+                }
+
+                val lifecycleOwner = LocalLifecycleOwner.current
+                DisposableEffect(lifecycleOwner) {
+                    val observer = LifecycleEventObserver { _, event ->
+                        if (event == Lifecycle.Event.ON_RESUME) {
+                            billingManager.queryExistingPurchases()
+                        }
+                    }
+                    lifecycleOwner.lifecycle.addObserver(observer)
+                    onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
                 }
                 var showStatsDialog by remember { mutableStateOf(false) } // Nieuw
                 var showPrivacyDialog by remember { mutableStateOf(false) } // Privacy beleid
@@ -371,8 +420,15 @@ class MainActivity : ComponentActivity() {
                 var showAboutDialog by remember { mutableStateOf(false) } // Over de app dialoog
                 var showSettingsDialog by remember { mutableStateOf(false) } // Settings
                 var selectedItem by remember { mutableStateOf<Item?>(null) }
-                var lastType by remember { mutableStateOf("boek") }
+                var lastType by remember {
+                    mutableStateOf(SettingsHelper.getLastItemType(context))
+                }
                 val allAuthors = items.map { it.authorOrArtist }.distinct()
+
+                fun rememberLastType(type: String) {
+                    lastType = type
+                    SettingsHelper.setLastItemType(context, type)
+                }
 
                 if (showOnboarding) {
                     OnboardingScreen(
@@ -473,12 +529,13 @@ class MainActivity : ComponentActivity() {
                         ) {
                             ItemListScreen(
                                 items = items,
+                                lastItemType = lastType,
                                 onAddClick = { type ->
-                                    if (!isPremium && viewModel.getCurrentItemCount() >= BillingManager.FREE_ITEM_LIMIT) {
+                                    if (!effectivePremium && items.size >= BillingManager.FREE_ITEM_LIMIT) {
                                         showUnlockDialog = true
                                     } else {
                                         selectedItem = null
-                                        lastType = type
+                                        rememberLastType(type)
                                         showDialog = true
                                     }
                                 },
@@ -492,9 +549,18 @@ class MainActivity : ComponentActivity() {
                                 AddItemDialog(
                                     onAdd = { item ->
                                         if (selectedItem == null) {
-                                            viewModel.addItem(item) { _, _ ->
+                                            viewModel.tryAddItem(
+                                                item = item,
+                                                isPremium = effectivePremium,
+                                                freeLimit = BillingManager.FREE_ITEM_LIMIT,
+                                                onLimitReached = {
+                                                    showDialog = false
+                                                    showUnlockDialog = true
+                                                }
+                                            ) { success, _ ->
+                                                if (!success) return@tryAddItem
                                                 showDialog = false
-                                                lastType = item.type
+                                                rememberLastType(item.type)
                                                 // In-app review: trigger na 3e item, maximaal 1 keer
                                                 val addedCount = SettingsHelper.incrementItemsAdded(context)
                                                 if (addedCount >= 3 && !SettingsHelper.hasReviewBeenRequested(context)) {
@@ -512,7 +578,7 @@ class MainActivity : ComponentActivity() {
                                             }
                                         } else {
                                             viewModel.updateItem(item) { showDialog = false; selectedItem = null }
-                                            lastType = item.type
+                                            rememberLastType(item.type)
                                         }
                                     },
                                     onDelete = { item ->
@@ -524,7 +590,7 @@ class MainActivity : ComponentActivity() {
                                     },
                                     item = selectedItem,
                                     initialType = if (selectedItem == null) lastType else selectedItem?.type ?: lastType,
-                                    onTypeChange = { lastType = it },
+                                    onTypeChange = { rememberLastType(it) },
                                     allAuthors = allAuthors
                                 )
                             }
@@ -575,9 +641,14 @@ class MainActivity : ComponentActivity() {
                                         themeMode = mode
                                     },
                                     onDismiss = { showSettingsDialog = false },
-                                    isPremium = isPremium,
-                                    itemCount = viewModel.getCurrentItemCount(),
-                                    onRestorePurchase = { billingManager.queryExistingPurchases() }
+                                    isPremium = effectivePremium,
+                                    itemCount = items.size,
+                                    onRestorePurchase = { billingManager.queryExistingPurchases() },
+                                    forceFreeLimit = forceFreeLimit,
+                                    onForceFreeLimitChange = { enabled ->
+                                        forceFreeLimit = enabled
+                                        SettingsHelper.setForceFreeLimit(context, enabled)
+                                    }
                                 )
                             }
                             if (showUnlockDialog) {
@@ -586,24 +657,36 @@ class MainActivity : ComponentActivity() {
                                     title = {
                                         Text(
                                             text = stringResource(R.string.premium_unlock_title),
-                                            style = MaterialTheme.typography.headlineMedium
+                                            style = MaterialTheme.typography.titleLarge
                                         )
                                     },
                                     text = {
-                                        Text(
-                                            text = stringResource(R.string.premium_unlock_message),
-                                            style = MaterialTheme.typography.bodyMedium
-                                        )
-                                    },
-                                    confirmButton = {
-                                        Button(onClick = {
-                                            billingManager.launchPurchaseFlow(activity)
-                                        }) {
-                                            Text(stringResource(R.string.premium_buy_button))
-                                        }
-                                    },
-                                    dismissButton = {
-                                        Column {
+                                        Column(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Text(
+                                                text = stringResource(R.string.premium_unlock_message),
+                                                style = MaterialTheme.typography.bodyMedium
+                                            )
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Button(
+                                                onClick = {
+                                                    billingManager.launchPurchaseFlow(activity)
+                                                },
+                                                modifier = Modifier.fillMaxWidth()
+                                            ) {
+                                                Text(stringResource(R.string.premium_buy_button))
+                                            }
+                                            OutlinedButton(
+                                                onClick = {
+                                                    redeemCodeText = ""
+                                                    showRedeemCodeDialog = true
+                                                },
+                                                modifier = Modifier.fillMaxWidth()
+                                            ) {
+                                                Text(stringResource(R.string.premium_redeem_button))
+                                            }
                                             OutlinedButton(
                                                 onClick = {
                                                     billingManager.queryExistingPurchases()
@@ -613,13 +696,89 @@ class MainActivity : ComponentActivity() {
                                             ) {
                                                 Text(stringResource(R.string.premium_restore_button))
                                             }
-                                            Spacer(Modifier.height(4.dp))
                                             OutlinedButton(
                                                 onClick = { showUnlockDialog = false },
                                                 modifier = Modifier.fillMaxWidth()
                                             ) {
                                                 Text(stringResource(R.string.cancel))
                                             }
+                                        }
+                                    },
+                                    confirmButton = {}
+                                )
+                            }
+                            if (showRedeemCodeDialog) {
+                                val clipboardManager = LocalClipboardManager.current
+                                AlertDialog(
+                                    onDismissRequest = { showRedeemCodeDialog = false },
+                                    title = {
+                                        Text(
+                                            text = stringResource(R.string.premium_redeem_title),
+                                            style = MaterialTheme.typography.titleLarge
+                                        )
+                                    },
+                                    text = {
+                                        Column(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Text(
+                                                text = stringResource(R.string.premium_redeem_message),
+                                                style = MaterialTheme.typography.bodyMedium
+                                            )
+                                            OutlinedTextField(
+                                                value = redeemCodeText,
+                                                onValueChange = { redeemCodeText = it },
+                                                label = { Text(stringResource(R.string.premium_redeem_hint)) },
+                                                modifier = Modifier.fillMaxWidth(),
+                                                singleLine = true
+                                            )
+                                            OutlinedButton(
+                                                onClick = {
+                                                    val clip = clipboardManager.getText()?.text
+                                                    if (!clip.isNullOrBlank()) {
+                                                        redeemCodeText = clip.trim()
+                                                    }
+                                                },
+                                                modifier = Modifier.fillMaxWidth()
+                                            ) {
+                                                Text(stringResource(R.string.premium_redeem_paste))
+                                            }
+                                        }
+                                    },
+                                    confirmButton = {
+                                        Button(
+                                            onClick = {
+                                                if (redeemCodeText.isBlank()) {
+                                                    Toast.makeText(
+                                                        context,
+                                                        context.getString(R.string.premium_redeem_empty),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                } else {
+                                                    val ok = AppMaintenanceHelper.openPromoCodeRedeem(
+                                                        context,
+                                                        redeemCodeText
+                                                    )
+                                                    if (ok) {
+                                                        showRedeemCodeDialog = false
+                                                        showUnlockDialog = false
+                                                    } else {
+                                                        Toast.makeText(
+                                                            context,
+                                                            context.getString(R.string.premium_redeem_open_error),
+                                                            Toast.LENGTH_LONG
+                                                        ).show()
+                                                    }
+                                                }
+                                            }
+                                        ) {
+                                            Text(stringResource(R.string.premium_redeem_continue))
+                                        }
+                                    },
+                                    dismissButton = {
+                                        OutlinedButton(onClick = { showRedeemCodeDialog = false }) {
+                                            Text(stringResource(R.string.cancel))
                                         }
                                     }
                                 )
@@ -700,6 +859,15 @@ class MainActivity : ComponentActivity() {
                                     text = {
                                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                             Text(stringResource(R.string.about_description), style = MaterialTheme.typography.bodyMedium)
+                                            Spacer(Modifier.height(4.dp))
+                                            Text(
+                                                stringResource(R.string.about_tips_title),
+                                                style = MaterialTheme.typography.titleMedium
+                                            )
+                                            Text(
+                                                stringResource(R.string.about_tips_text),
+                                                style = MaterialTheme.typography.bodyMedium
+                                            )
                                             Spacer(Modifier.height(4.dp))
                                             Text(stringResource(R.string.about_version, versionName), style = MaterialTheme.typography.bodyMedium)
                                             Text(stringResource(R.string.about_website), style = MaterialTheme.typography.bodyMedium)

@@ -30,4 +30,7 @@ interface ItemDao {
 
     @Query("DELETE FROM items")
     suspend fun clearAllItems()
+
+    @Query("SELECT COUNT(*) FROM items")
+    suspend fun getCount(): Int
 } 

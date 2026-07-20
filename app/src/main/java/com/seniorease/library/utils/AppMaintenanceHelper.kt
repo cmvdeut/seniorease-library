@@ -34,6 +34,30 @@ object AppMaintenanceHelper {
         }
     }
 
+    /** Opens Google Play promo-code redeem screen with the pasted code. */
+    fun openPromoCodeRedeem(context: Context, code: String): Boolean {
+        val cleaned = code.trim().replace(" ", "").replace("\n", "")
+        if (cleaned.isEmpty()) return false
+        val redeemUri = "https://play.google.com/redeem?code=$cleaned".toUri()
+        return try {
+            context.startActivity(
+                Intent(Intent.ACTION_VIEW, redeemUri)
+                    .setPackage("com.android.vending")
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+            true
+        } catch (_: ActivityNotFoundException) {
+            try {
+                context.startActivity(
+                    Intent(Intent.ACTION_VIEW, redeemUri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+                true
+            } catch (_: ActivityNotFoundException) {
+                false
+            }
+        }
+    }
+
     /** Ensures cache folders exist (repairs after a bad clear on older app versions). */
     fun ensureCacheDirectories(context: Context) {
         try {

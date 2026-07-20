@@ -1,14 +1,16 @@
 package com.seniorease.library.ui
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.seniorease.library.BuildConfig
 import com.seniorease.library.R
 import com.seniorease.library.utils.LanguageHelper
@@ -25,14 +27,17 @@ fun SettingsScreen(
     onDismiss: () -> Unit,
     isPremium: Boolean = false,
     itemCount: Int = 0,
-    onRestorePurchase: () -> Unit = {}
+    onRestorePurchase: () -> Unit = {},
+    forceFreeLimit: Boolean = false,
+    onForceFreeLimitChange: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
     var selectedLanguage by remember { mutableStateOf(LanguageHelper.getSavedLanguage(context)) }
     var languageMenuExpanded by remember { mutableStateOf(false) }
     var selectedTheme by remember { mutableStateOf(SettingsHelper.getThemeMode(context)) }
     var themeMenuExpanded by remember { mutableStateOf(false) }
-    
+    val maxDialogHeight = LocalConfiguration.current.screenHeightDp.dp * 0.7f
+
     val languageDisplayText = when (selectedLanguage) {
         LanguageHelper.LANGUAGE_DUTCH -> stringResource(R.string.language_dutch)
         LanguageHelper.LANGUAGE_ENGLISH -> stringResource(R.string.language_english)
@@ -44,17 +49,23 @@ fun SettingsScreen(
         SettingsHelper.THEME_DARK -> stringResource(R.string.theme_dark)
         else -> stringResource(R.string.theme_system)
     }
-    
+
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { 
+        modifier = Modifier.heightIn(max = LocalConfiguration.current.screenHeightDp.dp * 0.9f),
+        title = {
             Text(
                 text = stringResource(R.string.settings_title),
                 style = MaterialTheme.typography.headlineMedium
-            ) 
+            )
         },
         text = {
-            Column {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = maxDialogHeight)
+                    .verticalScroll(rememberScrollState())
+            ) {
                 // Grote tekst toggle
                 Row(
                     modifier = Modifier
@@ -77,7 +88,7 @@ fun SettingsScreen(
                         onCheckedChange = onLargeTextToggle
                     )
                 }
-                
+
                 // Hoog contrast toggle
                 Row(
                     modifier = Modifier
@@ -100,7 +111,7 @@ fun SettingsScreen(
                         onCheckedChange = onHighContrastToggle
                     )
                 }
-                
+
                 // Taal selector
                 Row(
                     modifier = Modifier
@@ -136,7 +147,7 @@ fun SettingsScreen(
                                 text = { Text(stringResource(R.string.language_system), style = MaterialTheme.typography.bodyLarge) },
                                 onClick = {
                                     selectedLanguage = LanguageHelper.LANGUAGE_SYSTEM
-                                    LanguageHelper.saveLanguage(context, LanguageHelper.LANGUAGE_SYSTEM)
+                                    LanguageHelper.applyLanguage(context, LanguageHelper.LANGUAGE_SYSTEM)
                                     onLanguageChange(LanguageHelper.LANGUAGE_SYSTEM)
                                     languageMenuExpanded = false
                                 }
@@ -145,7 +156,7 @@ fun SettingsScreen(
                                 text = { Text(stringResource(R.string.language_dutch), style = MaterialTheme.typography.bodyLarge) },
                                 onClick = {
                                     selectedLanguage = LanguageHelper.LANGUAGE_DUTCH
-                                    LanguageHelper.saveLanguage(context, LanguageHelper.LANGUAGE_DUTCH)
+                                    LanguageHelper.applyLanguage(context, LanguageHelper.LANGUAGE_DUTCH)
                                     onLanguageChange(LanguageHelper.LANGUAGE_DUTCH)
                                     languageMenuExpanded = false
                                 }
@@ -154,7 +165,7 @@ fun SettingsScreen(
                                 text = { Text(stringResource(R.string.language_english), style = MaterialTheme.typography.bodyLarge) },
                                 onClick = {
                                     selectedLanguage = LanguageHelper.LANGUAGE_ENGLISH
-                                    LanguageHelper.saveLanguage(context, LanguageHelper.LANGUAGE_ENGLISH)
+                                    LanguageHelper.applyLanguage(context, LanguageHelper.LANGUAGE_ENGLISH)
                                     onLanguageChange(LanguageHelper.LANGUAGE_ENGLISH)
                                     languageMenuExpanded = false
                                 }
@@ -162,7 +173,7 @@ fun SettingsScreen(
                         }
                     }
                 }
-                
+
                 // Thema selector
                 Row(
                     modifier = Modifier
@@ -226,42 +237,68 @@ fun SettingsScreen(
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
-                Divider()
+                HorizontalDivider()
                 Spacer(modifier = Modifier.height(8.dp))
 
                 // Premium status
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        if (isPremium) {
+                if (isPremium && !forceFreeLimit) {
+                    Text(
+                        text = stringResource(R.string.premium_status_active),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                } else {
+                    Text(
+                        text = stringResource(R.string.premium_status_free, itemCount),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                    if (!forceFreeLimit) {
+                        OutlinedButton(
+                            onClick = onRestorePurchase,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        ) {
                             Text(
-                                text = stringResource(R.string.premium_status_active),
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.primary
+                                text = stringResource(R.string.premium_restore_button),
+                                style = MaterialTheme.typography.bodyMedium
                             )
-                        } else {
-                            Text(
-                                text = stringResource(R.string.premium_status_free, itemCount),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            OutlinedButton(
-                                onClick = onRestorePurchase,
-                                modifier = Modifier.padding(top = 4.dp)
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.premium_restore_button),
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            }
                         }
                     }
                 }
 
-                Divider()
+                if (BuildConfig.DEBUG) {
+                    HorizontalDivider()
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Test gratis limiet (debug)",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "Zet dit aan om de limiet van 10 items te testen, ook als premium actief is.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(bottom = 4.dp)
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 8.dp)
+                    ) {
+                        Text(
+                            text = if (forceFreeLimit) "Aan" else "Uit",
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Switch(
+                            checked = forceFreeLimit,
+                            onCheckedChange = onForceFreeLimitChange
+                        )
+                    }
+                }
+
+                HorizontalDivider()
                 Spacer(modifier = Modifier.height(8.dp))
                 val versionName = BuildConfig.VERSION_NAME.removeSuffix("-demo")
                 Text(
@@ -278,4 +315,3 @@ fun SettingsScreen(
         }
     )
 }
-

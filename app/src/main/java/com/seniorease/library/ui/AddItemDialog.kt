@@ -20,6 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
 import com.seniorease.library.data.AppDatabase
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.input.TextFieldValue
@@ -33,6 +34,8 @@ import androidx.compose.material.icons.filled.Language
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
@@ -87,6 +90,7 @@ fun AddItemDialog(
     val uriHandler = LocalUriHandler.current
     val clipboardManager = LocalClipboardManager.current
     var dvdNotFound by remember { mutableStateOf(false) }
+    var bookNotFound by remember { mutableStateOf(false) }
     var type by remember { mutableStateOf(item?.type ?: initialType) }
     var title by remember { mutableStateOf(item?.title ?: "") }
     var authorOrArtist by remember { mutableStateOf(item?.authorOrArtist ?: "") }
@@ -227,6 +231,7 @@ fun AddItemDialog(
 
     suspend fun tryFetchAndFill(isbn: String, forceUpdate: Boolean = false) {
         isLoading = true
+        bookNotFound = false
         val result = fetchBookInfo(isbn) ?: fetchBookInfoOpenLibrary(isbn)
         if (result != null) {
             if (forceUpdate || title.isBlank()) {
@@ -240,6 +245,9 @@ fun AddItemDialog(
             }
             // Genereer Google zoek URL
             googleSearchUrl = "https://www.google.com/search?q=${title.replace(" ", "+")}+${authorOrArtist.replace(" ", "+")}"
+            bookNotFound = false
+        } else {
+            bookNotFound = true
         }
         isLoading = false
     }
@@ -637,17 +645,32 @@ fun AddItemDialog(
         authorSuggestions = allAuthors.filter { it.isNotBlank() && it.contains(authorOrArtist, ignoreCase = true) && it != authorOrArtist }.take(5)
     }
 
+    val maxDialogHeight = LocalConfiguration.current.screenHeightDp.dp * 0.72f
     AlertDialog(
         onDismissRequest = onDismiss,
+        modifier = Modifier.heightIn(max = LocalConfiguration.current.screenHeightDp.dp * 0.92f),
         title = { Text(if (item == null) stringResource(R.string.add_item) else stringResource(R.string.edit_item)) },
         text = {
-            Box {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = maxDialogHeight)
+                    .verticalScroll(rememberScrollState())
+            ) {
                 Column {
                     if (isLoading) {
                         Text(stringResource(R.string.fetching_book_data))
                     }
                     if (duplicateError) {
                         Text(stringResource(R.string.duplicate_code), color = MaterialTheme.colorScheme.error)
+                    }
+                    if (type == "boek" && bookNotFound && code.isNotBlank()) {
+                        Text(
+                            text = stringResource(R.string.book_not_found),
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
                     }
                     // Type dropdown menu
                     Row(
@@ -731,6 +754,12 @@ fun AddItemDialog(
                                 }
                             }
                         }
+                        Text(
+                            text = stringResource(R.string.type_tip),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
+                        )
                     // Titel veld
                     OutlinedTextField(
                         value = title,
@@ -1078,6 +1107,7 @@ fun AddItemDialog(
                     }
                 }
             }
+
         },
         confirmButton = {
             Button(

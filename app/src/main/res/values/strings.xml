@@ -9,6 +9,7 @@
     <string name="cancel">Annuleren</string>
     <string name="close">Sluiten</string>
     <string name="delete">Verwijderen</string>
+    <string name="edit">Bewerken</string>
     <string name="add">Toevoegen</string>
     <string name="search">Zoeken</string>
     <string name="yes">Ja</string>
@@ -19,10 +20,13 @@
     <string name="library">SeniorEase Library</string>
     <string name="about_title">Over de app</string>
     <string name="about_description">SeniorEase Library — uw persoonlijke collectie van boeken, muziek, dvd\'s en games.</string>
+    <string name="about_tips_title">Tips bij scannen</string>
+    <string name="about_tips_text">1. Kies eerst het type: boek, muziek, dvd of game.\n2. Scan daarna de barcode.\n3. Het type blijft staan voor de volgende scan.\n4. Wordt er geen titel gevonden? Vul titel en auteur/artiest zelf in. De barcode blijft bewaard.</string>
     <string name="about_version">Versie: %1$s</string>
     <string name="about_website">Website: seniorease.eu</string>
     <string name="about_contact">Contact: info@seniorease.eu</string>
     <string name="scan_type_label">Scan als:</string>
+    <string name="type_tip">Eerst type kiezen. Blijft staan voor de volgende scan.</string>
     <string name="app_version">Version %1$s</string>
     <string name="demo_status">Demo – %1$d of %2$d items</string>
     <string name="demo_limit_warning_title">Demo limit reached</string>
@@ -64,6 +68,14 @@
     <string name="statistics">Statistieken</string>
     <string name="privacy_policy">Privacybeleid</string>
     <string name="clear_all_data">Wis alle data</string>
+    <string name="check_for_updates">Zoek naar updates</string>
+    <string name="clear_cache">Tijdelijke bestanden wissen</string>
+    <string name="clear_cache_title">Tijdelijke bestanden wissen?</string>
+    <string name="clear_cache_message">Exportbestanden en tijdelijke afbeeldingen worden verwijderd. Uw collectie en instellingen blijven behouden. De app start daarna opnieuw op.</string>
+    <string name="clear_cache_confirm">Wissen</string>
+    <string name="clear_cache_success">Tijdelijke bestanden gewist.</string>
+    <string name="clear_cache_error">Cache kon niet worden geleegd.</string>
+    <string name="play_store_not_found">Play Store kon niet worden geopend.</string>
     
     <!-- Sort & Filter -->
     <string name="sort">Sorteren:</string>
@@ -140,7 +152,7 @@
     <string name="pdf_exported">PDF geëxporteerd</string>
     <string name="pdf_export_error">Fout bij exporteren PDF</string>
     <string name="duplicate_code">Deze code bestaat al in je collectie!</string>
-    <string name="book_not_found">Geen boek gevonden. Controleer de titel of auteur.</string>
+    <string name="book_not_found">Geen boekinfo gevonden bij deze ISBN. Het nummer is wel bewaard — vul titel en auteur zelf in.</string>
     <string name="fetching_book_data">Boekgegevens ophalen...</string>
     <string name="fetching_cover">Bezig met ophalen...</string>
     <string name="fetch_error">Fout bij ophalen: %1$s</string>
@@ -226,14 +238,17 @@
     <string name="onboarding_skip">Overslaan</string>
     <string name="onboarding_next">Volgende</string>
     <string name="onboarding_get_started">Aan de slag</string>
+    <string name="onboarding_language_title">Kies uw taal · Choose your language</string>
+    <string name="onboarding_language_nl">NL</string>
+    <string name="onboarding_language_en">EN</string>
     <string name="onboarding_1_title">Welkom bij\nSeniorEase Library</string>
     <string name="onboarding_1_desc">Uw persoonlijke collectie van boeken, muziek, dvd\'s en games — alles op één plek.</string>
-    <string name="onboarding_2_title">Scan elke barcode</string>
-    <string name="onboarding_2_desc">Houd uw camera boven een barcode. Titel en auteur worden automatisch ingevuld.</string>
+    <string name="onboarding_2_title">Eerst type, dan scannen</string>
+    <string name="onboarding_2_desc">Kies eerst boek, muziek, dvd of game. Scan daarna de barcode. Het type blijft staan voor de volgende scan. Wordt er geen info gevonden? Vul titel en auteur zelf in.</string>
     <string name="onboarding_3_title">Altijd overzicht</string>
     <string name="onboarding_3_desc">Alles op één plek. Filter op gelezen, te lezen of in bezit.</string>
     <string name="onboarding_4_title">U bent klaar!</string>
-    <string name="onboarding_4_desc">Geen account nodig. Werkt offline. Tik op + om uw eerste item toe te voegen.</string>
+    <string name="onboarding_4_desc">Geen account nodig. Werkt offline. Tik op + om te beginnen. Tip: bij vinyl kiest u eerst Muziek.</string>
 
     <!-- Theme -->
     <string name="settings_theme">Thema</string>
@@ -247,6 +262,14 @@
     <string name="premium_unlock_message">U heeft de limiet van 10 items bereikt in de gratis versie.\n\nOntgrendel onbeperkte toegang met een eenmalige aankoop van €4,99.</string>
     <string name="premium_buy_button">Kopen (€4,99)</string>
     <string name="premium_restore_button">Aankoop herstellen</string>
+    <string name="premium_redeem_button">Code inwisselen</string>
+    <string name="premium_redeem_title">Promotiecode</string>
+    <string name="premium_redeem_message">Plak hier de code die u heeft ontvangen. U wordt doorgestuurd naar Google Play om de code in te wisselen.</string>
+    <string name="premium_redeem_hint">Promotiecode</string>
+    <string name="premium_redeem_paste">Plakken</string>
+    <string name="premium_redeem_continue">Doorgaan</string>
+    <string name="premium_redeem_empty">Vul eerst een code in.</string>
+    <string name="premium_redeem_open_error">Kon Google Play niet openen. Probeer het opnieuw.</string>
     <string name="premium_status_active">Premium: Actief ✓</string>
     <string name="premium_status_free">Gratis versie (%1$d/10 items)</string>
 </resources>

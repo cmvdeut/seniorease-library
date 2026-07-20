@@ -21,7 +21,16 @@ class BillingManager(private val context: Context) {
 
     private val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
-            purchases.forEach { handlePurchase(it) }
+            val hasPremium = purchases.any { purchase ->
+                purchase.purchaseState == Purchase.PurchaseState.PURCHASED &&
+                    purchase.products.contains(PRODUCT_ID)
+            }
+            if (hasPremium) {
+                purchases.forEach { handlePurchase(it) }
+            } else {
+                // No active premium purchase for this Play account
+                savePremium(false)
+            }
         }
     }
 
@@ -57,8 +66,26 @@ class BillingManager(private val context: Context) {
             .build()
         billingClient.queryPurchasesAsync(params) { billingResult, purchases ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                if (purchases.any { it.products.contains(PRODUCT_ID) }) {
-                    savePremium(true)
+                val hasPremium = purchases.any { purchase ->
+                    purchase.purchaseState == Purchase.PurchaseState.PURCHASED &&
+                        purchase.products.contains(PRODUCT_ID)
+                }
+                // Always sync with Play: true if owned, false if not.
+                // Prevents stale premium after account switch / backup restore.
+                savePremium(hasPremium)
+                if (hasPremium) {
+                    purchases
+                        .filter {
+                            it.purchaseState == Purchase.PurchaseState.PURCHASED &&
+                                it.products.contains(PRODUCT_ID) &&
+                                !it.isAcknowledged
+                        }
+                        .forEach { purchase ->
+                            val ackParams = AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.purchaseToken)
+                                .build()
+                            billingClient.acknowledgePurchase(ackParams) {}
+                        }
                 }
             }
         }

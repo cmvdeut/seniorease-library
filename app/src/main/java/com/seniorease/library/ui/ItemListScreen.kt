@@ -60,6 +60,7 @@ fun ItemListScreen(
     onAddClick: (String) -> Unit,
     onUpdateItem: (Item) -> Unit,
     onItemClick: (Item) -> Unit,
+    lastItemType: String = "boek",
 ) {
     val context = LocalContext.current
     val db = remember { AppDatabase.getDatabase(context) }
@@ -111,7 +112,7 @@ fun ItemListScreen(
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { onAddClick("boek") },
+                onClick = { onAddClick(lastItemType) },
                 modifier = Modifier.size(72.dp),
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
