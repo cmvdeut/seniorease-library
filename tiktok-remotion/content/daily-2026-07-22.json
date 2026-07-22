@@ -1,0 +1,42 @@
+{
+  "topic": "Bought the same vinyl record twice at a record fair",
+  "tiktok": {
+    "hook_text": "You bought it twice again?",
+    "body_text": "We've all been there at the record fair—scanning the bins, finding that gem, and... wait, do you already own it? SeniorEase Library keeps your collection in your pocket. One scan, instant answer. No account, no fuss, just peace of mind.",
+    "cta_text": "Scan smarter, collect better",
+    "caption": "Stop buying duplicates at record fairs. One scan tells you what you own. €4.99, forever. 📚🎵 #SeniorEase",
+    "hashtags": "#VinylCollector #BookCollector #RecordFair #NoSubscription #SeniorEase",
+    "duration_sec": "15",
+    "visual_suggestion": "Shot 1: Hook card 'You bought it twice again?' (2s). Shot 2: Hand scanning vinyl barcode on phone (4s). Shot 3: Green checkmark 'Already own this' on screen (3s). Shot 4: Happy collector smiling (2s). Shot 5: App icon + price '€4.99 forever' (4s)."
+  },
+  "linkedin": "The hidden cost of collecting: duplicates. Whether you're hunting vinyl at record fairs, browsing charity shops, or combing through estate sales, collectors know the sinking feeling—you've already got this one. After buying the same record or book twice, many of us think, 'There has to be a better way.' There is. SeniorEase Library is built for serious collectors who want to protect their investment without the tech headache. Scan a barcode, see instantly if you own it—no account login, no cloud sync, no monthly subscription. Just your collection, on your device, always accessible. At €4.99, it's a one-time purchase that pays for itself after one avoided duplicate. For collectors aged 45–75 who've built real libraries over decades, SeniorEase respects both your collection and your privacy. Worth a look at seniorease.eu. #Collecting #PrivacyFirst #IndieApp",
+  "facebook": "Herken je dit? Je bent op de rommelmarkt, vindt een prachtig vinyl of boek, en thuis realiseer je je—je hebt het al! 😅 Met een verzameling van 300+ items is het vrijwel onmogelijk alles in je hoofd te houden. SeniorEase Library lost dit op: je telefoon wordt je persoonlijke catalogus. Scan even het barcode-tje, en je weet direct of je het al hebt. Geen account, geen gedoe, geen maandelijkse kosten—gewoon €4.99 één keer betalen en klaar. Perfect voor iemand die van boeken, vinyl en dvd's houdt en zijn collectie serieus neemt. Herken je dit probleem? Wat zijn jouw tips om dubbel kopen te voorkomen?",
+  "remotion": {
+    "scriptId": "45"
+  },
+  "blotato": [
+    {
+      "platform": "linkedin",
+      "scheduledAt": "2026-08-17T07:00:00+00:00",
+      "postSubmissionId": "75b34b17-1956-4589-b122-cdb8f448968e"
+    },
+    {
+      "platform": "tiktok",
+      "scheduledAt": "2026-08-06T17:30:00+00:00",
+      "postSubmissionId": "e37be4fd-32cc-471d-accc-b82fc8c8bfed",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b2be9fa6-90d9-40bb-a839-33625082fb5e.mp4"
+    },
+    {
+      "platform": "instagram",
+      "scheduledAt": "2026-08-10T18:00:00+00:00",
+      "postSubmissionId": "27d987ac-6199-4fbc-b332-fcde2f7c2fde",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/209a5df2-d25c-40ce-98c8-70e606f343d0.mp4"
+    },
+    {
+      "platform": "facebook",
+      "scheduledAt": "2026-08-10T18:00:00+00:00",
+      "postSubmissionId": "51cd47c9-ccd1-4c40-af0d-a87af0aa1e2a",
+      "mediaUrl": "https://database.blotato.io/storage/v1/object/public/public_media/6e647c48-061e-4581-8308-82de7e816313/b559aba5-d51f-4845-bcd8-e7e708892ce2.mp4"
+    }
+  ]
+}
