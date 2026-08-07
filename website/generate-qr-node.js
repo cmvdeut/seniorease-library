@@ -1,4 +1,4 @@
-// QR Code Generator voor SeniorEase Library APK Download
+// QR Code Generator voor SeniorEase Library (Google Play)
 // Run: node generate-qr-node.js
 
 const fs = require('fs');
@@ -17,11 +17,11 @@ try {
     process.exit(1);
 }
 
-// Download URL
-const url = 'https://www.seniorease.eu/downloads/SeniorEase-Library-1.0.6.apk';
+// Play Store URL (geen APK-download meer)
+const url = 'https://play.google.com/store/apps/details?id=com.maureen.biblitoheek';
 
 // Output file
-const outputFile = path.join(__dirname, 'qr-code-apk-download.png');
+const outputFile = path.join(__dirname, 'qr-code-play-store.png');
 
 console.log('🔲 QR Code Generator');
 console.log('');

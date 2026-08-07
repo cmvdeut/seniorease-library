@@ -12,13 +12,6 @@
         {"key": "Content-Type", "value": "application/xml; charset=utf-8"}
       ]
     },
-    {
-      "source": "/downloads/(.*)",
-      "headers": [
-        {"key": "Content-Type", "value": "application/vnd.android.package-archive"},
-        {"key": "Content-Disposition", "value": "attachment"}
-      ]
-    }
   ],
   "redirects": [
     {"source": "/sitemap.xml/", "destination": "/sitemap.xml", "permanent": true},
