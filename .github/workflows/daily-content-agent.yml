@@ -1,8 +1,10 @@
 name: Daily Content Agent
 
 on:
-  schedule:
-    - cron: "0 6 * * *" # 08:00 NL (CEST) — voor je naar je werk bent
+  # UITGESCHAKELD 2026-08-10: posting/planning loopt via Blotato (MCP / handmatig).
+  # Cron gaf dagelijkse failure-notificaties. workflow_dispatch blijft voor noodgevallen.
+  # schedule:
+  #   - cron: "0 6 * * *" # 08:00 NL (CEST)
   workflow_dispatch:
 
 permissions:
