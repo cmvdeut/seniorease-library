@@ -8,7 +8,8 @@ from moviepy import (
     ImageClip,
     TextClip,
     CompositeVideoClip,
-    concatenate_videoclips
+    concatenate_videoclips,
+    ColorClip
 )
 
 # Video configuration
@@ -19,7 +20,7 @@ FONT_SIZE = 80  # Large font
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 TEXT_COLOR = 'white'
 STROKE_COLOR = 'black'
-STROKE_WIDTH = 3
+STROKE_WIDTH = 6  # Increased for better visibility
 
 # Screenshot paths
 SCREENSHOT_ADD = 'Screenshots/add book.png'
@@ -65,8 +66,19 @@ def create_shot(screenshot_path, text, duration):
     # Create text overlay
     txt_clip = create_text_clip(text, duration)
 
-    # Composite video and text
-    video = CompositeVideoClip([img_clip, txt_clip], size=(VIDEO_WIDTH, VIDEO_HEIGHT))
+    # Create semi-transparent black background for text
+    # Make it slightly larger than the text area
+    text_bg_height = 200  # Height of the background bar
+    text_bg = ColorClip(
+        size=(VIDEO_WIDTH, text_bg_height),
+        color=(0, 0, 0)  # Black
+    )
+    text_bg = text_bg.with_duration(duration)
+    text_bg = text_bg.with_position(('center', 50))  # Position at top
+    text_bg = text_bg.with_opacity(0.7)  # 70% opacity for semi-transparency
+
+    # Composite video, background bar, and text
+    video = CompositeVideoClip([img_clip, text_bg, txt_clip], size=(VIDEO_WIDTH, VIDEO_HEIGHT))
 
     return video
 
